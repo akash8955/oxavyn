@@ -32,6 +32,17 @@ export default function Navbar() {
     setMobileSubDropdown(null);
   }, [pathname]);
 
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.nav-item') && !e.target.closest('.mobile-drawer')) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
 
 
   return (
@@ -51,11 +62,17 @@ export default function Navbar() {
               <div 
                 key={idx} 
                 className={`nav-item ${link.megaMenuType === 'full' ? 'mega-full-parent' : ''}`}
-                onMouseEnter={() => link.isDropdown && setActiveDropdown(link.name)}
-                onMouseLeave={() => link.isDropdown && setActiveDropdown(null)}
+                onMouseEnter={() => {
+                  if (activeDropdown && activeDropdown !== link.name) {
+                    setActiveDropdown(null);
+                  }
+                }}
               >
                 {link.isDropdown ? (
-                  <span className={`nav-link ${activeDropdown === link.name ? 'active' : ''}`}>
+                  <span 
+                    className={`nav-link ${activeDropdown === link.name ? 'active' : ''}`}
+                    onClick={() => setActiveDropdown(activeDropdown === link.name ? null : link.name)}
+                  >
                     {link.name}
                     <svg className="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                   </span>
