@@ -1,0 +1,101 @@
+.logo-marquee-section {
+  padding: 4rem 1rem;
+  background-color: #000000; /* Force black background as requested */
+  overflow: hidden;
+}
+
+.marquee-title {
+  text-align: center;
+  color: #ffffff; /* Forced white text */
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+  font-family: inherit;
+  opacity: 0.9;
+}
+
+.marquee-title strong {
+  font-weight: 700;
+}
+
+.marquee-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  /* Soft fade on the left and right edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem; /* Gap between logos */
+  animation: scroll 40s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Since we duplicated the array exactly, moving exactly -50% shifts one full set seamlessly */
+    transform: translateX(calc(-50% - 0.75rem)); /* Offset by half the gap for perfect seamless loop */
+  }
+}
+
+/* User's specified box styles */
+.logo-box {
+  background: #141413 0 0 no-repeat padding-box;
+  border: 1px solid #ffffff; /* White border as requested */
+  border-radius: 6px;
+  height: 67px;
+  width: 180px; /* Fixed width for uniformity */
+  display: flex !important;
+  display: -ms-flexbox !important;
+  align-items: center;
+  -ms-flex-align: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  transition: all .5s ease;
+  flex-shrink: 0;
+}
+
+.logo-box:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* User's specified logo styles inside the box */
+.logo-box img, .logo-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px; /* Keeps a nice breathing room inside the border */
+  color: #a1a1aa; /* Light gray for placeholder text */
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-marquee-section {
+    padding: 3rem 1rem;
+  }
+  
+  .marquee-title {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .logo-box {
+    width: 140px;
+    height: 55px;
+  }
+}

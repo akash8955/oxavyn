@@ -1,0 +1,67 @@
+.tech-marquee-section {
+  background-color: #c9f321; /* Matches the lime green highlight in the UI */
+  padding: 40px 0;
+  overflow: hidden;
+  font-family: var(--font-inter), sans-serif;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tech-marquee-container {
+  display: flex;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.tech-marquee-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: techScrollLeft 80s linear infinite;
+}
+
+.tech-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: 1px solid #111; /* Thin black outline */
+  color: #111;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.tech-pill:hover {
+  background-color: #111;
+  color: #c9f321;
+  transform: translateY(-2px);
+}
+
+.tech-star {
+  font-size: 16px;
+}
+
+@keyframes techScrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .tech-marquee-section {
+    padding: 24px 0;
+  }
+  .tech-pill {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .tech-marquee-track {
+    animation-duration: 50s; /* Faster scroll on mobile */
+  }
+}

@@ -1,0 +1,158 @@
+.connected-ecosystems-section {
+  padding: 6rem 2rem;
+  /* Ultra-luxury light theme with dot grid as shown in image */
+  background-color: #f8f9fa;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 24px 24px;
+  overflow: hidden;
+  font-family: inherit;
+  position: relative;
+}
+
+/* Subtle gradient mask to fade the edges of the grid */
+.connected-ecosystems-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, #f8f9fa 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ce-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.ce-header {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ce-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.ce-title strong {
+  font-weight: 700;
+  display: block; /* Break line like in the image reference maybe? Or just keep it bold */
+}
+
+.ce-marquees-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.ce-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Soft fade on the left and right edges for luxury feel */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.ce-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+}
+
+.scroll-left {
+  animation: scroll-left 50s linear infinite;
+}
+
+.scroll-right {
+  /* We shift initial position to simulate right scroll if we use same logic, 
+     or just animate in reverse */
+  animation: scroll-right 50s linear infinite;
+}
+
+.ce-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.75rem)); } /* -50% minus half the gap */
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(calc(-50% - 0.75rem)); }
+  100% { transform: translateX(0); }
+}
+
+.ce-logo-box {
+  height: 70px;
+  min-width: 180px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  flex-shrink: 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  cursor: default;
+}
+
+.ce-logo-box:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.ce-logo-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ce-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .connected-ecosystems-section {
+    padding: 4rem 1rem;
+  }
+  
+  .ce-title {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+  
+  .ce-header {
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 0;
+  }
+  
+  .ce-logo-box {
+    height: 60px;
+    min-width: 150px;
+  }
+  
+  .ce-logo-text {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,80 @@
+.cta-banner-global-container {
+  padding: 4rem 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.cta-banner-global {
+  background: linear-gradient(135deg, #6e44ff 0%, #b86bdf 50%, #f6b785 100%);
+  border-radius: 20px;
+  padding: 3rem 4rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-banner-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  flex: 1;
+}
+
+.cta-banner-arrow {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+}
+
+.cta-banner-arrow svg {
+  width: 150px;
+  height: 60px;
+  overflow: visible;
+}
+
+.cta-banner-btn {
+  background: white;
+  color: #0f172a;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  white-space: nowrap;
+}
+
+.cta-banner-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .cta-banner-global {
+    padding: 3rem 2rem;
+  }
+  .cta-banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  .cta-banner-arrow {
+    display: none;
+  }
+  .cta-banner-title {
+    font-size: 2rem;
+  }
+}

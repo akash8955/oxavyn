@@ -1,0 +1,139 @@
+.ai-innovations-section {
+  position: relative;
+  z-index: 10;
+  background-color: #111111;
+  /* subtle geometric grid background */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  background-size: 60px 60px, 60px 60px, 100% 100%;
+  padding: 120px 0;
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.ai-main-title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 60px;
+  font-family: var(--font-outfit), sans-serif;
+  text-align: center;
+}
+
+.ai-highlight {
+  color: #c9f321; /* lime/yellow green to match screenshot */
+}
+
+.ai-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.ai-card {
+  background-color: #262626;
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.ai-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.ai-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ai-card-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.ai-card-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #a3a3a3;
+  margin: 0 0 30px 0;
+}
+
+.ai-card-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.ai-card-link:hover {
+  opacity: 0.7;
+}
+
+.ai-card-image {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ai-card-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@media (max-width: 1024px) {
+  .ai-card {
+    flex-direction: column-reverse;
+    text-align: left;
+  }
+  
+  .ai-card-image {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-innovations-section {
+    padding: 80px 0;
+  }
+
+  .ai-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ai-main-title {
+    font-size: 40px;
+  }
+  
+  .ai-container {
+    padding: 0 20px;
+  }
+}

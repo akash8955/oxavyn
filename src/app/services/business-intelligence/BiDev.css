@@ -1,0 +1,507 @@
+/* =========================================
+   BUSINESS INTELLIGENCE DEVELOPMENT PAGE (800vh)
+   Ultra Luxury, Pearl Ambient UI, 3D Glass, Futuristic
+   Ultra-Bright Palette: Lavender, Cyan, Violet, Champagne
+   ========================================= */
+
+:root {
+  --bi-bg: #ffffff;
+  --bi-text-primary: #0a0a1a;
+  --bi-text-secondary: #4a4a5a;
+  --bi-accent-1: #9333ea; /* Brighter Violet */
+  --bi-accent-2: #06b6d4; /* Bright Cyan */
+  --bi-accent-3: #d946ef; /* Bright Magenta */
+  --bi-accent-4: #f59e0b; /* Champagne */
+  --bi-glass-bg: rgba(255, 255, 255, 0.6);
+  --bi-glass-border: rgba(255, 255, 255, 1);
+}
+
+.bi-page {
+  background-color: var(--bi-bg);
+  color: var(--bi-text-secondary);
+  font-family: inherit;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Bright Pearl Atmospheric Gradient - Brighter than standard pages */
+.bi-page::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(147, 51, 234, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.08) 0%, transparent 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Sections */
+.bi-page section {
+  position: relative;
+  min-height: auto;
+  padding: 4rem 5%;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Layout utilities */
+.bi-split {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.bi-split.visual-right {
+  grid-template-areas: 
+    "header visual"
+    "body visual";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.bi-split.visual-left {
+  grid-template-areas: 
+    "visual header"
+    "visual body";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.bi-text-header {
+  grid-area: header;
+}
+
+.bi-text-body {
+  grid-area: body;
+}
+
+.bi-visual {
+  grid-area: visual;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bi-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Container for section spanning full width */
+.bi-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(245, 240, 255, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 40px;
+  box-shadow: 
+    0 40px 80px rgba(139, 92, 246, 0.1),
+    inset 0 4px 20px rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Typography */
+.bi-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--bi-accent-1);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+.bi-heading {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--bi-text-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+}
+.bi-gradient-text {
+  background: linear-gradient(135deg, var(--bi-accent-1), var(--bi-accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.bi-desc {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  color: var(--bi-text-secondary);
+}
+
+/* Buttons */
+.bi-btn-group {
+  display: flex;
+  gap: 1.5rem;
+}
+.bi-btn {
+  padding: 1.25rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.bi-btn-primary {
+  background: linear-gradient(135deg, var(--bi-text-primary), #111);
+  color: white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+.bi-btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+.bi-btn-secondary {
+  background: var(--bi-glass-bg);
+  color: var(--bi-text-primary);
+  border: 1px solid var(--bi-glass-border);
+  backdrop-filter: blur(10px);
+}
+.bi-btn-secondary:hover {
+  background: rgba(255,255,255,1);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(139,92,246,0.15);
+}
+
+/* Scroll Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keyframes */
+@keyframes bi-float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes bi-float-fast {
+  0%, 100% { transform: translateY(0) rotateX(10deg); }
+  50% { transform: translateY(-15px) rotateX(15deg); }
+}
+@keyframes bi-pulse-glow {
+  0%, 100% { box-shadow: 0 0 60px rgba(147, 51, 234, 0.5), inset 0 0 30px rgba(255,255,255,1); }
+  50% { box-shadow: 0 0 100px rgba(6, 182, 212, 0.8), inset 0 0 40px rgba(255,255,255,1); }
+}
+@keyframes bi-chart-drop {
+  0% { transform: translateY(-100px) scale(0.9); opacity: 0; }
+  60% { transform: translateY(10px) scale(1); opacity: 1; }
+  80% { transform: translateY(-5px) scale(1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes bi-card-flip {
+  0% { transform: rotateY(0deg) translateY(0); }
+  40% { transform: rotateY(0deg) translateY(0); }
+  50% { transform: rotateY(180deg) translateY(-10px); }
+  90% { transform: rotateY(180deg) translateY(-10px); }
+  100% { transform: rotateY(0deg) translateY(0); }
+}
+@keyframes bi-line-draw {
+  0% { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+  100% { stroke-dasharray: 1000; stroke-dashoffset: 0; }
+}
+
+/* Shared Premium Materials */
+.bi-glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,1);
+  border-radius: 16px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--bi-text-primary);
+  box-shadow: 0 20px 40px rgba(147,51,234,0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform-style: preserve-3d;
+}
+.bi-glass-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bi-glass-panel {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(245,240,255,0.7));
+  border: 1px solid rgba(255,255,255,1);
+  box-shadow: 0 40px 100px rgba(147,51,234,0.2), inset 0 4px 30px rgba(255,255,255,1);
+  backdrop-filter: blur(40px);
+  border-radius: 24px;
+}
+
+/* =========================================
+   SECTION 01: HERO
+   ========================================= */
+.bi-hero-visual {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  perspective: 2000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-cmd-center {
+  width: 550px;
+  height: 400px;
+  transform: rotateY(-10deg) rotateX(5deg);
+  animation: bi-float-slow 8s infinite;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  z-index: 5;
+}
+
+/* =========================================
+   SECTION 02: CONNECTED DATA
+   ========================================= */
+.bi-connected-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bi-core-diamond {
+  width: 180px; height: 180px;
+  background: #fff;
+  border: 2px solid rgba(147,51,234,0.6);
+  box-shadow: 0 30px 80px rgba(147,51,234,0.4), inset 0 0 60px rgba(6,182,212,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; color: var(--bi-accent-1);
+  transform: rotate(45deg);
+  z-index: 10;
+}
+.bi-source-node {
+  position: absolute;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid #fff;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.75rem; color: var(--bi-text-secondary);
+  z-index: 5;
+}
+
+/* =========================================
+   SECTION 03: EXECUTIVE DASHBOARDS
+   ========================================= */
+.bi-exec-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 3rem auto 0;
+  perspective: 2000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.exec-map-dash {
+  width: 900px; height: 450px;
+  transform: rotateX(15deg);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  position: relative;
+}
+
+/* =========================================
+   SECTION 04: POWER BI + TABLEAU
+   ========================================= */
+.bi-ecosystem-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.ecosystem-panel {
+  width: 350px; height: 400px;
+  display: flex; flex-direction: column;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   SECTION 05: DATA INTO ACTION
+   ========================================= */
+.bi-action-visual {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================================
+   SECTION 06: REAL-TIME BUSINESS INTELLIGENCE
+   ========================================= */
+.bi-realtime-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 450px;
+  margin: 3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rt-bi-dash {
+  width: 100%; height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* =========================================
+   SECTION 07: AI + BUSINESS INTELLIGENCE
+   ========================================= */
+.bi-ai-visual {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   SECTION 08: BUSINESS ACTION CENTER
+   ========================================= */
+.bi-cmd-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+}
+.cmd-network {
+  width: 800px; height: 500px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+
+/* =========================================
+   SECTION 09: FINAL CTA
+   ========================================= */
+.bi-cta-container {
+  width: fit-content;
+  max-width: 95vw;
+  margin: 0 auto;
+  z-index: 2;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(245,240,255,0.6) 100%);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 40px;
+  box-shadow: 0 40px 80px rgba(139, 92, 246, 0.15), inset 0 2px 20px rgba(255, 255, 255, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Crucial Mobile Logic)
+   ========================================= */
+@media (max-width: 1024px) {
+  .bi-split,
+  .bi-split.visual-right,
+  .bi-split.visual-left { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: center; 
+    gap: 0; 
+  }
+  
+  .bi-text-header { margin-bottom: 2rem; }
+  .bi-visual { margin-bottom: 2rem; overflow: visible; }
+
+  .bi-desc { margin: 0 auto 2.5rem; }
+  .bi-btn-group { justify-content: center; }
+  
+  .bi-hero-visual { min-width: 800px; transform: scale(0.7); margin: -80px 0; }
+  .bi-connected-visual { min-width: 800px; transform: scale(0.7); margin: -80px 0; }
+  .bi-exec-visual { min-width: 1000px; transform: scale(0.65); margin: -100px 0; }
+  .bi-ecosystem-visual { min-width: 1000px; transform: scale(0.65); margin: -100px 0; }
+  .bi-action-visual { min-width: 900px; transform: scale(0.65); margin: -100px 0; }
+  .bi-realtime-visual { min-width: 900px; transform: scale(0.7); margin: -80px 0; }
+  .bi-ai-visual { min-width: 900px; transform: scale(0.7); margin: -80px 0; }
+  .bi-cmd-visual { min-width: 900px; transform: scale(0.65); margin: -100px 0; }
+  .bi-cta-container { padding: 4rem 2rem; width: 95vw; border-radius: 24px; }
+}
+
+@media (max-width: 768px) {
+  .bi-heading { font-size: 2.5rem; }
+  .bi-btn-group { flex-direction: column; }
+  .bi-container { padding: 3rem 1.5rem; border-radius: 24px; }
+  
+  /* Fix layout crush by forcing container minimum width, then scale down and offset margins */
+  .bi-hero-visual { min-width: 800px; transform: scale(0.45); margin: -160px 0; }
+  .bi-connected-visual { min-width: 800px; transform: scale(0.45); margin: -150px 0; }
+  .bi-exec-visual { min-width: 1000px; transform: scale(0.4); margin: -150px 0; }
+  .bi-ecosystem-visual { min-width: 1000px; transform: scale(0.4); margin: -150px 0; }
+  .bi-action-visual { min-width: 900px; transform: scale(0.4); margin: -130px 0; }
+  .bi-realtime-visual { min-width: 900px; transform: scale(0.45); margin: -140px 0; }
+  .bi-ai-visual { min-width: 900px; transform: scale(0.45); margin: -140px 0; }
+  .bi-cmd-visual { min-width: 900px; transform: scale(0.4); margin: -150px 0; }
+  
+  .bi-cta-container { padding: 2rem 1.5rem; width: 95vw; border-radius: 20px; }
+}

@@ -1,0 +1,682 @@
+/* ==========================================================================
+   OXAVYN WEB DEVELOPMENT SERVICE PAGE
+   ULTRA-LUXURY PREMIUM DIGITAL EXPERIENCE (LIGHT UI)
+   ========================================================================== */
+
+   :root {
+    --web-navy: #050510;
+    --web-navy-light: #f8fafc;
+    --web-white: #ffffff;
+    --web-ivory: #ffffff;
+    --web-blue: #2563eb;
+    --web-cyan: #06b6d4;
+    --web-lavender: #a78bfa;
+    --web-violet: #8b5cf6;
+    
+    --web-font-sans: var(--font-outfit), system-ui, sans-serif;
+  }
+  
+  /* Base Styles */
+  .web-page {
+    background-color: var(--background, #ffffff);
+    color: #4b5563; /* Secondary text */
+    font-family: inherit; /* Use default font to match home banner */
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Adding the home page ambient light effect as a background */
+  .web-page::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45vh;
+    background: linear-gradient(90deg, rgba(255,117,140,0.2), rgba(255,223,0,0.2), rgba(0,242,254,0.2), rgba(79,172,254,0.2), rgba(255,117,140,0.2));
+    background-size: 200% 100%;
+    animation: movingGradient 15s linear infinite;
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  @keyframes movingGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: -200% 50%; }
+  }
+  
+  .web-page section {
+    position: relative;
+    padding: 8rem 5%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1; /* Ensure sections sit above the fixed ambient background */
+  }
+  
+  .web-page .huge-heading {
+    font-size: clamp(40px, 5vw, 54px);
+    font-weight: 500;
+    line-height: clamp(50px, 6vw, 70px);
+    margin-bottom: 1rem;
+    color: #111827;
+    letter-spacing: normal;
+  }
+  
+  .web-page .section-desc {
+    font-size: 16px;
+    line-height: 26px;
+    color: #4b5563;
+    max-width: 750px;
+  }
+  
+  .web-page .section-desc p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .web-page .eyebrow {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #7c3aed; /* var(--accent-primary) from home */
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 50px;
+    background: rgba(124, 58, 237, 0.05);
+    backdrop-filter: blur(10px);
+  }
+  
+  .web-page .gradient-text {
+    background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .web-page .gradient-accent {
+    background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Buttons */
+  .web-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .web-btn-primary {
+    background: var(--web-navy);
+    color: var(--web-white);
+    box-shadow: 0 10px 30px rgba(5, 5, 16, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .web-btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.3);
+    background: linear-gradient(135deg, #050510 0%, #1e1b4b 100%);
+  }
+  
+  .web-btn-secondary {
+    background: transparent;
+    color: var(--web-navy);
+    border: 1px solid rgba(5, 5, 16, 0.1);
+  }
+  
+  .web-btn-secondary:hover {
+    border-color: rgba(5, 5, 16, 0.3);
+    background: rgba(5, 5, 16, 0.02);
+  }
+  
+  /* ==========================================================================
+     SECTION 01: HERO (100VH)
+     ========================================================================== */
+  .web-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 150px;
+    overflow: hidden;
+  }
+  
+  .web-hero-content {
+    flex: 1;
+    max-width: 700px;
+    z-index: 10;
+  }
+  
+  .web-hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  
+  .web-hero-visual {
+    flex: 1;
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 2000px;
+  }
+  
+  .floating-browser {
+    width: 650px;
+    height: 420px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,1);
+    transform: rotateY(-15deg) rotateX(5deg);
+    animation: floatBrowser 8s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .browser-header {
+    height: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  .browser-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  
+  .browser-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .browser-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .browser-nav-lines div {
+    height: 4px;
+    width: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+  }
+  
+  .browser-hero-block {
+    height: 80px;
+    width: 70%;
+    background: linear-gradient(90deg, rgba(124, 58, 237, 0.05), transparent);
+    border-radius: 8px;
+  }
+  
+  .browser-cards {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .browser-card {
+    flex: 1;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+  }
+  
+  .floating-panel-1, .floating-panel-2 {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  
+  .floating-panel-1 {
+    top: 10%;
+    right: 5%;
+    width: 200px;
+    animation: floatPanel1 10s ease-in-out infinite reverse;
+  }
+  
+  .floating-panel-2 {
+    bottom: 15%;
+    left: 0%;
+    width: 250px;
+    animation: floatPanel2 12s ease-in-out infinite;
+  }
+  
+  @keyframes floatBrowser {
+    0%, 100% { transform: rotateY(-15deg) rotateX(5deg) translateY(0); }
+    50% { transform: rotateY(-15deg) rotateX(5deg) translateY(-20px); }
+  }
+  
+  @keyframes floatPanel1 {
+    0%, 100% { transform: translateY(0) translateZ(50px); }
+    50% { transform: translateY(-15px) translateZ(50px); }
+  }
+  
+  @keyframes floatPanel2 {
+    0%, 100% { transform: translateY(0) translateZ(80px); }
+    50% { transform: translateY(15px) translateZ(80px); }
+  }
+  
+  /* ==========================================================================
+     SECTION 02: THE DIGITAL EXPERIENCE (80VH)
+     ========================================================================== */
+  .web-exp {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .web-exp-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  
+  .exp-abstract {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem;
+    background: radial-gradient(circle at center, rgba(167, 139, 250, 0.05) 0%, transparent 70%);
+  }
+  
+  .abstract-node {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--web-navy);
+    position: relative;
+  }
+  
+  .abstract-arrow {
+    color: var(--web-lavender);
+    opacity: 0.8;
+  }
+  
+  .exp-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+  
+  .highlight-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+  
+  .highlight-num {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #7c3aed;
+    opacity: 0.8;
+    font-family: monospace;
+  }
+  
+  .highlight-title {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--web-navy);
+  }
+  
+  /* ==========================================================================
+     SECTION 03: WHAT WE BUILD (100VH)
+     ========================================================================== */
+  .web-build {
+    min-height: 100vh;
+    background: var(--web-navy-light);
+  }
+  
+  .build-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+  
+  .build-card {
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: all 0.4s ease;
+  }
+  
+  .build-card:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(167, 139, 250, 0.3);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+  }
+  
+  .build-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--web-navy);
+  }
+  
+  /* ==========================================================================
+     SECTION 04: THE OXAVYN METHOD (110VH)
+     ========================================================================== */
+  .web-method {
+    min-height: 110vh;
+  }
+  
+  .method-timeline {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+  
+  .method-step {
+    position: relative;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .method-step::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--web-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+  }
+  
+  .method-num {
+    font-size: 0.85rem;
+    color: #7c3aed;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .method-step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--web-navy);
+  }
+  
+  /* ==========================================================================
+     SPLIT LAYOUTS (Technology, Why Oxavyn, Partnership)
+     ========================================================================== */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .why-split-grid {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+  
+  .luxury-visual-img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 24px;
+    background-color: transparent;
+    mix-blend-mode: multiply;
+  }
+  
+  .why-cards-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .why-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 3rem;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: all 0.4s ease;
+  }
+  
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .why-card:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+  }
+  
+  .why-card:hover::before {
+    opacity: 1;
+  }
+  
+  .why-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--web-navy);
+    position: relative;
+  }
+  
+  .why-card p {
+    position: relative;
+    color: #4b5563;
+  }
+  
+  /* ==========================================================================
+     SECTION 06: USER EXPERIENCE (100VH)
+     ========================================================================== */
+  .web-ux {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .ux-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  
+  .ux-visual {
+    position: relative;
+    height: 500px;
+    width: 100%;
+  }
+  
+  .ux-browser {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  }
+  
+  .ux-label {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateZ(20px);
+  }
+  
+  .ux-label h4 {
+    font-size: 0.85rem;
+    color: #7c3aed;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .ux-label p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--web-navy);
+    margin: 0;
+  }
+  
+  .label-1 { top: 10%; right: -10%; }
+  .label-2 { top: 40%; left: -10%; }
+  .label-3 { bottom: 20%; right: -5%; }
+  
+  /* ==========================================================================
+     SECTION 07: PERFORMANCE (80VH)
+     ========================================================================== */
+  .web-perf {
+    min-height: 80vh;
+    background: var(--web-navy-light);
+  }
+  
+  .perf-metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6rem;
+    padding: 4rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .metric-item {
+    text-align: center;
+  }
+  
+  .metric-value {
+    font-size: 0.85rem;
+    color: var(--web-blue);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  
+  .metric-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--web-navy);
+  }
+  
+  /* ==========================================================================
+     SECTION 08: WHY OXAVYN (90VH)
+     ========================================================================== */
+  .web-why {
+    min-height: 90vh;
+  }
+  
+  /* ==========================================================================
+     SECTION 09: PARTNERSHIP (70VH)
+     ========================================================================== */
+  .web-partner {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    background: var(--web-navy-light);
+  }
+  
+  /* ==========================================================================
+     CUSTOM LAYOUTS (Digital, Technology)
+     ========================================================================== */
+  .mobile-split-layout, .tech-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  
+  .mobile-split-image { grid-column: 1; }
+  .mobile-split-text-group { 
+    grid-column: 2; 
+    display: block;
+  }
+
+  .tech-split-image { grid-column: 2; }
+  .tech-split-text-group { 
+    grid-column: 1; 
+    display: block;
+  }
+
+  /* ==========================================================================
+     RESPONSIVE
+     ========================================================================== */
+  @media (max-width: 1024px) {
+    .web-hero { flex-direction: column; padding-top: 120px; text-align: center; }
+    .web-hero-content { display: contents; }
+    .hero-heading-part { order: 1; }
+    .web-hero-visual { order: 2; width: 100%; margin: 2rem 0; }
+    .hero-desc-part { order: 3; }
+    
+    .web-hero-actions { justify-content: center; }
+    .floating-browser { width: 90%; height: 350px; }
+    .web-exp-content, .ux-grid, .split-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .why-split-grid { grid-template-columns: 1fr; }
+    .method-timeline { grid-template-columns: 1fr 1fr; }
+    .build-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .exp-abstract { flex-direction: column; text-align: center; padding: 2rem; }
+    .perf-metrics { flex-direction: column; gap: 3rem; }
+    .reverse-on-mobile { display: flex; flex-direction: column-reverse; }
+
+    .mobile-split-layout, .tech-split-layout { grid-template-columns: 1fr; gap: 2rem; }
+    
+    .mobile-split-text-group, .tech-split-text-group { 
+      display: contents; /* Unwrap so children act as direct grid items */
+    }
+
+    .mobile-split-heading, .tech-split-heading { grid-column: 1; grid-row: 1; }
+    .mobile-split-image, .tech-split-image { grid-column: 1; grid-row: 2; }
+    .mobile-split-desc, .tech-split-desc { grid-column: 1; grid-row: 3; }
+  }
+  
+  @media (max-width: 768px) {
+    .web-page section { padding: 5rem 5%; }
+    .method-timeline, .build-cards-grid { grid-template-columns: 1fr; }
+    .ux-label { position: relative; top: auto; left: auto; right: auto; bottom: auto; margin-bottom: 1rem; transform: none; }
+    .floating-browser { width: 100%; height: 250px; }
+    .web-hero-actions { flex-direction: column; width: 100%; }
+    .web-btn { justify-content: center; width: 100%; }
+  }

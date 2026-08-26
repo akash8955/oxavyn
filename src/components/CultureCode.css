@@ -1,0 +1,95 @@
+.culture-section {
+  padding: 100px 20px;
+  background-color: #f6f4fa; /* Slightly darker to separate from white sections */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(126, 92, 245, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 60%),
+    radial-gradient(at 100% 0%, rgba(253, 187, 45, 0.05) 0px, transparent 50%);
+  width: 100%;
+}
+
+.culture-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.culture-header {
+  text-align: center;
+  margin: 0 auto 60px;
+  max-width: 800px;
+}
+
+.culture-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #3b2b73;
+  margin-bottom: 24px;
+}
+
+.culture-description {
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 60px;
+}
+
+.culture-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.culture-icon {
+  margin-bottom: 20px;
+}
+
+.culture-item-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.culture-item-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3b2b73; /* Slightly brighter/distinct color for the subtitle */
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.culture-item-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .culture-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .culture-section {
+    padding: 80px 20px;
+  }
+  
+  .culture-title {
+    font-size: 2.5rem;
+  }
+
+  .culture-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}

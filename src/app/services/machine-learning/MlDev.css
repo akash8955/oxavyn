@@ -1,0 +1,552 @@
+/* =========================================
+   MACHINE LEARNING DEVELOPMENT PAGE (800vh)
+   Ultra Luxury, Pearl Ambient UI, 3D Glass, Futuristic
+   ========================================= */
+
+:root {
+  --ml-bg: #ffffff;
+  --ml-text-primary: #0a0a1a;
+  --ml-text-secondary: #4a4a5a;
+  --ml-accent-1: #3b82f6; /* Icy blue */
+  --ml-accent-2: #8b5cf6; /* Subtle violet */
+  --ml-accent-3: #f59e0b; /* Champagne highlight */
+  --ml-glass-bg: rgba(255, 255, 255, 0.75);
+  --ml-glass-border: rgba(255, 255, 255, 0.95);
+}
+
+.ml-page {
+  background-color: var(--ml-bg);
+  color: var(--ml-text-secondary);
+  font-family: inherit;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Bright Pearl Atmospheric Gradient */
+.ml-page::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Sections */
+.ml-page section {
+  position: relative;
+  min-height: auto;
+  padding: 4rem 5%;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Layout utilities */
+.ml-split {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.ml-split.visual-right {
+  grid-template-areas: 
+    "header visual"
+    "body visual";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.ml-split.visual-left {
+  grid-template-areas: 
+    "visual header"
+    "visual body";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.ml-text-header {
+  grid-area: header;
+}
+
+.ml-text-body {
+  grid-area: body;
+}
+
+.ml-visual {
+  grid-area: visual;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ml-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Container for section spanning full width */
+.ml-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(240, 245, 255, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 40px;
+  box-shadow: 
+    0 40px 80px rgba(59, 130, 246, 0.08),
+    inset 0 4px 20px rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Typography */
+.ml-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ml-accent-1);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+.ml-heading {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ml-text-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+}
+.ml-gradient-text {
+  background: linear-gradient(135deg, var(--ml-accent-1), var(--ml-accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ml-desc {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  color: var(--ml-text-secondary);
+}
+
+/* Buttons */
+.ml-btn-group {
+  display: flex;
+  gap: 1.5rem;
+}
+.ml-btn {
+  padding: 1.25rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ml-btn-primary {
+  background: linear-gradient(135deg, var(--ml-text-primary), #111);
+  color: white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+.ml-btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+.ml-btn-secondary {
+  background: var(--ml-glass-bg);
+  color: var(--ml-text-primary);
+  border: 1px solid var(--ml-glass-border);
+  backdrop-filter: blur(10px);
+}
+.ml-btn-secondary:hover {
+  background: rgba(255,255,255,1);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(59,130,246,0.1);
+}
+
+/* Scroll Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keyframes */
+@keyframes ml-float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes ml-float-fast {
+  0%, 100% { transform: translateY(0) rotateX(10deg); }
+  50% { transform: translateY(-15px) rotateX(15deg); }
+}
+@keyframes ml-pulse-glow {
+  0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(255,255,255,0.9); }
+  50% { box-shadow: 0 0 70px rgba(59, 130, 246, 0.5), inset 0 0 30px rgba(255,255,255,1); }
+}
+@keyframes ml-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes ml-data-flow {
+  0% { transform: translateY(100px); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-100px); opacity: 0; }
+}
+@keyframes ml-scan {
+  0% { transform: translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(1000px); opacity: 0; }
+}
+
+/* Shared Premium Materials */
+.ml-glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,1);
+  border-radius: 16px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ml-text-primary);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================================
+   SECTION 01: HERO
+   ========================================= */
+.ml-hero-visual {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  perspective: 2000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ml-crystal-sphere {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,1) 0%, rgba(224,242,254,0.7) 100%);
+  box-shadow: 
+    0 0 100px rgba(59, 130, 246, 0.4), 
+    inset 0 -20px 40px rgba(139, 92, 246, 0.3),
+    inset 0 10px 20px rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255,255,255,0.9);
+  animation: ml-float-slow 8s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+}
+
+/* =========================================
+   SECTION 02: DATA
+   ========================================= */
+.ml-data-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.data-cylinder {
+  width: 180px;
+  height: 100px;
+  border-radius: 50% / 20px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(240,245,255,0.7), rgba(255,255,255,0.9));
+  border: 1px solid rgba(255,255,255,1);
+  box-shadow: 0 30px 60px rgba(59,130,246,0.1), inset 0 -5px 15px rgba(59,130,246,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--ml-accent-1);
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+.data-pipeline-container {
+  width: 4px;
+  height: 150px;
+  background: rgba(59, 130, 246, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.data-packet {
+  width: 10px; height: 10px;
+  background: var(--ml-accent-1);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--ml-accent-1);
+  position: absolute;
+  left: -3px;
+  animation: ml-data-flow 2s infinite linear;
+}
+
+/* =========================================
+   SECTION 03: ML MODELS
+   ========================================= */
+.ml-model-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 3rem auto 0;
+  perspective: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ml-layer {
+  width: 240px;
+  height: 320px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(240,245,255,0.4));
+  border: 1px solid rgba(255,255,255,1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  transform: rotateY(35deg);
+  position: absolute;
+  box-shadow: 0 20px 50px rgba(59,130,246,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 0;
+  z-index: 2;
+}
+
+/* =========================================
+   SECTION 04: PREDICTION
+   ========================================= */
+.ml-predict-visual {
+  position: relative;
+  height: 450px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.predict-graph {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+.predict-scanner {
+  position: absolute;
+  top: 0; left: -100px;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.1), rgba(59,130,246,0.3));
+  border-right: 2px solid var(--ml-accent-1);
+  animation: ml-scan 8s infinite linear;
+  box-shadow: 10px 0 20px rgba(59,130,246,0.2);
+  z-index: 5;
+}
+
+/* =========================================
+   SECTION 05: ML + BUSINESS
+   ========================================= */
+.ml-biz-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.biz-core-ml {
+  width: 180px; height: 180px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255,255,255,1), rgba(240,245,255,0.8));
+  border: 2px solid rgba(255,255,255,1);
+  box-shadow: 0 40px 80px rgba(59,130,246,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; color: var(--ml-accent-1);
+  z-index: 10;
+  animation: ml-pulse-glow 6s infinite;
+}
+
+/* =========================================
+   SECTION 06: REAL-TIME INTELLIGENCE
+   ========================================= */
+.ml-realtime-visual {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.realtime-dashboard {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(245,245,255,0.6));
+  border: 1px solid rgba(255,255,255,1);
+  border-radius: 30px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.05);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+/* =========================================
+   SECTION 07: AI + ML
+   ========================================= */
+.ml-fusion-visual {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fusion-sphere {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(240,245,255,0.6) 100%);
+  border: 1px solid rgba(255,255,255,0.9);
+  backdrop-filter: blur(15px);
+  position: absolute;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; color: var(--ml-text-primary);
+  box-shadow: 0 30px 60px rgba(59,130,246,0.15);
+  text-align: center;
+}
+
+/* =========================================
+   SECTION 08: TRUST & SCALE
+   ========================================= */
+.ml-trust-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trust-shield {
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  border: 2px solid rgba(59,130,246,0.3);
+  background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+
+/* =========================================
+   SECTION 09: FINAL CTA
+   ========================================= */
+.ml-cta-container {
+  width: fit-content;
+  max-width: 95vw;
+  margin: 0 auto;
+  z-index: 2;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,245,255,0.6) 100%);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 40px;
+  box-shadow: 0 40px 80px rgba(59, 130, 246, 0.15), inset 0 2px 20px rgba(255, 255, 255, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Crucial Mobile Logic)
+   ========================================= */
+@media (max-width: 1024px) {
+  .ml-split,
+  .ml-split.visual-right,
+  .ml-split.visual-left { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: center; 
+    gap: 0; 
+  }
+  
+  .ml-text-header { margin-bottom: 2rem; }
+  .ml-visual { margin-bottom: 2rem; overflow: visible; }
+
+  .ml-desc { margin: 0 auto 2.5rem; }
+  .ml-btn-group { justify-content: center; }
+  
+  .ml-hero-visual { min-width: 800px; transform: scale(0.7); margin: -80px 0; }
+  .ml-data-visual { min-width: 600px; transform: scale(0.7); margin: -70px 0; }
+  .ml-model-visual { min-width: 900px; transform: scale(0.65); margin: -100px 0; }
+  .ml-predict-visual { min-width: 800px; transform: scale(0.7); margin: -80px 0; }
+  .ml-biz-visual { min-width: 800px; transform: scale(0.7); margin: -70px 0; }
+  .ml-realtime-visual { min-width: 900px; transform: scale(0.7); margin: -80px 0; }
+  .ml-fusion-visual { min-width: 900px; transform: scale(0.7); margin: -80px 0; }
+  .ml-trust-visual { min-width: 600px; transform: scale(0.7); margin: -70px 0; }
+  .ml-cta-container { padding: 4rem 2rem; width: 95vw; border-radius: 24px; }
+}
+
+@media (max-width: 768px) {
+  .ml-heading { font-size: 2.5rem; }
+  .ml-btn-group { flex-direction: column; }
+  .ml-container { padding: 3rem 1.5rem; border-radius: 24px; }
+  
+  /* Fix layout crush by forcing container minimum width, then scale down and offset margins */
+  .ml-hero-visual { min-width: 800px; transform: scale(0.45); margin: -160px 0; }
+  .ml-data-visual { min-width: 600px; transform: scale(0.5); margin: -125px 0; }
+  .ml-model-visual { min-width: 900px; transform: scale(0.4); margin: -140px 0; }
+  .ml-predict-visual { min-width: 800px; transform: scale(0.45); margin: -130px 0; }
+  .ml-biz-visual { min-width: 800px; transform: scale(0.45); margin: -130px 0; }
+  .ml-realtime-visual { min-width: 900px; transform: scale(0.45); margin: -130px 0; }
+  .ml-fusion-visual { min-width: 900px; transform: scale(0.45); margin: -130px 0; }
+  .ml-trust-visual { min-width: 600px; transform: scale(0.5); margin: -125px 0; }
+  
+  .ml-cta-container { padding: 2rem 1.5rem; width: 95vw; border-radius: 20px; }
+}

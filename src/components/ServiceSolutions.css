@@ -1,0 +1,300 @@
+.service-solutions-wrapper {
+  position: relative;
+  background-color: var(--background, #fff); 
+  padding-top: 5vh;
+  padding-bottom: 100px; 
+}
+
+/* Remove the individual scroll areas, we don't need them anymore */
+.ss-scroll-area {
+  display: contents; 
+}
+
+.ss-sticky-container {
+  position: sticky;
+  top: 5vh;
+  height: 90vh;
+  min-height: 720px;
+  width: 90vw;
+  max-width: 1700px;
+  margin: 0 auto 100vh auto; /* 100vh gap creates the scroll delay between cards */
+  border-radius: 32px; 
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.06), 0 20px 40px rgba(0,0,0,0.1);
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: top center;
+}
+
+.ss-sticky-container:last-child {
+  margin-bottom: 15vh; /* Gives the final card a brief moment to stay sticky */
+}
+
+/* --- Header Area --- */
+.ss-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 40px;
+  
+  /* Initial state for staggered animation */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ss-header.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ss-slide-number {
+  background: white;
+  color: #1a1a1a;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.ss-header-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ss-badge {
+  background: white;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  color: #1a1a1a;
+}
+
+.ss-title {
+  font-size: 46px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* --- Content Boxes --- */
+.ss-boxes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  flex: 1;
+}
+
+.ss-box {
+  background: white;
+  border-radius: 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  overflow: hidden;
+  height: 100%;
+  
+  /* Initial state for staggered animation */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ss-box.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Inner Parallax Effect --- */
+.ss-box-image {
+  flex: 0 0 65%; /* 65-70% height for the image area */
+  width: 100%;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #f1f5f9;
+  overflow: hidden;
+  position: relative;
+}
+
+.ss-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.02);
+  
+  /* Upward parallax starting point */
+  transform: translateY(20px);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: inherit; /* inherit the delay from the parent .ss-box */
+}
+
+/* When the parent box animates in, the image inside moves up */
+.ss-box.animate-in .ss-image-placeholder {
+  transform: translateY(0);
+}
+
+.ss-box-img-tag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.ss-img-shape {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  opacity: 0.8;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.ss-box-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ss-box-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ss-box-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ss-box-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.ss-box-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.ss-arrow-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ss-arrow-btn:hover {
+  background: #f1f5f9;
+  color: #1a1a1a;
+}
+
+.ss-box-desc {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+
+
+/* --- Responsive & Mobile --- */
+@media (max-width: 1200px) {
+  .ss-boxes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ss-sticky-container {
+    height: auto;
+    min-height: 80vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-solutions-wrapper {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+  
+  .ss-sticky-container {
+    width: 92vw;
+    height: 85vh; /* Fixed height to ensure sticky works */
+    padding: 24px 16px; /* Reduced padding */
+    border-radius: 24px; 
+    margin: 0 auto 50vh auto; 
+    overflow: hidden; /* Remove internal scrollbar entirely */
+  }
+
+  .ss-header {
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+
+  .ss-title {
+    font-size: 24px;
+    line-height: 1.1;
+  }
+  
+  .ss-badge {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ss-boxes-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+  
+  .ss-box-image {
+    flex: 0 0 45%; /* Shorter image so text fits */
+  }
+
+  .ss-box-content {
+    padding: 12px;
+  }
+
+  .ss-box-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ss-box-title {
+    font-size: 14px;
+  }
+
+  .ss-box-desc {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+  
+  .ss-arrow-btn {
+    width: 24px;
+    height: 24px;
+  }
+}

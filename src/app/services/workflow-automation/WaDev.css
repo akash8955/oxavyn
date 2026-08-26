@@ -1,0 +1,517 @@
+/* =========================================
+   WORKFLOW AUTOMATION PAGE (900vh)
+   Ultra Luxury, Pearl Ambient UI, 3D Glass, High-Tech Energy
+   Vibrant Palette: Electric Cyan, Aqua, Vibrant Violet, Luxury Purple, Brilliant White
+   ========================================= */
+
+:root {
+  --wa-bg: #ffffff;
+  --wa-text-primary: #0a0a1a;
+  --wa-text-secondary: #4a4a5a;
+  --wa-accent-cyan: #00e5ff; /* Electric Cyan */
+  --wa-accent-aqua: #00ffd0; /* Aqua */
+  --wa-accent-violet: #8a2be2; /* Vibrant Violet */
+  --wa-accent-purple: #b200ff; /* Luxury Purple */
+  --wa-accent-azure: #007bff; /* Azure */
+  --wa-accent-success: #10b981; /* Success Green */
+  --wa-accent-champagne: #f59e0b; /* Champagne */
+  
+  --wa-glass-bg: rgba(255, 255, 255, 0.7);
+  --wa-glass-border: rgba(255, 255, 255, 1);
+}
+
+.wa-page {
+  background-color: var(--wa-bg);
+  color: var(--wa-text-secondary);
+  font-family: inherit;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Energetic Brilliant Pearl Atmospheric Gradient */
+.wa-page::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(0, 229, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(138, 43, 226, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(178, 0, 255, 0.05) 0%, transparent 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Sections */
+.wa-page section {
+  position: relative;
+  min-height: auto;
+  padding: 4rem 5%;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Layout utilities */
+.wa-split {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.wa-split.visual-right {
+  grid-template-areas: 
+    "header visual"
+    "body visual";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.wa-split.visual-left {
+  grid-template-areas: 
+    "visual header"
+    "visual body";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.wa-text-header {
+  grid-area: header;
+}
+
+.wa-text-body {
+  grid-area: body;
+}
+
+.wa-visual {
+  grid-area: visual;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.wa-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Container for section spanning full width */
+.wa-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(240, 248, 255, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 40px;
+  box-shadow: 
+    0 40px 100px rgba(0, 229, 255, 0.15),
+    inset 0 4px 30px rgba(255, 255, 255, 1);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+/* Typography */
+.wa-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--wa-accent-azure);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+.wa-heading {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--wa-text-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+}
+.wa-gradient-text {
+  background: linear-gradient(135deg, var(--wa-accent-azure), var(--wa-accent-violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.wa-desc {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  color: var(--wa-text-secondary);
+}
+
+/* Buttons */
+.wa-btn-group {
+  display: flex;
+  gap: 1.5rem;
+}
+.wa-btn {
+  padding: 1.25rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.wa-btn-primary {
+  background: linear-gradient(135deg, var(--wa-text-primary), #111);
+  color: white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+.wa-btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+.wa-btn-secondary {
+  background: var(--wa-glass-bg);
+  color: var(--wa-text-primary);
+  border: 1px solid var(--wa-glass-border);
+  backdrop-filter: blur(10px);
+}
+.wa-btn-secondary:hover {
+  background: rgba(255,255,255,1);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,229,255,0.2);
+}
+
+/* Scroll Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Energetic Keyframes */
+@keyframes wa-float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes wa-pulse-energy {
+  0%, 100% { box-shadow: 0 0 60px rgba(0, 229, 255, 0.5), inset 0 0 30px rgba(255,255,255,1); }
+  50% { box-shadow: 0 0 100px rgba(138, 43, 226, 0.7), inset 0 0 40px rgba(255,255,255,1); }
+}
+@keyframes wa-node-activate {
+  0% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: rgba(255,255,255,1); }
+  10% { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 229, 255, 0.6); border-color: var(--wa-accent-cyan); }
+  20% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: rgba(255,255,255,1); }
+  100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-color: rgba(255,255,255,1); }
+}
+@keyframes wa-line-flow {
+  0% { stroke-dasharray: 20 1000; stroke-dashoffset: 1000; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { stroke-dasharray: 20 1000; stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes wa-particle-flow {
+  0% { offset-distance: 0%; opacity: 0; transform: scale(0.5); }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 1; transform: scale(1); }
+  100% { offset-distance: 100%; opacity: 0; transform: scale(0.5); }
+}
+
+/* Shared Premium Materials */
+.wa-node {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255,255,255,1);
+  border-radius: 16px;
+  padding: 15px 25px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--wa-text-primary);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+.wa-node:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 229, 255, 0.2);
+}
+.wa-node.trigger { color: var(--wa-accent-cyan); }
+.wa-node.process { color: var(--wa-accent-violet); }
+.wa-node.ai { color: var(--wa-accent-purple); }
+.wa-node.decision { color: var(--wa-accent-azure); }
+.wa-node.action { color: var(--wa-accent-aqua); }
+.wa-node.success { color: var(--wa-accent-success); }
+
+.wa-glass-panel {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,248,255,0.7));
+  border: 1px solid rgba(255,255,255,1);
+  box-shadow: 0 40px 100px rgba(0,229,255,0.15), inset 0 4px 30px rgba(255,255,255,1);
+  backdrop-filter: blur(40px);
+  border-radius: 24px;
+}
+
+/* =========================================
+   SECTION 01: HERO
+   ========================================= */
+.wa-hero-visual {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  perspective: 2000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   SECTION 02: AUTOMATION ENGINE
+   ========================================= */
+.wa-engine-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wa-core {
+  width: 140px; height: 140px;
+  background: #fff;
+  border: 2px solid var(--wa-accent-cyan);
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.9rem; text-align: center;
+  box-shadow: 0 20px 50px rgba(0,229,255,0.3), inset 0 0 30px rgba(138,43,226,0.1);
+  animation: wa-pulse-energy 5s infinite alternate;
+  z-index: 10;
+}
+
+/* =========================================
+   SECTION 03: TRIGGER -> ACTION
+   ========================================= */
+.wa-sequence-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 500px;
+  margin: 3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================================
+   SECTION 04: BUSINESS PROCESS AUTOMATION
+   ========================================= */
+.wa-bpa-visual {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.wa-mini-flow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255,255,255,0.6);
+  padding: 15px 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   SECTION 05: AI WORKFLOW AUTOMATION
+   ========================================= */
+.wa-ai-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   SECTION 06: NO-CODE / LOW-CODE FLOW
+   ========================================= */
+.wa-builder-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+}
+
+/* =========================================
+   SECTION 07: REAL-TIME AUTOMATION
+   ========================================= */
+.wa-dashboard-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 400px;
+  margin: 3rem auto 0;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+.wa-kpi-card {
+  flex: 1;
+  background: rgba(255,255,255,0.9);
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  border: 1px solid #fff;
+  transition: transform 0.3s;
+}
+.wa-kpi-card:hover { transform: translateY(-10px); }
+
+/* =========================================
+   SECTION 08: AUTOMATION INTELLIGENCE
+   ========================================= */
+.wa-intel-visual {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   SECTION 09: CASE STUDIES
+   ========================================= */
+.wa-case-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 350px;
+  margin: 3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.wa-case-card {
+  flex: 1;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s;
+}
+.wa-case-card:hover {
+  transform: translateY(-10px);
+}
+
+/* =========================================
+   SECTION 10: FINAL CTA
+   ========================================= */
+.wa-cta-container {
+  width: fit-content;
+  max-width: 95vw;
+  margin: 0 auto;
+  z-index: 2;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,248,255,0.6) 100%);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 40px;
+  box-shadow: 0 40px 100px rgba(138, 43, 226, 0.2), inset 0 4px 30px rgba(255, 255, 255, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Crucial Mobile Logic)
+   ========================================= */
+@media (max-width: 1024px) {
+  .wa-split,
+  .wa-split.visual-right,
+  .wa-split.visual-left { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: center; 
+    gap: 0; 
+  }
+  
+  .wa-text-header { margin-bottom: 2rem; }
+  .wa-visual { margin-bottom: 2rem; overflow: visible; }
+
+  .wa-desc { margin: 0 auto 2.5rem; }
+  .wa-btn-group { justify-content: center; }
+  
+  .wa-hero-visual { min-width: 800px; transform: scale(0.7); margin: -80px 0; }
+  .wa-engine-visual { min-width: 800px; transform: scale(0.7); margin: -80px 0; }
+  .wa-sequence-visual { min-width: 1100px; transform: scale(0.65); margin: -100px 0; }
+  .wa-bpa-visual { transform: scale(0.85); margin: -40px 0; }
+  .wa-ai-visual { min-width: 900px; transform: scale(0.7); margin: -80px 0; }
+  .wa-builder-visual { min-width: 800px; transform: scale(0.7); margin: -80px 0; }
+  .wa-dashboard-visual { min-width: 1000px; transform: scale(0.7); margin: -80px 0; }
+  .wa-intel-visual { min-width: 900px; transform: scale(0.7); margin: -80px 0; }
+  .wa-case-visual { min-width: 1200px; transform: scale(0.6); margin: -80px 0; }
+  
+  .wa-cta-container { padding: 4rem 2rem; width: 95vw; border-radius: 24px; }
+}
+
+@media (max-width: 768px) {
+  .wa-heading { font-size: 2.5rem; }
+  .wa-btn-group { flex-direction: column; }
+  .wa-container { padding: 3rem 1.5rem; border-radius: 24px; }
+  
+  /* Fix layout crush by forcing container minimum width, then scale down and offset margins */
+  .wa-hero-visual { min-width: 800px; transform: scale(0.45); margin: -160px 0; }
+  .wa-engine-visual { min-width: 800px; transform: scale(0.45); margin: -150px 0; }
+  .wa-sequence-visual { min-width: 1100px; transform: scale(0.35); margin: -180px 0; }
+  .wa-bpa-visual { transform: scale(0.6); margin: -80px 0; min-width: 600px; }
+  .wa-ai-visual { min-width: 900px; transform: scale(0.45); margin: -140px 0; }
+  .wa-builder-visual { min-width: 800px; transform: scale(0.45); margin: -140px 0; }
+  
+  /* Re-stack cards for dashboard and cases rather than extreme scale-down */
+  .wa-dashboard-visual { min-width: 100%; transform: none; margin: 0; flex-direction: column; height: auto; gap: 15px; }
+  .wa-dashboard-visual .wa-kpi-card { width: 100%; }
+  
+  .wa-intel-visual { min-width: 900px; transform: scale(0.45); margin: -140px 0; }
+  
+  .wa-case-visual { min-width: 100%; transform: none; margin: 0; flex-direction: column; height: auto; gap: 15px; }
+  .wa-case-visual .wa-case-card { width: 100%; height: 250px; }
+  
+  .wa-cta-container { padding: 2rem 1.5rem; width: 95vw; border-radius: 20px; }
+}

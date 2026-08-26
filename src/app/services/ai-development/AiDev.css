@@ -1,0 +1,635 @@
+/* =========================================
+   AI DEVELOPMENT PAGE (800vh)
+   Ultra Luxury, Pearl Ambient UI, 3D Glass, Futuristic
+   ========================================= */
+
+:root {
+  --ai-bg: #fcfcfc;
+  --ai-text-primary: #0a0a1a;
+  --ai-text-secondary: #4a4a5a;
+  --ai-violet: #8b5cf6;
+  --ai-indigo: #6366f1;
+  --ai-pink: #f472b6;
+  --ai-icy: #e0f2fe;
+  --ai-glass-bg: rgba(255, 255, 255, 0.7);
+  --ai-glass-border: rgba(255, 255, 255, 0.9);
+}
+
+.ai-page {
+  background-color: var(--ai-bg);
+  color: var(--ai-text-secondary);
+  font-family: inherit;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Bright Pearl Atmospheric Gradient */
+.ai-page::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(244, 114, 182, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Sections */
+.ai-page section {
+  position: relative;
+  min-height: auto;
+  padding: 4rem 5%;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Layout utilities */
+.ai-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.ai-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Typography */
+.ai-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ai-indigo);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+.ai-heading {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ai-text-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+}
+.ai-gradient-text {
+  background: linear-gradient(135deg, var(--ai-violet), var(--ai-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ai-desc {
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  color: var(--ai-text-secondary);
+}
+
+/* Buttons */
+.ai-btn-group {
+  display: flex;
+  gap: 1.5rem;
+}
+.ai-btn {
+  padding: 1.25rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ai-btn-primary {
+  background: linear-gradient(135deg, var(--ai-text-primary), #222);
+  color: white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+.ai-btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+.ai-btn-secondary {
+  background: var(--ai-glass-bg);
+  color: var(--ai-text-primary);
+  border: 1px solid var(--ai-glass-border);
+  backdrop-filter: blur(10px);
+}
+.ai-btn-secondary:hover {
+  background: rgba(255,255,255,1);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(99,102,241,0.1);
+}
+
+/* Scroll Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keyframes */
+@keyframes ai-float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes ai-float-fast {
+  0%, 100% { transform: translateY(0) rotateX(10deg); }
+  50% { transform: translateY(-15px) rotateX(15deg); }
+}
+@keyframes ai-orbit {
+  from { transform: rotate(0deg) translateX(250px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+}
+@keyframes ai-pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.4), inset 0 0 20px rgba(255,255,255,0.8); }
+  50% { box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), inset 0 0 30px rgba(255,255,255,1); }
+}
+
+/* Shared Premium Glass Panels */
+.ai-glass-panel {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 24px;
+  box-shadow: 
+    0 40px 80px rgba(99, 102, 241, 0.15), 
+    inset 0 4px 20px rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(255,255,255,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================
+   SECTION 01: HERO
+   ========================================= */
+.ai-hero-visual {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  perspective: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-video-container {
+  width: 500px;
+  height: 300px;
+  border-radius: 24px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(240,240,255,0.4));
+  box-shadow: 0 30px 60px rgba(139,92,246,0.2), inset 0 2px 10px #fff;
+  border: 1px solid #fff;
+  backdrop-filter: blur(20px);
+  transform: rotateY(-15deg) rotateX(10deg);
+  animation: ai-float-slow 8s infinite;
+  z-index: 5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #f0f0f5; /* fallback */
+}
+.hero-floating-orb {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,1), rgba(244,114,182,0.4));
+  box-shadow: 0 20px 40px rgba(244,114,182,0.3);
+  backdrop-filter: blur(10px);
+  z-index: 6;
+  border: 2px solid #fff;
+}
+.hero-floating-orb.top-right { top: 50px; right: 0; animation: ai-float-fast 6s infinite reverse; }
+.hero-floating-orb.bottom-left { bottom: 80px; left: -20px; width: 60px; height: 60px; animation: ai-float-fast 7s infinite; }
+.hero-glass-ring {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(139,92,246,0.2);
+  transform: rotateX(70deg) rotateY(20deg);
+  z-index: 1;
+}
+
+/* =========================================
+   SECTION 02: AI INTELLIGENCE
+   ========================================= */
+.intel-visual {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intel-core {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff, var(--ai-icy));
+  animation: ai-pulse-glow 4s infinite;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--ai-indigo);
+  border: 4px solid #fff;
+}
+.intel-node {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ai-pink);
+  box-shadow: 0 15px 30px rgba(139,92,246,0.15);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+/* =========================================
+   SECTION 03: INTELLIGENT PRODUCTS
+   ========================================= */
+.product-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 3rem auto 0;
+  perspective: 2000px;
+}
+.product-dashboard {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  transform: rotateX(10deg);
+  display: flex;
+  flex-direction: column;
+}
+.prod-header { height: 60px; border-bottom: 1px solid rgba(139,92,246,0.1); display: flex; align-items: center; padding: 0 30px; }
+.prod-body { flex: 1; display: grid; grid-template-columns: 2fr 1fr; gap: 20px; padding: 30px; }
+.prod-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.6));
+  border-radius: 16px;
+  border: 1px solid #fff;
+  box-shadow: 0 10px 30px rgba(99,102,241,0.1);
+  padding: 20px;
+}
+.prod-ai-assistant {
+  position: absolute;
+  bottom: -30px;
+  right: 50px;
+  width: 300px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #fff;
+  box-shadow: 0 30px 60px rgba(139,92,246,0.25);
+  transform: translateZ(50px);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.ai-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--ai-indigo), var(--ai-pink)); }
+
+.floating-tag {
+  position: absolute;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ai-indigo);
+  box-shadow: 0 15px 30px rgba(99,102,241,0.2);
+  border: 1px solid rgba(99,102,241,0.1);
+}
+
+/* =========================================
+   SECTION 04: AI AGENTS
+   ========================================= */
+.agents-visual {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.agent-core {
+  width: 140px;
+  height: 140px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(224,242,254,0.8));
+  box-shadow: 0 30px 60px rgba(56,189,248,0.3), inset 0 0 20px #fff;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  text-align: center;
+  color: #0284c7;
+  z-index: 10;
+  animation: ai-float-slow 6s infinite;
+}
+.agent-orb {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #fff;
+  box-shadow: 0 15px 30px rgba(139,92,246,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ai-indigo);
+  z-index: 5;
+}
+.agent-orb svg { margin-bottom: 5px; color: var(--ai-pink); }
+
+/* =========================================
+   SECTION 05: GENERATIVE AI
+   ========================================= */
+.gen-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gen-input {
+  width: 300px;
+  padding: 30px;
+  background: linear-gradient(135deg, #fff, rgba(255,255,255,0.7));
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(99,102,241,0.2);
+  border: 1px solid #fff;
+  text-align: center;
+}
+.gen-path {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ai-indigo), var(--ai-pink));
+  margin: 0 20px;
+  position: relative;
+}
+.gen-path::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 15px var(--ai-pink);
+  top: -9px; left: 50%;
+  animation: ai-pulse-glow 2s infinite;
+}
+.gen-outputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 400px;
+}
+.gen-card {
+  background: rgba(255,255,255,0.8);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #fff;
+  box-shadow: 0 15px 30px rgba(139,92,246,0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--ai-indigo);
+}
+
+/* =========================================
+   SECTION 06: VIDEO EXPERIENCE
+   ========================================= */
+.video-showcase {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  perspective: 1500px;
+}
+.frameless-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.2));
+  border-radius: 30px;
+  box-shadow: 0 50px 100px rgba(99,102,241,0.25), inset 0 2px 20px rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,1);
+  backdrop-filter: blur(30px);
+  transform: rotateX(5deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+.frameless-video video {
+  width: 98%;
+  height: 96%;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #e2e8f0; /* fallback */
+}
+.vid-particles {
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,114,182,0.4) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: 1;
+}
+
+/* =========================================
+   SECTION 07: AI + BUSINESS
+   ========================================= */
+.business-ecosystem {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.biz-core {
+  width: 160px;
+  height: 160px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,1), rgba(139,92,246,0.3));
+  border: 2px solid #fff;
+  box-shadow: 0 30px 60px rgba(139,92,246,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: var(--ai-indigo);
+  transform: rotate(45deg);
+  z-index: 10;
+}
+.biz-core span { transform: rotate(-45deg); }
+.biz-system {
+  position: absolute;
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(139,92,246,0.2);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+  font-weight: 700;
+  color: var(--ai-pink);
+  z-index: 5;
+}
+
+/* =========================================
+   SECTION 08: FUTURE READY
+   ========================================= */
+.timeline-visual {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3rem auto 0;
+}
+.time-node {
+  width: 150px;
+  height: 150px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #fff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(99,102,241,0.15);
+  z-index: 2;
+  font-weight: 700;
+  color: var(--ai-indigo);
+  padding: 10px;
+}
+.time-line {
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ai-icy), var(--ai-indigo), var(--ai-pink));
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* =========================================
+   SECTION 09: FINAL CTA
+   ========================================= */
+.ai-cta-container {
+  width: 85vw;
+  max-width: 1000px;
+  margin: 0 auto;
+  z-index: 2;
+  padding: 3rem 2rem;
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 100%);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 40px;
+  box-shadow: 0 50px 100px rgba(139, 92, 246, 0.2), inset 0 2px 20px rgba(255, 255, 255, 0.8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.ai-cta-container * { position: relative; z-index: 1; }
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 1024px) {
+  .ai-split { display: flex; flex-direction: column; text-align: center; gap: 3rem; }
+  
+  .ai-text-group { display: contents; }
+  .ai-text-header { order: 1; }
+  .ai-visual { order: 2; }
+  .ai-text-body { order: 3; }
+
+  .ai-desc { margin: 0 auto 2.5rem; }
+  .ai-btn-group { justify-content: center; }
+  
+  .ai-hero-visual { height: 400px; transform: scale(0.7); }
+  .intel-visual { transform: scale(0.6); height: 400px; }
+  .product-visual { transform: scale(0.7); height: 350px; margin-top: 0; }
+  .agents-visual { transform: scale(0.7); height: 450px; }
+  .gen-visual { flex-direction: column; height: auto; gap: 2rem; }
+  .gen-path { width: 2px; height: 50px; margin: 0; background: linear-gradient(180deg, var(--ai-indigo), var(--ai-pink)); }
+  .video-showcase { transform: scale(0.8); margin-top: 0; }
+  .business-ecosystem { transform: scale(0.65); height: 350px; }
+  .timeline-visual { flex-direction: column; height: auto; gap: 2rem; margin-top: 2rem; }
+  .time-line { width: 4px; height: 100%; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); background: linear-gradient(180deg, var(--ai-icy), var(--ai-indigo), var(--ai-pink)); }
+  .ai-cta-container { padding: 4rem 2rem; width: 95vw; border-radius: 24px; }
+}
+
+@media (max-width: 768px) {
+  .ai-heading { font-size: 2.5rem; }
+  .ai-btn-group { flex-direction: column; }
+  .ai-hero-visual { transform: scale(0.6); height: 300px; margin-top: -20px; margin-bottom: -20px; }
+  .intel-visual { transform: scale(0.5); height: 300px; margin-top: -20px; margin-bottom: -20px; }
+  .agents-visual { transform: scale(0.5); height: 350px; margin-top: -20px; margin-bottom: -20px; }
+  .business-ecosystem { transform: scale(0.45); height: 250px; margin: 0 auto; transform-origin: center; }
+  .gen-outputs { grid-template-columns: 1fr; width: 100%; max-width: 300px; }
+  .ai-cta-container { padding: 2rem 1.5rem; width: 95vw; border-radius: 20px; }
+}
