@@ -6,29 +6,6 @@ import './Footer.css';
 const footerColumns = [
   [
     {
-      title: "Company",
-      links: [
-        { name: "Home", href: "/" },
-        { name: "About", href: "/about" },
-        { name: "Services", href: "/services" },
-        { name: "Industries", href: "/industries" },
-        { name: "Students", href: "/students" },
-        { name: "Careers", href: "/careers" },
-        { name: "FAQ", href: "/faq" },
-        { name: "Contact", href: "/contact" }
-      ]
-    },
-    {
-      title: "Support",
-      links: [
-        { name: "Help Center", href: "#" },
-        { name: "Documentation", href: "#" },
-        { name: "Contact Support", href: "#" }
-      ]
-    }
-  ],
-  [
-    {
       title: "Services",
       links: [
         { name: "Web Development", href: "/services/web-development" },
@@ -67,6 +44,9 @@ const footerColumns = [
     {
       title: "Resources",
       links: [
+        { name: "About Us", href: "/about" },
+        { name: "Careers", href: "/careers" },
+        { name: "Contact Us", href: "/contact" },
         { name: "Insights", href: "#" },
         { name: "Case Studies", href: "#" },
         { name: "FAQs", href: "#" },
@@ -75,9 +55,7 @@ const footerColumns = [
         { name: "Student Reviews", href: "#" },
         { name: "Client Success Stories", href: "#" },
         { name: "Industry Reports", href: "http://localhost:3000/home#" },
-        { name: "Technology Guides", href: "http://localhost:3000/home#" },
-        { name: "Project Resources", href: "http://localhost:3000/home#" },
-        { name: "Developer Resources", href: "http://localhost:3000/home#" }
+        { name: "Technology Guides", href: "http://localhost:3000/home#" }
       ]
     }
   ]
