@@ -67,11 +67,23 @@ const rawNavLinks = [
     ]
   },
   { 
-    name: "Portfolio", 
+    name: "Industries", 
     isDropdown: true,
     items: [
-      { title: "Success Stories", desc: "See how we've helped others", icon: "📈" },
-      { title: "Case Studies", desc: "Deep dives into our solutions", icon: "📚" }
+      { title: "Healthcare", desc: "Digital healthcare solutions", href: "/industries/healthcare", icon: <svg {...iconProps}><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg> },
+      { title: "E-commerce", desc: "Online retail platforms", href: "/industries/e-commerce", icon: <svg {...iconProps}><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> },
+      { title: "Education", desc: "EdTech and e-learning", href: "/industries/education", icon: <svg {...iconProps}><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> },
+      { title: "Retail & Consumer", desc: "Digital transformation for retail", href: "/industries/retail", icon: <svg {...iconProps}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> },
+      { title: "Agency & Consultancy", desc: "Tools for agencies", href: "/industries/agency-consultancy", icon: <svg {...iconProps}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> }
+    ]
+  },
+  { 
+    name: "Students", 
+    isDropdown: true,
+    items: [
+      { title: "Internships", desc: "Build real-world experience", href: "/students/internships", icon: <svg {...iconProps}><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg> },
+      { title: "Skill Enhancement", desc: "Develop professional skills", href: "/students/skill-enhancement", icon: <svg {...iconProps}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> },
+      { title: "Foundational & Career", desc: "Prepare for your career path", href: "/students/foundational-career", icon: <svg {...iconProps}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> }
     ]
   },
   { name: "Careers", href: "/careers" },
@@ -81,7 +93,7 @@ const rawNavLinks = [
 
 // Process links to attach dynamic slugs and hrefs to all services
 export const navLinks = rawNavLinks.map(link => {
-  if (link.megaMenuType === "full") {
+  if (link.megaMenuType === "full" && link.name === "Services") {
     link.rows.forEach(row => {
       row.columns.forEach(col => {
         col.items.forEach(item => {

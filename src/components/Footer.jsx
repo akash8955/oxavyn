@@ -1,34 +1,84 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import './Footer.css';
 
 const footerColumns = [
   [
     {
       title: "Company",
-      links: ["About Us", "Our Services", "Industries", "Case Studies", "Careers", "Contact Us"]
+      links: [
+        { name: "Home", href: "/" },
+        { name: "About", href: "/about" },
+        { name: "Services", href: "/services" },
+        { name: "Industries", href: "/industries" },
+        { name: "Students", href: "/students" },
+        { name: "Careers", href: "/careers" },
+        { name: "FAQ", href: "/faq" },
+        { name: "Contact", href: "/contact" }
+      ]
     },
     {
       title: "Support",
-      links: ["Help Center", "Documentation", "Contact Support"]
+      links: [
+        { name: "Help Center", href: "#" },
+        { name: "Documentation", href: "#" },
+        { name: "Contact Support", href: "#" }
+      ]
     }
   ],
   [
     {
       title: "Services",
-      links: ["Web & Application Development", "AI & Intelligent Automation", "Cloud & Scalable Infrastructure", "Enterprise Technology Solutions", "Integration & Digital Ecosystems", "Digital Transformation", "UI/UX Design & Product Strategy", "Software Consulting & Engineering", "API Development & System Integration", "Data Analytics & Business Intelligence"]
+      links: [
+        { name: "Web Development", href: "/services/web-development" },
+        { name: "Mobile App Development", href: "/services/mobile-app-development" },
+        { name: "Custom Software", href: "/services/custom-software" },
+        { name: "AI Development", href: "/services/ai-development" },
+        { name: "Generative AI", href: "/services/generative-ai" },
+        { name: "Machine Learning", href: "/services/machine-learning" },
+        { name: "Data Analytics", href: "/services/data-analytics" },
+        { name: "Business Intelligence", href: "/services/business-intelligence" },
+        { name: "Data Science", href: "/services/data-science" },
+        { name: "Workflow Automation", href: "/services/workflow-automation" },
+        { name: "CRM Automation", href: "/services/crm-automation" },
+        { name: "Business Process Automation", href: "/services/business-process-automation" }
+      ]
     }
   ],
   [
     {
       title: "Industries",
-      links: ["Startups", "Growing Businesses", "SMEs & Online Brands", "E-commerce", "Finance & FinTech", "Healthcare", "Education", "Retail & Consumer", "Logistics & Supply Chain", "Enterprise", "Real Estate & PropTech"]
+      links: [
+        { name: "Healthcare", href: "/industries/healthcare" },
+        { name: "E-commerce", href: "/industries/e-commerce" },
+        { name: "Education", href: "/industries/education" },
+        { name: "Retail & Consumer", href: "/industries/retail" },
+        { name: "Agency & Consultancy", href: "/industries/agency-consultancy" },
+        { name: "Media & Entertainment", href: "/industries/retail" },
+        { name: "Real Estate & Property", href: "/industries/agency-consultancy" },
+        { name: "Logistics & Transportation", href: "/industries/e-commerce" },
+        { name: "Food & Beverage", href: "/industries/retail" },
+        { name: "Pharmaceuticals & Life Sciences", href: "/industries/healthcare" }
+      ]
     }
   ],
   [
     {
       title: "Resources",
-      links: ["Insights", "Blog", "Case Studies", "FAQs", "Technology Stack", "Client Success Stories", "Industry Reports", "Technology Guides", "Project Resources", "Developer Resources"]
+      links: [
+        { name: "Insights", href: "#" },
+        { name: "Case Studies", href: "#" },
+        { name: "FAQs", href: "#" },
+        { name: "Blog", href: "#" },
+        { name: "Help Center", href: "#" },
+        { name: "Student Reviews", href: "#" },
+        { name: "Client Success Stories", href: "#" },
+        { name: "Industry Reports", href: "http://localhost:3000/home#" },
+        { name: "Technology Guides", href: "http://localhost:3000/home#" },
+        { name: "Project Resources", href: "http://localhost:3000/home#" },
+        { name: "Developer Resources", href: "http://localhost:3000/home#" }
+      ]
     }
   ]
 ];
@@ -131,7 +181,7 @@ export default function Footer() {
                   <ul className={`footer-link-list ${openSection === group.title || !isMobile ? 'show' : 'hide'}`}>
                     {group.links.map((link, i) => (
                       <li key={i}>
-                        <a href="#">{link}</a>
+                        <Link href={link.href || "#"}>{link.name}</Link>
                       </li>
                     ))}
                   </ul>
