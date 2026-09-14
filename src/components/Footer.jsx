@@ -50,7 +50,7 @@ const footerColumns = [
         { name: "Insights", href: "#" },
         { name: "Case Studies", href: "#" },
         { name: "FAQs", href: "#" },
-        { name: "Blog", href: "#" },
+        { name: "Blog", href: "/blog" },
         { name: "Help Center", href: "#" },
         { name: "Student Reviews", href: "#" },
         { name: "Client Success Stories", href: "#" },
