@@ -310,6 +310,35 @@
   gap: 1rem;
 }
 
+/* Logo */
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--foreground);
+  cursor: default;
+}
+
+.nav-logo-img.desktop-logo {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.nav-logo-img.mobile-logo {
+  height: 32px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--foreground);
+  letter-spacing: -0.5px;
+}
+
 .drawer-link {
   font-size: 1.1rem;
   font-weight: 500;

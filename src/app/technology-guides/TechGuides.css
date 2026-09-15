@@ -1,0 +1,287 @@
+.tech-guides-page {
+  padding-top: 80px;
+  min-height: 100vh;
+  background-color: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-ambient-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,117,140,0.4), rgba(255,223,0,0.4), rgba(0,242,254,0.4), rgba(79,172,254,0.4), rgba(255,117,140,0.4));
+  background-size: 200% 100%;
+  animation: movingGradient 10s linear infinite;
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.tech-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.tech-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(17, 24, 39, 0.9));
+  z-index: 1;
+}
+
+.tech-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.tech-hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.tech-hero-content p {
+  font-size: 1.25rem;
+  color: #d1d5db;
+}
+
+.tech-main-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Guides Grid */
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.guide-card {
+  padding: 0;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.guide-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
+}
+
+.guide-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.guide-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.guide-card:hover .guide-cover-image {
+  transform: scale(1.1);
+}
+
+.guide-category-badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--accent-primary);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.guide-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.guide-title {
+  font-size: 1.8rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.guide-desc {
+  font-size: 1.05rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.guide-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.guide-author {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.author-name {
+  font-weight: 600;
+  color: var(--foreground);
+  font-size: 0.95rem;
+}
+
+.guide-read-time {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.read-guide-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: gap 0.3s ease;
+}
+
+.read-guide-link svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.read-guide-link:hover {
+  gap: 0.8rem;
+}
+
+/* CTA Section */
+.tech-cta-section {
+  text-align: center;
+}
+
+.tech-cta-content {
+  padding: 4rem 2rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.9));
+  box-shadow: 0 20px 40px rgba(108, 92, 231, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.tech-cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-cta-content p {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.tech-cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .guides-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-hero-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .tech-hero-content p {
+    font-size: 1rem;
+  }
+  
+  .guide-content {
+    padding: 1.5rem;
+  }
+  
+  .guide-title {
+    font-size: 1.4rem;
+  }
+  
+  .guide-desc {
+    font-size: 0.95rem;
+  }
+  
+  .author-name, .guide-read-time {
+    font-size: 0.85rem;
+  }
+
+  .tech-cta-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .tech-cta-content p {
+    font-size: 0.95rem;
+  }
+}
