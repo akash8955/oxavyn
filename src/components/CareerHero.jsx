@@ -70,33 +70,38 @@ const CareerHero = () => {
   };
 
   return (
-    <section className="career-hero">
-      <h1 className="career-heading animate-fade-in">
-        A Career Built for <span className="highlight-text">Infinite Possibilities.</span>
-      </h1>
-      
-      <p className="career-subheading delay-1 animate-fade-in">
-        At Oxavyn, we believe great technology begins with great people. Join a team where ideas become meaningful solutions, challenges become opportunities, and every contribution helps shape what’s next.
-      </p>
+    <>
+      <section className="parallax-banner vh-90" style={{ backgroundImage: 'url(/images/Banner_3.png)' }}>
+        <div className="banner-content animate-fade-in">
+          <h1>
+            A Career Built for <span style={{ color: '#a29bfe' }}>Infinite Possibilities.</span>
+          </h1>
+          <p>
+            At Oxavyn, we believe great technology begins with great people. Join a team where ideas become meaningful solutions, challenges become opportunities, and every contribution helps shape what’s next.
+          </p>
+        </div>
+      </section>
 
-      <div 
-        className="career-video-container delay-2 animate-fade-in"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <video
-          ref={videoRef}
-          src="/images/career-vid.mp4"
-          className="career-video"
-          autoPlay
-          loop
-          muted
-          playsInline
+      <section className="career-hero" style={{ paddingTop: '4rem' }}>
+        <div 
+          className="career-video-container delay-2 animate-fade-in"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </section>
+          <video
+            ref={videoRef}
+            src="/images/career-vid.mp4"
+            className="career-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import './AboutHero.css';
 
 export default function AboutHero() {
@@ -31,7 +32,7 @@ export default function AboutHero() {
               <path d="M10 40 C 20 20, 40 40, 20 10" />
             </svg>
             
-            <button className="about-cta-btn">Explore Our Solutions</button>
+            <Link href="/services/web-development" className="about-cta-btn">Explore Our Solutions</Link>
             
             {/* SVG Doodle Arrow Right */}
             <svg className="doodle doodle-right" viewBox="0 0 50 50" fill="none" stroke="#ff7a59" strokeWidth="3" strokeLinecap="round">

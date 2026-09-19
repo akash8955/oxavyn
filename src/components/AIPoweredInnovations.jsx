@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import './AIPoweredInnovations.css';
 
 const AIPoweredInnovations = () => {
@@ -17,7 +18,7 @@ const AIPoweredInnovations = () => {
               <p className="ai-card-text">
                 Our AI-powered solutions turn complex business data into clear, actionable insights. Automate repetitive processes, streamline daily operations, and empower your team with intelligent tools that improve efficiency, accuracy, and customer experiences.
               </p>
-              <a href="#" className="ai-card-link">Know more &rarr;</a>
+              <Link href="/services/generative-ai" className="ai-card-link">Know more &rarr;</Link>
             </div>
             <div className="ai-card-image">
               <img src="/images/aipower/ai1.png" alt="Oxavyn Intelligence" />
@@ -31,7 +32,7 @@ const AIPoweredInnovations = () => {
               <p className="ai-card-text">
                 Transform your business data into meaningful insights and smarter strategies. Oxavyn helps you understand customer behavior, identify emerging trends, track performance, and uncover new opportunities to make confident decisions and accelerate sustainable business growth.
               </p>
-              <a href="#" className="ai-card-link">Know more &rarr;</a>
+              <Link href="/services/data-science" className="ai-card-link">Know more &rarr;</Link>
             </div>
             <div className="ai-card-image">
               <img src="/images/aipower/ai2.png" alt="Growth Analytics" />

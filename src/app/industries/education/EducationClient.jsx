@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function EducationClient() {
   const [formData, setFormData] = useState({
@@ -57,100 +58,85 @@ export default function EducationClient() {
       <section className="edu-section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
         <div className="edu-container" style={{ width: '100%' }}>
 
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '2rem' }}
-          >
-            <motion.div variants={fadeInUp} className="edu-eyebrow">OXAVYN FOR EDUCATION</motion.div>
-            <motion.h1 variants={fadeInUp} className="edu-heading-primary" style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
-              Build a Smarter, More Connected Education Ecosystem.
-            </motion.h1>
-          </motion.div>
-
-          {/* MEDIA SECOND */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="edu-media-placeholder" style={{ minHeight: '550px' }}>
-              [EDUCATION HERO IMAGE / VIDEO PLACEHOLDER]
-              <div style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '1rem', fontWeight: 'normal' }}>
-                Smart classroom • Online learning • Digital campus
-              </div>
-            </div>
-          </motion.div>
-
-          {/* SUBHEADING / PARAGRAPH THIRD */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            style={{ textAlign: 'center' }}
-          >
-            <motion.p variants={fadeInUp} className="edu-subheading" style={{ maxWidth: '800px', margin: '0 auto 1rem' }}>
-              Connect students, educators, institutions, learning, operations, communication, and technology through one intelligent digital environment.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="edu-paragraph" style={{ maxWidth: '800px', margin: '0 auto 2rem' }}>
-              Education organizations manage much more than teaching and learning. Schools, colleges, universities, coaching centers, training institutes, and online education platforms need to coordinate students, teachers, admissions, attendance, fees, courses, examinations, communication, performance, and administration. Oxavyn helps bring these functions together through connected education technology, management systems, CRM, ERP, analytics, and automation.
-            </motion.p>
-            <motion.div variants={fadeInUp} className="edu-button-group" style={{ justifyContent: 'center' }}>
-              <button onClick={scrollToEnquiry} className="edu-btn-primary">Explore Education Solutions</button>
-              <button onClick={scrollToEnquiry} className="edu-btn-secondary">Talk to Oxavyn</button>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            {/* HEADING FIRST */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              style={{ textAlign: 'center', marginBottom: '2rem' }}
+            >
+              <motion.div variants={fadeInUp} className="edu-eyebrow">OXAVYN FOR EDUCATION</motion.div>
+              <motion.h1 variants={fadeInUp} className="edu-heading-primary" style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
+                Build a Smarter, More Connected Education Ecosystem.
+              </motion.h1>
             </motion.div>
-          </motion.div>
+
+            {/* MEDIA SECOND */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
+            >
+              <ResponsiveVideo src="/images/career-vid.mp4" />
+            </motion.div>
+
+            {/* SUBHEADING / PARAGRAPH THIRD */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              style={{ textAlign: 'center', width: '100%', maxWidth: '800px', margin: '0 auto' }}
+            >
+              <motion.p variants={fadeInUp} className="edu-subheading" style={{ margin: '0 auto 1rem' }}>
+                Connect students, educators, institutions, learning, operations, communication, and technology through one intelligent digital environment.
+              </motion.p>
+              <motion.p variants={fadeInUp} className="edu-paragraph" style={{ margin: '0 auto 2rem' }}>
+                Education organizations manage much more than teaching and learning. Schools, colleges, universities, coaching centers, training institutes, and online education platforms need to coordinate students, teachers, admissions, attendance, fees, courses, examinations, communication, performance, and administration. Oxavyn helps bring these functions together through connected education technology, management systems, CRM, ERP, analytics, and automation.
+              </motion.p>
+              <motion.div variants={fadeInUp} className="edu-button-group" style={{ justifyContent: 'center' }}>
+                <button onClick={scrollToEnquiry} className="edu-btn-primary">Explore Education Solutions</button>
+                <button onClick={scrollToEnquiry} className="edu-btn-secondary">Talk to Oxavyn</button>
+              </motion.div>
+            </motion.div>
+          </div>
 
         </div>
       </section>
 
       {/* 02 — EDUCATION ECOSYSTEM */}
       <section className="edu-section edu-section-alt">
-        <div className="edu-container">
+        <div className="edu-container std-layout-section">
+          
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 variants={fadeInUp} className="edu-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Education Is an Ecosystem. Technology Should Connect It.</motion.h2>
+              </motion.div>
 
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '3rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="edu-heading-secondary">Education Is an Ecosystem. Technology Should Connect It.</motion.h2>
-          </motion.div>
-
-          {/* MEDIA SECOND */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="edu-media-placeholder" style={{ minHeight: '400px' }}>
-              [CONNECTED EDUCATION ECOSYSTEM IMAGE / VIDEO PLACEHOLDER]
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
+                <motion.p variants={fadeInUp} className="edu-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>
+                  One connected environment for students, educators, administrators, and management.
+                </motion.p>
+                <motion.p variants={fadeInUp} className="edu-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Modern education involves multiple stakeholders and interconnected processes. Student information, admissions, academics, attendance, fees, communication, faculty operations, examinations, learning platforms, and management reporting often operate across different systems. Oxavyn can help bring these capabilities together into a more unified digital ecosystem.
+                </motion.p>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* SUBHEADING / PARAGRAPH / FEATURES THIRD */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center' }}
-          >
-            <motion.p variants={fadeInUp} className="edu-subheading" style={{ maxWidth: '800px', margin: '0 auto 1rem' }}>
-              One connected environment for students, educators, administrators, and management.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="edu-paragraph" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
-              Modern education involves multiple stakeholders and interconnected processes. Student information, admissions, academics, attendance, fees, communication, faculty operations, examinations, learning platforms, and management reporting often operate across different systems. Oxavyn can help bring these capabilities together into a more unified digital ecosystem.
-            </motion.p>
+            {/* MEDIA SIDE */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              </div>
+            </motion.div>
+          </div>
 
-            <div className="edu-grid-3" style={{ textAlign: 'left' }}>
+          {/* FEATURES / CARDS BELOW */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
+            <div className="edu-grid-3">
               <motion.div variants={fadeInUp} className="edu-glass-card">
                 <div className="edu-ambient-border-glow"></div>
                 <div className="edu-card-title">Student Management</div>
@@ -189,6 +175,7 @@ export default function EducationClient() {
               </motion.div>
             </div>
           </motion.div>
+
         </div>
       </section>
 
@@ -251,8 +238,8 @@ export default function EducationClient() {
                 <h3 className="edu-heading-tertiary" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>{segment.title}</h3>
                 
                 <div className="edu-course-media">
-                  <div className="edu-media-placeholder" style={{ minHeight: '100%', padding: '1rem' }}>
-                    <div style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', textAlign: 'center' }}>{segment.mediaText}<br/>IMAGE / VIDEO</div>
+                  <div style={{ height: '200px' }}>
+                    <ResponsiveVideo src="/images/career-vid.mp4" />
                   </div>
                 </div>
 
@@ -276,45 +263,31 @@ export default function EducationClient() {
 
       {/* 04 — DATA / ANALYTICS */}
       <section className="edu-section edu-section-alt">
-        <div className="edu-container">
+        <div className="edu-container std-layout-section">
 
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '3rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="edu-heading-secondary">Turn Education Data Into Better Decisions.</motion.h2>
-          </motion.div>
+          <div className="std-layout-split">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 variants={fadeInUp} className="edu-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Turn Education Data Into Better Decisions.</motion.h2>
+              </motion.div>
 
-          {/* MEDIA SECOND */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="edu-media-placeholder" style={{ minHeight: '600px' }}>
-              [EDUCATION ANALYTICS DASHBOARD IMAGE / VIDEO PLACEHOLDER]
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
+                <motion.p variants={fadeInUp} className="edu-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Educational organizations generate valuable information across admissions, attendance, academics, finance, learning activity, student performance, faculty operations, and engagement. Oxavyn can bring this information into dashboards and reporting systems that give decision-makers clearer visibility.
+                </motion.p>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* SUBHEADING / PARAGRAPH / FEATURES THIRD */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center' }}
-          >
-            <motion.p variants={fadeInUp} className="edu-paragraph" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
-              Educational organizations generate valuable information across admissions, attendance, academics, finance, learning activity, student performance, faculty operations, and engagement. Oxavyn can bring this information into dashboards and reporting systems that give decision-makers clearer visibility.
-            </motion.p>
+            {/* MEDIA SIDE */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <ResponsiveVideo src="/images/career-vid.mp4" />
+            </motion.div>
+          </div>
 
-            <div className="edu-grid-3" style={{ textAlign: 'left' }}>
+          {/* FEATURES / CARDS BELOW */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
+            <div className="edu-grid-3">
               <motion.div variants={fadeInUp} className="edu-glass-card" style={{ padding: '1.5rem' }}>
                 <div className="edu-ambient-border-glow"></div>
                 <div className="edu-card-title" style={{ fontSize: '1.1rem', marginBottom: '0.2rem' }}>Student Analytics</div>

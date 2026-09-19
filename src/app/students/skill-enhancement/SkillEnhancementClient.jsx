@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function SkillEnhancementClient() {
   const [selectedProgram, setSelectedProgram] = useState("");
@@ -99,17 +100,8 @@ export default function SkillEnhancementClient() {
               </motion.h3>
               
               {/* Media for mobile layout order */}
-              <motion.div variants={fadeInUp} className="se-hero-media" style={{ display: 'none' /* Handled in CSS for mobile order */ }}>
-                <div className="se-media-placeholder">
-                  <div className="se-media-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                      <line x1="8" y1="21" x2="16" y2="21"></line>
-                      <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                  </div>
-                  <div className="se-media-text">SKILL ENHANCEMENT<br/>HERO IMAGE / VIDEO PLACEHOLDER</div>
-                </div>
+              <motion.div variants={fadeInUp} className="se-hero-media" style={{ display: 'none', height: '300px' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </motion.div>
 
               <motion.p className="se-paragraph" variants={fadeInUp}>
@@ -117,113 +109,79 @@ export default function SkillEnhancementClient() {
               </motion.p>
             </div>
             
-            <motion.div variants={fadeInUp} className="se-hero-media desktop-media">
-              <div className="se-media-placeholder">
-                <div className="se-media-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                  </svg>
-                </div>
-                <div className="se-media-text">SKILL ENHANCEMENT<br/>HERO IMAGE / VIDEO PLACEHOLDER</div>
-              </div>
+            <motion.div variants={fadeInUp} className="se-hero-media desktop-media" style={{ height: '400px' }}>
+                <ResponsiveVideo src="/images/career-vid.mp4" />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. INTRODUCTION SECTION */}
+      {/* 2 & 3. INTRODUCTION & COURSES SECTION */}
       <section className="se-section">
-        <div className="se-container">
-          <motion.div 
-            className="se-intro-grid"
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
-          >
-            <div className="se-intro-content">
-              <motion.h2 className="se-heading-secondary" variants={fadeInUp}>Learn. Practice.<br/>Improve. Grow.</motion.h2>
-              
-              <motion.div variants={fadeInUp} className="se-intro-media" style={{ display: 'none' /* CSS handling */ }}>
-                <div className="se-media-placeholder">
-                  <div className="se-media-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                      <polyline points="2 17 12 22 22 17"></polyline>
-                      <polyline points="2 12 12 17 22 12"></polyline>
-                    </svg>
-                  </div>
-                  <div className="se-media-text">SKILL DEVELOPMENT<br/>IMAGE / VIDEO PLACEHOLDER</div>
-                </div>
+        <div className="se-container std-layout-section">
+          
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 className="se-heading-secondary" variants={fadeInUp} style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Learn. Practice.<br/>Improve. Grow.</motion.h2>
               </motion.div>
-
-              <motion.p className="se-paragraph" variants={fadeInUp}>
-                Technical growth requires continuous learning, practical exposure, problem-solving, and career preparation. Our programs are structured to help you develop the abilities that the tech industry expects, while building a portfolio of knowledge that you can rely on throughout your career.
-              </motion.p>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-paragraph">
+                <motion.p className="se-paragraph" variants={fadeInUp} style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Technical growth requires continuous learning, practical exposure, problem-solving, and career preparation. Our programs are structured to help you develop the abilities that the tech industry expects, while building a portfolio of knowledge that you can rely on throughout your career.
+                </motion.p>
+              </motion.div>
             </div>
             
-            <motion.div variants={fadeInUp} className="se-intro-media desktop-media">
-              <div className="se-media-placeholder">
-                <div className="se-media-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                  </svg>
-                </div>
-                <div className="se-media-text">SKILL DEVELOPMENT<br/>IMAGE / VIDEO PLACEHOLDER</div>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 3. COURSES SECTION */}
-      <section className="se-section">
-        <div className="se-container">
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
-            className="se-center-text" style={{ maxWidth: '800px', marginBottom: '3rem' }}
-          >
-            <motion.h2 className="se-heading-secondary" variants={fadeInUp}>Choose Your Learning Path</motion.h2>
-            <motion.p className="se-subheading" variants={fadeInUp}>Build the skills that match your academic, technical, and career goals.</motion.p>
-          </motion.div>
-
-          <div className="se-courses-grid">
-            {courses.map((course, idx) => (
-              <motion.div 
-                key={idx}
-                className="se-glass-card se-course-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="se-ambient-border-glow"></div>
-                <div className="se-course-number">{course.number}</div>
-                <h3 className="se-course-title">{course.title}</h3>
-                
-                <div className="se-course-media">
-                  <div className="se-media-placeholder" style={{ minHeight: '100%', padding: '1rem' }}>
-                    <div className="se-media-text">{course.title}<br/>IMAGE / VIDEO</div>
-                  </div>
-                </div>
-
-                <div className="se-course-tags">
-                  {course.tags.map(tag => <span key={tag} className="se-tag">{tag}</span>)}
-                </div>
-                
-                <p className="se-course-desc">{course.desc}</p>
-                
-                <button 
-                  className="se-btn-outline" 
-                  onClick={(e) => handleKnowMore(e, course.title === "LIVE TECHNOLOGY COURSES" ? "Live Technology Courses" : course.title)}
-                >
-                  Know More &rarr;
-                </button>
-                <div className="se-card-glow"></div>
-              </motion.div>
-            ))}
           </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card" style={{ marginTop: '4rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <motion.h2 className="se-heading-secondary" variants={fadeInUp} style={{ marginBottom: '1rem' }}>Choose Your Learning Path</motion.h2>
+              <motion.p className="se-subheading" variants={fadeInUp}>Build the skills that match your academic, technical, and career goals.</motion.p>
+            </div>
+            
+            <div className="se-courses-grid">
+              {courses.map((course, idx) => (
+                <motion.div 
+                  key={idx}
+                  className="se-glass-card se-course-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                >
+                  <div className="se-ambient-border-glow"></div>
+                  <div className="se-course-number">{course.number}</div>
+                  <h3 className="se-course-title">{course.title}</h3>
+                  
+                  <div className="se-course-media" style={{ height: '200px' }}>
+                    <ResponsiveVideo src="/images/career-vid.mp4" />
+                  </div>
+
+                  <div className="se-course-tags">
+                    {course.tags.map(tag => <span key={tag} className="se-tag">{tag}</span>)}
+                  </div>
+                  
+                  <p className="se-course-desc">{course.desc}</p>
+                  
+                  <button 
+                    className="se-btn-outline" 
+                    onClick={(e) => handleKnowMore(e, course.title === "LIVE TECHNOLOGY COURSES" ? "Live Technology Courses" : course.title)}
+                  >
+                    Know More &rarr;
+                  </button>
+                  <div className="se-card-glow"></div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
@@ -244,8 +202,8 @@ export default function SkillEnhancementClient() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-              <div className="se-media-placeholder" style={{ minHeight: '200px' }}>
-                <div className="se-media-text">LEARNING IMAGE PLACEHOLDER</div>
+              <div style={{ minHeight: '200px' }}>
+                <ResponsiveVideo src="/images/career-vid.mp4" />
               </div>
             </motion.div>
 
@@ -260,8 +218,8 @@ export default function SkillEnhancementClient() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-              <div className="se-media-placeholder" style={{ minHeight: '200px' }}>
-                <div className="se-media-text">PRACTICAL LEARNING VIDEO PLACEHOLDER</div>
+              <div style={{ minHeight: '200px' }}>
+                <ResponsiveVideo src="/images/career-vid.mp4" />
               </div>
             </motion.div>
 
@@ -387,10 +345,8 @@ export default function SkillEnhancementClient() {
           </motion.p>
           
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <div className="se-career-media">
-              <div className="se-media-placeholder">
-                <div className="se-media-text">CAREER PREPARATION<br/>IMAGE / VIDEO PLACEHOLDER</div>
-              </div>
+            <div className="se-career-media" style={{ minHeight: '350px' }}>
+              <ResponsiveVideo src="/images/career-vid.mp4" />
             </div>
           </motion.div>
           

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import "./MobileDev.css";
 
 // Reusing global Navbar and Footer (they are already provided by layout.js, so we don't import them here to prevent duplicates)
@@ -26,7 +27,7 @@ export default function MobileAppDevelopmentPage() {
             From ambitious ideas to intelligent digital products, Oxavyn designs and develops high-performance mobile experiences built for scale.
           </p>
           <div className="hero-actions">
-            <button className="luxury-btn luxury-btn-secondary">Explore Our Expertise</button>
+            <Link href="/contact" className="luxury-btn luxury-btn-secondary">Start Your Project</Link>
           </div>
           <div className="hero-platforms">
             iOS &bull; Android &bull; Cross-Platform
@@ -315,15 +316,15 @@ export default function MobileAppDevelopmentPage() {
       {/* SECTION 09: FINAL CTA */}
       <section className="cta-section">
         <div className="cta-orb"></div>
-        <div className="cta-content">
-          <h2 className="huge-heading">Have an App Idea?</h2>
-          <h2 className="huge-heading gradient-text">Let's Build It.</h2>
-          <p className="section-desc">
+        <div className="cta-content" style={{ background: '#f8fafc', padding: '4rem 2rem', borderRadius: '24px', maxWidth: '800px', margin: '0 auto', color: '#111827', position: 'relative', zIndex: 2 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, marginBottom: '0.5rem' }}>Have an App Idea?</h2>
+          <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 700, marginBottom: '1.5rem' }} className="gradient-text">Let's Build It.</h2>
+          <p className="section-desc" style={{ color: '#4b5563', margin: '0 auto 2rem auto' }}>
             Tell us what you're imagining. We'll help transform your idea into a product people love to use.
           </p>
           <div className="cta-actions">
-            <button className="luxury-btn luxury-btn-primary">Start a Conversation &rarr;</button>
-            <button className="luxury-btn luxury-btn-secondary">Explore Our Services</button>
+            <Link href="/contact" className="luxury-btn luxury-btn-primary">Start a Conversation &rarr;</Link>
+            <Link href="/services/ai-development" className="luxury-btn luxury-btn-secondary" style={{ color: '#111827', borderColor: '#d1d5db' }}>Explore AI Development</Link>
           </div>
         </div>
       </section>

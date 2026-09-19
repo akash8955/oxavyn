@@ -173,10 +173,10 @@ export default function Footer() {
         <div className="footer-bottom-container">
           <p className="copyright">© 2026 Oxavyn. All rights reserved.</p>
           <div className="footer-legal-links">
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Compliance</a>
-            <a href="#">Refund & Cancellation Policy</a>
+            <Link href="/terms-and-conditions">Terms & Conditions</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/compliance">Compliance</Link>
+            <Link href="/refund-and-cancellation">Refund & Cancellation Policy</Link>
           </div>
         </div>
       </div>

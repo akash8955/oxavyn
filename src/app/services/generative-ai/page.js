@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import './GenAiDev.css';
 
 export default function GenerativeAiPage() {
@@ -36,7 +37,7 @@ export default function GenerativeAiPage() {
         <div className="genai-split visual-right">
           <div className="genai-text-header animate-on-scroll">
             <span className="genai-eyebrow">GENERATIVE AI</span>
-            <h1 className="genai-heading">
+            <h1 className="genai-heading" style={{fontSize: 'clamp(32px, 4vw, 48px)'}}>
               Create Without Limits.<br/>
               <span className="genai-gradient-text">Powered by Intelligence.</span>
             </h1>
@@ -95,8 +96,8 @@ export default function GenerativeAiPage() {
               Oxavyn builds generative AI experiences that transform ideas, information, and workflows into intelligent digital products. From AI-powered content and conversational experiences to intelligent applications and automated workflows, we combine advanced AI capabilities with thoughtful product design and scalable engineering.
             </p>
             <div className="genai-btn-group">
-              <a href="#cta" className="genai-btn genai-btn-primary">Build With AI &rarr;</a>
-              <a href="#what-is-genai" className="genai-btn genai-btn-secondary">Explore Generative AI</a>
+              <Link href="/services/machine-learning" className="genai-btn genai-btn-primary" style={{fontSize: '0.9rem', padding: '0.8rem 1.5rem'}}>Build With ML &rarr;</Link>
+              <Link href="/services/ai-development" className="genai-btn genai-btn-secondary" style={{fontSize: '0.9rem', padding: '0.8rem 1.5rem'}}>AI Development</Link>
             </div>
           </div>
         </div>
@@ -372,8 +373,8 @@ export default function GenerativeAiPage() {
             Whether you want to create an AI-powered product, transform an existing application, automate a complex workflow, or explore what generative AI can do for your business, Oxavyn can help turn the opportunity into a practical digital experience.
           </p>
           <div className="genai-btn-group" style={{justifyContent: 'center'}}>
-            <a href="#contact" className="genai-btn genai-btn-primary" style={{padding: '1rem 2rem', fontSize: '1rem'}}>Start Your AI Project &rarr;</a>
-            <a href="#services" className="genai-btn genai-btn-secondary" style={{padding: '1rem 2rem', fontSize: '1rem'}}>Talk to Oxavyn</a>
+            <Link href="/contact" className="genai-btn genai-btn-primary" style={{padding: '0.8rem 1.5rem', fontSize: '0.9rem'}}>Start Your AI Project &rarr;</Link>
+            <Link href="/contact" className="genai-btn genai-btn-secondary" style={{padding: '0.8rem 1.5rem', fontSize: '0.9rem'}}>Talk to Oxavyn</Link>
           </div>
           
           <div style={{marginTop: '2rem', fontSize: '0.8rem', fontWeight: 'bold', letterSpacing: '0.1em', color: 'rgba(74, 74, 90, 0.5)'}}>

@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import ResponsiveVideo from '@/components/ResponsiveVideo';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -197,123 +198,116 @@ export default function InternshipClient() {
         </div>
       </section>
 
-      {/* INTRODUCTION */}
+      {/* INTRODUCTION & INTERNSHIP PROGRAMS */}
       <section className="section-intro">
-        <div className="container">
-          <motion.div 
-            className="intro-header center-text"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.span variants={fadeInUp} className="label">WHY OXAVYN INTERNSHIPS</motion.span>
-            <motion.h2 variants={fadeInUp}>More Than an Internship.<br/>An Opportunity to Grow.</motion.h2>
-            <motion.p variants={fadeInUp} className="desc-large">
-              The transition from academic learning to professional work can be challenging. Students often know the theory but need opportunities to apply their knowledge, solve practical problems, understand development workflows, communicate with teams, and build confidence.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="desc-large">
-              Oxavyn's internship programs are designed to bridge that gap. Depending on the program, students can learn through structured training, work through projects, experience professional workflows, prepare for interviews, receive mentorship, or explore opportunities that provide practical exposure.
-            </motion.p>
-          </motion.div>
-
-          <div className="intro-visual-container">
-            {/* Visual Effect Background */}
-            <div className="intro-visual-effect">
-              <svg viewBox="0 0 400 400" className="intro-core">
-                <circle cx="200" cy="200" r="180" stroke="url(#coreGrad)" strokeWidth="1.5" strokeDasharray="10 15" fill="none" className="spin-slow" />
-                <circle cx="200" cy="200" r="130" stroke="url(#coreGrad2)" strokeWidth="2" strokeDasharray="5 25" fill="none" className="spin-reverse" />
-                <circle cx="200" cy="200" r="80" stroke="#7c3aed" strokeWidth="0.5" fill="none" className="pulse" />
-                <defs>
-                  <linearGradient id="coreGrad" x1="0" y1="0" x2="400" y2="400">
-                    <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.8"/>
-                    <stop offset="100%" stopColor="#06b6d4" stopOpacity="0"/>
-                  </linearGradient>
-                  <linearGradient id="coreGrad2" x1="0" y1="400" x2="400" y2="0">
-                    <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8"/>
-                    <stop offset="100%" stopColor="#7c3aed" stopOpacity="0"/>
-                  </linearGradient>
-                </defs>
-              </svg>
+        <div className="container std-layout-section">
+          
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.span variants={fadeInUp} className="label" style={{ display: 'block', textAlign: 'left', marginBottom: '0.5rem' }}>WHY OXAVYN INTERNSHIPS</motion.span>
+                <motion.h2 variants={fadeInUp} style={{ textAlign: 'left', marginBottom: '1.5rem' }}>More Than an Internship.<br/>An Opportunity to Grow.</motion.h2>
+              </motion.div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-paragraph">
+                <motion.p variants={fadeInUp} className="desc-large" style={{ textAlign: 'left', marginBottom: '1rem' }}>
+                  The transition from academic learning to professional work can be challenging. Students often know the theory but need opportunities to apply their knowledge, solve practical problems, understand development workflows, communicate with teams, and build confidence.
+                </motion.p>
+                <motion.p variants={fadeInUp} className="desc-large" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Oxavyn's internship programs are designed to bridge that gap. Depending on the program, students can learn through structured training, work through projects, experience professional workflows, prepare for interviews, receive mentorship, or explore opportunities that provide practical exposure.
+                </motion.p>
+              </motion.div>
             </div>
-
-            <div className="vertical-flow" ref={flowRef}>
-              {['LEARN', 'PRACTICE', 'BUILD', 'EXPERIENCE', 'GROW'].map((step, i, arr) => (
-                <div key={step} className="flow-step-container">
-                  <motion.div 
-                    className="flow-step"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <div className="ambient-glow-border"></div>
-                    <span>{step}</span>
-                  </motion.div>
-                  {i < arr.length - 1 && <div className="flow-line"></div>}
+            
+            {/* MEDIA SIDE (Vertical Flow Effect) */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <div className="intro-visual-container" style={{ margin: 0, height: '100%', minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="intro-visual-effect">
+                  <svg viewBox="0 0 400 400" className="intro-core">
+                    <circle cx="200" cy="200" r="180" stroke="url(#coreGrad)" strokeWidth="1.5" strokeDasharray="10 15" fill="none" className="spin-slow" />
+                    <circle cx="200" cy="200" r="130" stroke="url(#coreGrad2)" strokeWidth="2" strokeDasharray="5 25" fill="none" className="spin-reverse" />
+                    <circle cx="200" cy="200" r="80" stroke="#7c3aed" strokeWidth="0.5" fill="none" className="pulse" />
+                    <defs>
+                      <linearGradient id="coreGrad" x1="0" y1="0" x2="400" y2="400">
+                        <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.8"/>
+                        <stop offset="100%" stopColor="#06b6d4" stopOpacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="coreGrad2" x1="0" y1="400" x2="400" y2="0">
+                        <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8"/>
+                        <stop offset="100%" stopColor="#7c3aed" stopOpacity="0"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
                 </div>
+                <div className="vertical-flow" ref={flowRef}>
+                  {['LEARN', 'PRACTICE', 'BUILD', 'EXPERIENCE', 'GROW'].map((step, i, arr) => (
+                    <div key={step} className="flow-step-container">
+                      <motion.div 
+                        className="flow-step"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <div className="ambient-glow-border"></div>
+                        <span>{step}</span>
+                      </motion.div>
+                      {i < arr.length - 1 && <div className="flow-line"></div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card" id="programs" style={{ marginTop: '4rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <motion.h2 variants={fadeInUp} style={{ marginBottom: '1rem' }}>Choose Your Internship Experience.</motion.h2>
+              <motion.p variants={fadeInUp} className="desc-large">
+                Every student has different goals. Some want to build projects, some want structured learning, some want exposure to live development environments, while others are looking for mentorship or professional selection experience. Oxavyn brings these different pathways together so students can choose an experience that fits their current stage and career direction.
+              </motion.p>
+            </div>
+            
+            <div className="programs-grid">
+              {programs.map((prog, index) => (
+                <motion.div 
+                  key={prog.id}
+                  className="program-card luxury-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover="hover"
+                >
+                  <div className="ambient-border-glow"></div>
+                  <div className="card-top">
+                    <motion.div className="card-icon" variants={{ hover: { y: -3 } }}>
+                      {prog.icon}
+                    </motion.div>
+                  </div>
+                  <h3 className="card-title">{prog.title}</h3>
+                  
+                  <div className="card-media" style={{ height: '200px' }}>
+                    <ResponsiveVideo src="/images/career-vid.mp4" />
+                  </div>
+
+                  <div className="card-tags">
+                    {prog.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+                  </div>
+
+                  <p className="card-desc">{prog.desc}</p>
+                  {prog.disclaimer && <p className="card-disclaimer">{prog.disclaimer}</p>}
+                  
+                  <a href="#application" className="luxury-btn-small">
+                    <span>Apply Now &rarr;</span>
+                    <div className="btn-glow"></div>
+                  </a>
+                  <div className="card-glow"></div>
+                </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* INTERNSHIP PROGRAMS */}
-      <section className="section-programs" id="programs">
-        <div className="container">
-          <motion.div 
-            className="programs-header center-text"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.h2 variants={fadeInUp}>Choose Your Internship Experience.</motion.h2>
-            <motion.p variants={fadeInUp} className="desc-large">
-              Every student has different goals. Some want to build projects, some want structured learning, some want exposure to live development environments, while others are looking for mentorship or professional selection experience. Oxavyn brings these different pathways together so students can choose an experience that fits their current stage and career direction.
-            </motion.p>
           </motion.div>
 
-          <div className="programs-grid">
-            {programs.map((prog, index) => (
-              <motion.div 
-                key={prog.id}
-                className="program-card luxury-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover="hover"
-              >
-                <div className="ambient-border-glow"></div>
-                <div className="card-top">
-                  <motion.div className="card-icon" variants={{ hover: { y: -3 } }}>
-                    {prog.icon}
-                  </motion.div>
-                </div>
-                <h3 className="card-title">{prog.title}</h3>
-                
-                <div className="card-media">
-                  <div className="media-placeholder">
-                    <div className="media-text">{prog.title}<br/>VIDEO PLACEHOLDER</div>
-                  </div>
-                </div>
-
-                <div className="card-tags">
-                  {prog.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
-                </div>
-
-                <p className="card-desc">{prog.desc}</p>
-                {prog.disclaimer && <p className="card-disclaimer">{prog.disclaimer}</p>}
-                
-                <a href="#application" className="luxury-btn-small">
-                  <span>Apply Now &rarr;</span>
-                  <div className="btn-glow"></div>
-                </a>
-                <div className="card-glow"></div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 

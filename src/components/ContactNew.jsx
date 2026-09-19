@@ -11,14 +11,18 @@ export default function ContactNew() {
   return (
     <div className="contact-new-wrapper">
       
-      {/* Hero Section */}
-      <section className="contact-hero-section">
+      {/* Hero Section (Parallax Banner) */}
+      <section className="parallax-banner vh-90" style={{ backgroundImage: 'url(/images/Banner_5.png)' }}>
+        <div className="banner-content animate-fade-in">
+          <span style={{ display: 'block', marginBottom: '1rem', color: '#a29bfe', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>Contact us</span>
+          <h1>Have any queries? We're all ears!</h1>
+          <p>Our team is trained, equipped & ready to guide you from scratch to success.</p>
+        </div>
+      </section>
+
+      {/* Contact Cards Section */}
+      <section className="contact-cards-section" style={{ paddingTop: '4rem', paddingBottom: '4rem', background: '#f8fafc' }}>
         <div className="contact-hero-container">
-          <div className="contact-hero-text">
-            <span className="contact-badge">Contact us</span>
-            <h1 className="hero-title">Have any queries? We're all ears!</h1>
-            <p className="hero-subtitle">Our team is trained, equipped & ready to guide you from scratch to success.</p>
-          </div>
 
           <div className="contact-card">
             <div className="card-left">
@@ -78,7 +82,7 @@ export default function ContactNew() {
       </section>
 
       {/* Ambient Luxury Query Form Section */}
-      <section className="query-form-section">
+      <section id="query-form" className="query-form-section">
         <div className="query-form-container">
           
           <div className="query-form-content">
@@ -144,72 +148,12 @@ export default function ContactNew() {
             <div className="support-text-container">
               <h2>Oxavyn customer care is always here</h2>
               <p>Go to the Oxavyn customer care self-help page for instant answers to frequently asked questions.</p>
-              <button className="ask-now-btn">Ask Now</button>
+              <button className="ask-now-btn" onClick={() => document.getElementById('query-form').scrollIntoView({ behavior: 'smooth' })}>Ask Now</button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Grievance Policy Section */}
-      <section className="grievance-section">
-        <div className="grievance-container">
-          
-          <div className="grievance-header">
-            <h2 className="ambient-heading">How does our customer grievance policy work?</h2>
-            <p>While we believe in providing you with the best experience, you can always tell us how we can improve our services. We'll be more than happy to assist you.</p>
-          </div>
-
-          {/* Level 1 */}
-          <div className="grievance-level level-1">
-            <div className="level-content">
-              <span className="level-badge">LEVEL 1</span>
-              <h3>Customer support</h3>
-              <p>Contact the Oxavyn customer care team & get an online resolution to your queries/complaints across channels, including chat. Our team will address your concern within 5 business days from receipt.</p>
-              <a href="#" className="contact-link">Contact customer support <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-            </div>
-            <div className="level-image">
-              <img src="/contact/person_typing.jpg" alt="Customer Support" />
-            </div>
-          </div>
-
-          {/* Level 2 */}
-          <div className="grievance-level level-2">
-            <div className="level-image image-left">
-              <img src="/contact/manager_escalation.jpg" alt="Customer Service Escalation" />
-            </div>
-            <div className="level-content">
-              <span className="level-badge">LEVEL 2</span>
-              <h3>Customer service escalation</h3>
-              <p>If you feel like your concern is not addressed within the promised timeline, or you are dissatisfied with the response from Level 1, you can reach out to our escalation team. We will respond to you within 3 business days of receipt of your email.</p>
-              
-              <div className="officer-details">
-                <span className="officer-title">Our Escalation Manager</span>
-                <strong className="officer-name">Abhinav Barthwal</strong>
-                <p className="officer-email">Email ID: <a href="mailto:escalation@oxavyn.com">escalation@oxavyn.com</a></p>
-              </div>
-            </div>
-          </div>
-
-          {/* Level 3 */}
-          <div className="grievance-level level-3">
-            <div className="level-content">
-              <span className="level-badge">LEVEL 3</span>
-              <h3>Grievance Officer/ Nodal Officer</h3>
-              <p>If your query remains unresolved, you can further escalate the matter to our grievance officer/ nodal officer with the details of your interaction with the escalation manager. We will respond within 3 business days of receipt of your email.</p>
-              
-              <div className="officer-details">
-                <span className="officer-title">Nodal Officer</span>
-                <strong className="officer-name">Ashish Sabharwal</strong>
-                <p className="officer-email">Email ID: <a href="mailto:grievance@oxavyn.com">grievance@oxavyn.com</a></p>
-              </div>
-            </div>
-            <div className="level-image">
-              <img src="/contact/senior_officer.jpg" alt="Grievance Officer" />
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       {/* Embedded specific CTA Section */}
       <section className="growth-cta-section">
@@ -219,7 +163,7 @@ export default function ContactNew() {
             <div className="cta-text-wrapper">
               <h2>Ready to begin your growth journey?</h2>
               <p>Start without a platform fee. No hidden charges.</p>
-              <button className="signup-btn">Sign up for free</button>
+              <button className="signup-btn" onClick={() => document.getElementById('query-form').scrollIntoView({ behavior: 'smooth' })}>Send Query</button>
             </div>
             <div className="cta-shape-right"></div>
           </div>

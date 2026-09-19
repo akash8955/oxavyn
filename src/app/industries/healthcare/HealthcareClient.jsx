@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function HealthcareClient() {
   const [formData, setFormData] = useState({
@@ -64,7 +65,7 @@ export default function HealthcareClient() {
               </motion.div>
               
               <motion.div variants={fadeInUp} className="hc-order-media mobile-media" style={{ display: 'none' }}>
-                <div className="hc-media-placeholder">HEALTHCARE HERO<br/>IMAGE / VIDEO PLACEHOLDER</div>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </motion.div>
 
               <motion.h3 className="hc-subheading hc-order-subheading" variants={fadeInUp}>
@@ -82,9 +83,7 @@ export default function HealthcareClient() {
             </div>
             
             <motion.div variants={fadeInUp} className="hc-order-media desktop-media">
-              <div className="hc-media-placeholder" style={{ minHeight: '500px' }}>
-                HEALTHCARE HERO<br/>IMAGE / VIDEO PLACEHOLDER
-              </div>
+              <ResponsiveVideo src="/images/career-vid.mp4" />
             </motion.div>
           </motion.div>
         </div>
@@ -92,43 +91,48 @@ export default function HealthcareClient() {
 
       {/* 2. HEALTHCARE CHALLENGE */}
       <section className="hc-section hc-section-alt">
-        <div className="hc-container">
-          <motion.div className="hc-split-grid" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
-            <div className="hc-order-wrapper">
-              <motion.h2 className="hc-heading-secondary hc-order-heading" variants={fadeInUp}>Healthcare Is Complex. Your Technology Shouldn't Be.</motion.h2>
-              
-              <motion.div variants={fadeInUp} className="hc-order-media mobile-media" style={{ display: 'none' }}>
-                <div className="hc-media-placeholder">HEALTHCARE OPERATIONS<br/>IMAGE / VIDEO PLACEHOLDER</div>
+        <div className="hc-container std-layout-section">
+          
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 variants={fadeInUp} className="hc-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Healthcare Is Complex. Your Technology Shouldn't Be.</motion.h2>
               </motion.div>
 
-              <motion.p className="hc-paragraph hc-order-paragraph" variants={fadeInUp}>
-                Healthcare organizations often operate across multiple disconnected systems. Patient information may sit in one platform, business operations in another, financial processes somewhere else, while reports and analytics require manual consolidation. This fragmentation can create unnecessary administrative work, delays, duplicated information, and limited visibility.
-              </motion.p>
-              
-              <motion.div className="hc-order-features hc-2col-grid" variants={staggerContainer}>
-                {[
-                  { title: "Disconnected Systems", desc: "Different departments using isolated tools." },
-                  { title: "Manual Processes", desc: "Repetitive administrative work consuming valuable time." },
-                  { title: "Limited Visibility", desc: "Important operational information spread across multiple systems." },
-                  { title: "Delayed Decisions", desc: "Teams relying on manually prepared reports instead of real-time insights." }
-                ].map((item, idx) => (
-                  <motion.div key={idx} variants={fadeInUp}>
-                    <div className="hc-glass-card hc-problem-card">
-                      <div className="hc-ambient-border-glow"></div>
-                      <h4 className="hc-problem-title">{item.title}</h4>
-                      <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{item.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
+                <motion.p variants={fadeInUp} className="hc-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Healthcare organizations often operate across multiple disconnected systems. Patient information may sit in one platform, business operations in another, financial processes somewhere else, while reports and analytics require manual consolidation. This fragmentation can create unnecessary administrative work, delays, duplicated information, and limited visibility.
+                </motion.p>
               </motion.div>
             </div>
 
-            <motion.div variants={fadeInUp} className="hc-order-media desktop-media">
-              <div className="hc-media-placeholder" style={{ minHeight: '600px' }}>
-                HEALTHCARE OPERATIONS<br/>IMAGE / VIDEO PLACEHOLDER
-              </div>
+            {/* MEDIA SIDE */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <ResponsiveVideo src="/images/career-vid.mp4" />
             </motion.div>
+          </div>
+
+          {/* FEATURES / CARDS BELOW */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
+            <div className="hc-2col-grid">
+              {[
+                { title: "Disconnected Systems", desc: "Different departments using isolated tools." },
+                { title: "Manual Processes", desc: "Repetitive administrative work consuming valuable time." },
+                { title: "Limited Visibility", desc: "Important operational information spread across multiple systems." },
+                { title: "Delayed Decisions", desc: "Teams relying on manually prepared reports instead of real-time insights." }
+              ].map((item, idx) => (
+                <motion.div key={idx} variants={fadeInUp}>
+                  <div className="hc-glass-card hc-problem-card">
+                    <div className="hc-ambient-border-glow"></div>
+                    <h4 className="hc-problem-title">{item.title}</h4>
+                    <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
+
         </div>
       </section>
 
@@ -176,70 +180,84 @@ export default function HealthcareClient() {
 
       {/* 4. HEALTHCARE MANAGEMENT */}
       <section className="hc-section hc-section-alt">
-        <div className="hc-container">
-          <motion.div className="hc-split-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <div className="hc-order-wrapper">
-              <motion.h2 className="hc-heading-secondary hc-order-heading" variants={fadeInUp}>Healthcare Operations, Connected.</motion.h2>
-              
-              <motion.div variants={fadeInUp} className="hc-order-media mobile-media" style={{ display: 'none' }}>
-                <div className="hc-media-placeholder">HEALTHCARE MANAGEMENT<br/>IMAGE / VIDEO PLACEHOLDER</div>
+        <div className="hc-container std-layout-section">
+          
+          <div className="std-layout-split">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 variants={fadeInUp} className="hc-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Healthcare Operations, Connected.</motion.h2>
               </motion.div>
 
-              <motion.h3 className="hc-subheading hc-order-subheading" variants={fadeInUp}>Digitize the workflows that keep your healthcare organization moving.</motion.h3>
-              <motion.p className="hc-paragraph hc-order-paragraph" variants={fadeInUp}>
-                Build a centralized environment for managing important healthcare operations and administrative workflows. Depending on organizational requirements, the system can support patient records, appointments, doctor and staff coordination, department workflows, billing-related processes, inventory visibility, reports, and other operational activities.
-              </motion.p>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
+                <motion.h3 variants={fadeInUp} className="hc-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>Digitize the workflows that keep your healthcare organization moving.</motion.h3>
+                <motion.p variants={fadeInUp} className="hc-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Build a centralized environment for managing important healthcare operations and administrative workflows. Depending on organizational requirements, the system can support patient records, appointments, doctor and staff coordination, department workflows, billing-related processes, inventory visibility, reports, and other operational activities.
+                </motion.p>
+              </motion.div>
             </div>
-            
-            <motion.div variants={fadeInUp} className="hc-order-media desktop-media">
-              <div className="hc-media-placeholder" style={{ minHeight: '500px' }}>HEALTHCARE MANAGEMENT<br/>IMAGE / VIDEO PLACEHOLDER</div>
+
+            {/* MEDIA SIDE */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <ResponsiveVideo src="/images/career-vid.mp4" />
             </motion.div>
+          </div>
+
+          {/* FEATURES / CARDS BELOW */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
+            <div className="hc-3col-grid" style={{ marginTop: '4rem' }}>
+              {[
+                { title: "Patient Management", desc: "Centralize patient-related information and interactions." },
+                { title: "Appointment Management", desc: "Organize appointments, schedules, availability, and follow-ups." },
+                { title: "Doctor & Staff Management", desc: "Improve visibility across teams, roles, schedules, and responsibilities." },
+                { title: "Billing & Operational Workflows", desc: "Connect important administrative and financial processes." },
+                { title: "Inventory Management", desc: "Track healthcare supplies, equipment, and inventory-related workflows." },
+                { title: "Reports & Monitoring", desc: "Give management teams clearer visibility into organizational activity." }
+              ].map((feature, idx) => (
+                <motion.div key={idx} className="hc-glass-card" variants={fadeInUp} transition={{ delay: idx * 0.1 }}>
+                  <div className="hc-ambient-border-glow"></div>
+                  <h4 className="hc-problem-title">{feature.title}</h4>
+                  <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{feature.desc}</p>
+                  <div className="hc-card-glow"></div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
-          <div className="hc-3col-grid" style={{ marginTop: '4rem' }}>
-            {[
-              { title: "Patient Management", desc: "Centralize patient-related information and interactions." },
-              { title: "Appointment Management", desc: "Organize appointments, schedules, availability, and follow-ups." },
-              { title: "Doctor & Staff Management", desc: "Improve visibility across teams, roles, schedules, and responsibilities." },
-              { title: "Billing & Operational Workflows", desc: "Connect important administrative and financial processes." },
-              { title: "Inventory Management", desc: "Track healthcare supplies, equipment, and inventory-related workflows." },
-              { title: "Reports & Monitoring", desc: "Give management teams clearer visibility into organizational activity." }
-            ].map((feature, idx) => (
-              <motion.div key={idx} className="hc-glass-card" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
-                <div className="hc-ambient-border-glow"></div>
-                <h4 className="hc-problem-title">{feature.title}</h4>
-                <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{feature.desc}</p>
-                <div className="hc-card-glow"></div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
 
       {/* 6. HEALTHCARE ERP */}
       <section className="hc-section hc-section-alt">
-        <div className="hc-container">
-          <motion.div className="hc-center-text" style={{ maxWidth: '900px' }} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <motion.h2 className="hc-heading-secondary" variants={fadeInUp}>Run Healthcare Operations With ERP Intelligence.</motion.h2>
-            <motion.h3 className="hc-subheading" variants={fadeInUp}>Connect the business side of healthcare with operational reality.</motion.h3>
-            <motion.p className="hc-paragraph" variants={fadeInUp}>
-              Healthcare organizations require more than patient-facing technology. Procurement, finance, inventory, human resources, vendors, assets, and internal workflows also need to work together. Oxavyn's ERP approach can connect these functions to provide a more unified operational foundation.
-            </motion.p>
-          </motion.div>
+        <div className="hc-container std-layout-section">
+          
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 variants={fadeInUp} className="hc-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Run Healthcare Operations With ERP Intelligence.</motion.h2>
+              </motion.div>
 
-          <div className="hc-split-grid" style={{ marginTop: '4rem' }}>
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="hc-order-media desktop-media">
-              <div className="hc-media-placeholder" style={{ minHeight: '600px' }}>
-                HEALTHCARE ERP<br/>IMAGE / VIDEO PLACEHOLDER
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
+                <motion.h3 variants={fadeInUp} className="hc-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>Connect the business side of healthcare with operational reality.</motion.h3>
+                <motion.p variants={fadeInUp} className="hc-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Healthcare organizations require more than patient-facing technology. Procurement, finance, inventory, human resources, vendors, assets, and internal workflows also need to work together. Oxavyn's ERP approach can connect these functions to provide a more unified operational foundation.
+                </motion.p>
+              </motion.div>
+            </div>
+
+            {/* MEDIA SIDE */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
+          </div>
 
-            <motion.div className="hc-2col-grid hc-order-features" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-              <motion.div className="hc-order-media mobile-media" style={{ display: 'none', gridColumn: '1 / -1' }} variants={fadeInUp}>
-                <div className="hc-media-placeholder">HEALTHCARE ERP<br/>IMAGE / VIDEO PLACEHOLDER</div>
-              </motion.div>
-              
+          {/* FEATURES / CARDS BELOW */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
+            <div className="hc-2col-grid" style={{ marginTop: '4rem' }}>
               {[
                 { title: "Finance", desc: "Financial workflows, reporting, and operational visibility." },
                 { title: "HR", desc: "Employee information, workflows, attendance, and organizational processes." },
@@ -255,56 +273,59 @@ export default function HealthcareClient() {
                   <div className="hc-card-glow"></div>
                 </motion.div>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
       {/* 7. DATA ANALYTICS & BUSINESS INTELLIGENCE */}
       <section className="hc-section">
-        <div className="hc-container">
-          <motion.div className="hc-center-text" style={{ maxWidth: '900px' }} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <motion.h2 className="hc-heading-secondary" variants={fadeInUp}>Turn Healthcare Data Into Actionable Intelligence.</motion.h2>
-            <motion.p className="hc-paragraph" variants={fadeInUp}>
-              Healthcare organizations generate large volumes of operational, financial, patient, and administrative data. The challenge is turning that information into insights that decision-makers can actually use. Oxavyn can provide analytics and reporting environments that bring important information together and make organizational performance easier to understand.
-            </motion.p>
-          </motion.div>
-
-          <div className="hc-split-grid" style={{ marginTop: '4rem' }}>
-            <div className="hc-order-wrapper">
-              <motion.div className="hc-order-media mobile-media" style={{ display: 'none' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                <div className="hc-media-placeholder">HEALTHCARE DATA ANALYTICS DASHBOARD<br/>IMAGE / VIDEO PLACEHOLDER</div>
+        <div className="hc-container std-layout-section">
+          
+          <div className="std-layout-split">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 variants={fadeInUp} className="hc-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Turn Healthcare Data Into Actionable Intelligence.</motion.h2>
               </motion.div>
-              
-              <div className="hc-2col-grid hc-order-features">
-                {[
-                  { title: "Patient Analytics", desc: "Understand patient activity, trends, and engagement." },
-                  { title: "Operational Analytics", desc: "Monitor appointments, departments, workloads, and operational performance." },
-                  { title: "Financial Analytics", desc: "Understand revenue, expenses, billing activity, and financial trends." },
-                  { title: "Resource Analytics", desc: "Monitor staff, inventory, assets, and resource utilization." },
-                  { title: "Management Dashboards", desc: "Give leadership teams centralized performance visibility." },
-                  { title: "Predictive Insights", desc: "Use historical and operational data to identify patterns and support better planning." }
-                ].map((item, idx) => (
-                  <motion.div key={idx} className="hc-glass-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} style={{ padding: '2rem' }}>
-                    <div className="hc-ambient-border-glow"></div>
-                    <h4 className="hc-problem-title">{item.title}</h4>
-                    <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{item.desc}</p>
-                    <div className="hc-card-glow"></div>
-                  </motion.div>
-                ))}
-              </div>
+
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
+                <motion.p variants={fadeInUp} className="hc-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Healthcare organizations generate large volumes of operational, financial, patient, and administrative data. The challenge is turning that information into insights that decision-makers can actually use. Oxavyn can provide analytics and reporting environments that bring important information together and make organizational performance easier to understand.
+                </motion.p>
+              </motion.div>
             </div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="hc-order-media desktop-media">
-              <div className="hc-media-placeholder" style={{ minHeight: '600px' }}>
-                HEALTHCARE DATA ANALYTICS DASHBOARD<br/>IMAGE / VIDEO PLACEHOLDER
-                <br/><br/>
-                <div style={{ fontSize: '0.8rem', color: '#888', fontWeight: 'normal', textTransform: 'none' }}>
-                  KPI cards • Line charts • Bar charts • Patient trend graphs • Operational metrics • Revenue indicators • Department performance
-                </div>
+            {/* MEDIA SIDE */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
+
+          {/* FEATURES / CARDS BELOW */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
+            <div className="hc-2col-grid" style={{ marginTop: '4rem' }}>
+              {[
+                { title: "Patient Analytics", desc: "Understand patient activity, trends, and engagement." },
+                { title: "Operational Analytics", desc: "Monitor appointments, departments, workloads, and operational performance." },
+                { title: "Financial Analytics", desc: "Understand revenue, expenses, billing activity, and financial trends." },
+                { title: "Resource Analytics", desc: "Monitor staff, inventory, assets, and resource utilization." },
+                { title: "Management Dashboards", desc: "Give leadership teams centralized performance visibility." },
+                { title: "Predictive Insights", desc: "Use historical and operational data to identify patterns and support better planning." }
+              ].map((item, idx) => (
+                <motion.div key={idx} className="hc-glass-card" variants={fadeInUp} style={{ padding: '2rem' }}>
+                  <div className="hc-ambient-border-glow"></div>
+                  <h4 className="hc-problem-title">{item.title}</h4>
+                  <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{item.desc}</p>
+                  <div className="hc-card-glow"></div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
@@ -330,8 +351,8 @@ export default function HealthcareClient() {
           </motion.p>
           
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <div className="hc-media-placeholder" style={{ minHeight: '500px' }}>
-              CONNECTED HEALTHCARE SYSTEM<br/>IMAGE / VIDEO PLACEHOLDER
+            <div style={{ minHeight: '500px' }}>
+              <ResponsiveVideo src="/images/career-vid.mp4" />
             </div>
           </motion.div>
         </div>
@@ -416,8 +437,8 @@ export default function HealthcareClient() {
             </div>
             
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="hc-order-media">
-              <div className="hc-media-placeholder" style={{ minHeight: '600px' }}>
-                HEALTHCARE DIGITAL TRANSFORMATION<br/>VIDEO PLACEHOLDER
+              <div style={{ minHeight: '600px' }}>
+                <ResponsiveVideo src="/images/career-vid.mp4" />
               </div>
             </motion.div>
           </div>

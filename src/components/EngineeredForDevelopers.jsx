@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import './EngineeredForDevelopers.css';
 
 const EngineeredForDevelopers = () => {
@@ -30,7 +31,7 @@ const EngineeredForDevelopers = () => {
             </div>
             <p className="dev-card-desc">
               Build scalable digital products with modern technologies and robust architectures.            </p>
-            <a href="#" className="dev-card-link">Access documentation &rarr;</a>
+            <Link href="/services/custom-software" className="dev-card-link">Access documentation &rarr;</Link>
           </div>
 
           {/* Column 2 */}
@@ -47,7 +48,7 @@ const EngineeredForDevelopers = () => {
             </div>
             <p className="dev-card-desc">
               Bring intelligent automation, analytics, and AI-powered experiences into your business.            </p>
-            <a href="#" className="dev-card-link">Access documentation &rarr;</a>
+            <Link href="/services/machine-learning" className="dev-card-link">Access documentation &rarr;</Link>
           </div>
 
           {/* Column 3 */}
@@ -64,7 +65,7 @@ const EngineeredForDevelopers = () => {
             </div>
             <p className="dev-card-desc">
               Reliable cloud infrastructure and flexible APIs built for fast, secure, and scalable applications.            </p>
-            <a href="#" className="dev-card-link">Access documentation &rarr;</a>
+            <Link href="/services/third-party-integrations" className="dev-card-link">Access documentation &rarr;</Link>
           </div>
         </div>
       </div>

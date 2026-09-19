@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import './MlDev.css';
 
 export default function MachineLearningDevelopment() {
@@ -37,7 +38,7 @@ export default function MachineLearningDevelopment() {
           <div className="ml-split visual-right">
             <div className="ml-text-header animate-on-scroll">
               <span className="ml-eyebrow">MACHINE LEARNING</span>
-              <h1 className="ml-heading">
+              <h1 className="ml-heading" style={{fontSize: 'clamp(32px, 4vw, 48px)'}}>
                 Machines That Learn.<br/>
                 <span className="ml-gradient-text">Systems That Evolve.</span>
               </h1>
@@ -86,8 +87,8 @@ export default function MachineLearningDevelopment() {
                 Oxavyn builds machine learning solutions that transform complex data into intelligent predictions, automated decisions, and measurable business outcomes.
               </p>
               <div className="ml-btn-group">
-                <a href="#cta" className="ml-btn ml-btn-primary">Build With Machine Learning &rarr;</a>
-                <a href="#data" className="ml-btn ml-btn-secondary">Explore Our Capabilities</a>
+                <Link href="/services/generative-ai" className="ml-btn ml-btn-primary" style={{fontSize: '0.9rem', padding: '0.8rem 1.5rem'}}>Generative AI</Link>
+                <Link href="/services/ai-development" className="ml-btn ml-btn-secondary" style={{fontSize: '0.9rem', padding: '0.8rem 1.5rem'}}>AI Development</Link>
               </div>
             </div>
           </div>
@@ -403,8 +404,8 @@ export default function MachineLearningDevelopment() {
               Whether you need predictive analytics, intelligent recommendations, forecasting, anomaly detection, or a complete machine learning platform, Oxavyn combines data engineering, model development, product design, and scalable infrastructure to turn complex information into practical intelligence.
             </p>
             <div className="ml-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="ml-btn ml-btn-primary">Start Your ML Project &rarr;</a>
-              <a href="/contact" className="ml-btn ml-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="ml-btn ml-btn-primary" style={{fontSize: '0.9rem', padding: '0.8rem 1.5rem'}}>Start Your ML Project &rarr;</Link>
+              <Link href="/contact" className="ml-btn ml-btn-secondary" style={{fontSize: '0.9rem', padding: '0.8rem 1.5rem'}}>Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.2), transparent)', margin: '2rem 0 3rem'}}></div>

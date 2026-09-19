@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import './DataDev.css';
 
 export default function DataAnalyticsDevelopment() {
@@ -102,8 +103,8 @@ export default function DataAnalyticsDevelopment() {
                 Oxavyn transforms complex business data into clear, intelligent, and actionable insights through modern analytics, visualization, automation, and scalable data infrastructure.
               </p>
               <div className="data-btn-group">
-                <a href="#cta" className="data-btn data-btn-primary">Unlock Your Data &rarr;</a>
-                <a href="#explore" className="data-btn data-btn-secondary">Explore Analytics</a>
+                <Link href="/services/data-science" className="data-btn data-btn-primary">Data Science &rarr;</Link>
+                <Link href="/services/business-intelligence" className="data-btn data-btn-secondary">Business Intelligence</Link>
               </div>
             </div>
           </div>
@@ -471,8 +472,8 @@ export default function DataAnalyticsDevelopment() {
               Oxavyn combines data engineering, analytics, visualization, AI, and automation to transform complex information into insights your teams can actually use.
             </p>
             <div className="data-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="data-btn data-btn-primary">Unlock Your Data &rarr;</a>
-              <a href="/contact" className="data-btn data-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="data-btn data-btn-primary">Unlock Your Data &rarr;</Link>
+              <Link href="/contact" className="data-btn data-btn-secondary">Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(14,165,233,0.2), transparent)', margin: '2rem 0 3rem'}}></div>

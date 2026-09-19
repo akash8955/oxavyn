@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import './SaasDev.css';
 
 export default function SaasDevelopmentPage() {
@@ -40,8 +41,8 @@ export default function SaasDevelopmentPage() {
                 Build powerful SaaS products designed for real users, recurring growth, and long-term scalability.
               </p>
               <div className="saas-btn-group">
-                <a href="#cta" className="saas-btn saas-btn-primary">Start Your SaaS</a>
-                <a href="#blueprint" className="saas-btn saas-btn-secondary">View Architecture</a>
+                <Link href="/contact" className="saas-btn saas-btn-primary">Start Your SaaS</Link>
+                <Link href="/services/crm-automation" className="saas-btn saas-btn-secondary">Explore CRM</Link>
               </div>
             </div>
           </div>
@@ -278,7 +279,7 @@ export default function SaasDevelopmentPage() {
             From first concept to a production-ready platform, Oxavyn brings product strategy, UX, engineering, and cloud infrastructure together to build what's next.
           </p>
           <div className="saas-btn-group" style={{justifyContent: 'center'}}>
-            <a href="#contact" className="saas-btn saas-btn-primary" style={{padding: '1.5rem 3rem', fontSize: '1.2rem'}}>Start Your SaaS Journey &rarr;</a>
+            <Link href="/contact" className="saas-btn saas-btn-primary" style={{padding: '1.5rem 3rem', fontSize: '1.2rem'}}>Start Your SaaS Journey &rarr;</Link>
           </div>
           <div style={{marginTop: '1.5rem', fontWeight: '500', color: 'var(--saas-indigo)'}}>Let's Build What's Next.</div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import './CustomSoftware.css';
 
 export default function CustomSoftwarePage() {
@@ -37,8 +38,8 @@ export default function CustomSoftwarePage() {
               We design and develop custom software that fits your business, your users, and your long-term vision. From internal business platforms to customer-facing products, Oxavyn combines strategy, UX, engineering, and scalable architecture to create technology that works exactly the way your business needs it to.
             </p>
             <div className="cs-btn-group">
-              <a href="#contact" className="cs-btn cs-btn-primary">Build Your Software</a>
-              <a href="#process" className="cs-btn cs-btn-secondary">Explore Our Process</a>
+              <Link href="/contact" className="cs-btn cs-btn-primary">Build Your Software</Link>
+              <Link href="/services/saas-development" className="cs-btn cs-btn-secondary">Explore SaaS Development</Link>
             </div>
           </div>
           
@@ -289,8 +290,8 @@ export default function CustomSoftwarePage() {
             The best software starts with understanding—not coding. Tell us what you are trying to achieve, what is slowing your business down, or what you want to build next. Our team will help shape the right digital solution, from the first idea through design, development, launch, and continuous growth.
           </p>
           <div className="cs-btn-group" style={{justifyContent: 'center'}}>
-            <a href="#contact" className="cs-btn cs-btn-primary">Start Your Project</a>
-            <a href="#team" className="cs-btn cs-btn-secondary">Talk to Our Team</a>
+            <Link href="/contact" className="cs-btn cs-btn-primary">Start Your Project</Link>
+            <Link href="/contact" className="cs-btn cs-btn-secondary">Talk to Our Team</Link>
           </div>
         </div>
       </section>

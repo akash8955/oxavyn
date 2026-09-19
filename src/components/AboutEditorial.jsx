@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import './AboutEditorial.css';
 
 export default function AboutEditorial() {
@@ -27,34 +28,24 @@ export default function AboutEditorial() {
   return (
     <article className="about-page-wrapper" ref={containerRef}>
 
-      {/* 1. HERO SECTION */}
-      <section className="hero-section">
-        <div className="hero-bg-shape"></div>
-        <div className="hero-left fade-in-up">
-          <span className="eyebrow">ABOUT OXAVYN</span>
-          <h1 className="heading-lg">
+      {/* 1. HERO SECTION (Parallax Banner) */}
+      <section className="parallax-banner vh-90" style={{ backgroundImage: 'url(/images/Banner_2.png)' }}>
+        <div className="banner-content fade-in-up">
+          <span style={{ display: 'block', marginBottom: '1rem', color: '#a29bfe', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>ABOUT OXAVYN</span>
+          <h1>
             We build technology that <br />
-            <span className="text-orange">creates impact</span> and <br />
-            <span className="text-blue">drives growth</span>
+            <span style={{ color: '#fb923c' }}>creates impact</span> and <br />
+            <span style={{ color: '#60a5fa' }}>drives growth</span>
           </h1>
-          <p className="paragraph">
+          <p style={{ maxWidth: '600px', margin: '0 auto 1.5rem', lineHeight: '1.6' }}>
             At Oxavyn, we combine technology, creativity and strategic thinking to deliver digital solutions that help businesses innovate, scale and stay ahead in a fast-changing world.
           </p>
-          <p className="paragraph">
+          <p style={{ maxWidth: '600px', margin: '0 auto 2rem', lineHeight: '1.6' }}>
             From startups to enterprises, we partner with visionary teams to turn ideas into powerful digital experiences.
           </p>
-          <button className="btn-primary" style={{ marginTop: '1rem' }}>
+          <Link href="/services/web-development" className="btn-primary" style={{ display: 'inline-block' }}>
             Explore Our Solutions &rarr;
-          </button>
-        </div>
-        <div className="hero-right fade-in-up delay-200">
-          {/* Mobile Single Image */}
-          <img src="/images/gallary/ab7.png" alt="Hero Mobile" className="mobile-hero-img" />
-
-          {/* Desktop Collage Images */}
-          <img src="/images/gallary/ab2.png" alt="Collage 1" className="collage-img collage-1 desktop-only" />
-          <img src="/images/gallary/ab3.png" alt="Collage 2" className="collage-img collage-2 desktop-only" />
-          <img src="/images/gallary/ab4.png" alt="Collage 3" className="collage-img collage-3 desktop-only" />
+          </Link>
         </div>
       </section>
 
@@ -231,9 +222,9 @@ export default function AboutEditorial() {
           <p className="paragraph">
             Our team of designers, developers, engineers and strategists work together to deliver solutions that create real impact and long-term value.
           </p>
-          <button className="btn-primary" style={{ marginTop: '1rem' }}>
+          <Link href="/careers" className="btn-primary" style={{ marginTop: '1rem', display: 'inline-block' }}>
             Join Our Team &rarr;
-          </button>
+          </Link>
         </div>
         <div className="section-right">
           <div className="team-image-container fade-in-up delay-200">
@@ -250,8 +241,8 @@ export default function AboutEditorial() {
             <p>Have a project in mind or want to learn more about Oxavyn? We'd love to hear from you.</p>
           </div>
           <div className="cta-right">
-            <button className="btn-primary">Get in Touch &rarr;</button>
-            <button className="btn-outline">Explore Solutions &rarr;</button>
+            <Link href="/contact" className="btn-primary">Get in Touch &rarr;</Link>
+            <Link href="/services/mobile-app-development" className="btn-outline">Explore Solutions &rarr;</Link>
           </div>
         </div>
       </section>

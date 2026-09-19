@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import './BpaDev.css';
 
 export default function BusinessProcessAutomation() {
@@ -85,8 +86,8 @@ export default function BusinessProcessAutomation() {
                 Oxavyn connects people, systems, data, and business processes into intelligent automated workflows that reduce repetitive work, improve operational efficiency, and keep your organization moving.
               </p>
               <div className="bpa-btn-group">
-                <a href="#cta" className="bpa-btn bpa-btn-primary">Automate Your Business &rarr;</a>
-                <a href="#explore" className="bpa-btn bpa-btn-secondary">Explore Automation</a>
+                <Link href="/services/workflow-automation" className="bpa-btn bpa-btn-primary">Workflow Automation &rarr;</Link>
+                <Link href="/services/crm-automation" className="bpa-btn bpa-btn-secondary">CRM Automation</Link>
               </div>
             </div>
           </div>
@@ -295,8 +296,8 @@ export default function BusinessProcessAutomation() {
               Oxavyn combines business process automation, AI, workflow engineering, APIs, CRM, data, and modern software to connect the systems behind your business and turn repetitive processes into intelligent operations.
             </p>
             <div className="bpa-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="bpa-btn bpa-btn-primary">Automate Your Business &rarr;</a>
-              <a href="/contact" className="bpa-btn bpa-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="bpa-btn bpa-btn-primary">Automate Your Business &rarr;</Link>
+              <Link href="/contact" className="bpa-btn bpa-btn-secondary">Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(157,0,255,0.3), transparent)', margin: '2rem 0 3rem'}}></div>

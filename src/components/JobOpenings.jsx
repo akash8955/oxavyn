@@ -1,101 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { jobsData, jobCategories } from '../data/jobsData';
 import './JobOpenings.css';
-
-const jobCategories = [
-  'All',
-  'Software Engineering',
-  'AI & Machine Learning',
-  'Data & Analytics',
-  'Cloud & DevOps',
-  'UI/UX Design',
-  'Quality Assurance'
-];
-
-const jobsData = [
-  {
-    id: 1,
-    title: 'Full Stack Developer',
-    category: 'Software Engineering',
-    experience: '0–2 Years',
-    location: 'Jaipur / Remote',
-    technology: 'React.js, Next.js, Node.js, Express.js, MongoDB',
-    description: 'Build scalable and high-performance web applications across the complete development lifecycle.'
-  },
-  {
-    id: 2,
-    title: 'Frontend Developer – React / Next.js',
-    category: 'Software Engineering',
-    experience: '0–2 Years',
-    location: 'Jaipur / Remote',
-    description: 'Create elegant, responsive, and high-performance digital experiences using modern frontend technologies.'
-  },
-  {
-    id: 3,
-    title: 'Backend Developer – Node.js',
-    category: 'Software Engineering',
-    experience: '1–3 Years',
-    location: 'Jaipur / Remote',
-    description: 'Design robust APIs, backend services, database architectures, and scalable application infrastructure.'
-  },
-  {
-    id: 4,
-    title: 'AI / Machine Learning Engineer',
-    category: 'AI & Machine Learning',
-    experience: '0–3 Years',
-    location: 'Jaipur / Remote',
-    description: 'Develop intelligent solutions using machine learning, generative AI, NLP, computer vision, and modern AI APIs.'
-  },
-  {
-    id: 5,
-    title: 'Data Scientist',
-    category: 'Data & Analytics',
-    experience: '0–3 Years',
-    location: 'Jaipur / Remote',
-    description: 'Transform complex datasets into meaningful insights and predictive solutions that drive smarter business decisions.'
-  },
-  {
-    id: 6,
-    title: 'Data Analyst',
-    category: 'Data & Analytics',
-    experience: '0–2 Years',
-    location: 'Jaipur / Remote',
-    description: 'Analyze business data, create dashboards, identify trends, and turn data into actionable insights.'
-  },
-  {
-    id: 7,
-    title: 'Cloud & DevOps Engineer',
-    category: 'Cloud & DevOps',
-    experience: '1–3 Years',
-    location: 'Jaipur / Remote',
-    description: 'Build reliable cloud infrastructure, automate deployments, and improve the scalability and security of our applications.'
-  },
-  {
-    id: 8,
-    title: 'UI/UX Designer',
-    category: 'UI/UX Design',
-    experience: '0–2 Years',
-    location: 'Jaipur / Remote',
-    description: 'Design intuitive, visually refined, and user-centric experiences for modern digital products.'
-  },
-  {
-    id: 9,
-    title: 'QA / Software Test Engineer',
-    category: 'Quality Assurance',
-    experience: '0–2 Years',
-    location: 'Jaipur / Remote',
-    description: 'Ensure every product we build is reliable, secure, performant, and ready for real-world users.'
-  },
-  {
-    id: 10,
-    title: 'Software Developer Intern',
-    category: 'Software Engineering',
-    experience: 'Internship / Fresher',
-    location: 'Jaipur / Remote',
-    description: 'Learn, build, experiment, and work alongside experienced developers on real-world technology projects.'
-  }
-];
 
 const JobOpenings = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -161,7 +69,7 @@ const JobOpenings = () => {
                   <p className="job-card-desc">{job.description}</p>
                 </div>
                 <div className="job-card-action">
-                  <button className="btn-view-job">View Job</button>
+                  <Link href={`/careers/${job.id}`} className="btn-view-job" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>View Job</Link>
                 </div>
               </div>
             ))

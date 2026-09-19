@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function FoundationalCareerClient() {
   const [formData, setFormData] = useState({
@@ -133,10 +134,8 @@ export default function FoundationalCareerClient() {
                 Build Your Foundation.<br />Shape Your Career.
               </motion.h1>
               
-              <motion.div variants={fadeInUp} className="fc-hero-media mobile-media" style={{ display: 'none' /* CSS Handles Mobile Order */ }}>
-                <div className="fc-media-placeholder">
-                  FOUNDATIONAL & CAREER HERO<br/>IMAGE / VIDEO PLACEHOLDER
-                </div>
+              <motion.div variants={fadeInUp} className="fc-hero-media mobile-media" style={{ display: 'none', height: '300px' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </motion.div>
 
               <motion.h3 className="fc-subheading" variants={fadeInUp}>
@@ -155,85 +154,81 @@ export default function FoundationalCareerClient() {
               </motion.button>
             </div>
             
-            <motion.div variants={fadeInUp} className="desktop-media">
-              <div className="fc-media-placeholder" style={{ minHeight: '500px' }}>
-                FOUNDATIONAL & CAREER HERO<br/>IMAGE / VIDEO PLACEHOLDER
-              </div>
+            <motion.div variants={fadeInUp} className="desktop-media" style={{ height: '500px' }}>
+                <ResponsiveVideo src="/images/career-vid.mp4" />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. JOURNEY INTRODUCTION */}
+      {/* 2 & 3. JOURNEY INTRODUCTION & CAREER JOURNEY CARDS */}
       <section className="fc-section">
-        <div className="fc-container">
-          <motion.div className="fc-intro-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}>
-            <div className="fc-intro-content">
-              <motion.h2 className="fc-heading-secondary" variants={fadeInUp}>Your Career Is a Journey, Not a Single Step.</motion.h2>
-              
-              <motion.div variants={fadeInUp} className="mobile-media" style={{ display: 'none' }}>
-                <div className="fc-media-placeholder">STUDENT CAREER JOURNEY<br/>IMAGE / VIDEO PLACEHOLDER</div>
+        <div className="fc-container std-layout-section">
+          
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
+                <motion.h2 className="fc-heading-secondary" variants={fadeInUp} style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Your Career Is a Journey, Not a Single Step.</motion.h2>
               </motion.div>
-
-              <motion.p className="fc-paragraph" variants={fadeInUp}>
-                Strong careers are built gradually. The concepts you understand in your early academic years become the foundation for advanced technical skills, projects, internships, interviews, and professional opportunities later. Oxavyn helps students approach this journey step by step instead of waiting until the final year to start preparing.
-              </motion.p>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-paragraph">
+                <motion.p className="fc-paragraph" variants={fadeInUp} style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Strong careers are built gradually. The concepts you understand in your early academic years become the foundation for advanced technical skills, projects, internships, interviews, and professional opportunities later. Oxavyn helps students approach this journey step by step instead of waiting until the final year to start preparing.
+                </motion.p>
+              </motion.div>
             </div>
             
-            <motion.div variants={fadeInUp} className="desktop-media">
-              <div className="fc-media-placeholder">STUDENT CAREER JOURNEY<br/>IMAGE / VIDEO PLACEHOLDER</div>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              </div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 3. CAREER JOURNEY CARDS */}
-      <section className="fc-section">
-        <div className="fc-container">
-          <motion.div className="fc-center-text" style={{ maxWidth: '800px' }} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <motion.h2 className="fc-heading-secondary" variants={fadeInUp}>Choose Your Stage</motion.h2>
-            <motion.p className="fc-subheading" variants={fadeInUp}>Start where you are and build toward where you want to go.</motion.p>
-          </motion.div>
-
-          <div className="fc-cards-grid">
-            {cards.map((card, idx) => (
-              <motion.div 
-                key={idx}
-                className="fc-glass-card fc-course-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-              >
-                <div className="fc-ambient-border-glow"></div>
-                <div className="fc-course-number">{card.number}</div>
-                <h3 className="fc-course-title">{card.title}</h3>
-                
-                <div className="fc-course-media">
-                  <div className="fc-media-placeholder" style={{ minHeight: '100%', padding: '1rem' }}>
-                    {card.title.toUpperCase()} IMAGE / VIDEO PLACEHOLDER
-                  </div>
-                </div>
-
-                <div className="fc-course-tags">
-                  {card.tags.map(tag => <span key={tag} className="fc-tag">{tag}</span>)}
-                </div>
-                
-                <p className="fc-course-desc">{card.desc}</p>
-                
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <button className="fc-btn-outline" onClick={(e) => handleKnowMore(e, card.title)}>
-                    Know More
-                  </button>
-                  <button className="fc-btn-primary" style={{ padding: '1rem 1.5rem' }} onClick={(e) => handleKnowMore(e, card.title)}>
-                    Enquire Now
-                  </button>
-                </div>
-                
-                <div className="fc-card-glow"></div>
-              </motion.div>
-            ))}
           </div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <motion.h2 className="fc-heading-secondary" variants={fadeInUp} style={{ marginBottom: '1rem' }}>Choose Your Stage</motion.h2>
+              <motion.p className="fc-subheading" variants={fadeInUp}>Start where you are and build toward where you want to go.</motion.p>
+            </div>
+            <div className="fc-cards-grid">
+              {cards.map((card, idx) => (
+                <motion.div 
+                  key={idx}
+                  className="fc-glass-card fc-course-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                >
+                  <div className="fc-ambient-border-glow"></div>
+                  <div className="fc-course-number">{card.number}</div>
+                  <h3 className="fc-course-title">{card.title}</h3>
+                  
+                  <div className="fc-course-media" style={{ height: '200px' }}>
+                    <ResponsiveVideo src="/images/career-vid.mp4" />
+                  </div>
+
+                  <div className="fc-course-tags">
+                    {card.tags.map(tag => <span key={tag} className="fc-tag">{tag}</span>)}
+                  </div>
+                  
+                  <p className="fc-course-desc">{card.desc}</p>
+                  
+                  <div style={{ display: 'flex', gap: '1rem' }}>
+                    <button className="fc-btn-outline" onClick={(e) => handleKnowMore(e, card.title)}>
+                      Know More
+                    </button>
+                    <button className="fc-btn-primary" style={{ padding: '1rem 1.5rem' }} onClick={(e) => handleKnowMore(e, card.title)}>
+                      Enquire Now
+                    </button>
+                  </div>
+                  
+                  <div className="fc-card-glow"></div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
@@ -254,10 +249,8 @@ export default function FoundationalCareerClient() {
             ))}
           </div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            <div className="fc-media-placeholder" style={{ minHeight: '400px' }}>
-              CAREER JOURNEY VIDEO PLACEHOLDER
-            </div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ minHeight: '400px' }}>
+            <ResponsiveVideo src="/images/career-vid.mp4" />
           </motion.div>
         </div>
       </section>
@@ -283,8 +276,8 @@ export default function FoundationalCareerClient() {
                 <li>Problem-solving</li>
                 <li>Technical concepts</li>
               </ul>
-              <div className="fc-media-placeholder" style={{ minHeight: '200px' }}>
-                ACADEMIC FOUNDATION IMAGE PLACEHOLDER
+              <div style={{ minHeight: '200px' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
 
@@ -298,8 +291,8 @@ export default function FoundationalCareerClient() {
                 <li>Interviews</li>
                 <li>Placement preparation</li>
               </ul>
-              <div className="fc-media-placeholder" style={{ minHeight: '200px' }}>
-                CAREER PREPARATION IMAGE / VIDEO PLACEHOLDER
+              <div style={{ minHeight: '200px' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -419,10 +412,8 @@ export default function FoundationalCareerClient() {
             </p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ position: 'relative' }}>
-            <div className="fc-media-placeholder" style={{ minHeight: '500px', border: 'none', background: 'rgba(139, 92, 246, 0.1)' }}>
-              CAREER READINESS VIDEO PLACEHOLDER
-            </div>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ position: 'relative', minHeight: '500px' }}>
+            <ResponsiveVideo src="/images/career-vid.mp4" />
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

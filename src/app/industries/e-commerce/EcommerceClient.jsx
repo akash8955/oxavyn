@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function EcommerceClient() {
   const [formData, setFormData] = useState({
@@ -55,97 +56,103 @@ export default function EcommerceClient() {
       {/* 2. HERO — E-COMMERCE DIGITAL ECOSYSTEM */}
       <section className="ec-section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
         <div className="ec-container" style={{ width: '100%' }}>
-          
-          {/* HEADING FIRST */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '2rem' }}
-          >
-            <motion.div variants={fadeInUp} className="ec-eyebrow">OXAVYN FOR E-COMMERCE</motion.div>
-            <motion.h1 variants={fadeInUp} className="ec-heading-primary" style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
-              Build a Smarter, More Connected E-Commerce Business.
-            </motion.h1>
-          </motion.div>
-
-          {/* MEDIA SECOND */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="ec-media-placeholder" style={{ minHeight: '550px' }}>
-              [E-COMMERCE HERO IMAGE / VIDEO PLACEHOLDER]
-              <div style={{ fontSize: '0.9rem', color: '#6b7280', marginTop: '1rem', fontWeight: 'normal' }}>
-                Premium online store interface • Order management • E-commerce analytics • Fulfillment environment
-              </div>
-            </div>
-          </motion.div>
-
-          {/* PARAGRAPH/SUBHEADING THIRD */}
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            style={{ textAlign: 'center' }}
-          >
-            <motion.p variants={fadeInUp} className="ec-subheading" style={{ maxWidth: '800px', margin: '0 auto 1rem' }}>
-              Connect customers, orders, inventory, operations, delivery, and business management through one intelligent digital ecosystem.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="ec-paragraph" style={{ maxWidth: '800px', margin: '0 auto 2rem' }}>
-              Modern e-commerce businesses manage thousands of products, customers, orders, payments, shipments, inventory movements, support requests, and operational activities every day. Oxavyn helps bring these functions together through integrated CRM, ERP, order tracking, management systems, analytics, and automation.
-            </motion.p>
-            <motion.div variants={fadeInUp} className="ec-button-group" style={{ justifyContent: 'center' }}>
-              <button onClick={scrollToEnquiry} className="ec-btn-primary">Explore E-Commerce Solutions</button>
-              <button onClick={scrollToEnquiry} className="ec-btn-secondary">Talk to Oxavyn</button>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            {/* HEADING FIRST */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              style={{ textAlign: 'center', marginBottom: '2rem' }}
+            >
+              <motion.div variants={fadeInUp} className="ec-eyebrow">OXAVYN FOR E-COMMERCE</motion.div>
+              <motion.h1 variants={fadeInUp} className="ec-heading-primary" style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
+                Build a Smarter, More Connected E-Commerce Business.
+              </motion.h1>
             </motion.div>
-          </motion.div>
+
+            {/* MEDIA SECOND */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
+            >
+              <ResponsiveVideo src="/images/career-vid.mp4" />
+            </motion.div>
+
+            {/* SUBHEADING / PARAGRAPH THIRD */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              style={{ textAlign: 'center', width: '100%', maxWidth: '800px', margin: '0 auto' }}
+            >
+              <motion.p variants={fadeInUp} className="ec-subheading" style={{ margin: '0 auto 1rem' }}>
+                Connect customers, orders, inventory, operations, delivery, and business management through one intelligent digital ecosystem.
+              </motion.p>
+              <motion.p variants={fadeInUp} className="ec-paragraph" style={{ margin: '0 auto 2rem' }}>
+                Modern e-commerce businesses manage thousands of products, customers, orders, payments, shipments, inventory movements, support requests, and operational activities every day. Oxavyn helps bring these functions together through integrated CRM, ERP, order tracking, management systems, analytics, and automation.
+              </motion.p>
+              <motion.div variants={fadeInUp} className="ec-button-group" style={{ justifyContent: 'center' }}>
+                <button onClick={scrollToEnquiry} className="ec-btn-primary">Explore E-Commerce Solutions</button>
+                <button onClick={scrollToEnquiry} className="ec-btn-secondary">Talk to Oxavyn</button>
+              </motion.div>
+            </motion.div>
+          </div>
 
         </div>
       </section>
 
       {/* 3. THE E-COMMERCE CHALLENGE */}
       <section className="ec-section ec-section-alt">
-        <div className="ec-container">
+        <div className="ec-container std-layout-section">
           
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '3rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="ec-heading-secondary">E-Commerce Moves Fast. Your Systems Need to Keep Up.</motion.h2>
-          </motion.div>
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-heading"
+              >
+                <motion.h2 variants={fadeInUp} className="ec-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>E-Commerce Moves Fast. Your Systems Need to Keep Up.</motion.h2>
+              </motion.div>
 
-          {/* MEDIA SECOND */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="ec-media-placeholder" style={{ minHeight: '400px' }}>
-              [E-COMMERCE OPERATIONS IMAGE / VIDEO PLACEHOLDER]
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-paragraph"
+              >
+                <motion.p variants={fadeInUp} className="ec-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  As an e-commerce business grows, managing customers, orders, products, inventory, deliveries, payments, vendors, and internal teams through disconnected tools becomes increasingly difficult. Manual processes can create delays, duplicated information, limited visibility, and operational inefficiencies.
+                </motion.p>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* PARAGRAPH / CARDS THIRD */}
+            {/* MEDIA SIDE */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="std-media-side"
+            >
+              <ResponsiveVideo src="/images/career-vid.mp4" />
+            </motion.div>
+          </div>
+
+          {/* CARDS BELOW */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            style={{ textAlign: 'center' }}
+            className="std-feature-card"
           >
-            <motion.p variants={fadeInUp} className="ec-paragraph" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
-              As an e-commerce business grows, managing customers, orders, products, inventory, deliveries, payments, vendors, and internal teams through disconnected tools becomes increasingly difficult. Manual processes can create delays, duplicated information, limited visibility, and operational inefficiencies.
-            </motion.p>
-
             <div className="ec-grid-4" style={{ textAlign: 'left' }}>
               <motion.div variants={fadeInUp} className="ec-glass-card">
                 <div className="ec-ambient-border-glow"></div>
@@ -179,104 +186,116 @@ export default function EcommerceClient() {
 
       {/* 4. OXAVYN E-COMMERCE ECOSYSTEM */}
       <section className="ec-section">
-        <div className="ec-container">
+        <div className="ec-container std-layout-section">
           
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '3rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="ec-heading-secondary">One Connected System for Your E-Commerce Operation.</motion.h2>
-          </motion.div>
+          <div className="std-layout-split">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-heading"
+              >
+                <motion.h2 variants={fadeInUp} className="ec-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>One Connected System for Your E-Commerce Operation.</motion.h2>
+              </motion.div>
 
-          {/* MEDIA (DIAGRAM) SECOND */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="ec-diagram-container">
-               {/* Simplified 2D Diagram using CSS for desktop */}
-               <div className="ec-diagram-center">OXAVYN E-COMMERCE PLATFORM</div>
-               <div className="ec-diagram-node" style={{ top: '10%', left: '20%' }}>CRM</div>
-               <div className="ec-diagram-node" style={{ top: '10%', right: '20%' }}>ERP</div>
-               <div className="ec-diagram-node" style={{ top: '30%', left: '10%' }}>Orders</div>
-               <div className="ec-diagram-node" style={{ top: '30%', right: '10%' }}>Inventory</div>
-               <div className="ec-diagram-node" style={{ bottom: '30%', left: '10%' }}>Tracking</div>
-               <div className="ec-diagram-node" style={{ bottom: '30%', right: '10%' }}>Customers</div>
-               <div className="ec-diagram-node" style={{ bottom: '10%', left: '20%' }}>Management</div>
-               <div className="ec-diagram-node" style={{ bottom: '10%', right: '20%' }}>Analytics</div>
-               <div className="ec-diagram-node" style={{ top: '-5%', left: '50%', transform: 'translateX(-50%)' }}>Automation</div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={staggerContainer}
+                className="std-paragraph"
+              >
+                <motion.p variants={fadeInUp} className="ec-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Oxavyn can bring customer management, order management, inventory, business operations, tracking, analytics, and automation into a connected digital environment. Each capability should work as part of the larger ecosystem instead of functioning as an isolated application.
+                </motion.p>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* PARAGRAPH THIRD */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center' }}
-          >
-            <motion.p variants={fadeInUp} className="ec-paragraph" style={{ maxWidth: '800px', margin: '0 auto' }}>
-              Oxavyn can bring customer management, order management, inventory, business operations, tracking, analytics, and automation into a connected digital environment. Each capability should work as part of the larger ecosystem instead of functioning as an isolated application.
-            </motion.p>
-          </motion.div>
+            {/* MEDIA SIDE (DIAGRAM) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="std-media-side"
+            >
+              <div className="ec-diagram-container" style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0 }}>
+                 {/* Simplified 2D Diagram using CSS for desktop */}
+                 <div className="ec-diagram-center">OXAVYN E-COMMERCE PLATFORM</div>
+                 <div className="ec-diagram-node" style={{ top: '10%', left: '20%' }}>CRM</div>
+                 <div className="ec-diagram-node" style={{ top: '10%', right: '20%' }}>ERP</div>
+                 <div className="ec-diagram-node" style={{ top: '30%', left: '10%' }}>Orders</div>
+                 <div className="ec-diagram-node" style={{ top: '30%', right: '10%' }}>Inventory</div>
+                 <div className="ec-diagram-node" style={{ bottom: '30%', left: '10%' }}>Tracking</div>
+                 <div className="ec-diagram-node" style={{ bottom: '30%', right: '10%' }}>Customers</div>
+                 <div className="ec-diagram-node" style={{ bottom: '10%', left: '20%' }}>Management</div>
+                 <div className="ec-diagram-node" style={{ bottom: '10%', right: '20%' }}>Analytics</div>
+                 <div className="ec-diagram-node" style={{ top: '-5%', left: '50%', transform: 'translateX(-50%)' }}>Automation</div>
+              </div>
+            </motion.div>
+          </div>
 
         </div>
       </section>
 
       {/* 5. E-COMMERCE CRM */}
       <section className="ec-section ec-section-alt">
-        <div className="ec-container">
+        <div className="ec-container std-layout-section">
           
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '3rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="ec-heading-secondary">Turn Every Customer Interaction Into a Connected Journey.</motion.h2>
-          </motion.div>
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-heading"
+              >
+                <motion.h2 variants={fadeInUp} className="ec-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Turn Every Customer Interaction Into a Connected Journey.</motion.h2>
+              </motion.div>
 
-          {/* MEDIA SECOND */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="ec-media-placeholder">
-              [E-COMMERCE CRM DASHBOARD IMAGE / VIDEO PLACEHOLDER]
-              <div style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '1rem', fontWeight: 'normal' }}>
-                Customer pipeline • Statistics • Interactions • Purchase history • Segments
-              </div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-paragraph"
+              >
+                <motion.p variants={fadeInUp} className="ec-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>
+                  Understand your customers, manage relationships, and build stronger engagement.
+                </motion.p>
+                <motion.p variants={fadeInUp} className="ec-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  A centralized e-commerce CRM can bring customer information, enquiries, communication, purchase history, support interactions, and follow-ups into one place. This helps teams understand customer relationships more clearly and create more consistent experiences across the buying journey.
+                </motion.p>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* SUBHEADING / PARAGRAPH / CARDS THIRD */}
+            {/* MEDIA SIDE */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="std-media-side"
+            >
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* CARDS BELOW */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            style={{ textAlign: 'center' }}
+            className="std-feature-card"
           >
-            <motion.p variants={fadeInUp} className="ec-subheading" style={{ maxWidth: '800px', margin: '0 auto 1rem' }}>
-              Understand your customers, manage relationships, and build stronger engagement.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="ec-paragraph" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
-              A centralized e-commerce CRM can bring customer information, enquiries, communication, purchase history, support interactions, and follow-ups into one place. This helps teams understand customer relationships more clearly and create more consistent experiences across the buying journey.
-            </motion.p>
-
             <div className="ec-grid-3" style={{ textAlign: 'left' }}>
               <motion.div variants={fadeInUp} className="ec-glass-card"><div className="ec-ambient-border-glow"></div>
                   <div className="ec-card-title" style={{fontSize: '1.1rem'}}>Customer Profiles</div><div className="ec-card-desc" style={{fontSize: '0.9rem'}}>Centralized customer information and interaction history.</div>
@@ -304,47 +323,59 @@ export default function EcommerceClient() {
 
       {/* 6. E-COMMERCE ERP */}
       <section className="ec-section">
-        <div className="ec-container">
+        <div className="ec-container std-layout-section">
           
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '3rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="ec-heading-secondary">Manage the Business Behind Every Order.</motion.h2>
-          </motion.div>
+          <div className="std-layout-split">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-heading"
+              >
+                <motion.h2 variants={fadeInUp} className="ec-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Manage the Business Behind Every Order.</motion.h2>
+              </motion.div>
 
-          {/* MEDIA SECOND */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="ec-media-placeholder">
-              [E-COMMERCE ERP DASHBOARD IMAGE / VIDEO PLACEHOLDER]
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-paragraph"
+              >
+                <motion.p variants={fadeInUp} className="ec-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>
+                  Connect finance, inventory, procurement, vendors, products, and internal operations.
+                </motion.p>
+                <motion.p variants={fadeInUp} className="ec-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  An e-commerce business requires strong operational infrastructure behind the storefront. Oxavyn's ERP approach can connect important business processes so teams have better visibility across inventory, procurement, finance, products, vendors, employees, and operational activities.
+                </motion.p>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* SUBHEADING / PARAGRAPH / CARDS THIRD */}
+            {/* MEDIA SIDE */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="std-media-side"
+            >
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* CARDS BELOW */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            style={{ textAlign: 'center' }}
+            className="std-feature-card"
           >
-            <motion.p variants={fadeInUp} className="ec-subheading" style={{ maxWidth: '800px', margin: '0 auto 1rem' }}>
-              Connect finance, inventory, procurement, vendors, products, and internal operations.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="ec-paragraph" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
-              An e-commerce business requires strong operational infrastructure behind the storefront. Oxavyn's ERP approach can connect important business processes so teams have better visibility across inventory, procurement, finance, products, vendors, employees, and operational activities.
-            </motion.p>
-
             <div className="ec-grid-3" style={{ textAlign: 'left' }}>
               <motion.div variants={fadeInUp} className="ec-glass-card"><div className="ec-ambient-border-glow"></div>
                   <div className="ec-card-title" style={{fontSize: '1.1rem'}}>Inventory</div><div className="ec-card-desc" style={{fontSize: '0.9rem'}}>Monitor stock levels, product movement, and availability.</div>
@@ -372,53 +403,65 @@ export default function EcommerceClient() {
 
       {/* 7. AUTOMATION */}
       <section className="ec-section ec-section-alt">
-        <div className="ec-container">
+        <div className="ec-container std-layout-section">
           
-          {/* HEADING FIRST */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '3rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="ec-heading-secondary">Automate the Work Behind Every Transaction.</motion.h2>
-          </motion.div>
+          <div className="std-layout-split reverse">
+            {/* TEXT SIDE */}
+            <div className="std-text-side">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-heading"
+              >
+                <motion.h2 variants={fadeInUp} className="ec-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Automate the Work Behind Every Transaction.</motion.h2>
+              </motion.div>
 
-          {/* MEDIA SECOND (TIMELINE ACTS AS MEDIA HERE) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '3rem' }}
-          >
-            <div className="ec-timeline" style={{ background: 'white', padding: '2rem 3rem', borderRadius: '16px', border: '1px solid rgba(99, 102, 241, 0.1)', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', maxWidth: '800px', margin: '0 auto' }}>
-              <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>NEW ORDER</div></div>
-              <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>ORDER VALIDATION</div></div>
-              <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>INVENTORY UPDATED</div></div>
-              <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>WAREHOUSE TASK CREATED</div></div>
-              <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>CUSTOMER CONFIRMATION</div></div>
-              <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>SHIPMENT CREATED</div></div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="std-paragraph"
+              >
+                <motion.p variants={fadeInUp} className="ec-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>
+                  Reduce repetitive tasks and keep your e-commerce operation moving.
+                </motion.p>
+                <motion.p variants={fadeInUp} className="ec-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+                  Growing e-commerce operations often involve repetitive activities such as order confirmations, customer notifications, inventory updates, follow-ups, delivery alerts, reports, and internal task assignments. Connected automation can trigger these actions based on predefined business workflows.
+                </motion.p>
+              </motion.div>
             </div>
-          </motion.div>
 
-          {/* SUBHEADING / PARAGRAPH / FEATURES THIRD */}
+            {/* MEDIA SIDE (TIMELINE) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="std-media-side"
+            >
+              <div className="ec-timeline" style={{ background: 'white', padding: '2rem 3rem', borderRadius: '16px', border: '1px solid rgba(99, 102, 241, 0.1)', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', width: '100%' }}>
+                <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>NEW ORDER</div></div>
+                <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>ORDER VALIDATION</div></div>
+                <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>INVENTORY UPDATED</div></div>
+                <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>WAREHOUSE TASK CREATED</div></div>
+                <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>CUSTOMER CONFIRMATION</div></div>
+                <div className="ec-timeline-item" style={{ padding: '0.8rem 1rem', marginBottom: '0.5rem' }}><div className="ec-timeline-title" style={{ fontSize: '0.8rem' }}>SHIPMENT CREATED</div></div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* FEATURES BELOW */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
-            style={{ textAlign: 'center' }}
+            className="std-feature-card"
           >
-            <motion.p variants={fadeInUp} className="ec-subheading" style={{ maxWidth: '800px', margin: '0 auto 1rem' }}>
-              Reduce repetitive tasks and keep your e-commerce operation moving.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="ec-paragraph" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
-              Growing e-commerce operations often involve repetitive activities such as order confirmations, customer notifications, inventory updates, follow-ups, delivery alerts, reports, and internal task assignments. Connected automation can trigger these actions based on predefined business workflows.
-            </motion.p>
-            
-            <motion.div variants={fadeInUp} style={{ display: 'flex', justifyContent: 'center', gap: '4rem', textAlign: 'left', flexWrap: 'wrap' }}>
+            <motion.div variants={fadeInUp} style={{ display: 'flex', justifyContent: 'flex-start', gap: '4rem', textAlign: 'left', flexWrap: 'wrap' }}>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#4b5563', lineHeight: '2' }}>
                 <li>✓ Order confirmation</li>
                 <li>✓ Inventory synchronization</li>

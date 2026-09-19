@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import './WebDev.css';
 
 export default function WebDevelopmentPage() {
@@ -41,8 +42,7 @@ export default function WebDevelopmentPage() {
               <p>Our development process brings strategy, UX, engineering, performance, and scalability together from the beginning. The result is a digital experience that not only looks exceptional but also performs reliably across devices and environments.</p>
             </div>
             <div className="web-hero-actions">
-              <a href="#contact" className="web-btn web-btn-primary">Start Your Project &rarr;</a>
-              <a href="#work" className="web-btn web-btn-secondary">Explore Our Work &rarr;</a>
+              <Link href="/contact" className="web-btn web-btn-primary">Start Your Project &rarr;</Link>
             </div>
           </div>
         </div>

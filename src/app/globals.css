@@ -135,3 +135,137 @@ a {
     padding-bottom: 4rem !important;
   }
 }
+
+/* Standard Layout Utilities for Industries & Students */
+.std-layout-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.std-layout-split {
+  display: flex;
+  gap: 3rem;
+  align-items: stretch;
+}
+
+.std-layout-split.reverse {
+  flex-direction: row-reverse;
+}
+
+.std-text-side, .std-media-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.std-media-side {
+  min-height: 400px;
+}
+
+.std-feature-card {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Mobile Ordering */
+@media (max-width: 768px) {
+  .std-layout-split, .std-layout-split.reverse {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Flatten the text container on mobile to participate in split flex container */
+  .std-text-side {
+    display: contents; 
+  }
+  
+  .std-heading {
+    order: 1;
+  }
+  
+  .std-media-side {
+    order: 2;
+    aspect-ratio: 1 / 1;
+    min-height: unset;
+    height: auto;
+    margin: 1rem 0;
+  }
+  
+  .std-media-side .responsive-video-wrapper,
+  .std-media-side img {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .std-paragraph {
+    order: 3;
+  }
+}
+
+/* Parallax Banner Utilities */
+.parallax-banner {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.parallax-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(17, 24, 39, 0.9));
+  z-index: 1;
+}
+
+.parallax-banner .banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.parallax-banner .banner-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.parallax-banner .banner-content p {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: #d1d5db;
+}
+
+.vh-80 {
+  height: 80vh;
+  min-height: 400px;
+}
+
+.vh-90 {
+  height: 90vh;
+  min-height: 500px;
+}
+
+@media (max-width: 768px) {
+  .parallax-banner {
+    background-attachment: scroll; /* iOS Safari struggles with fixed backgrounds */
+  }
+  .vh-80, .vh-90 {
+    height: 60vh;
+    min-height: 350px;
+  }
+}

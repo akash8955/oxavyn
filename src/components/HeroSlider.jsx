@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import "./HeroSlider.css";
 
 const slides = [
@@ -9,6 +10,7 @@ const slides = [
     subtitle: "Built to Transform Your Business",
     description: "Harness the power of Artificial Intelligence and Machine Learning to automate processes, uncover insights, and create smarter digital experiences.",
     cta: "Explore AI Solutions",
+    link: "/services/ai-development",
     image: "/images/Banner_1.png"
   },
   {
@@ -17,6 +19,7 @@ const slides = [
     subtitle: "That Scale With Your Ambitions",
     description: "Build, migrate, and manage secure cloud environments designed for performance, flexibility, and long-term business growth.",
     cta: "Explore Cloud Solutions",
+    link: "/services/saas-development",
     image: "/images/Banner_2.png"
   },
   {
@@ -25,6 +28,7 @@ const slides = [
     subtitle: "That Drive Growth",
     description: "From intuitive UI/UX to powerful web and mobile applications, we turn ideas into seamless digital experiences your customers love.",
     cta: "Build Your Digital Product",
+    link: "/services/custom-software",
     image: "/images/Banner_3.png"
   },
   {
@@ -33,6 +37,7 @@ const slides = [
     subtitle: "Into Decisions That Matter",
     description: "Unlock the power of your data with advanced analytics, actionable insights, and intelligent solutions that help your business move forward.",
     cta: "Discover Data Solutions",
+    link: "/services/data-analytics",
     image: "/images/Banner_4.png"
   },
   {
@@ -41,6 +46,7 @@ const slides = [
     subtitle: "Built Around Your Business",
     description: "From customized applications and Salesforce solutions to digital marketing and enterprise technology, we build solutions that solve real business challenges.",
     cta: "Let's Build Together",
+    link: "/services/business-process-automation",
     image: "/images/Banner_5.png"
   }
 ];
@@ -86,7 +92,7 @@ export default function HeroSlider() {
                 <span>{slide.subtitle}</span>
               </h1>
               <p className="slide-description">{slide.description}</p>
-              <button className="btn-primary slide-btn">{slide.cta}</button>
+              <Link href={slide.link || "#"} className="btn-primary slide-btn">{slide.cta}</Link>
             </div>
             
             <div className="slide-visual">

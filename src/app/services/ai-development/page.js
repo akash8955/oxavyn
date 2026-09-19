@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import './AiDev.css';
 
 export default function AiDevelopmentPage() {
@@ -95,8 +96,8 @@ export default function AiDevelopmentPage() {
                 Transform ambitious ideas into intelligent digital products with AI systems designed around your users, business, and future growth.
               </p>
               <div className="ai-btn-group">
-                <a href="#cta" className="ai-btn ai-btn-primary">Start Your AI Project</a>
-                <a href="#intelligence" className="ai-btn ai-btn-secondary">Explore AI Systems</a>
+                <Link href="/services/generative-ai" className="ai-btn ai-btn-primary">Generative AI</Link>
+                <Link href="/services/machine-learning" className="ai-btn ai-btn-secondary">Machine Learning</Link>
               </div>
             </div>
           </div>
@@ -416,7 +417,7 @@ export default function AiDevelopmentPage() {
             Oxavyn transforms ambitious ideas into intelligent digital experiences built for the future.
           </p>
           <div className="ai-btn-group" style={{justifyContent: 'center'}}>
-            <a href="#contact" className="ai-btn ai-btn-primary" style={{padding: '1rem 2rem', fontSize: '1rem'}}>Start Your AI Project &rarr;</a>
+            <Link href="/contact" className="ai-btn ai-btn-primary" style={{padding: '1rem 2rem', fontSize: '1rem'}}>Start Your AI Project &rarr;</Link>
           </div>
         </div>
       </section>
