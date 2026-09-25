@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import ResponsiveVideo from '@/components/ResponsiveVideo';
+import DynamicMedia from '@/components/DynamicMedia';
 
 export default function FoundationalCareerClient() {
   const [formData, setFormData] = useState({
@@ -135,7 +135,7 @@ export default function FoundationalCareerClient() {
               </motion.h1>
               
               <motion.div variants={fadeInUp} className="fc-hero-media mobile-media" style={{ display: 'none', height: '300px' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="STUDENT" section="FOUNDATION" title="Build Your Foundation" fallbackSrc="/images/Banner_2.png" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </motion.div>
 
               <motion.h3 className="fc-subheading" variants={fadeInUp}>
@@ -155,7 +155,7 @@ export default function FoundationalCareerClient() {
             </div>
             
             <motion.div variants={fadeInUp} className="desktop-media" style={{ height: '500px' }}>
-                <ResponsiveVideo src="/images/career-vid.mp4" />
+                <DynamicMedia page="STUDENT" section="FOUNDATION" title="Build Your Foundation" fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
             </motion.div>
           </motion.div>
         </div>
@@ -180,7 +180,7 @@ export default function FoundationalCareerClient() {
             
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="STUDENT" section="FOUNDATION" title="Your Career Is a Journey" fallbackSrc="/images/Banner_2.png" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -205,7 +205,7 @@ export default function FoundationalCareerClient() {
                   <h3 className="fc-course-title">{card.title}</h3>
                   
                   <div className="fc-course-media" style={{ height: '200px' }}>
-                    <ResponsiveVideo src="/images/career-vid.mp4" />
+                    <DynamicMedia page="STUDENT" section="FOUNDATION" title={`Choose Your Story ${idx + 1}`} fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
                   </div>
 
                   <div className="fc-course-tags">
@@ -249,8 +249,8 @@ export default function FoundationalCareerClient() {
             ))}
           </div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ minHeight: '400px' }}>
-            <ResponsiveVideo src="/images/career-vid.mp4" />
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ minHeight: '400px', height: '100%' }}>
+            <DynamicMedia page="STUDENT" section="FOUNDATION" title="From Foundation to Opportunity" fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
           </motion.div>
         </div>
       </section>
@@ -276,8 +276,8 @@ export default function FoundationalCareerClient() {
                 <li>Problem-solving</li>
                 <li>Technical concepts</li>
               </ul>
-              <div style={{ minHeight: '200px' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              <div style={{ minHeight: '200px', height: '100%' }}>
+                <DynamicMedia page="STUDENT" section="FOUNDATION" title="Build Skill Before 1" fallbackSrc="/images/Banner_2.png" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
 
@@ -291,8 +291,8 @@ export default function FoundationalCareerClient() {
                 <li>Interviews</li>
                 <li>Placement preparation</li>
               </ul>
-              <div style={{ minHeight: '200px' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              <div style={{ minHeight: '200px', height: '100%' }}>
+                <DynamicMedia page="STUDENT" section="FOUNDATION" title="Build Skill Before 2" fallbackSrc="/images/Banner_2.png" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -412,8 +412,8 @@ export default function FoundationalCareerClient() {
             </p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ position: 'relative', minHeight: '500px' }}>
-            <ResponsiveVideo src="/images/career-vid.mp4" />
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ position: 'relative', minHeight: '500px', height: '100%' }}>
+            <DynamicMedia page="STUDENT" section="FOUNDATION" title="Professional Career Confidence" fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}

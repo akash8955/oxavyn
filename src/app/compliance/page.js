@@ -1,4 +1,5 @@
 import React from 'react';
+import DynamicBackground from '@/components/DynamicBackground';
 
 export const metadata = {
   title: 'Compliance | Oxavyn',
@@ -8,12 +9,12 @@ export const metadata = {
 export default function Compliance() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
-      <section className="parallax-banner vh-80" style={{ backgroundImage: 'url(/images/Banner_3.png)' }}>
+      <DynamicBackground page="LEGAL" section="Compliance" title="Banner Image" fallbackSrc="/images/Banner_3.png" className="parallax-banner vh-80">
         <div className="banner-content animate-fade-in">
           <h1>Compliance & Standards</h1>
           <p>Our commitment to legal, ethical, and industry-standard practices.</p>
         </div>
-      </section>
+      </DynamicBackground>
 
       <div style={{ position: 'relative', maxWidth: '1000px', margin: '0 auto', padding: '4rem 2rem' }}>
         <div className="glass-panel animate-fade-in delay-1" style={{ padding: '3rem' }}>

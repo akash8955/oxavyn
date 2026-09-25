@@ -2,17 +2,24 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import DynamicMedia from '@/components/DynamicMedia';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function EcommerceClient() {
   const [formData, setFormData] = useState({
-    name: "",
+    industryCategory: "E-Commerce",
+    fullName: "",
     email: "",
-    company: "",
-    businessType: "",
+    organizationName: "",
+    organizationType: "",
     interests: [],
     challenge: ""
   });
+  const [submitStatus, setSubmitStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -41,6 +48,35 @@ export default function EcommerceClient() {
       }
     }
     setFormData({ ...formData, interests: selectedValues });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus('Submitting...');
+    try {
+      const res = await fetch('/api/industry-queries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setSubmitStatus("Thanks for contacting Oxavyn. We will contact to you shortly with a solution.");
+        setFormData({
+          industryCategory: "E-Commerce",
+          fullName: "",
+          email: "",
+          organizationName: "",
+          organizationType: "",
+          interests: [],
+          challenge: ""
+        });
+        setTimeout(() => setSubmitStatus(''), 8000);
+      } else {
+        setSubmitStatus("Error submitting form. Please try again.");
+      }
+    } catch (err) {
+      setSubmitStatus("Error submitting form. Please try again.");
+    }
   };
 
   return (
@@ -77,7 +113,7 @@ export default function EcommerceClient() {
               transition={{ duration: 1, delay: 0.2 }}
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="E-Commerce" title="Built Smarter" src="/images/career-vid.mp4" />
             </motion.div>
 
             {/* SUBHEADING / PARAGRAPH THIRD */}
@@ -141,7 +177,7 @@ export default function EcommerceClient() {
               transition={{ duration: 0.8 }}
               className="std-media-side"
             >
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="E-Commerce" title="E-Commerce Moves Fast" src="/images/career-vid.mp4" />
             </motion.div>
           </div>
 
@@ -283,7 +319,7 @@ export default function EcommerceClient() {
               className="std-media-side"
             >
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="E-Commerce" title="Turn Every Customer" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -363,7 +399,7 @@ export default function EcommerceClient() {
               className="std-media-side"
             >
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="E-Commerce" title="Manage Business" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -573,29 +609,29 @@ export default function EcommerceClient() {
                 <p style={{ color: '#4b5563' }}>Tell us what you're looking to improve.</p>
               </div>
 
-              <form onSubmit={(e) => e.preventDefault()} style={{ position: 'relative', zIndex: 1 }}>
+              <form onSubmit={handleSubmit} style={{ position: 'relative', zIndex: 1 }}>
                 
                 <div className="ec-grid-2" style={{ gap: '1.5rem', marginBottom: '1.5rem' }}>
                   <div className="ec-form-group" style={{ marginBottom: 0 }}>
                     <label className="ec-form-label">Full Name</label>
-                    <input type="text" className="ec-form-input" placeholder="Enter your full name" />
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} className="ec-form-input" placeholder="Enter your full name" required />
                   </div>
                   
                   <div className="ec-form-group" style={{ marginBottom: 0 }}>
                     <label className="ec-form-label">Work Email</label>
-                    <input type="email" className="ec-form-input" placeholder="Enter your business email" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} className="ec-form-input" placeholder="Enter your business email" required />
                   </div>
                 </div>
 
                 <div className="ec-grid-2" style={{ gap: '1.5rem', marginBottom: '1.5rem' }}>
                   <div className="ec-form-group" style={{ marginBottom: 0 }}>
                     <label className="ec-form-label">Company / Brand Name</label>
-                    <input type="text" className="ec-form-input" placeholder="Enter your company or brand name" />
+                    <input type="text" name="organizationName" value={formData.organizationName} onChange={handleChange} className="ec-form-input" placeholder="Enter your company or brand name" required />
                   </div>
 
                   <div className="ec-form-group" style={{ marginBottom: 0 }}>
                     <label className="ec-form-label">Business Type</label>
-                    <select className="ec-form-select" defaultValue="">
+                    <select className="ec-form-select" name="organizationType" value={formData.organizationType} onChange={handleChange} required>
                       <option value="" disabled>Select business type</option>
                       <option value="D2C">D2C</option>
                       <option value="Marketplace">Marketplace</option>
@@ -630,12 +666,13 @@ export default function EcommerceClient() {
 
                 <div className="ec-form-group">
                   <label className="ec-form-label">Current Challenge</label>
-                  <textarea className="ec-form-textarea" placeholder="Tell us about your current system or business challenge..."></textarea>
+                  <textarea name="challenge" value={formData.challenge} onChange={handleChange} className="ec-form-textarea" placeholder="Tell us about your current system or business challenge..." required></textarea>
                 </div>
 
-                <button type="submit" className="ec-btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '1.2rem' }}>
+                <button type="submit" className="ec-btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '1.2rem' }} disabled={submitStatus === 'Submitting...'}>
                   Send Enquiry
                 </button>
+                {submitStatus && <p style={{ textAlign: 'center', fontSize: '0.9rem', color: '#10b981', marginTop: '1rem', fontWeight: 500 }}>{submitStatus}</p>}
                 <p style={{ textAlign: 'center', fontSize: '0.85rem', color: '#6b7280', marginTop: '1.5rem' }}>
                   Our team will review your requirements and help identify the right technology approach.
                 </p>

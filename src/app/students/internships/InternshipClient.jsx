@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import ResponsiveVideo from '@/components/ResponsiveVideo';
+import DynamicMedia from '@/components/DynamicMedia';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -288,7 +288,7 @@ export default function InternshipClient() {
                   <h3 className="card-title">{prog.title}</h3>
                   
                   <div className="card-media" style={{ height: '200px' }}>
-                    <ResponsiveVideo src="/images/career-vid.mp4" />
+                    <DynamicMedia page="STUDENT" section="INTERNSHIP" title={"Card Video " + (index + 1)} fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
                   </div>
 
                   <div className="card-tags">

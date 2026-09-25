@@ -2,18 +2,25 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import DynamicMedia from '@/components/DynamicMedia';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function RetailClient() {
   const [formData, setFormData] = useState({
-    name: "",
+    industryCategory: "Retail",
+    fullName: "",
     email: "",
     phone: "",
-    company: "",
-    businessType: "",
+    organizationName: "",
+    organizationType: "",
     interests: [],
     challenge: ""
   });
+  const [submitStatus, setSubmitStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -42,6 +49,36 @@ export default function RetailClient() {
       }
     }
     setFormData({ ...formData, interests: selectedValues });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus('Submitting...');
+    try {
+      const res = await fetch('/api/industry-queries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setSubmitStatus("Thanks for contacting Oxavyn. We will contact to you shortly with a solution.");
+        setFormData({
+          industryCategory: "Retail",
+          fullName: "",
+          email: "",
+          phone: "",
+          organizationName: "",
+          organizationType: "",
+          interests: [],
+          challenge: ""
+        });
+        setTimeout(() => setSubmitStatus(''), 8000);
+      } else {
+        setSubmitStatus("Error submitting form. Please try again.");
+      }
+    } catch (err) {
+      setSubmitStatus("Error submitting form. Please try again.");
+    }
   };
 
   return (
@@ -78,7 +115,7 @@ export default function RetailClient() {
               transition={{ duration: 1, delay: 0.2 }}
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="Retail" title="The Modern Retail" src="/images/career-vid.mp4" />
             </motion.div>
 
             {/* SUBHEADING / PARAGRAPH THIRD */}
@@ -125,7 +162,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Operations Behind" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -235,7 +272,7 @@ export default function RetailClient() {
                 
                 <div className="ret-course-media">
                   <div style={{ height: '200px' }}>
-                    <ResponsiveVideo src="/images/career-vid.mp4" />
+                    <ResponsiveVideo page="INDUSTRIES" section="Retail" title="Retail In Motion" src="/images/career-vid.mp4" />
                   </div>
                 </div>
 
@@ -279,7 +316,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <ResponsiveVideo src="/images/career-vid.mp4" />
+                <ResponsiveVideo page="INDUSTRIES" section="Retail" title="Customers Across Channels" src="/images/career-vid.mp4" />
               </div>
             </motion.div>
           </div>
@@ -360,7 +397,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Foundation For Growth" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -442,7 +479,7 @@ export default function RetailClient() {
 
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="Retail" title="Data That Drives" src="/images/career-vid.mp4" />
             </motion.div>
           </div>
 
@@ -526,34 +563,34 @@ export default function RetailClient() {
                   <p style={{ color: '#6b7280', marginBottom: '1rem', fontWeight: 500 }}>Tell us about your business and what you want to improve.</p>
                 </div>
 
-                <form onSubmit={(e) => e.preventDefault()}>
+                <form onSubmit={handleSubmit}>
                 <div className="ret-grid-2" style={{ gap: '1.5rem', marginBottom: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
                   <div className="ret-form-group" style={{ marginBottom: 0 }}>
                     <label className="ret-form-label">Full Name</label>
-                    <input type="text" className="ret-form-input" placeholder="Enter your full name" />
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} className="ret-form-input" placeholder="Enter your full name" required />
                   </div>
                   
                   <div className="ret-form-group" style={{ marginBottom: 0 }}>
                     <label className="ret-form-label">Work Email</label>
-                    <input type="email" className="ret-form-input" placeholder="Enter your business email" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} className="ret-form-input" placeholder="Enter your business email" required />
                   </div>
                 </div>
 
                 <div className="ret-grid-2" style={{ gap: '1.5rem', marginBottom: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
                   <div className="ret-form-group" style={{ marginBottom: 0 }}>
                     <label className="ret-form-label">Phone Number</label>
-                    <input type="tel" className="ret-form-input" placeholder="Enter your phone number" />
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="ret-form-input" placeholder="Enter your phone number" />
                   </div>
 
                   <div className="ret-form-group" style={{ marginBottom: 0 }}>
                     <label className="ret-form-label">Company / Brand Name</label>
-                    <input type="text" className="ret-form-input" placeholder="Enter your company or brand name" />
+                    <input type="text" name="organizationName" value={formData.organizationName} onChange={handleChange} className="ret-form-input" placeholder="Enter your company or brand name" required />
                   </div>
                 </div>
 
                 <div className="ret-form-group">
                   <label className="ret-form-label">Business Type</label>
-                  <select className="ret-form-select" defaultValue="">
+                  <select className="ret-form-select" name="organizationType" value={formData.organizationType} onChange={handleChange} required>
                     <option value="" disabled>Select business type</option>
                     <option value="Retail Store">Retail Store</option>
                     <option value="Multi-Store Retail">Multi-Store Retail</option>
@@ -592,12 +629,13 @@ export default function RetailClient() {
 
                 <div className="ret-form-group">
                   <label className="ret-form-label">Current Challenge</label>
-                  <textarea className="ret-form-textarea" placeholder="Tell us about your current system, challenge, or requirement..."></textarea>
+                  <textarea name="challenge" value={formData.challenge} onChange={handleChange} className="ret-form-textarea" placeholder="Tell us about your current system, challenge, or requirement..." required></textarea>
                 </div>
 
-                <button type="submit" className="ret-btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '1.2rem' }}>
+                <button type="submit" className="ret-btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '1.2rem' }} disabled={submitStatus === 'Submitting...'}>
                   Send Enquiry
                 </button>
+                {submitStatus && <p style={{ textAlign: 'center', fontSize: '0.9rem', color: '#10b981', marginTop: '1rem', fontWeight: 500 }}>{submitStatus}</p>}
                 <p style={{ textAlign: 'center', fontSize: '0.85rem', color: '#6b7280', marginTop: '1rem' }}>
                   Our team will review your requirements and help identify the appropriate next step.
                 </p>

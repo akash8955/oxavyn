@@ -1,21 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { caseStudies } from '../../data/caseStudiesData';
+import DynamicBackground from '@/components/DynamicBackground';
 import './CaseStudies.css';
-
-export default function CaseStudiesClient() {
+export default function CaseStudiesClient({ caseStudies = [] }) {
   return (
     <div className="case-studies-page">
       <div className="case-studies-ambient-bg"></div>
 
       {/* Banner Section */}
-      <section className="cs-banner" style={{ backgroundImage: 'url(/images/case-studies/case_studies_banner_1789408850530.jpg)' }}>
+      <DynamicBackground page="CASE STUDIES" section="Case Studies Banner" title="Banner Image" fallbackSrc="/images/case-studies/case_studies_banner_1789408850530.jpg" className="cs-banner">
         <div className="cs-banner-content animate-fade-in">
           <h1>Proven Transformations</h1>
           <p>Explore how we engineer success for leading global enterprises through cutting-edge technology and strategic innovation.</p>
         </div>
-      </section>
+      </DynamicBackground>
 
       <div className="cs-container">
         <div className="cs-list">

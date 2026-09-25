@@ -32,10 +32,10 @@ export default function BlogArticleClient({ blog }) {
           <div className="article-body">
             <p className="article-intro">{blog.desc}</p>
             
-            {/* We split by \n\n to render paragraphs properly */}
-            {blog.content.split('\n\n').map((paragraph, idx) => (
+            {/* We split by \n or \n\n to render paragraphs properly */}
+            {blog.content ? blog.content.replace(/\\n/g, '\n').split('\n\n').map((paragraph, idx) => (
               <p key={idx}>{paragraph}</p>
-            ))}
+            )) : null}
           </div>
         </article>
       </main>

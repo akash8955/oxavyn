@@ -1,10 +1,26 @@
 import { notFound } from 'next/navigation';
-import { blogs } from '../../../data/blogData';
+import mongoose from 'mongoose';
+import Blog from '../../../models/Blog';
 import BlogArticleClient from './BlogArticleClient';
+
+export const revalidate = 0;
+
+async function getBlog(id) {
+  if (mongoose.connection.readyState !== 1) {
+    await mongoose.connect(process.env.MONGODB_URI);
+  }
+  let blog = null;
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    blog = await Blog.findById(id).lean();
+  }
+  
+  if (!blog) return null;
+  return { ...blog, _id: blog._id.toString(), id: blog._id.toString() };
+}
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
-  const blog = blogs.find(b => b.id.toString() === resolvedParams.id);
+  const blog = await getBlog(resolvedParams.id);
   
   if (!blog) {
     return { title: 'Article Not Found | Oxavyn' };
@@ -18,7 +34,7 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogArticlePage({ params }) {
   const resolvedParams = await params;
-  const blog = blogs.find(b => b.id.toString() === resolvedParams.id);
+  const blog = await getBlog(resolvedParams.id);
 
   if (!blog) {
     notFound();

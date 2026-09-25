@@ -1,14 +1,33 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { jobsData, jobCategories } from '../data/jobsData';
 import './JobOpenings.css';
 
 const JobOpenings = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredJobs = jobsData.filter((job) => 
+  useEffect(() => {
+    fetch('/api/jobs')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setJobs(data.data);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch jobs', err);
+        setLoading(false);
+      });
+  }, []);
+
+  const jobCategories = ['All', ...new Set(jobs.map(job => job.category))];
+
+  const filteredJobs = jobs.filter((job) => 
     activeCategory === 'All' ? true : job.category === activeCategory
   );
 
@@ -40,9 +59,11 @@ const JobOpenings = () => {
         </div>
 
         <div className="jobs-grid">
-          {filteredJobs.length > 0 ? (
+          {loading ? (
+            <div style={{ textAlign: 'center', width: '100%', padding: '2rem' }}>Loading jobs...</div>
+          ) : filteredJobs.length > 0 ? (
             filteredJobs.map((job, index) => (
-              <div className={`job-card animate-fade-in delay-${(index % 3) + 1}`} key={job.id}>
+              <div className={`job-card animate-fade-in delay-${(index % 3) + 1}`} key={job._id}>
                 <div className="job-card-content">
                   <h3 className="job-card-title">{job.title}</h3>
                   <div className="job-card-meta">
@@ -69,7 +90,7 @@ const JobOpenings = () => {
                   <p className="job-card-desc">{job.description}</p>
                 </div>
                 <div className="job-card-action">
-                  <Link href={`/careers/${job.id}`} className="btn-view-job" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>View Job</Link>
+                  <Link href={`/careers/${job._id}`} className="btn-view-job" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>View Job</Link>
                 </div>
               </div>
             ))

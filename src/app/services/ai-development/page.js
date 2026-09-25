@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import DynamicMedia from '../../../components/DynamicMedia';
 import './AiDev.css';
 
 export default function AiDevelopmentPage() {
@@ -114,17 +115,15 @@ export default function AiDevelopmentPage() {
               onMouseEnter={() => handleVideoEnter(vid1Ref)}
               onMouseLeave={() => handleVideoLeave(vid1Ref)}
             >
-              <video 
+              <DynamicMedia 
+                page="SERVICES"
+                section="AI Development"
+                title="Build With Intelligence"
+                fallbackSrc="/images/service/ai_v1.mp4"
                 ref={vid1Ref}
-                autoPlay 
-                loop 
-                muted 
                 playsInline
-                src="/images/service/ai_v1.mp4"
                 poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><rect width='100%' height='100%' fill='%23e0e7ff'/><text x='50%' y='50%' font-family='sans-serif' font-size='20' font-weight='bold' fill='%236366f1' text-anchor='middle' dominant-baseline='middle'>[AI VIDEO 01]</text></svg>"
-              >
-                Your browser does not support the video tag.
-              </video>
+              />
             </div>
           </div>
         </div>
@@ -328,17 +327,15 @@ export default function AiDevelopmentPage() {
           <div className="vid-particles" style={{bottom: '-50px', right: '-50px', background: 'radial-gradient(circle, rgba(99,102,241,0.4) 0%, transparent 70%)'}}></div>
           
           <div className="frameless-video">
-            <video 
+            <DynamicMedia 
+              page="SERVICES"
+              section="AI Development"
+              title="See Intelligence in Motion"
+              fallbackSrc="/images/service/ai_v2.mp4"
               ref={vid2Ref}
-              autoPlay 
-              loop 
-              muted 
               playsInline
-              src="/images/service/ai_v2.mp4"
               poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><rect width='100%' height='100%' fill='%23fdf2f8'/><text x='50%' y='50%' font-family='sans-serif' font-size='24' font-weight='bold' fill='%23f472b6' text-anchor='middle' dominant-baseline='middle'>[AI VIDEO 02]</text></svg>"
-            >
-              Your browser does not support the video tag.
-            </video>
+            />
           </div>
         </div>
       </section>

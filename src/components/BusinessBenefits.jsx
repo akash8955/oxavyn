@@ -1,4 +1,5 @@
 import React from 'react';
+import DynamicMedia from './DynamicMedia';
 import './BusinessBenefits.css';
 
 const businessData = [
@@ -56,7 +57,7 @@ const BusinessBenefits = () => {
               </div>
               
               <div className="bb-card-image">
-                <img src={card.image} alt={card.heading} />
+                <DynamicMedia page="HOME" section="Which Business" title={`Image ${index + 1}`} fallbackSrc={card.image} alt={card.heading} />
               </div>
             </div>
           ))}

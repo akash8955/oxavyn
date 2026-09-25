@@ -1,4 +1,5 @@
 import React from 'react';
+import DynamicBackground from '@/components/DynamicBackground';
 
 export const metadata = {
   title: 'Refund & Cancellation Policy | Oxavyn',
@@ -8,12 +9,12 @@ export const metadata = {
 export default function RefundAndCancellation() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
-      <section className="parallax-banner vh-80" style={{ backgroundImage: 'url(/images/Banner_4.png)' }}>
+      <DynamicBackground page="LEGAL" section="Refund & Cancellation Policy" title="Banner Image" fallbackSrc="/images/Banner_4.png" className="parallax-banner vh-80">
         <div className="banner-content animate-fade-in">
           <h1>Refund & Cancellation</h1>
           <p>Clear, transparent policies for project cancellations and financial refunds.</p>
         </div>
-      </section>
+      </DynamicBackground>
 
       <div style={{ position: 'relative', maxWidth: '1000px', margin: '0 auto', padding: '4rem 2rem' }}>
         <div className="glass-panel animate-fade-in delay-1" style={{ padding: '3rem' }}>

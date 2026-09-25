@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import DynamicMedia from "./DynamicMedia";
 import "./HeroSlider.css";
 
 const slides = [
@@ -97,7 +98,7 @@ export default function HeroSlider() {
             
             <div className="slide-visual">
               {slide.image.startsWith('/') ? (
-                <img src={slide.image} alt={slide.title} className="hero-graphic" />
+                <DynamicMedia page="HOME" section="Banner" title={`Banner ${slide.id}`} fallbackSrc={slide.image} alt={slide.title} className="hero-graphic" />
               ) : (
                 <div className="glass-panel visual-card">
                   <span className="visual-icon">{slide.image}</span>

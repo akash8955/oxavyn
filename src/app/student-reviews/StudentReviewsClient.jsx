@@ -1,30 +1,12 @@
 "use client";
 import React, { useRef, useState } from 'react';
+import DynamicBackground from '@/components/DynamicBackground';
 import './StudentReviews.css';
 
-const internshipReviews = [
-  { id: 1, name: "Aarav Sharma", role: "Software Engineer Intern", text: "The internship at Oxavyn completely transformed my understanding of enterprise software. The mentorship was unparalleled.", rating: 5, avatar: "AS" },
-  { id: 2, name: "Priya Patel", role: "Data Science Intern", text: "Working with real-world datasets and cutting-edge AI models gave me the exact exposure I needed for my career.", rating: 5, avatar: "PP" },
-  { id: 3, name: "Rohan Gupta", role: "Product Design Intern", text: "The focus on ultra-luxury design aesthetics taught me how to craft experiences, not just interfaces. A truly premium internship.", rating: 5, avatar: "RG" },
-  { id: 4, name: "Neha Singh", role: "Marketing Intern", text: "I was given ownership of actual campaigns. The level of trust and the elite environment is something you won't find anywhere else.", rating: 4, avatar: "NS" },
-  { id: 5, name: "Kunal Verma", role: "Backend Intern", text: "I learned more in 3 months here than in my entire degree. The engineering standards are incredibly high.", rating: 5, avatar: "KV" }
-];
-
-const skillEnhancementReviews = [
-  { id: 1, name: "Vikram Mehta", role: "Full Stack Developer", text: "The Skill Enhancement program upskilled me in React and Node.js. The curriculum is rigorous and perfectly aligned with industry needs.", rating: 5, avatar: "VM" },
-  { id: 2, name: "Anjali Desai", role: "UI/UX Designer", text: "Learning glassmorphism and modern web aesthetics from the best. My portfolio has never looked better.", rating: 5, avatar: "AD" },
-  { id: 3, name: "Karan Verma", role: "Cloud Architect", text: "The AWS certification track was phenomenal. I went from basics to deploying scalable infrastructure in weeks.", rating: 5, avatar: "KV" },
-  { id: 4, name: "Sneha Reddy", role: "Frontend Developer", text: "A fantastic deep dive into modern CSS and performance optimization. Highly recommended for professionals.", rating: 5, avatar: "SR" },
-  { id: 5, name: "Ishaan Ali", role: "DevOps Engineer", text: "The CI/CD pipelines and automation masterclass was exactly what I needed to get my promotion.", rating: 5, avatar: "IA" }
-];
-
-const foundationalReviews = [
-  { id: 1, name: "Amit Kumar", role: "CS Student", text: "This program laid the perfect foundation for my career. The concepts are taught with extreme clarity.", rating: 5, avatar: "AK" },
-  { id: 2, name: "Divya Sharma", role: "IT Graduate", text: "I finally understand data structures and algorithms, all thanks to the brilliant mentors at Oxavyn.", rating: 4, avatar: "DS" },
-  { id: 3, name: "Rahul Jain", role: "Software Analyst", text: "The career guidance and mock interviews helped me land my dream job. They really care about your success.", rating: 5, avatar: "RJ" },
-  { id: 4, name: "Pooja Mishra", role: "Tech Enthusiast", text: "From zero to coding my first application. The Foundational course is exactly what beginners need.", rating: 5, avatar: "PM" },
-  { id: 5, name: "Tariq Khan", role: "BCA Student", text: "The holistic approach to career building is what sets this apart. They don't just teach code, they build careers.", rating: 5, avatar: "TK" }
-];
+export default function StudentReviewsClient({ reviews = [] }) {
+  const internshipReviews = reviews.filter(r => r.program === 'Internship Program' || r.program === 'Internship');
+  const skillEnhancementReviews = reviews.filter(r => r.program === 'Skill Enhancement');
+  const foundationalReviews = reviews.filter(r => r.program === 'Foundational & Career' || r.program === 'Foundational');
 
 const ReviewSlider = ({ title, reviews }) => {
   const sliderRef = useRef(null);
@@ -74,17 +56,37 @@ const ReviewSlider = ({ title, reviews }) => {
   );
 };
 
-export default function StudentReviewsClient() {
-  const [formData, setFormData] = useState({ name: '', role: '', program: 'Internship', rating: '5', review: '' });
+  const [formData, setFormData] = useState({ name: '', role: '', program: 'Internship', rating: '5', text: '' });
+  const [submitStatus, setSubmitStatus] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you! Your review has been submitted for moderation.");
-    setFormData({ name: '', role: '', program: 'Internship', rating: '5', review: '' });
+    setSubmitStatus('Submitting...');
+    try {
+      const payload = {
+        ...formData,
+        avatar: formData.name.substring(0, 2).toUpperCase(),
+        rating: Number(formData.rating)
+      };
+      const res = await fetch('/api/student-reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        setSubmitStatus("Our team will verify your authenticity and if you are a genuine person your review will show within 24 hours. Thanks for submitting your review.");
+        setFormData({ name: '', role: '', program: 'Internship', rating: '5', text: '' });
+        setTimeout(() => setSubmitStatus(''), 8000);
+      } else {
+        setSubmitStatus("Error submitting review. Please try again.");
+      }
+    } catch (err) {
+      setSubmitStatus("Error submitting review. Please try again.");
+    }
   };
 
   return (
@@ -92,13 +94,13 @@ export default function StudentReviewsClient() {
       <div className="reviews-ambient-bg"></div>
 
       {/* Banner Section */}
-      <section className="reviews-banner" style={{ backgroundImage: 'url(/images/Banner_1.png)' }}>
+      <DynamicBackground page="STUDENT REVIEWS" section="Student Reviews Banner" title="Banner Image" fallbackSrc="/images/Banner_1.png" className="reviews-banner">
         <div className="reviews-banner-overlay"></div>
         <div className="reviews-banner-content animate-fade-in">
           <h1>Student Excellence</h1>
           <p>Hear from the brilliant minds who have elevated their careers through our elite programs.</p>
         </div>
-      </section>
+      </DynamicBackground>
 
       <div className="reviews-container">
         {/* Sliders */}
@@ -141,9 +143,10 @@ export default function StudentReviewsClient() {
                 </div>
               </div>
               <div className="form-group">
-                <textarea name="review" placeholder="Write your review here..." rows="4" value={formData.review} onChange={handleChange} required></textarea>
+                <textarea name="text" placeholder="Write your review here..." rows="4" value={formData.text} onChange={handleChange} required></textarea>
               </div>
-              <button type="submit" className="btn-primary">Submit Review</button>
+              <button type="submit" className="btn-primary" disabled={submitStatus === 'Submitting...'}>Submit Review</button>
+              {submitStatus && <p style={{ marginTop: '1rem', color: '#10b981', fontWeight: '500' }}>{submitStatus}</p>}
             </form>
           </div>
         </div>

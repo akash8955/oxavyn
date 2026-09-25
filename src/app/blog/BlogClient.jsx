@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { blogs, filters } from '../../data/blogData';
+import DynamicBackground from '@/components/DynamicBackground';
+import DynamicMedia from '@/components/DynamicMedia';
 import './Blog.css';
+export const filters = ['All', 'Technology', 'Design', 'Business', 'Innovation'];
 
-export default function BlogClient() {
+export default function BlogClient({ blogs = [] }) {
   const [activeFilter, setActiveFilter] = useState('All');
   
   const filteredBlogs = activeFilter === 'All' ? blogs : blogs.filter(b => b.category === activeFilter);
@@ -15,12 +17,12 @@ export default function BlogClient() {
       <div className="blog-ambient-bg"></div>
       
       {/* Banner Section */}
-      <section className="blog-banner" style={{ backgroundImage: 'url(/images/blog/blog_banner_1789406612451.jpg)' }}>
+      <DynamicBackground page="BLOG" section="Blog Banner" title="Banner Image" fallbackSrc="/images/blog/blog_banner_1789406612451.jpg" className="blog-banner">
         <div className="blog-banner-content animate-fade-in">
           <h1>Insights & Innovations</h1>
           <p>Discover the latest trends in technology, luxury design, and enterprise solutions.</p>
         </div>
-      </section>
+      </DynamicBackground>
 
       {/* Filter Bar */}
       <div className="blog-filter-bar">
@@ -40,11 +42,13 @@ export default function BlogClient() {
         {activeFilter === 'All' && (
           <section className="featured-blog glass-panel animate-fade-in delay-1">
             <div className="featured-image-wrapper">
-              <Image 
-                src="/images/blog/featured_blog_1789406665375.jpg" 
+              <DynamicMedia 
+                page="BLOG"
+                section="Featured Blog"
+                title="Featured Image"
+                fallbackSrc="/images/blog/featured_blog_1789406665375.jpg" 
                 alt="Featured Blog" 
-                width={800} 
-                height={500} 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 className="featured-image"
               />
             </div>

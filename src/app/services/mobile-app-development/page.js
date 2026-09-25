@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import DynamicMedia from "../../../components/DynamicMedia";
 import "./MobileDev.css";
 
 // Reusing global Navbar and Footer (they are already provided by layout.js, so we don't import them here to prevent duplicates)
@@ -89,8 +90,8 @@ export default function MobileAppDevelopmentPage() {
             </p>
           </div>
           <div className="intro-abstract" style={{ position: "relative", zIndex: 10, display: "flex", justifyContent: "center" }}>
-            <img 
-              src="/images/app_customer.png" 
+            <DynamicMedia 
+              page="SERVICES" section="Mobile App Development" title="Built for Mobile" fallbackSrc="/images/app_customer.png" 
               alt="Customers using mobile apps" 
               style={{ maxWidth: "100%", height: "auto", maxHeight: "550px", animation: "float 6s infinite ease-in-out" }} 
             />
@@ -234,17 +235,17 @@ export default function MobileAppDevelopmentPage() {
         <div className="mockups-showcase">
           {/* Mockup 1 */}
           <div className="mockup-wrapper mockup-1">
-            <img src="/images/app_look1.png" alt="App look 1" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+            <DynamicMedia page="SERVICES" section="Mobile App Development" title="Design to Be Remembered 1" fallbackSrc="/images/app_look1.png" alt="App look 1" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
           </div>
           
           {/* Mockup 2 */}
           <div className="mockup-wrapper mockup-2">
-            <img src="/images/app_look2.png" alt="App look 2" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+            <DynamicMedia page="SERVICES" section="Mobile App Development" title="Design to Be Remembered 2" fallbackSrc="/images/app_look2.png" alt="App look 2" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
           </div>
           
           {/* Mockup 3 */}
           <div className="mockup-wrapper mockup-3">
-            <img src="/images/app_look3.png" alt="App look 3" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+            <DynamicMedia page="SERVICES" section="Mobile App Development" title="Design to Be Remembered 3" fallbackSrc="/images/app_look3.png" alt="App look 3" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
           </div>
         </div>
       </section>
@@ -304,8 +305,8 @@ export default function MobileAppDevelopmentPage() {
           </div>
           
           <div className="why-visual" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <img 
-              src="/images/app_why.png" 
+            <DynamicMedia 
+              page="SERVICES" section="Mobile App Development" title="Why Businesses Choose" fallbackSrc="/images/app_why.png" 
               alt="Why choose Oxavyn" 
               style={{ maxWidth: "100%", height: "auto", maxHeight: "550px" }} 
             />

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
+import DynamicMedia from '@/components/DynamicMedia';
 import './CareerHero.css';
 
 const CareerHero = () => {
@@ -71,8 +72,11 @@ const CareerHero = () => {
 
   return (
     <>
-      <section className="parallax-banner vh-90" style={{ backgroundImage: 'url(/images/Banner_3.png)' }}>
-        <div className="banner-content animate-fade-in">
+      <section className="parallax-banner vh-90" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+          <DynamicMedia page="CAREERS" section="Careers Banner" title="Career Banner Image" fallbackSrc="/images/Banner_3.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </div>
+        <div className="banner-content animate-fade-in" style={{ position: 'relative', zIndex: 1 }}>
           <h1>
             A Career Built for <span style={{ color: '#a29bfe' }}>Infinite Possibilities.</span>
           </h1>
@@ -88,17 +92,18 @@ const CareerHero = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <video
-            ref={videoRef}
-            src="/images/career-vid.mp4"
+          <DynamicMedia 
+            page="CAREERS" 
+            section="Careers Video" 
+            title="A Career Built For" 
+            fallbackSrc="/images/career-vid.mp4" 
             className="career-video"
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-          >
-            Your browser does not support the video tag.
-          </video>
+          />
         </div>
       </section>
     </>

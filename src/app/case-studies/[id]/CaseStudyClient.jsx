@@ -39,11 +39,13 @@ export default function CaseStudyClient({ study }) {
           </div>
 
           <div className="cs-article-body">
-            <p className="cs-article-intro">{study.summary}</p>
-            
-            <p>Our strategic approach involved a complete end-to-end evaluation of existing infrastructure and workflows. By identifying key bottlenecks and implementing our proprietary automation technologies, we were able to deliver unprecedented results.</p>
-            
-            <p>The solution was deployed seamlessly with zero downtime, ensuring that day-to-day operations continued without interruption while the new capabilities were brought online. This transformation is a testament to the power of integrating high-end modern tech with deep industry expertise.</p>
+            {study.fullContent ? (
+              study.fullContent.split('\n\n').map((paragraph, index) => (
+                <p key={index} className={index === 0 ? "cs-article-intro" : ""}>{paragraph}</p>
+              ))
+            ) : (
+              <p className="cs-article-intro">{study.summary}</p>
+            )}
           </div>
         </article>
       </main>

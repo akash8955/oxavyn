@@ -3,10 +3,32 @@ import React from 'react';
 import './ContactForm.css';
 
 export default function ContactForm() {
-  const handleSubmit = (e) => {
+  const [submitStatus, setSubmitStatus] = React.useState('');
+  const [formData, setFormData] = React.useState({ firstName: '', lastName: '', email: '', company: '', service: '', message: '' });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Usually an API call here
-    alert("Thank you for reaching out! We'll get back to you shortly.");
+    setSubmitStatus('Submitting...');
+    try {
+      const res = await fetch('/api/contact-queries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setSubmitStatus("Thanks for submitting. Our team will contact you soon.");
+        setFormData({ firstName: '', lastName: '', email: '', company: '', service: '', message: '' });
+        setTimeout(() => setSubmitStatus(''), 8000);
+      } else {
+        setSubmitStatus("Error submitting form. Please try again.");
+      }
+    } catch (err) {
+      setSubmitStatus("Error submitting form. Please try again.");
+    }
   };
 
   return (
@@ -59,27 +81,27 @@ export default function ContactForm() {
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" placeholder="John" required />
+                <input type="text" id="firstName" placeholder="John" value={formData.firstName} onChange={handleChange} required />
               </div>
               <div className="form-group">
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" placeholder="Doe" required />
+                <input type="text" id="lastName" placeholder="Doe" value={formData.lastName} onChange={handleChange} required />
               </div>
             </div>
 
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <input type="email" id="email" placeholder="john@company.com" required />
+              <input type="email" id="email" placeholder="john@company.com" value={formData.email} onChange={handleChange} required />
             </div>
 
             <div className="form-group">
               <label htmlFor="company">Company</label>
-              <input type="text" id="company" placeholder="Your Company Name" />
+              <input type="text" id="company" placeholder="Your Company Name" value={formData.company} onChange={handleChange} />
             </div>
 
             <div className="form-group">
               <label htmlFor="service">How can we help?</label>
-              <select id="service" required defaultValue="">
+              <select id="service" required value={formData.service} onChange={handleChange}>
                 <option value="" disabled>Select a service</option>
                 <option value="web">Web Development</option>
                 <option value="mobile">Mobile App Development</option>
@@ -91,13 +113,14 @@ export default function ContactForm() {
 
             <div className="form-group">
               <label htmlFor="message">Message</label>
-              <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+              <textarea id="message" placeholder="Tell us about your project..." value={formData.message} onChange={handleChange} required></textarea>
             </div>
 
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="submit-btn" disabled={submitStatus === 'Submitting...'}>
               Send Message
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
+            {submitStatus && <p style={{ marginTop: '1rem', color: '#10b981', fontWeight: '500', textAlign: 'center' }}>{submitStatus}</p>}
           </form>
         </div>
 

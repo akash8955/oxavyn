@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import DynamicMedia from './DynamicMedia';
 import './AboutEditorial.css';
 
 export default function AboutEditorial() {
@@ -29,23 +30,94 @@ export default function AboutEditorial() {
     <article className="about-page-wrapper" ref={containerRef}>
 
       {/* 1. HERO SECTION (Parallax Banner) */}
-      <section className="parallax-banner vh-90" style={{ backgroundImage: 'url(/images/Banner_2.png)' }}>
-        <div className="banner-content fade-in-up">
-          <span style={{ display: 'block', marginBottom: '1rem', color: '#a29bfe', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>ABOUT OXAVYN</span>
-          <h1>
-            We build technology that <br />
-            <span style={{ color: '#fb923c' }}>creates impact</span> and <br />
-            <span style={{ color: '#60a5fa' }}>drives growth</span>
-          </h1>
-          <p style={{ maxWidth: '600px', margin: '0 auto 1.5rem', lineHeight: '1.6' }}>
-            At Oxavyn, we combine technology, creativity and strategic thinking to deliver digital solutions that help businesses innovate, scale and stay ahead in a fast-changing world.
-          </p>
-          <p style={{ maxWidth: '600px', margin: '0 auto 2rem', lineHeight: '1.6' }}>
-            From startups to enterprises, we partner with visionary teams to turn ideas into powerful digital experiences.
-          </p>
-          <Link href="/services/web-development" className="btn-primary" style={{ display: 'inline-block' }}>
-            Explore Our Solutions &rarr;
-          </Link>
+      <section className="parallax-banner vh-90" style={{ position: 'relative', overflow: 'hidden' }}>
+        <DynamicMedia 
+          page="ABOUT" 
+          section="About Banner" 
+          title="Banner Image" 
+          fallbackSrc="/images/Banner_2.png" 
+          alt="About Banner" 
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
+        />
+        <div className="banner-content fade-in-up" style={{ position: 'relative', zIndex: 1 }}>
+          <h1 className="about-hero-title">About Oxavyn</h1>
+        </div>
+      </section>
+
+      {/* 1.5. WE BUILD TECHNOLOGY SECTION */}
+      <section className="section-container" style={{ position: 'relative', overflow: 'hidden', maxWidth: '100%', padding: 0 }}>
+        {/* Light Ambient Background */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(90deg, rgba(255,117,140,0.4), rgba(255,223,0,0.4), rgba(0,242,254,0.4), rgba(79,172,254,0.4), rgba(255,117,140,0.4))',
+          backgroundSize: '200% 100%',
+          animation: 'movingGradient 10s linear infinite',
+          filter: 'blur(60px)',
+          zIndex: 0,
+          pointerEvents: 'none'
+        }}></div>
+
+        <div className="section-container mobile-reorder-img-right" style={{ position: 'relative', zIndex: 1, padding: '8rem 2rem', maxWidth: '1300px' }}>
+          
+          {/* MOBILE HEADING (shows first on mobile) */}
+          <div className="mobile-heading-block desktop-hidden slide-in-left">
+            <span className="eyebrow" style={{ color: '#6366f1' }}>OUR MISSION</span>
+            <h2 className="heading-lg" style={{ marginBottom: '1.5rem', color: '#0f172a' }}>We Build Technology.</h2>
+          </div>
+
+          <div className="section-left slide-in-left" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            
+            {/* DESKTOP HEADING (shows normal on desktop) */}
+            <div className="desktop-heading-block mobile-hidden">
+              <span className="eyebrow" style={{ color: '#6366f1' }}>OUR MISSION</span>
+              <h2 className="heading-lg" style={{ marginBottom: '2rem', color: '#0f172a' }}>We Build Technology.</h2>
+            </div>
+            
+            <p className="paragraph" style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.8' }}>
+              At Oxavyn, we combine technology, creativity and strategic thinking to deliver digital solutions that help businesses innovate, scale and stay ahead in a fast-changing world.
+            </p>
+            <p className="paragraph" style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.8', marginTop: '1rem' }}>
+              From startups to enterprises, we partner with visionary teams to turn ideas into powerful digital experiences.
+            </p>
+            <div style={{ marginTop: '2rem' }}>
+              <Link href="/services/web-development" className="btn-primary" style={{ display: 'inline-flex' }}>
+                Explore Our Solutions &rarr;
+              </Link>
+            </div>
+          </div>
+          <div className="section-right fade-in-up delay-200" style={{ flex: 1, position: 'relative' }}>
+            <div className="luxury-collage">
+              {/* Left Polaroid */}
+              <div className="hanging-wrapper hanging-left">
+                <div className="string"></div>
+                <div className="collage-img-box">
+                  <div className="clip"></div>
+                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 1" fallbackSrc="/images/app_why.png" alt="Technology 1" />
+                </div>
+              </div>
+
+              {/* Center Polaroid */}
+              <div className="hanging-wrapper hanging-center">
+                <div className="string"></div>
+                <div className="collage-img-box">
+                  <div className="clip"></div>
+                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 2" fallbackSrc="/images/app_look1.png" alt="Technology 2" />
+                </div>
+              </div>
+
+              {/* Right Polaroid */}
+              <div className="hanging-wrapper hanging-right">
+                <div className="string"></div>
+                <div className="collage-img-box">
+                  <div className="clip"></div>
+                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 3" fallbackSrc="/images/app_look2.png" alt="Technology 3" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -148,7 +220,7 @@ export default function AboutEditorial() {
 
           <div className="section-left slide-in-left">
             <div className="team-image-container">
-              <img src="/images/gallary/ab5.png" alt="Why Us" />
+              <DynamicMedia page="ABOUT" section="Why Us Better" title="Image" fallbackSrc="/images/gallary/ab5.png" alt="Why Us" />
             </div>
           </div>
           <div className="section-right">
@@ -202,7 +274,7 @@ export default function AboutEditorial() {
         </div>
         <div className="section-right">
           <div className="team-image-container fade-in-up delay-200" style={{ background: 'transparent', boxShadow: 'none', marginTop: '3rem' }}>
-            <img src="/images/gallary/ab9.png" alt="6-D Approach" style={{ objectFit: 'contain' }} />
+            <DynamicMedia page="ABOUT" section="Our 6D Approach" title="Image" fallbackSrc="/images/gallary/ab9.png" alt="6-D Approach" style={{ objectFit: 'contain' }} />
           </div>
         </div>
       </section>
@@ -228,7 +300,7 @@ export default function AboutEditorial() {
         </div>
         <div className="section-right">
           <div className="team-image-container fade-in-up delay-200">
-            <img src="/images/gallary/ab4.png" alt="Our Team" />
+            <DynamicMedia page="ABOUT" section="Our Team" title="Image" fallbackSrc="/images/gallary/ab4.png" alt="Our Team" />
           </div>
         </div>
       </section>

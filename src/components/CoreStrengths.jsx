@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from 'react';
+import DynamicMedia from './DynamicMedia';
 import './CoreStrengths.css';
 
 const strengthsData = [
@@ -56,7 +57,7 @@ const CoreStrengths = () => {
                   })}
                 </h3>
                 <div className="cs-card-image">
-                  <img src={item.image} alt={item.heading} />
+                  <DynamicMedia page="HOME" section="Our Core Strength" title={`Image ${index + 1}`} fallbackSrc={item.image} alt={item.heading} />
                 </div>
               </div>
             ))}

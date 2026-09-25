@@ -1,4 +1,5 @@
 import React from 'react';
+import DynamicMedia from '@/components/DynamicMedia';
 import './WhyJoin.css';
 
 const WhyJoin = () => {
@@ -42,8 +43,11 @@ const WhyJoin = () => {
         </div>
 
         <div className="why-join-image-wrapper delay-2 animate-fade-in">
-          <img 
-            src="/images/gallary/ab1.png" 
+          <DynamicMedia 
+            page="CAREERS" 
+            section="Why Join" 
+            title="Why Join Oxavyn" 
+            fallbackSrc="/images/gallary/ab1.png" 
             alt="Team at Oxavyn" 
             className="why-join-image"
           />

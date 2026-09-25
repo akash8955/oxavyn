@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import DynamicBackground from '@/components/DynamicBackground';
 import './HelpCenter.css';
 
 export default function HelpCenterClient() {
@@ -20,13 +21,13 @@ export default function HelpCenterClient() {
       <div className="help-ambient-bg"></div>
 
       {/* Banner Section */}
-      <section className="help-banner" style={{ backgroundImage: 'url(/images/Banner_5.png)' }}>
+      <DynamicBackground page="HELP CENTER" section="Help Center Banner" title="Banner Image" fallbackSrc="/images/Banner_5.png" className="help-banner">
         <div className="help-banner-overlay"></div>
         <div className="help-banner-content animate-fade-in">
           <h1>Exquisite Support</h1>
           <p>Experience our white-glove assistance and connect with our elite advisors.</p>
         </div>
-      </section>
+      </DynamicBackground>
 
       <div className="help-container">
         <div className="help-grid">

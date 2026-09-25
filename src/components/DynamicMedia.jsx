@@ -1,0 +1,117 @@
+"use client";
+import React, { useState, useEffect } from 'react';
+import { mediaStructure } from '../app/admin/media/mediaStructure';
+
+// Global cache to prevent duplicate API calls for the same page/section, with TTL
+const mediaCache = {};
+const CACHE_TTL = 5000; // 5 seconds
+
+const DynamicMedia = React.forwardRef(({ 
+  page, 
+  section, 
+  title, 
+  fallbackSrc, 
+  alt, 
+  className, 
+  style, 
+  ...props 
+}, ref) => {
+  // Check if this component is managed by the admin panel
+  const isManagedByAdmin = () => {
+    if (!page || !section || !title) return false;
+    const pageObj = mediaStructure.find(p => p.title.toLowerCase() === page.toLowerCase());
+    if (!pageObj) return false;
+    const sectionObj = pageObj.children.find(s => s.title.toLowerCase() === section.toLowerCase());
+    if (!sectionObj) return false;
+    return sectionObj.slots.some(s => s.title.toLowerCase() === title.toLowerCase());
+  };
+  
+  const isManaged = isManagedByAdmin();
+
+  const [src, setSrc] = useState(isManaged ? null : fallbackSrc);
+  const [type, setType] = useState(isManaged ? 'image' : (fallbackSrc?.match(/\.(mp4|webm|mov)$/i) ? 'video' : 'image'));
+  const [altText, setAltText] = useState(alt || title);
+
+  useEffect(() => {
+    let isMounted = true;
+    
+    const fetchMedia = async () => {
+      // Normalize cache key
+      const cacheKey = `${page}-${section}`.toLowerCase();
+      
+      try {
+        const now = Date.now();
+        let data;
+        
+        if (mediaCache[cacheKey] && (now - mediaCache[cacheKey].timestamp < CACHE_TTL || mediaCache[cacheKey].promise)) {
+          // Check if it's an unresolved promise from a concurrent fetch
+          if (mediaCache[cacheKey].promise) {
+            data = await mediaCache[cacheKey].promise;
+          } else {
+            data = mediaCache[cacheKey].data;
+          }
+        } else {
+          // Create promise and store in cache for concurrent requests
+          const fetchPromise = fetch(`/api/media/${encodeURIComponent(page)}/${encodeURIComponent(section)}`, { cache: 'no-store' })
+            .then(res => res.ok ? res.json() : { media: [] });
+          
+          mediaCache[cacheKey] = { promise: fetchPromise, timestamp: now };
+          data = await fetchPromise;
+          mediaCache[cacheKey] = { data, timestamp: Date.now() }; // Replace promise with actual data
+        }
+
+        if (data && data.media && isMounted) {
+          // Find exact title match
+          const item = data.media.find(m => m.title.toLowerCase() === title.toLowerCase());
+          if (item && item.cloudinaryUrl) {
+            setSrc(item.cloudinaryUrl);
+            setType(item.mediaType || 'image'); // If mediaType is undefined for some reason
+            if (item.altText) setAltText(item.altText);
+          } else {
+            // Fallback to static src if nothing is uploaded yet or it's not managed
+            setSrc(fallbackSrc);
+            setType(fallbackSrc?.match(/\.(mp4|webm|mov)$/i) ? 'video' : 'image');
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch dynamic media for', title, err);
+      }
+    };
+
+    fetchMedia();
+    
+    return () => { isMounted = false; };
+  }, [page, section, title]);
+
+  if (!src) return null;
+
+  if (type === 'video') {
+    return (
+      <video 
+        src={src} 
+        className={className} 
+        style={style} 
+        autoPlay 
+        muted 
+        loop 
+        playsInline 
+        controls
+        ref={ref}
+        {...props} 
+      />
+    );
+  }
+
+  return (
+    <img 
+      src={src} 
+      alt={altText} 
+      className={className} 
+      style={style} 
+      ref={ref}
+      {...props} 
+    />
+  );
+});
+
+export default DynamicMedia;

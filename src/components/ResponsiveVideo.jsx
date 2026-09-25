@@ -1,9 +1,70 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { mediaStructure } from '../app/admin/media/mediaStructure';
 import './ResponsiveVideo.css';
 
-export default function ResponsiveVideo({ src, className = "" }) {
+// Global cache to prevent duplicate API calls, with TTL
+const mediaCache = {};
+const CACHE_TTL = 5000; // 5 seconds
+
+export default function ResponsiveVideo({ page, section, title, src: fallbackSrc, className = "" }) {
   const videoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  // Check if this component is managed by the admin panel
+  const isManagedByAdmin = () => {
+    if (!page || !section || !title) return false;
+    const pageObj = mediaStructure.find(p => p.title.toLowerCase() === page.toLowerCase());
+    if (!pageObj) return false;
+    const sectionObj = pageObj.children.find(s => s.title.toLowerCase() === section.toLowerCase());
+    if (!sectionObj) return false;
+    return sectionObj.slots.some(s => s.title.toLowerCase() === title.toLowerCase());
+  };
+  
+  const isManaged = isManagedByAdmin();
+
+  const [dynamicSrc, setDynamicSrc] = useState(isManaged ? null : fallbackSrc);
+
+  useEffect(() => {
+    if (!page || !section || !title) return;
+    
+    let isMounted = true;
+    const fetchMedia = async () => {
+      const cacheKey = `${page}-${section}`.toLowerCase();
+      try {
+        const now = Date.now();
+        let data;
+        
+        if (mediaCache[cacheKey] && (now - mediaCache[cacheKey].timestamp < CACHE_TTL || mediaCache[cacheKey].promise)) {
+          if (mediaCache[cacheKey].promise) {
+            data = await mediaCache[cacheKey].promise;
+          } else {
+            data = mediaCache[cacheKey].data;
+          }
+        } else {
+          const fetchPromise = fetch(`/api/media/${encodeURIComponent(page)}/${encodeURIComponent(section)}`, { cache: 'no-store' })
+            .then(res => res.ok ? res.json() : { media: [] });
+          mediaCache[cacheKey] = { promise: fetchPromise, timestamp: now };
+          data = await fetchPromise;
+          mediaCache[cacheKey] = { data, timestamp: Date.now() };
+        }
+
+        if (data && data.media && isMounted) {
+          const item = data.media.find(m => m.title.toLowerCase() === title.toLowerCase());
+          // Removed strict 'item.mediaType === video' to ensure videos uploaded to image slots still render
+          if (item && item.cloudinaryUrl) {
+            setDynamicSrc(item.cloudinaryUrl);
+          } else {
+            // Fallback to static src if nothing is uploaded yet or it's not managed
+            setDynamicSrc(fallbackSrc);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch dynamic video for', title, err);
+      }
+    };
+
+    fetchMedia();
+    return () => { isMounted = false; };
+  }, [page, section, title]);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -89,6 +150,8 @@ export default function ResponsiveVideo({ src, className = "" }) {
     }
   };
 
+  if (!dynamicSrc) return null;
+
   return (
     <div 
       className={`responsive-video-wrapper ${className}`}
@@ -97,7 +160,7 @@ export default function ResponsiveVideo({ src, className = "" }) {
     >
       <video
         ref={videoRef}
-        src={src}
+        src={dynamicSrc}
         className="responsive-video"
         controls
         loop

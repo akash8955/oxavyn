@@ -1,24 +1,49 @@
 "use client";
 import React from 'react';
+import DynamicMedia from './DynamicMedia';
+import DynamicBackground from './DynamicBackground';
 import './ContactNew.css';
 
 export default function ContactNew() {
-  const handleSubmit = (e) => {
+  const [submitStatus, setSubmitStatus] = React.useState('');
+  const [formData, setFormData] = React.useState({ firstName: '', lastName: '', email: '', company: '', message: '' });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you for reaching out! We'll get back to you shortly.");
+    setSubmitStatus('Submitting...');
+    try {
+      const res = await fetch('/api/contact-queries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setSubmitStatus("Thanks for submitting. Our team will contact you soon.");
+        setFormData({ firstName: '', lastName: '', email: '', company: '', message: '' });
+        setTimeout(() => setSubmitStatus(''), 8000);
+      } else {
+        setSubmitStatus("Error submitting form. Please try again.");
+      }
+    } catch (err) {
+      setSubmitStatus("Error submitting form. Please try again.");
+    }
   };
 
   return (
     <div className="contact-new-wrapper">
       
       {/* Hero Section (Parallax Banner) */}
-      <section className="parallax-banner vh-90" style={{ backgroundImage: 'url(/images/Banner_5.png)' }}>
+      <DynamicBackground page="CONTACT" section="Contact Banner" title="Banner Image" fallbackSrc="/images/Banner_5.png" className="parallax-banner vh-90">
         <div className="banner-content animate-fade-in">
           <span style={{ display: 'block', marginBottom: '1rem', color: '#a29bfe', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>Contact us</span>
           <h1>Have any queries? We're all ears!</h1>
           <p>Our team is trained, equipped & ready to guide you from scratch to success.</p>
         </div>
-      </section>
+      </DynamicBackground>
 
       {/* Contact Cards Section */}
       <section className="contact-cards-section" style={{ paddingTop: '4rem', paddingBottom: '4rem', background: '#f8fafc' }}>
@@ -95,39 +120,40 @@ export default function ContactNew() {
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group ambient-input-group">
-                    <input type="text" id="firstName" placeholder=" " required />
+                    <input type="text" id="firstName" placeholder=" " value={formData.firstName} onChange={handleChange} required />
                     <label htmlFor="firstName">First Name</label>
                     <span className="input-focus-border"></span>
                   </div>
                   <div className="form-group ambient-input-group">
-                    <input type="text" id="lastName" placeholder=" " required />
+                    <input type="text" id="lastName" placeholder=" " value={formData.lastName} onChange={handleChange} required />
                     <label htmlFor="lastName">Last Name</label>
                     <span className="input-focus-border"></span>
                   </div>
                 </div>
 
                 <div className="form-group ambient-input-group">
-                  <input type="email" id="email" placeholder=" " required />
+                  <input type="email" id="email" placeholder=" " value={formData.email} onChange={handleChange} required />
                   <label htmlFor="email">Email Address</label>
                   <span className="input-focus-border"></span>
                 </div>
 
                 <div className="form-group ambient-input-group">
-                  <input type="text" id="company" placeholder=" " required />
+                  <input type="text" id="company" placeholder=" " value={formData.company} onChange={handleChange} required />
                   <label htmlFor="company">Company</label>
                   <span className="input-focus-border"></span>
                 </div>
 
                 <div className="form-group ambient-input-group">
-                  <textarea id="message" placeholder=" " required></textarea>
+                  <textarea id="message" placeholder=" " value={formData.message} onChange={handleChange} required></textarea>
                   <label htmlFor="message">How can we help you achieve greatness?</label>
                   <span className="input-focus-border"></span>
                 </div>
 
-                <button type="submit" className="submit-btn ambient-btn">
+                <button type="submit" className="submit-btn ambient-btn" disabled={submitStatus === 'Submitting...'}>
                   <span>Send Message</span>
                   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
+                {submitStatus && <p style={{ marginTop: '1rem', color: '#10b981', fontWeight: '500', textAlign: 'center' }}>{submitStatus}</p>}
               </form>
             </div>
           </div>
@@ -140,9 +166,9 @@ export default function ContactNew() {
         <div className="support-banner-container">
           <div className="support-banner-content">
             <div className="support-image-container">
-              <img src="/contact/woman_on_phone.jpg" alt="Customer Care" />
+              <DynamicMedia page="CONTACT" section="Support Banner" title="Image" fallbackSrc="/contact/woman_on_phone.jpg" alt="Customer Care" />
               <div className="floating-avatar">
-                <img src="/contact/woman_on_phone.jpg" alt="Agent" />
+                <DynamicMedia page="CONTACT" section="Support Banner" title="Agent Image" fallbackSrc="/contact/woman_on_phone.jpg" alt="Agent" />
               </div>
             </div>
             <div className="support-text-container">

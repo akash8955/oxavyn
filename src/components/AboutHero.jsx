@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import DynamicMedia from './DynamicMedia';
 import './AboutHero.css';
 
 export default function AboutHero() {
@@ -45,12 +46,12 @@ export default function AboutHero() {
         {/* Right Image Collage */}
         <div className="about-hero-collage">
           <div className="collage-grid">
-            <img src="/images/gallary/ab3.png" alt="Team 1" className="img-1" />
-            <img src="/images/gallary/ab4.png" alt="Team 2" className="img-2" />
-            <img src="/images/gallary/ab6.png" alt="Event" className="img-3" />
-            <img src="/images/gallary/ab8.png" alt="Office" className="img-4" />
+            <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 1" fallbackSrc="/images/gallary/ab3.png" alt="Team 1" className="img-1" />
+            <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 2" fallbackSrc="/images/gallary/ab4.png" alt="Team 2" className="img-2" />
+            <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 3" fallbackSrc="/images/gallary/ab6.png" alt="Event" className="img-3" />
+            <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 4" fallbackSrc="/images/gallary/ab8.png" alt="Office" className="img-4" />
             {/* ab5 is the main photo at bottom */}
-            <img src="/images/gallary/ab5.png" alt="Main Team" className="img-5-main" />
+            <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 5" fallbackSrc="/images/gallary/ab5.png" alt="Main Team" className="img-5-main" />
           </div>
         </div>
 

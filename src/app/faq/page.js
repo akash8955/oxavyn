@@ -1,5 +1,6 @@
 import React from 'react';
 import FaqAccordion from '@/components/FaqAccordion';
+import DynamicBackground from '@/components/DynamicBackground';
 
 export const metadata = {
   title: 'FAQ | Oxavyn',
@@ -9,7 +10,7 @@ export const metadata = {
 export default function FaqPage() {
   return (
     <main style={{ minHeight: '100vh', background: '#f8fafc' }}>
-      <section className="parallax-banner vh-90" style={{ backgroundImage: 'url(/images/Banner_4.png)' }}>
+      <DynamicBackground page="FAQ" section="FAQ Banner" title="Banner Image" fallbackSrc="/images/Banner_4.png" className="parallax-banner vh-90">
         <div className="banner-content animate-fade-in">
           <span style={{ display: 'block', marginBottom: '1rem', color: '#a29bfe', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>FAQ</span>
           <h1>
@@ -20,7 +21,7 @@ export default function FaqPage() {
             Explore our most common questions about our services, technology, development process, AI solutions, automation, pricing, and ongoing support.
           </p>
         </div>
-      </section>
+      </DynamicBackground>
       <FaqAccordion />
     </main>
   );

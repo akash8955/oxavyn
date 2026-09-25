@@ -2,13 +2,24 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import DynamicMedia from '@/components/DynamicMedia';
 import ResponsiveVideo from '@/components/ResponsiveVideo';
 
 export default function HealthcareClient() {
   const [formData, setFormData] = useState({
-    type: "",
-    interests: []
+    industryCategory: "Healthcare",
+    fullName: "",
+    email: "",
+    organizationName: "",
+    organizationType: "",
+    interests: [],
+    challenge: ""
   });
+  const [submitStatus, setSubmitStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -44,6 +55,35 @@ export default function HealthcareClient() {
     setFormData({ ...formData, interests: selectedValues });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus('Submitting...');
+    try {
+      const res = await fetch('/api/industry-queries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        setSubmitStatus("Thanks for contacting Oxavyn. We will contact to you shortly with a solution.");
+        setFormData({
+          industryCategory: "Healthcare",
+          fullName: "",
+          email: "",
+          organizationName: "",
+          organizationType: "",
+          interests: [],
+          challenge: ""
+        });
+        setTimeout(() => setSubmitStatus(''), 8000);
+      } else {
+        setSubmitStatus("Error submitting form. Please try again.");
+      }
+    } catch (err) {
+      setSubmitStatus("Error submitting form. Please try again.");
+    }
+  };
+
   return (
     <div className="hc-wrapper">
       {/* Ambient background glows */}
@@ -65,7 +105,7 @@ export default function HealthcareClient() {
               </motion.div>
               
               <motion.div variants={fadeInUp} className="hc-order-media mobile-media" style={{ display: 'none' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Transform Healthcare" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </motion.div>
 
               <motion.h3 className="hc-subheading hc-order-subheading" variants={fadeInUp}>
@@ -83,7 +123,7 @@ export default function HealthcareClient() {
             </div>
             
             <motion.div variants={fadeInUp} className="hc-order-media desktop-media">
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Healthcare Is Complex" src="/images/career-vid.mp4" />
             </motion.div>
           </motion.div>
         </div>
@@ -109,7 +149,7 @@ export default function HealthcareClient() {
 
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Healthcare Speaks Connected" src="/images/career-vid.mp4" />
             </motion.div>
           </div>
 
@@ -199,7 +239,7 @@ export default function HealthcareClient() {
 
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Everything Connected" src="/images/career-vid.mp4" />
             </motion.div>
           </div>
 
@@ -250,7 +290,7 @@ export default function HealthcareClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Run Healthcare Operations" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -300,7 +340,7 @@ export default function HealthcareClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                <img src="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Turn Healthcare Data" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -352,7 +392,7 @@ export default function HealthcareClient() {
           
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <div style={{ minHeight: '500px' }}>
-              <ResponsiveVideo src="/images/career-vid.mp4" />
+              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Implementation Approach" src="/images/career-vid.mp4" />
             </div>
           </motion.div>
         </div>
@@ -438,7 +478,7 @@ export default function HealthcareClient() {
             
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="hc-order-media">
               <div style={{ minHeight: '600px' }}>
-                <ResponsiveVideo src="/images/career-vid.mp4" />
+                <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Implementation Approach" src="/images/career-vid.mp4" />
               </div>
             </motion.div>
           </div>
@@ -458,25 +498,25 @@ export default function HealthcareClient() {
                 <p className="hc-problem-desc" style={{ marginBottom: '2.5rem', textAlign: 'center' }}>Tell us what you're looking to improve.</p>
 
                 {/* TODO: Connect to Oxavyn backend/CRM */}
-                <form onSubmit={(e) => e.preventDefault()}>
+                <form onSubmit={handleSubmit}>
                   <div className="hc-input-group">
                     <label className="hc-label-input">Full Name</label>
-                    <input type="text" className="hc-input" placeholder="Enter your full name" required />
+                    <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} className="hc-input" placeholder="Enter your full name" required />
                   </div>
                   
                   <div className="hc-input-group">
                     <label className="hc-label-input">Work Email</label>
-                    <input type="email" className="hc-input" placeholder="Enter your business email" required />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} className="hc-input" placeholder="Enter your business email" required />
                   </div>
 
                   <div className="hc-input-group">
                     <label className="hc-label-input">Organization Name</label>
-                    <input type="text" className="hc-input" placeholder="Enter hospital / clinic / organization name" required />
+                    <input type="text" name="organizationName" value={formData.organizationName} onChange={handleChange} className="hc-input" placeholder="Enter hospital / clinic / organization name" required />
                   </div>
 
                   <div className="hc-input-group">
                     <label className="hc-label-input">Organization Type</label>
-                    <select className="hc-input hc-select" required defaultValue="">
+                    <select className="hc-input hc-select" name="organizationType" value={formData.organizationType} onChange={handleChange} required>
                       <option value="" disabled>Select Organization Type</option>
                       <option value="Hospital">Hospital</option>
                       <option value="Clinic">Clinic</option>
@@ -503,12 +543,13 @@ export default function HealthcareClient() {
 
                   <div className="hc-input-group">
                     <label className="hc-label-input">Current Challenge</label>
-                    <textarea className="hc-input" style={{ minHeight: '100px', resize: 'vertical' }} placeholder="Tell us about your current process or challenge..." required></textarea>
+                    <textarea name="challenge" value={formData.challenge} onChange={handleChange} className="hc-input" style={{ minHeight: '100px', resize: 'vertical' }} placeholder="Tell us about your current process or challenge..." required></textarea>
                   </div>
 
-                  <button type="submit" className="hc-btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
+                  <button type="submit" className="hc-btn-primary" style={{ width: '100%', marginTop: '1rem' }} disabled={submitStatus === 'Submitting...'}>
                     Send Enquiry
                   </button>
+                  {submitStatus && <p style={{ textAlign: 'center', fontSize: '0.9rem', color: '#10b981', marginTop: '1rem', fontWeight: 500 }}>{submitStatus}</p>}
                   <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#888', marginTop: '1rem', marginBottom: 0 }}>
                     Our team will review your enquiry and help identify the appropriate next step.
                   </p>
