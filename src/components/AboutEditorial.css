@@ -778,6 +778,19 @@
   transform: rotate(8deg);
 }
 
+@media (max-width: 768px) {
+  .luxury-collage { height: 320px; }
+  
+  .hanging-left .string { height: 180px; }
+  .hanging-left .collage-img-box { height: 130px; }
+  
+  .hanging-center .string { height: 140px; }
+  .hanging-center .collage-img-box { height: 180px; }
+  
+  .hanging-right .string { height: 160px; }
+  .hanging-right .collage-img-box { height: 120px; }
+}
+
 /* Hero Title Typography */
 .about-hero-title {
   font-size: 4.5rem;

@@ -9,7 +9,7 @@ export const metadata = {
 export default function TermsAndConditions() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
-      <DynamicBackground page="LEGAL" section="Terms & Conditions" title="Banner Image" fallbackSrc="/images/Banner_1.png" className="parallax-banner vh-80">
+      <DynamicBackground page="LEGAL" section="Terms & Conditions" title="Banner Image" className="parallax-banner vh-80">
         <div className="banner-content animate-fade-in">
           <h1>Terms & Conditions</h1>
           <p>Please read these terms and conditions carefully before using our service.</p>

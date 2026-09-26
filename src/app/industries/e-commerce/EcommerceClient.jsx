@@ -114,7 +114,7 @@ export default function EcommerceClient() {
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
               <div className="career-video-container">
-                <ResponsiveVideo page="INDUSTRIES" section="E-Commerce" title="Built Smarter" src="/images/career-vid.mp4" />
+                <ResponsiveVideo page="INDUSTRIES" section="E-Commerce" title="Built Smarter" />
               </div>
             </motion.div>
 
@@ -185,7 +185,7 @@ export default function EcommerceClient() {
               className="std-media-side"
             >
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="E-Commerce" title="Turn Every Customer" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="E-Commerce" title="Turn Every Customer" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -265,7 +265,7 @@ export default function EcommerceClient() {
               className="std-media-side"
             >
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="E-Commerce" title="Manage Business" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="E-Commerce" title="Manage Business" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>

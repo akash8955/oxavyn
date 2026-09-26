@@ -216,7 +216,7 @@ const ServiceSolutions = () => {
                     <div className="ss-box-image">
                        <div className="ss-image-placeholder">
                           {box.image ? (
-                            <DynamicMedia page="HOME" section="Why Oxavyn" title={`Image ${(index * 4) + boxIndex + 1}`} fallbackSrc={box.image} alt={box.title} className="ss-box-img-tag" />
+                            <DynamicMedia page="HOME" section="Why Oxavyn" title={`Image ${(index * 4) + boxIndex + 1}`} alt={box.title} className="ss-box-img-tag" />
                           ) : (
                             <div className="ss-img-shape" style={{backgroundColor: slide.iconColor}}></div>
                           )}

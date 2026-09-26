@@ -1,12 +1,35 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DynamicMedia from './DynamicMedia';
 import DynamicBackground from './DynamicBackground';
 import './ContactNew.css';
 
 export default function ContactNew() {
-  const [submitStatus, setSubmitStatus] = React.useState('');
-  const [formData, setFormData] = React.useState({ firstName: '', lastName: '', email: '', company: '', message: '' });
+  const [submitStatus, setSubmitStatus] = useState('');
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', company: '', message: '' });
+  const [mapSettings, setMapSettings] = useState({
+    title: 'HQ & STUDIO',
+    subtitle: 'Oxavyn Gurugram',
+    src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.0123456!2d77.085!3d28.502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195c8c5c5c5%3A0x1234567890abcdef!2sUdyog%20Vihar%20Phase%203%2C%20Gurugram!5e0!3m2!1sen!2sin!4v1611234567890!5m2!1sen!2sin',
+    mapLink: 'https://www.google.com/maps?q=416+Phase+III+Udyog+Vihar+Sector+20+Gurugram+Haryana+122008'
+  });
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await fetch('/api/settings?key=contact_map_location');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.setting && data.setting.value) {
+            setMapSettings(data.setting.value);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch map settings", err);
+      }
+    };
+    fetchSettings();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -35,87 +58,48 @@ export default function ContactNew() {
 
   return (
     <div className="contact-new-wrapper">
-      
-      {/* Hero Section (Parallax Banner) */}
-      <DynamicBackground page="CONTACT" section="Contact Banner" title="Banner Image" fallbackSrc="/images/Banner_5.png" className="parallax-banner vh-90">
-        <div className="banner-content animate-fade-in">
+
+      {/* Hero Section (Parallax Banner Image Only) */}
+      <DynamicBackground page="CONTACT" section="Contact Banner" title="Banner Image" className="parallax-banner vh-90" />
+
+      {/* Hero Text Content (Below Banner) */}
+      <section style={{ padding: '4rem 2rem', background: '#f8fafc', textAlign: 'center' }}>
+        <div className="banner-content animate-fade-in" style={{ maxWidth: '800px', margin: '0 auto', color: '#111827' }}>
           <span style={{ display: 'block', marginBottom: '1rem', color: '#a29bfe', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>Contact us</span>
-          <h1>Have any queries? We're all ears!</h1>
-          <p>Our team is trained, equipped & ready to guide you from scratch to success.</p>
+          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', color: '#111827' }}>Have any queries? We're all ears!</h1>
+          <p style={{ fontSize: '1.2rem', color: '#4b5563' }}>Our team is trained, equipped & ready to guide you from scratch to success.</p>
         </div>
-      </DynamicBackground>
+      </section>
 
-      {/* Contact Cards Section */}
-      <section className="contact-cards-section" style={{ paddingTop: '4rem', paddingBottom: '4rem', background: '#f8fafc' }}>
-        <div className="contact-hero-container">
 
-          <div className="contact-card">
-            <div className="card-left">
-              
-              <div className="card-contact-item">
-                <div className="card-icon">
-                  <svg fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                </div>
-                <div className="card-content">
-                  <h4>Ring us up</h4>
-                  <p className="highlight-text">
-                    <a href="tel:8510036060">8510036060</a> | <a href="tel:9711451060">9711451060</a> | <a href="tel:8510042020">8510042020</a>
-                  </p>
-                  <span className="availability">Available: 09:00 AM - 07:00 PM</span>
-                </div>
-              </div>
 
-              <hr className="card-divider" />
-
-              <div className="card-contact-item">
-                <div className="card-icon">
-                  <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                </div>
-                <div className="card-content">
-                  <h4>Write to us</h4>
-                  <p><a href="mailto:support@oxavyn.in">support@oxavyn.in</a></p>
-                </div>
-              </div>
-
-              <hr className="card-divider" />
-
-              <div className="card-contact-item">
-                <div className="card-icon">
-                  <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                </div>
-                <div className="card-content">
-                  <h4>Visit us</h4>
-                  <p>416, Phase III, Udyog Vihar, Sector 20, Gurugram, Haryana - 122008</p>
-                </div>
-              </div>
-
-            </div>
-            
-            <div className="card-right">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.0123456!2d77.085!3d28.502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195c8c5c5c5%3A0x1234567890abcdef!2sUdyog%20Vihar%20Phase%203%2C%20Gurugram!5e0!3m2!1sen!2sin!4v1611234567890!5m2!1sen!2sin" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy"
-                title="Oxavyn Location"
-              ></iframe>
-            </div>
-          </div>
+      {/* Embedded Map Section */}
+      <section className="map-layout-section">
+        <div className="map-layout-overlay">
+          <h2>{mapSettings.title}</h2>
+          <h3>{mapSettings.subtitle}</h3>
         </div>
+        <div className="map-iframe-container">
+          <iframe
+            src={mapSettings.src}
+            allowFullScreen=""
+            loading="lazy"
+            title="Google Maps Location"
+          ></iframe>
+        </div>
+        <a href={mapSettings.mapLink} target="_blank" rel="noopener noreferrer" className="map-click-layer" aria-label="Open location in Google Maps"></a>
       </section>
 
       {/* Ambient Luxury Query Form Section */}
       <section id="query-form" className="query-form-section">
         <div className="query-form-container">
-          
+
           <div className="query-form-content">
             <div className="query-form-header">
               <h2>Drop us a Query</h2>
               <p>Experience seamless communication. We'll handle the rest.</p>
             </div>
-            
+
             <div className="contact-form-wrapper luxury-ambient-form">
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-row">
@@ -166,9 +150,9 @@ export default function ContactNew() {
         <div className="support-banner-container">
           <div className="support-banner-content">
             <div className="support-image-container">
-              <DynamicMedia page="CONTACT" section="Support Banner" title="Image" fallbackSrc="/contact/woman_on_phone.jpg" alt="Customer Care" />
+              <DynamicMedia page="CONTACT" section="Support Banner" title="Image" alt="Customer Care" fallbackSrc="/contact/woman_on_phone.jpg" />
               <div className="floating-avatar">
-                <DynamicMedia page="CONTACT" section="Support Banner" title="Agent Image" fallbackSrc="/contact/woman_on_phone.jpg" alt="Agent" />
+                <DynamicMedia page="CONTACT" section="Support Banner" title="Agent Image" alt="Agent" fallbackSrc="/contact/woman_on_phone.jpg" />
               </div>
             </div>
             <div className="support-text-container">
@@ -179,6 +163,7 @@ export default function ContactNew() {
           </div>
         </div>
       </section>
+
 
 
       {/* Embedded specific CTA Section */}

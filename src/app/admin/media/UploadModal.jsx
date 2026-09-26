@@ -36,34 +36,59 @@ export default function UploadModal({ slot, existingMedia, onClose, onSuccess })
       // 1. Upload to Cloudinary if new file selected
       if (file) {
         toast.loading('Uploading to Cloudinary...', { id: 'upload' });
-        
-        // Get signature
-        const folderPath = `oxavyn/${slot.page.toLowerCase().replace(/\s+/g, '-')}/${slot.section.toLowerCase().replace(/\s+/g, '-')}`;
-        
-        const sigRes = await fetch('/api/admin/upload-signature', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ folder: folderPath })
-        });
-        
-        if (!sigRes.ok) throw new Error('Failed to get upload signature');
-        const sigData = await sigRes.json();
+        const sanitizeForFolder = (str) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        const folderPath = `oxavyn/${sanitizeForFolder(slot.page)}/${sanitizeForFolder(slot.section)}`;
+        // Strategy 1: Direct Frontend Upload (Fastest, avoids server memory/size limits)
+        let cloudData;
+        try {
+          const sigRes = await fetch('/api/admin/upload-signature', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ folder: folderPath })
+          });
+          if (!sigRes.ok) throw new Error('Failed to get signature');
+          const sigData = await sigRes.json();
 
-        // Upload to Cloudinary
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('api_key', sigData.apiKey);
-        formData.append('timestamp', sigData.timestamp);
-        formData.append('signature', sigData.signature);
-        formData.append('folder', folderPath);
+          const directFormData = new FormData();
+          directFormData.append('file', file);
+          directFormData.append('api_key', sigData.apiKey);
+          directFormData.append('timestamp', sigData.timestamp);
+          directFormData.append('signature', sigData.signature);
+          directFormData.append('folder', folderPath);
 
-        const cloudRes = await fetch(`https://api.cloudinary.com/v1_1/${sigData.cloudName}/auto/upload`, {
-          method: 'POST',
-          body: formData
-        });
+          const directRes = await fetch(`https://api.cloudinary.com/v1_1/${sigData.cloudName}/auto/upload`, {
+            method: 'POST',
+            body: directFormData
+          });
+          
+          if (!directRes.ok) throw new Error(`Direct upload failed: ${directRes.statusText}`);
+          cloudData = await directRes.json();
+        } catch (err) {
+          // If direct upload fails (usually due to Ad-blockers blocking api.cloudinary.com, or CORS)
+          console.warn('Direct upload failed, falling back to secure backend proxy...', err);
+          
+          // Strategy 2: Backend Proxy Upload (Bypasses ad-blockers, but uses server memory)
+          const proxyFormData = new FormData();
+          proxyFormData.append('file', file);
+          proxyFormData.append('folder', folderPath);
 
-        if (!cloudRes.ok) throw new Error('Failed to upload to Cloudinary');
-        const cloudData = await cloudRes.json();
+          const proxyRes = await fetch('/api/admin/upload-cloudinary', {
+            method: 'POST',
+            body: proxyFormData
+          });
+
+          if (!proxyRes.ok) {
+            let errMsg = `Backend proxy upload failed (Status ${proxyRes.status})`;
+            try {
+              const errData = await proxyRes.json();
+              if (errData.error) errMsg += ': ' + errData.error;
+            } catch (e) {
+              errMsg += ' - ' + proxyRes.statusText;
+            }
+            throw new Error(errMsg);
+          }
+          cloudData = await proxyRes.json();
+        }
 
         newCloudinaryUrl = cloudData.secure_url;
         newPublicId = cloudData.public_id;

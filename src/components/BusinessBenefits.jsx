@@ -57,7 +57,7 @@ const BusinessBenefits = () => {
               </div>
               
               <div className="bb-card-image">
-                <DynamicMedia page="HOME" section="Which Business" title={`Image ${index + 1}`} fallbackSrc={card.image} alt={card.heading} />
+                <DynamicMedia page="HOME" section="Which Business" title={`Image ${index + 1}`} alt={card.heading} />
               </div>
             </div>
           ))}

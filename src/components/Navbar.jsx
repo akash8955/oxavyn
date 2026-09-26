@@ -32,6 +32,8 @@ export default function Navbar() {
     setMobileSubDropdown(null);
   }, [pathname]);
 
+  const [showStudentSections, setShowStudentSections] = useState(true);
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -43,7 +45,31 @@ export default function Navbar() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
+  // Fetch settings to conditionally hide student sections
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await fetch('/api/settings?key=showStudentSections');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.setting !== null && data.setting !== undefined) {
+            setShowStudentSections(data.setting.value);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch settings", err);
+      }
+    };
+    fetchSettings();
+  }, []);
 
+  // Filter links dynamically
+  const filteredNavLinks = navLinks.filter(link => {
+    if (link.name === "Students" && !showStudentSections) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <>
@@ -59,7 +85,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="nav-links desktop-only">
-            {navLinks.map((link, idx) => (
+            {filteredNavLinks.map((link, idx) => (
               <div 
                 key={idx} 
                 className={`nav-item ${link.megaMenuType === 'full' ? 'mega-full-parent' : ''}`}
@@ -168,7 +194,7 @@ export default function Navbar() {
         </div>
         
         <div className="drawer-content">
-          {navLinks.map((link, idx) => (
+          {filteredNavLinks.map((link, idx) => (
             <div key={idx} className="drawer-item">
               {link.isDropdown ? (
                 <>

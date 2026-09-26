@@ -95,35 +95,57 @@ export default function HealthcareClient() {
       </div>
 
       {/* 1. HERO SECTION */}
-      <section className="hc-section hc-hero">
-        <div className="hc-container">
-          <motion.div className="hc-hero-grid" initial="hidden" animate="visible" variants={staggerContainer}>
-            <div className="hc-hero-content hc-order-wrapper">
-              <motion.div className="hc-order-heading" variants={fadeInUp}>
-                <span className="hc-eyebrow">OXAVYN FOR HEALTHCARE</span>
-                <h1 className="hc-heading-primary">Transform Healthcare Into a Connected, Intelligent System.</h1>
-              </motion.div>
-              
-              <motion.h3 className="hc-subheading hc-order-subheading" variants={fadeInUp}>
+      <section className="hc-section hc-hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+        <div className="hc-container" style={{ width: '100%' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            
+            {/* HEADING FIRST */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              style={{ textAlign: 'center', marginBottom: '2rem' }}
+            >
+              <motion.div variants={fadeInUp} className="hc-eyebrow">OXAVYN FOR HEALTHCARE</motion.div>
+              <motion.h1 variants={fadeInUp} className="hc-heading-primary" style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
+                Transform Healthcare Into a Connected, Intelligent System.
+              </motion.h1>
+            </motion.div>
+            
+            {/* MEDIA SECOND */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
+            >
+              <div className="career-video-container">
+                <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Transform Healthcare" />
+              </div>
+            </motion.div>
+
+            {/* SUBHEADING / PARAGRAPH THIRD */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              style={{ textAlign: 'center', width: '100%', maxWidth: '800px', margin: '0 auto' }}
+            >
+              <motion.h3 className="hc-subheading" variants={fadeInUp} style={{ margin: '0 auto 1rem' }}>
                 Bring patients, healthcare teams, operations, data, and business processes together through one intelligent digital ecosystem.
               </motion.h3>
               
-              <motion.p className="hc-paragraph hc-order-paragraph" variants={fadeInUp}>
+              <motion.p className="hc-paragraph" variants={fadeInUp} style={{ margin: '0 auto 2rem' }}>
                 Healthcare organizations manage thousands of interactions every day — from patient enquiries and appointments to clinical operations, billing, inventory, staff coordination, reporting, and follow-ups. Oxavyn helps connect these processes through integrated healthcare technology, CRM, ERP, analytics, and automation, creating a more organized and efficient digital environment.
               </motion.p>
               
-              <motion.div className="hc-order-cta" variants={fadeInUp} style={{ display: 'flex', gap: '1rem' }}>
+              <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                 <button className="hc-btn-primary" onClick={scrollToEnquiry}>Explore Healthcare Solutions</button>
                 <button className="hc-btn-secondary" onClick={scrollToEnquiry}>Talk to Oxavyn</button>
               </motion.div>
-            </div>
-            
-            <motion.div variants={fadeInUp} className="hc-order-media">
-              <div style={{ aspectRatio: '4/5', width: '100%', maxWidth: '450px', margin: '0 auto', overflow: 'hidden', borderRadius: '16px', position: 'relative' }}>
-                <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Transform Healthcare" src="/images/career-vid.mp4" />
-              </div>
             </motion.div>
-          </motion.div>
+            
+          </div>
         </div>
       </section>
 
@@ -196,7 +218,7 @@ export default function HealthcareClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Run Healthcare Operations" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Run Healthcare Operations" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -246,7 +268,7 @@ export default function HealthcareClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Turn Healthcare Data" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Turn Healthcare Data" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>

@@ -47,7 +47,6 @@ const WhyJoin = () => {
             page="CAREERS" 
             section="Why Join" 
             title="Why Join Oxavyn" 
-            fallbackSrc="/images/gallary/ab1.png" 
             alt="Team at Oxavyn" 
             className="why-join-image"
           />

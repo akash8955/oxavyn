@@ -226,7 +226,7 @@ a {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(17, 24, 39, 0.9));
+  /* background gradient removed for full brightness */
   z-index: 1;
 }
 
@@ -251,23 +251,28 @@ a {
 }
 
 .vh-80 {
-  height: 80vh;
-  min-height: 400px;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 .vh-90 {
-  height: 90vh;
-  min-height: 500px;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 @media (max-width: 768px) {
   .parallax-banner {
     background-attachment: scroll; /* iOS Safari struggles with fixed backgrounds */
   }
-  .vh-80, .vh-90 {
-    height: 60vh;
-    min-height: 350px;
+  .vh-80, .vh-90, .vh-110 {
+    height: 70vh;
+    min-height: 70vh;
   }
+}
+
+.vh-110 {
+  height: 100vh;
+  min-height: 100vh;
 }
 
 
@@ -286,4 +291,28 @@ a {
 }
 .career-video-container:hover {
   transform: translateY(-5px);
+}
+
+
+/* GLOBAL PARALLAX BANNER STYLES */
+.global-dynamic-banner {
+  background-attachment: fixed !important;
+  background-position: top center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .global-dynamic-banner {
+    height: 70vh !important;
+    min-height: 70vh !important;
+    background-attachment: scroll !important; /* Mobile browsers often have issues with fixed background */
+  }
 }

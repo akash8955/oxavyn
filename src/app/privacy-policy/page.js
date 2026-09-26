@@ -9,7 +9,7 @@ export const metadata = {
 export default function PrivacyPolicy() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
-      <DynamicBackground page="LEGAL" section="Privacy Policy" title="Banner Image" fallbackSrc="/images/Banner_2.png" className="parallax-banner vh-80">
+      <DynamicBackground page="LEGAL" section="Privacy Policy" title="Banner Image" className="parallax-banner vh-80">
         <div className="banner-content animate-fade-in">
           <h1>Privacy Policy</h1>
           <p>Your privacy is important to us. Discover how we handle your data securely.</p>

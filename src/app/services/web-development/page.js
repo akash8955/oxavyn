@@ -49,7 +49,7 @@ export default function WebDevelopmentPage() {
         </div>
         
         <div className="web-hero-visual">
-          <DynamicMedia page="SERVICES" section="Web Development" title="Banner" fallbackSrc="/images/service/web_web.png" alt="Web Development" className="luxury-visual-img" />
+          <DynamicMedia page="SERVICES" section="Web Development" title="Digital Experiences Built for What's Next." alt="Web Development" className="luxury-visual-img" />
         </div>
       </section>
 
@@ -57,7 +57,7 @@ export default function WebDevelopmentPage() {
       <section className="web-exp">
         <div className="mobile-split-layout">
           <div className="mobile-split-image">
-            <DynamicMedia page="SERVICES" section="Web Development" title="The Digital Experience" fallbackSrc="/images/service/web_digital.png" alt="Digital Experience" className="luxury-visual-img" />
+            <DynamicMedia page="SERVICES" section="Web Development" title="The Digital Experience" alt="Digital Experience" className="luxury-visual-img" />
           </div>
           <div className="mobile-split-text-group">
             <div className="mobile-split-heading">
@@ -177,7 +177,7 @@ export default function WebDevelopmentPage() {
             </div>
           </div>
           <div className="tech-split-image">
-            <DynamicMedia page="SERVICES" section="Web Development" title="Technology" fallbackSrc="/images/service/web_technology.png" alt="Technology" className="luxury-visual-img" />
+            <DynamicMedia page="SERVICES" section="Web Development" title="Technology" alt="Technology" className="luxury-visual-img" />
           </div>
         </div>
       </section>
@@ -186,7 +186,7 @@ export default function WebDevelopmentPage() {
       <section className="web-ux">
         <div className="mobile-split-layout">
           <div className="mobile-split-image">
-            <DynamicMedia page="SERVICES" section="Web Development" title="User Experience" fallbackSrc="/images/service/web_user.png" alt="User Experience" className="luxury-visual-img" />
+            <DynamicMedia page="SERVICES" section="Web Development" title="User Experience" alt="User Experience" className="luxury-visual-img" />
           </div>
           
           <div className="mobile-split-text-group">
@@ -298,7 +298,7 @@ export default function WebDevelopmentPage() {
           </div>
           
           <div className="tech-split-image">
-            <DynamicMedia page="SERVICES" section="Web Development" title="More Than Development" fallbackSrc="/images/service/web_more.png" alt="Partnership" className="luxury-visual-img" />
+            <DynamicMedia page="SERVICES" section="Web Development" title="More Than Development" alt="Partnership" className="luxury-visual-img" />
           </div>
         </div>
       </section>

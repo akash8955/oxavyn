@@ -119,7 +119,6 @@ export default function AiDevelopmentPage() {
                 page="SERVICES"
                 section="AI Development"
                 title="Build With Intelligence"
-                fallbackSrc="/images/service/ai_v1.mp4"
                 ref={vid1Ref}
                 playsInline
                 poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><rect width='100%' height='100%' fill='%23e0e7ff'/><text x='50%' y='50%' font-family='sans-serif' font-size='20' font-weight='bold' fill='%236366f1' text-anchor='middle' dominant-baseline='middle'>[AI VIDEO 01]</text></svg>"
@@ -331,7 +330,6 @@ export default function AiDevelopmentPage() {
               page="SERVICES"
               section="AI Development"
               title="See Intelligence in Motion"
-              fallbackSrc="/images/service/ai_v2.mp4"
               ref={vid2Ref}
               playsInline
               poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><rect width='100%' height='100%' fill='%23fdf2f8'/><text x='50%' y='50%' font-family='sans-serif' font-size='24' font-weight='bold' fill='%23f472b6' text-anchor='middle' dominant-baseline='middle'>[AI VIDEO 02]</text></svg>"

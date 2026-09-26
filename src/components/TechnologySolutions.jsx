@@ -65,7 +65,7 @@ export default function TechnologySolutions() {
               <div className="ts-feature-image-wrapper">
                 {/* Fallback styling in case image doesn't load or background grid is needed */}
                 <div className="ts-image-bg-grid"></div>
-                <DynamicMedia page="HOME" section="Technology Solutions" title={`Image ${index + 1}`} fallbackSrc={solution.image} alt={solution.title} className="ts-feature-image" />
+                <DynamicMedia page="HOME" section="Technology Solutions" title={`Image ${index + 1}`} alt={solution.title} className="ts-feature-image" />
               </div>
             </div>
           ))}

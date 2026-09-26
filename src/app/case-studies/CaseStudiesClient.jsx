@@ -9,7 +9,7 @@ export default function CaseStudiesClient({ caseStudies = [] }) {
       <div className="case-studies-ambient-bg"></div>
 
       {/* Banner Section */}
-      <DynamicBackground page="CASE STUDIES" section="Case Studies Banner" title="Banner Image" fallbackSrc="/images/case-studies/case_studies_banner_1789408850530.jpg" className="cs-banner">
+      <DynamicBackground page="CASE STUDIES" section="Case Studies Banner" title="Banner Image" className="cs-banner">
         <div className="cs-banner-content animate-fade-in">
           <h1>Proven Transformations</h1>
           <p>Explore how we engineer success for leading global enterprises through cutting-edge technology and strategic innovation.</p>

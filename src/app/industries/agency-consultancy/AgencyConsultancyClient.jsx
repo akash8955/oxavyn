@@ -118,7 +118,7 @@ export default function AgencyConsultancyClient() {
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
               <div className="career-video-container">
-                <ResponsiveVideo page="INDUSTRIES" section="Agencies" title="Connected Agency" src="/images/career-vid.mp4" />
+                <ResponsiveVideo page="INDUSTRIES" section="Agencies" title="Connected Agency" />
               </div>
             </motion.div>
 
@@ -166,7 +166,7 @@ export default function AgencyConsultancyClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="Agencies" title="Beyond Projects" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Agencies" title="Beyond Projects" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -217,7 +217,7 @@ export default function AgencyConsultancyClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="Agencies" title="Turn Every Client" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Agencies" title="Turn Every Client" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -279,7 +279,7 @@ export default function AgencyConsultancyClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="Agencies" title="Client Relationships" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Agencies" title="Client Relationships" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -369,7 +369,7 @@ export default function AgencyConsultancyClient() {
 
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <DynamicMedia page="INDUSTRIES" section="Agencies" title="Financial Intelligence" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              <DynamicMedia page="INDUSTRIES" section="Agencies" title="Financial Intelligence" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
             </motion.div>
           </div>
 

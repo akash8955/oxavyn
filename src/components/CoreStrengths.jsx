@@ -57,7 +57,7 @@ const CoreStrengths = () => {
                   })}
                 </h3>
                 <div className="cs-card-image">
-                  <DynamicMedia page="HOME" section="Our Core Strength" title={`Image ${index + 1}`} fallbackSrc={item.image} alt={item.heading} />
+                  <DynamicMedia page="HOME" section="Our Core Strength" title={`Image ${index + 1}`} alt={item.heading} />
                 </div>
               </div>
             ))}

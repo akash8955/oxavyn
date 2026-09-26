@@ -17,7 +17,7 @@ export default function BlogClient({ blogs = [] }) {
       <div className="blog-ambient-bg"></div>
       
       {/* Banner Section */}
-      <DynamicBackground page="BLOG" section="Blog Banner" title="Banner Image" fallbackSrc="/images/blog/blog_banner_1789406612451.jpg" className="blog-banner">
+      <DynamicBackground page="BLOG" section="Blog Banner" title="Banner Image" className="blog-banner">
         <div className="blog-banner-content animate-fade-in">
           <h1>Insights & Innovations</h1>
           <p>Discover the latest trends in technology, luxury design, and enterprise solutions.</p>
@@ -39,23 +39,22 @@ export default function BlogClient({ blogs = [] }) {
 
       <div className="blog-container">
         {/* Featured Blog */}
-        {activeFilter === 'All' && (
+        {activeFilter === 'All' && blogs.length > 0 && (
           <section className="featured-blog glass-panel animate-fade-in delay-1">
             <div className="featured-image-wrapper">
-              <DynamicMedia 
-                page="BLOG"
-                section="Featured Blog"
-                title="Featured Image"
-                fallbackSrc="/images/blog/featured_blog_1789406665375.jpg" 
-                alt="Featured Blog" 
+              <Image 
+                src={blogs[0].image} 
+                alt={blogs[0].title} 
+                width={800}
+                height={500}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 className="featured-image"
               />
             </div>
             <div className="featured-content">
               <span className="featured-badge">Featured</span>
-              <h2>Enterprise Technology & Abstract Innovation</h2>
-              <p>Step into the future with our comprehensive guide on premium corporate aesthetics, sleek enterprise design, and the glowing data streams powering tomorrow's business world.</p>
+              <h2>{blogs[0].title}</h2>
+              <p>{blogs[0].desc}</p>
               <Link href={`/blog/${blogs[0].id}`} className="btn-primary">Read Article</Link>
             </div>
           </section>

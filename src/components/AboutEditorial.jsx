@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import DynamicMedia from './DynamicMedia';
+import DynamicBackground from './DynamicBackground';
 import './AboutEditorial.css';
 
 export default function AboutEditorial() {
@@ -29,23 +30,23 @@ export default function AboutEditorial() {
   return (
     <article className="about-page-wrapper" ref={containerRef}>
 
-      {/* 1. HERO SECTION (Parallax Banner) */}
-      <section className="parallax-banner vh-90" style={{ position: 'relative', overflow: 'hidden' }}>
-        <DynamicMedia 
-          page="ABOUT" 
-          section="About Banner" 
-          title="Banner Image" 
-          fallbackSrc="/images/Banner_2.png" 
-          alt="About Banner" 
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-        />
-        <div className="banner-content fade-in-up" style={{ position: 'relative', zIndex: 1 }}>
-          <h1 className="about-hero-title">About Oxavyn</h1>
+      {/* 1. HERO SECTION (Parallax Banner Image Only) */}
+      <DynamicBackground page="ABOUT" section="About Banner" title="Banner Image" className="parallax-banner vh-110" />
+
+      {/* Hero Text Content (Below Banner) */}
+      <section style={{ padding: '4rem 2rem', background: '#f8fafc', textAlign: 'center' }}>
+        <div className="banner-content fade-in-up" style={{ maxWidth: '800px', margin: '0 auto', color: '#111827' }}>
+          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', color: '#111827' }}>
+            About Oxavyn
+          </h1>
+          <p style={{ fontSize: '1.2rem', color: '#4b5563', lineHeight: '1.6' }}>
+            Ideas, People, Impact. We are a team of passionate technologists dedicated to redefining digital excellence.
+          </p>
         </div>
       </section>
 
       {/* 1.5. WE BUILD TECHNOLOGY SECTION */}
-      <section className="section-container" style={{ position: 'relative', overflow: 'hidden', maxWidth: '100%', padding: 0 }}>
+      <section style={{ position: 'relative', overflow: 'hidden' }}>
         {/* Light Ambient Background */}
         <div style={{
           position: 'absolute',
@@ -60,8 +61,8 @@ export default function AboutEditorial() {
           pointerEvents: 'none'
         }}></div>
 
-        <div className="section-container mobile-reorder-img-right" style={{ position: 'relative', zIndex: 1, padding: '8rem 2rem', maxWidth: '1300px' }}>
-          
+        <div className="section-container mobile-reorder-img-right" style={{ position: 'relative', zIndex: 1 }}>
+
           {/* MOBILE HEADING (shows first on mobile) */}
           <div className="mobile-heading-block desktop-hidden slide-in-left">
             <span className="eyebrow" style={{ color: '#6366f1' }}>OUR MISSION</span>
@@ -69,13 +70,13 @@ export default function AboutEditorial() {
           </div>
 
           <div className="section-left slide-in-left" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            
+
             {/* DESKTOP HEADING (shows normal on desktop) */}
             <div className="desktop-heading-block mobile-hidden">
               <span className="eyebrow" style={{ color: '#6366f1' }}>OUR MISSION</span>
               <h2 className="heading-lg" style={{ marginBottom: '2rem', color: '#0f172a' }}>We Build Technology.</h2>
             </div>
-            
+
             <p className="paragraph" style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.8' }}>
               At Oxavyn, we combine technology, creativity and strategic thinking to deliver digital solutions that help businesses innovate, scale and stay ahead in a fast-changing world.
             </p>
@@ -95,7 +96,7 @@ export default function AboutEditorial() {
                 <div className="string"></div>
                 <div className="collage-img-box">
                   <div className="clip"></div>
-                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 1" fallbackSrc="/images/app_why.png" alt="Technology 1" />
+                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 1" alt="Technology 1" />
                 </div>
               </div>
 
@@ -104,7 +105,7 @@ export default function AboutEditorial() {
                 <div className="string"></div>
                 <div className="collage-img-box">
                   <div className="clip"></div>
-                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 2" fallbackSrc="/images/app_look1.png" alt="Technology 2" />
+                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 2" alt="Technology 2" />
                 </div>
               </div>
 
@@ -113,7 +114,7 @@ export default function AboutEditorial() {
                 <div className="string"></div>
                 <div className="collage-img-box">
                   <div className="clip"></div>
-                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 3" fallbackSrc="/images/app_look2.png" alt="Technology 3" />
+                  <DynamicMedia page="ABOUT" section="About Oxavyn" title="Image 3" alt="Technology 3" />
                 </div>
               </div>
             </div>
@@ -122,8 +123,8 @@ export default function AboutEditorial() {
       </section>
 
       {/* 2. OUR JOURNEY (Stats) */}
-      <section className="section-container" style={{ background: '#f8fafc', maxWidth: '100%' }}>
-        <div className="section-container" style={{ padding: '0', maxWidth: '1300px' }}>
+      <section style={{ background: '#f8fafc' }}>
+        <div className="section-container">
           <div className="section-left slide-in-left">
             <span className="eyebrow">OUR JOURNEY</span>
             <h2 className="heading-md">Driven by purpose.<br />Built on innovation.</h2>
@@ -207,9 +208,9 @@ export default function AboutEditorial() {
       </section>
 
       {/* 5. WHY US SECTION */}
-      <section className="section-container" style={{ background: '#eef2ff', maxWidth: '100%' }}>
-        <div className="section-container mobile-reorder-img-left" style={{ padding: '0', maxWidth: '1300px' }}>
-          
+      <section style={{ background: '#eef2ff' }}>
+        <div className="section-container mobile-reorder-img-left">
+
           <div className="mobile-heading-block desktop-hidden slide-in-left">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
               <span className="eyebrow" style={{ marginBottom: 0, background: '#ef4444', color: '#fff', padding: '0.25rem 0.75rem', borderRadius: '4px' }}>Why Us</span>
@@ -220,7 +221,7 @@ export default function AboutEditorial() {
 
           <div className="section-left slide-in-left">
             <div className="team-image-container">
-              <DynamicMedia page="ABOUT" section="Why Us Better" title="Image" fallbackSrc="/images/gallary/ab5.png" alt="Why Us" />
+              <DynamicMedia page="ABOUT" section="Why Us Better" title="Image" alt="Why Us" />
             </div>
           </div>
           <div className="section-right">
@@ -274,7 +275,7 @@ export default function AboutEditorial() {
         </div>
         <div className="section-right">
           <div className="team-image-container fade-in-up delay-200" style={{ background: 'transparent', boxShadow: 'none', marginTop: '3rem' }}>
-            <DynamicMedia page="ABOUT" section="Our 6D Approach" title="Image" fallbackSrc="/images/gallary/ab9.png" alt="6-D Approach" style={{ objectFit: 'contain' }} />
+            <DynamicMedia page="ABOUT" section="Our 6D Approach" title="Image" alt="6-D Approach" style={{ objectFit: 'contain' }} />
           </div>
         </div>
       </section>
@@ -300,7 +301,7 @@ export default function AboutEditorial() {
         </div>
         <div className="section-right">
           <div className="team-image-container fade-in-up delay-200">
-            <DynamicMedia page="ABOUT" section="Our Team" title="Image" fallbackSrc="/images/gallary/ab4.png" alt="Our Team" />
+            <DynamicMedia page="ABOUT" section="Our Team" title="Image" alt="Our Team" />
           </div>
         </div>
       </section>

@@ -42,7 +42,7 @@ export default function ClientSuccessClient({ stories = [] }) {
       <div className="cs-ambient-bg"></div>
 
       {/* Banner Section */}
-      <DynamicBackground page="CLIENT SUCCESS STORIES" section="Client Success Stories Banner" title="Banner Image" fallbackSrc="/images/Banner_3.png" className="cs-hero-banner">
+      <DynamicBackground page="CLIENT SUCCESS STORIES" section="Client Success Stories Banner" title="Banner Image" className="cs-hero-banner">
         <div className="cs-hero-overlay"></div>
         <div className="cs-hero-content animate-fade-in">
           <h1>Client Success Stories</h1>

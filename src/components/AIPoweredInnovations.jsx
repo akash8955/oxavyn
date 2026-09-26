@@ -22,7 +22,7 @@ const AIPoweredInnovations = () => {
               <Link href="/services/generative-ai" className="ai-card-link">Know more &rarr;</Link>
             </div>
             <div className="ai-card-image">
-              <DynamicMedia page="HOME" section="AI Powered Innovation" title="Image 1" fallbackSrc="/images/aipower/ai1.png" alt="Oxavyn Intelligence" />
+              <DynamicMedia page="HOME" section="AI Powered Innovation" title="Image 1" alt="Oxavyn Intelligence" />
             </div>
           </div>
           
@@ -36,7 +36,7 @@ const AIPoweredInnovations = () => {
               <Link href="/services/data-science" className="ai-card-link">Know more &rarr;</Link>
             </div>
             <div className="ai-card-image">
-              <DynamicMedia page="HOME" section="AI Powered Innovation" title="Image 2" fallbackSrc="/images/aipower/ai2.png" alt="Growth Analytics" />
+              <DynamicMedia page="HOME" section="AI Powered Innovation" title="Image 2" alt="Growth Analytics" />
             </div>
           </div>
         </div>

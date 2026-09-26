@@ -21,7 +21,7 @@ export default function HelpCenterClient() {
       <div className="help-ambient-bg"></div>
 
       {/* Banner Section */}
-      <DynamicBackground page="HELP CENTER" section="Help Center Banner" title="Banner Image" fallbackSrc="/images/Banner_5.png" className="help-banner">
+      <DynamicBackground page="HELP CENTER" section="Help Center Banner" title="Banner Image" className="help-banner">
         <div className="help-banner-overlay"></div>
         <div className="help-banner-content animate-fade-in">
           <h1>Exquisite Support</h1>

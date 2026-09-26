@@ -9,7 +9,7 @@ export const metadata = {
 export default function RefundAndCancellation() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
-      <DynamicBackground page="LEGAL" section="Refund & Cancellation Policy" title="Banner Image" fallbackSrc="/images/Banner_4.png" className="parallax-banner vh-80">
+      <DynamicBackground page="LEGAL" section="Refund & Cancellation Policy" title="Banner Image" className="parallax-banner vh-80">
         <div className="banner-content animate-fade-in">
           <h1>Refund & Cancellation</h1>
           <p>Clear, transparent policies for project cancellations and financial refunds.</p>

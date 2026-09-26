@@ -94,7 +94,7 @@ const ReviewSlider = ({ title, reviews }) => {
       <div className="reviews-ambient-bg"></div>
 
       {/* Banner Section */}
-      <DynamicBackground page="STUDENT REVIEWS" section="Student Reviews Banner" title="Banner Image" fallbackSrc="/images/Banner_1.png" className="reviews-banner">
+      <DynamicBackground page="STUDENT REVIEWS" section="Student Reviews Banner" title="Banner Image" className="reviews-banner">
         <div className="reviews-banner-overlay"></div>
         <div className="reviews-banner-content animate-fade-in">
           <h1>Student Excellence</h1>

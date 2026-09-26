@@ -11,7 +11,7 @@ export default function TechGuidesClient({ techGuides = [] }) {
       <div className="tech-ambient-bg"></div>
 
       {/* Banner Section */}
-      <DynamicBackground page="TECHNOLOGY GUIDE" section="Technology Guide Banner" title="Banner Image" fallbackSrc="/images/Banner_5.png" className="tech-hero-banner">
+      <DynamicBackground page="TECHNOLOGY GUIDE" section="Technology Guide Banner" title="Banner Image" className="tech-hero-banner">
         <div className="tech-hero-overlay"></div>
         <div className="tech-hero-content animate-fade-in">
           <h1>Technology Guides</h1>

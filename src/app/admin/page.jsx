@@ -78,15 +78,7 @@ export default function AdminDashboardHome() {
             <Users size={20} />
             <span>Job Applications</span>
           </Link>
-          <Link href="#" className="nav-item">
-            <Users size={20} />
-            <span>Student Enquiries</span>
-          </Link>
-          <Link href="#" className="nav-item">
-            <FileText size={20} />
-            <span>Blog CMS</span>
-          </Link>
-          <Link href="#" className="nav-item">
+          <Link href="/admin/settings" className="nav-item">
             <Settings size={20} />
             <span>Settings</span>
           </Link>

@@ -116,7 +116,7 @@ export default function RetailClient() {
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
               <div className="career-video-container">
-                <ResponsiveVideo page="INDUSTRIES" section="Retail" title="The Modern Retail" src="/images/career-vid.mp4" />
+                <ResponsiveVideo page="INDUSTRIES" section="Retail" title="The Modern Retail" />
               </div>
             </motion.div>
 
@@ -164,7 +164,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="Retail" title="Operations Behind" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Operations Behind" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -238,7 +238,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="Retail" title="Turn Every Customer Interaction" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Turn Every Customer Interaction" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -319,7 +319,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                <DynamicMedia page="INDUSTRIES" section="Retail" title="Foundation For Growth" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Foundation For Growth" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -402,7 +402,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="INDUSTRIES" section="Retail" title="Turn Retail Data" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Turn Retail Data" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>

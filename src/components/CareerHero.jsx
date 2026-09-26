@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import DynamicMedia from '@/components/DynamicMedia';
+import DynamicBackground from '@/components/DynamicBackground';
 import './CareerHero.css';
 
 const CareerHero = () => {
@@ -72,15 +73,16 @@ const CareerHero = () => {
 
   return (
     <>
-      <section className="parallax-banner vh-90" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
-          <DynamicMedia page="CAREERS" section="Careers Banner" title="Career Banner Image" fallbackSrc="/images/Banner_3.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        </div>
-        <div className="banner-content animate-fade-in" style={{ position: 'relative', zIndex: 1 }}>
-          <h1>
+      {/* Hero Section (Parallax Banner Image Only) */}
+      <DynamicBackground page="CAREERS" section="Careers Banner" title="Career Banner Image" className="parallax-banner vh-110" />
+
+      {/* Hero Text Content (Below Banner) */}
+      <section style={{ padding: '4rem 2rem', background: '#f8fafc', textAlign: 'center' }}>
+        <div className="banner-content animate-fade-in" style={{ maxWidth: '800px', margin: '0 auto', color: '#111827' }}>
+          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', color: '#111827' }}>
             A Career Built for <span style={{ color: '#a29bfe' }}>Infinite Possibilities.</span>
           </h1>
-          <p>
+          <p style={{ fontSize: '1.2rem', color: '#4b5563', lineHeight: '1.6' }}>
             At Oxavyn, we believe great technology begins with great people. Join a team where ideas become meaningful solutions, challenges become opportunities, and every contribution helps shape what’s next.
           </p>
         </div>
@@ -96,8 +98,8 @@ const CareerHero = () => {
             page="CAREERS" 
             section="Careers Video" 
             title="A Career Built For" 
-            fallbackSrc="/images/career-vid.mp4" 
             className="career-video"
+            fallbackSrc="https://res.cloudinary.com/df9q38m2a/video/upload/v1727027581/career_n737al.mp4"
             ref={videoRef}
             autoPlay
             loop

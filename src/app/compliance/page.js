@@ -9,7 +9,7 @@ export const metadata = {
 export default function Compliance() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
-      <DynamicBackground page="LEGAL" section="Compliance" title="Banner Image" fallbackSrc="/images/Banner_3.png" className="parallax-banner vh-80">
+      <DynamicBackground page="LEGAL" section="Compliance" title="Banner Image" className="parallax-banner vh-80">
         <div className="banner-content animate-fade-in">
           <h1>Compliance & Standards</h1>
           <p>Our commitment to legal, ethical, and industry-standard practices.</p>

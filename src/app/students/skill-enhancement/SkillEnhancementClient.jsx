@@ -101,7 +101,7 @@ export default function SkillEnhancementClient() {
               
               {/* Media for mobile layout order */}
               <motion.div variants={fadeInUp} className="se-hero-media" style={{ display: 'none', height: '300px' }}>
-                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Build Skills" fallbackSrc="/images/Banner_2.png" alt="Build Skills" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Build Skills" alt="Build Skills" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </motion.div>
 
               <motion.p className="se-paragraph" variants={fadeInUp}>
@@ -110,7 +110,7 @@ export default function SkillEnhancementClient() {
             </div>
             
             <motion.div variants={fadeInUp} className="se-hero-media desktop-media" style={{ height: '400px' }}>
-                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Build Skills" fallbackSrc="/images/career-vid.mp4" className="se-responsive-video" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Build Skills" className="se-responsive-video" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
             </motion.div>
           </motion.div>
         </div>
@@ -135,7 +135,7 @@ export default function SkillEnhancementClient() {
             
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Learn From Experts" fallbackSrc="/images/Banner_2.png" alt="Learn From Experts" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Learn From Experts" alt="Learn From Experts" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -161,7 +161,7 @@ export default function SkillEnhancementClient() {
                   <h3 className="se-course-title">{course.title}</h3>
                   
                   <div className="se-course-media" style={{ height: '200px' }}>
-                    <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title={`Card Video ${idx + 1}`} fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                    <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title={`Card Video ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
                   </div>
 
                   <div className="se-course-tags">
@@ -203,7 +203,7 @@ export default function SkillEnhancementClient() {
 
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
               <div style={{ minHeight: '200px', height: '100%' }}>
-                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Design Around Your Growth 1" fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Design Around Your Growth 1" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
 
@@ -219,7 +219,7 @@ export default function SkillEnhancementClient() {
 
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
               <div style={{ minHeight: '200px', height: '100%' }}>
-                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Design Around Your Growth 2" fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Design Around Your Growth 2" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
 
@@ -346,7 +346,7 @@ export default function SkillEnhancementClient() {
           
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <div className="se-career-media" style={{ minHeight: '350px', height: '100%' }}>
-              <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Skills Today" fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+              <DynamicMedia page="STUDENT" section="SKILL ENHANCEMENT" title="Skills Today" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
             </div>
           </motion.div>
           

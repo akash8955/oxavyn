@@ -288,7 +288,7 @@ export default function InternshipClient() {
                   <h3 className="card-title">{prog.title}</h3>
                   
                   <div className="card-media" style={{ height: '200px' }}>
-                    <DynamicMedia page="STUDENT" section="INTERNSHIP" title={"Card Video " + (index + 1)} fallbackSrc="/images/career-vid.mp4" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                    <DynamicMedia page="STUDENT" section="INTERNSHIP" title={"Card Video " + (index + 1)} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
                   </div>
 
                   <div className="card-tags">

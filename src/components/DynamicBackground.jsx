@@ -17,7 +17,7 @@ export default function DynamicBackground({
 
   return (
     <Element 
-      className={className} 
+      className={`global-dynamic-banner ${className || ''}`} 
       style={{ ...style, backgroundImage: `url(${src})` }} 
       {...props}
     >
