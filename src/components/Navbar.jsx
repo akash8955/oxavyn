@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
 import { navLinks } from "./navData";
@@ -78,7 +79,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="nav-logo">
             <Link href="/" className="nav-logo-link">
-              <img src="/images/logo.png" alt="Oxavyn Logo" className="nav-logo-img desktop-logo" />
+              <Image src="/images/logo.png" alt="Oxavyn Logo" width={40} height={40} className="nav-logo-img desktop-logo" />
               <span className="logo-text">Oxavyn</span>
             </Link>
           </div>
@@ -182,7 +183,7 @@ export default function Navbar() {
       <div className={`mobile-drawer ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="drawer-header">
           <div className="nav-logo-link">
-            <img src="/images/logo.png" alt="Oxavyn Logo" className="nav-logo-img mobile-logo" />
+            <Image src="/images/logo.png" alt="Oxavyn Logo" width={32} height={32} className="nav-logo-img mobile-logo" />
             <span className="logo-text">Oxavyn</span>
           </div>
           <button className="close-btn" onClick={() => setIsMobileMenuOpen(false)}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import './LogoMarquee.css';
 
 // 15 Placeholder logos available
@@ -13,7 +14,13 @@ export default function LogoMarquee() {
           {/* We render the list twice to create a seamless infinite loop effect */}
           {[...logos, ...logos].map((logo, index) => (
             <div className="logo-box" key={index}>
-              <img src={`/images/blogo${(index % 15) + 1}.png`} alt={logo} />
+              <Image 
+                src={`/images/blogo${(index % 15) + 1}.png`} 
+                alt={logo} 
+                width={120} 
+                height={60} 
+                style={{ objectFit: 'contain', width: 'auto', height: '100%' }}
+              />
             </div>
           ))}
         </div>

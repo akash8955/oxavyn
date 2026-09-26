@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Upload, Trash2, Edit2, Link as LinkIcon, Info } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import UploadModal from './UploadModal';
+import { getOptimizedImageUrl, getOptimizedVideoUrl } from '../../../lib/cloudinary-client';
 
 export default function MediaEditor({ slot, mediaList, onSuccess }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,7 +59,7 @@ export default function MediaEditor({ slot, mediaList, onSuccess }) {
           <div className="media-preview-container">
             {existingMedia.mediaType === 'video' ? (
               <video 
-                src={existingMedia.cloudinaryUrl} 
+                src={getOptimizedVideoUrl(existingMedia.publicId || existingMedia.cloudinaryUrl) || existingMedia.cloudinaryUrl} 
                 controls 
                 autoPlay 
                 muted 
@@ -67,7 +68,7 @@ export default function MediaEditor({ slot, mediaList, onSuccess }) {
               />
             ) : (
               <img 
-                src={existingMedia.cloudinaryUrl} 
+                src={getOptimizedImageUrl(existingMedia.publicId || existingMedia.cloudinaryUrl, 400) || existingMedia.cloudinaryUrl} 
                 alt={existingMedia.altText || existingMedia.title} 
                 className="media-preview" 
               />

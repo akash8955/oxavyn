@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { mediaStructure } from '../app/admin/media/mediaStructure';
+import { getOptimizedVideoUrl } from '../lib/cloudinary-client';
 import './ResponsiveVideo.css';
 
 // Global cache to prevent duplicate API calls, with TTL
@@ -160,7 +161,7 @@ export default function ResponsiveVideo({ page, section, title, src: fallbackSrc
     >
       <video
         ref={videoRef}
-        src={dynamicSrc}
+        src={getOptimizedVideoUrl(dynamicSrc) || dynamicSrc}
         className="responsive-video"
         controls
         loop

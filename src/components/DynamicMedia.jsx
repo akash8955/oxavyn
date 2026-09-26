@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { mediaStructure } from '../app/admin/media/mediaStructure';
+import ResponsiveMedia from './cloudinary/ResponsiveMedia';
 
 // Global cache to prevent duplicate API calls for the same page/section, with TTL
 const mediaCache = {};
@@ -85,31 +86,28 @@ const DynamicMedia = React.forwardRef(({
 
   if (!src) return null;
 
-  if (type === 'video') {
-    return (
-      <video 
-        src={src} 
-        className={className} 
-        style={style} 
-        autoPlay 
-        muted 
-        loop 
-        playsInline 
-        controls
-        ref={ref}
-        {...props} 
-      />
-    );
-  }
+  // Determine variant based on title/section context (basic heuristics)
+  let variant = 'content';
+  const titleLower = title.toLowerCase();
+  if (titleLower.includes('hero') || section.toLowerCase().includes('hero')) variant = 'hero';
+  else if (titleLower.includes('card') || titleLower.includes('thumbnail')) variant = 'card';
+  else if (titleLower.includes('logo')) variant = 'logo';
+  else if (titleLower.includes('background')) variant = 'background';
 
   return (
-    <img 
-      src={src} 
-      alt={altText} 
-      className={className} 
-      style={style} 
+    <ResponsiveMedia
+      src={src}
+      type={type}
+      variant={variant}
+      alt={altText}
+      className={className}
+      style={style}
       ref={ref}
-      {...props} 
+      autoPlay={type === 'video'}
+      muted={type === 'video'}
+      loop={type === 'video'}
+      controls={type === 'video'}
+      {...props}
     />
   );
 });
