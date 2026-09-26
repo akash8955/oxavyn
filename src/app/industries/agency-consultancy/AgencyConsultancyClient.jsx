@@ -117,7 +117,9 @@ export default function AgencyConsultancyClient() {
               transition={{ duration: 1, delay: 0.2 }}
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
-              <ResponsiveVideo page="INDUSTRIES" section="Agencies" title="Connected Agency" src="/images/career-vid.mp4" />
+              <div className="career-video-container">
+                <ResponsiveVideo page="INDUSTRIES" section="Agencies" title="Connected Agency" src="/images/career-vid.mp4" />
+              </div>
             </motion.div>
 
             {/* SUBHEADING / PARAGRAPH THIRD */}
@@ -214,7 +216,9 @@ export default function AgencyConsultancyClient() {
 
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo page="INDUSTRIES" section="Agencies" title="Project Operations" src="/images/career-vid.mp4" />
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <DynamicMedia page="INDUSTRIES" section="Agencies" title="Turn Every Client" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              </div>
             </motion.div>
           </div>
 
@@ -393,85 +397,7 @@ export default function AgencyConsultancyClient() {
         </div>
       </section>
 
-      {/* 06 — CONNECTED AGENCY WORKFLOW */}
-      <section className="agcy-section agcy-section-alt">
-        <div className="agcy-container std-layout-section">
-          
-          <div className="std-layout-split reverse">
-            {/* TEXT SIDE */}
-            <div className="std-text-side">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
-                <motion.h2 variants={fadeInUp} className="agcy-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>From First Client Conversation to Final Delivery.</motion.h2>
-              </motion.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
-                <motion.p variants={fadeInUp} className="agcy-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>One connected workflow across sales, clients, projects, teams, finance, and management.</motion.p>
-                <motion.p variants={fadeInUp} className="agcy-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
-                  A connected agency environment allows information to move naturally from one stage of the business to another. A new enquiry can become a CRM opportunity, a converted client can become a project, a project can generate tasks for the team, completed work can move into billing, and business activity can flow into management analytics.
-                </motion.p>
-              </motion.div>
-            </div>
-
-            {/* MEDIA SIDE */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <ResponsiveVideo page="INDUSTRIES" section="Agencies" title="Unified Data" src="/images/career-vid.mp4" />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* FEATURES / CARDS BELOW */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
-            <motion.div variants={fadeInUp} className="agcy-journey" style={{ marginBottom: '4rem' }}>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">LEAD</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">CRM</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">PROPOSAL</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">CLIENT</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">PROJECT</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">TEAM</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">TASKS</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">DELIVERY</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">INVOICE</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label">ANALYTICS</div></div>
-              <div className="agcy-journey-step"><div className="agcy-journey-dot"></div><div className="agcy-journey-label" style={{ color: '#be123c' }}>MANAGEMENT</div></div>
-            </motion.div>
-
-            <div className="agcy-grid-4">
-              {[
-                {
-                  title: "Agency Leadership",
-                  subtitle: "See the business clearly.",
-                  desc: "Revenue, clients, projects, teams, and performance."
-                },
-                {
-                  title: "Account Managers",
-                  subtitle: "Build stronger client relationships.",
-                  desc: "Communication, follow-ups, proposals, and client history."
-                },
-                {
-                  title: "Project Managers",
-                  subtitle: "Keep delivery organized.",
-                  desc: "Projects, tasks, deadlines, teams, and deliverables."
-                },
-                {
-                  title: "Teams & Consultants",
-                  subtitle: "Know what needs to happen next.",
-                  desc: "Tasks, responsibilities, deadlines, and collaboration."
-                }
-              ].map((card, idx) => (
-                <motion.div key={idx} variants={fadeInUp} className="agcy-glass-card">
-                  <div className="agcy-ambient-border-glow"></div>
-                  <div className="agcy-card-title">{card.title}</div>
-                  <div style={{ fontWeight: 600, color: '#e11d48', marginBottom: '0.5rem' }}>{card.subtitle}</div>
-                  <div className="agcy-card-desc">{card.desc}</div>
-                  <div className="agcy-card-glow"></div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
 
       {/* 07 — FINAL CTA + MODERN ENQUIRY FORM */}
       <section className="agcy-section" id="agency-consultancy-enquiry" style={{ background: 'linear-gradient(135deg, rgba(253,252,252,1) 0%, rgba(255,241,242,1) 100%)' }}>

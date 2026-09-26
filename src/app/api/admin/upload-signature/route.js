@@ -16,14 +16,14 @@ export async function POST(req) {
 
     const signature = cloudinary.utils.api_sign_request(
       paramsToSign, 
-      process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET || process.env.CLOUDINARY_API_SECRET
+      process.env.CLOUDINARY_API_SECRET
     );
 
     return NextResponse.json({
       timestamp,
       signature,
-      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_CLOUD_NAME,
-      apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || process.env.CLOUDINARY_API_KEY
+      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+      apiKey: process.env.CLOUDINARY_API_KEY
     });
   } catch (error) {
     return NextResponse.json({ message: 'Signature generation failed', error: error.message }, { status: 500 });

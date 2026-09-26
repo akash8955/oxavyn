@@ -93,11 +93,11 @@
 
 .hc-heading-primary {
   font-family: var(--font-outfit, sans-serif);
-  font-size: 3.8rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  line-height: 1.1;
-  color: #0f0f11;
-  margin-bottom: 1.5rem;
+  color: #3b2b73;
+  margin-bottom: 24px;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
@@ -112,17 +112,16 @@
 }
 
 .hc-subheading {
-  font-size: 1.35rem;
-  color: #333;
+  font-size: 1.125rem;
+  color: #555;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  font-weight: 500;
 }
 
 .hc-paragraph {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   color: #555;
-  line-height: 1.8;
+  line-height: 1.6;
   margin-bottom: 2rem;
 }
 
@@ -521,7 +520,15 @@
   .hc-section {
     padding: 60px 0;
   }
-  .hc-heading-primary { font-size: 2.6rem; }
+  .hc-heading-primary {
+  font-family: var(--font-outfit, sans-serif);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #3b2b73;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
   .hc-heading-secondary { font-size: 2.5rem; }
   
   .hc-mobile-flex {
@@ -592,5 +599,13 @@
   .hc-btn-primary, .hc-btn-secondary {
     width: 100%;
     text-align: center;
+  }
+}
+
+
+/* Fix mobile heading */
+@media (max-width: 768px) {
+  .hc-heading-primary {
+    font-size: 2.5rem !important;
   }
 }

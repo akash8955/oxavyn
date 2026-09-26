@@ -104,10 +104,6 @@ export default function HealthcareClient() {
                 <h1 className="hc-heading-primary">Transform Healthcare Into a Connected, Intelligent System.</h1>
               </motion.div>
               
-              <motion.div variants={fadeInUp} className="hc-order-media mobile-media" style={{ display: 'none' }}>
-                <DynamicMedia page="INDUSTRIES" section="Healthcare" title="Transform Healthcare" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
-              </motion.div>
-
               <motion.h3 className="hc-subheading hc-order-subheading" variants={fadeInUp}>
                 Bring patients, healthcare teams, operations, data, and business processes together through one intelligent digital ecosystem.
               </motion.h3>
@@ -122,59 +118,16 @@ export default function HealthcareClient() {
               </motion.div>
             </div>
             
-            <motion.div variants={fadeInUp} className="hc-order-media desktop-media">
-              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Healthcare Is Complex" src="/images/career-vid.mp4" />
+            <motion.div variants={fadeInUp} className="hc-order-media">
+              <div style={{ aspectRatio: '4/5', width: '100%', maxWidth: '450px', margin: '0 auto', overflow: 'hidden', borderRadius: '16px', position: 'relative' }}>
+                <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Transform Healthcare" src="/images/career-vid.mp4" />
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* 2. HEALTHCARE CHALLENGE */}
-      <section className="hc-section hc-section-alt">
-        <div className="hc-container std-layout-section">
-          
-          <div className="std-layout-split reverse">
-            {/* TEXT SIDE */}
-            <div className="std-text-side">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
-                <motion.h2 variants={fadeInUp} className="hc-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Healthcare Is Complex. Your Technology Shouldn't Be.</motion.h2>
-              </motion.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
-                <motion.p variants={fadeInUp} className="hc-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
-                  Healthcare organizations often operate across multiple disconnected systems. Patient information may sit in one platform, business operations in another, financial processes somewhere else, while reports and analytics require manual consolidation. This fragmentation can create unnecessary administrative work, delays, duplicated information, and limited visibility.
-                </motion.p>
-              </motion.div>
-            </div>
-
-            {/* MEDIA SIDE */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Healthcare Speaks Connected" src="/images/career-vid.mp4" />
-            </motion.div>
-          </div>
-
-          {/* FEATURES / CARDS BELOW */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
-            <div className="hc-2col-grid">
-              {[
-                { title: "Disconnected Systems", desc: "Different departments using isolated tools." },
-                { title: "Manual Processes", desc: "Repetitive administrative work consuming valuable time." },
-                { title: "Limited Visibility", desc: "Important operational information spread across multiple systems." },
-                { title: "Delayed Decisions", desc: "Teams relying on manually prepared reports instead of real-time insights." }
-              ].map((item, idx) => (
-                <motion.div key={idx} variants={fadeInUp}>
-                  <div className="hc-glass-card hc-problem-card">
-                    <div className="hc-ambient-border-glow"></div>
-                    <h4 className="hc-problem-title">{item.title}</h4>
-                    <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
 
       {/* 3. OXAVYN HEALTHCARE ECOSYSTEM */}
       <section className="hc-section">
@@ -218,54 +171,7 @@ export default function HealthcareClient() {
         </div>
       </section>
 
-      {/* 4. HEALTHCARE MANAGEMENT */}
-      <section className="hc-section hc-section-alt">
-        <div className="hc-container std-layout-section">
-          
-          <div className="std-layout-split">
-            {/* TEXT SIDE */}
-            <div className="std-text-side">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-heading">
-                <motion.h2 variants={fadeInUp} className="hc-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>Healthcare Operations, Connected.</motion.h2>
-              </motion.div>
 
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="std-paragraph">
-                <motion.h3 variants={fadeInUp} className="hc-subheading" style={{ textAlign: 'left', marginBottom: '1rem' }}>Digitize the workflows that keep your healthcare organization moving.</motion.h3>
-                <motion.p variants={fadeInUp} className="hc-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
-                  Build a centralized environment for managing important healthcare operations and administrative workflows. Depending on organizational requirements, the system can support patient records, appointments, doctor and staff coordination, department workflows, billing-related processes, inventory visibility, reports, and other operational activities.
-                </motion.p>
-              </motion.div>
-            </div>
-
-            {/* MEDIA SIDE */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Everything Connected" src="/images/career-vid.mp4" />
-            </motion.div>
-          </div>
-
-          {/* FEATURES / CARDS BELOW */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="std-feature-card">
-            <div className="hc-3col-grid" style={{ marginTop: '4rem' }}>
-              {[
-                { title: "Patient Management", desc: "Centralize patient-related information and interactions." },
-                { title: "Appointment Management", desc: "Organize appointments, schedules, availability, and follow-ups." },
-                { title: "Doctor & Staff Management", desc: "Improve visibility across teams, roles, schedules, and responsibilities." },
-                { title: "Billing & Operational Workflows", desc: "Connect important administrative and financial processes." },
-                { title: "Inventory Management", desc: "Track healthcare supplies, equipment, and inventory-related workflows." },
-                { title: "Reports & Monitoring", desc: "Give management teams clearer visibility into organizational activity." }
-              ].map((feature, idx) => (
-                <motion.div key={idx} className="hc-glass-card" variants={fadeInUp} transition={{ delay: idx * 0.1 }}>
-                  <div className="hc-ambient-border-glow"></div>
-                  <h4 className="hc-problem-title">{feature.title}</h4>
-                  <p className="hc-problem-desc" style={{ marginBottom: 0 }}>{feature.desc}</p>
-                  <div className="hc-card-glow"></div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
 
 
       {/* 6. HEALTHCARE ERP */}
@@ -370,33 +276,7 @@ export default function HealthcareClient() {
       </section>
 
 
-      {/* 9. CONNECTED END-TO-END SYSTEM */}
-      <section className="hc-section">
-        <div className="hc-container hc-center-text">
-          <motion.h2 className="hc-heading-secondary" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            Everything Connected. Nothing Lost Between Departments.
-          </motion.h2>
-          
-          <motion.div className="hc-horizontal-progression" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            {['Patient', 'CRM', 'Healthcare Operations', 'ERP', 'Analytics', 'Automation', 'Management'].map((step, idx, arr) => (
-              <React.Fragment key={idx}>
-                <motion.div className="hc-prog-step" variants={fadeInUp}>{step}</motion.div>
-                {idx < arr.length - 1 && <motion.div className="hc-prog-arrow" variants={fadeInUp}>&rarr;</motion.div>}
-              </React.Fragment>
-            ))}
-          </motion.div>
 
-          <motion.p className="hc-paragraph" style={{ maxWidth: '900px', margin: '0 auto 3rem auto' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-            When systems communicate with each other, information can move more efficiently across the organization. This creates better visibility, more consistent workflows, and a stronger foundation for digital healthcare operations.
-          </motion.p>
-          
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <div style={{ minHeight: '500px' }}>
-              <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Implementation Approach" src="/images/career-vid.mp4" />
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* 10. ROLE-BASED EXPERIENCE */}
       <section className="hc-section hc-section-alt">
@@ -453,37 +333,7 @@ export default function HealthcareClient() {
         </div>
       </section>
 
-      {/* 12. IMPLEMENTATION APPROACH */}
-      <section className="hc-section hc-section-alt">
-        <div className="hc-container">
-          <motion.div className="hc-center-text" style={{ maxWidth: '800px', marginBottom: '4rem' }} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="hc-heading-secondary">Implementation Approach</h2>
-          </motion.div>
 
-          <div className="hc-split-grid">
-            <div className="hc-order-features hc-order-wrapper">
-              {[
-                { num: "01", title: "Understand", desc: "Study the organization's current processes, systems, challenges, and goals." },
-                { num: "02", title: "Design", desc: "Create a technology architecture around the organization's requirements." },
-                { num: "03", title: "Integrate", desc: "Connect healthcare, CRM, ERP, analytics, and relevant systems." },
-                { num: "04", title: "Automate", desc: "Identify repetitive workflows and introduce intelligent automation." },
-                { num: "05", title: "Optimize", desc: "Use analytics and feedback to continuously improve operations." }
-              ].map((step, idx) => (
-                <motion.div key={idx} className="hc-step-card" style={{ marginBottom: '2.5rem' }} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}>
-                  <div className="hc-step-num">{step.num} &mdash; {step.title}</div>
-                  <p className="hc-problem-desc" style={{ fontSize: '1.05rem', marginLeft: '3rem' }}>{step.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="hc-order-media">
-              <div style={{ minHeight: '600px' }}>
-                <ResponsiveVideo page="INDUSTRIES" section="Healthcare" title="Implementation Approach" src="/images/career-vid.mp4" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* FINAL ENQUIRY FORM */}
       <section className="hc-section" id="healthcare-enquiry" style={{ background: 'linear-gradient(180deg, transparent, rgba(167, 139, 250, 0.08))' }}>

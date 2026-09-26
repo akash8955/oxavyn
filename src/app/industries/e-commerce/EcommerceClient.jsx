@@ -113,7 +113,9 @@ export default function EcommerceClient() {
               transition={{ duration: 1, delay: 0.2 }}
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
-              <ResponsiveVideo page="INDUSTRIES" section="E-Commerce" title="Built Smarter" src="/images/career-vid.mp4" />
+              <div className="career-video-container">
+                <ResponsiveVideo page="INDUSTRIES" section="E-Commerce" title="Built Smarter" src="/images/career-vid.mp4" />
+              </div>
             </motion.div>
 
             {/* SUBHEADING / PARAGRAPH THIRD */}
@@ -139,143 +141,7 @@ export default function EcommerceClient() {
         </div>
       </section>
 
-      {/* 3. THE E-COMMERCE CHALLENGE */}
-      <section className="ec-section ec-section-alt">
-        <div className="ec-container std-layout-section">
-          
-          <div className="std-layout-split reverse">
-            {/* TEXT SIDE */}
-            <div className="std-text-side">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={staggerContainer}
-                className="std-heading"
-              >
-                <motion.h2 variants={fadeInUp} className="ec-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>E-Commerce Moves Fast. Your Systems Need to Keep Up.</motion.h2>
-              </motion.div>
 
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={staggerContainer}
-                className="std-paragraph"
-              >
-                <motion.p variants={fadeInUp} className="ec-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
-                  As an e-commerce business grows, managing customers, orders, products, inventory, deliveries, payments, vendors, and internal teams through disconnected tools becomes increasingly difficult. Manual processes can create delays, duplicated information, limited visibility, and operational inefficiencies.
-                </motion.p>
-              </motion.div>
-            </div>
-
-            {/* MEDIA SIDE */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="std-media-side"
-            >
-              <ResponsiveVideo page="INDUSTRIES" section="E-Commerce" title="E-Commerce Moves Fast" src="/images/career-vid.mp4" />
-            </motion.div>
-          </div>
-
-          {/* CARDS BELOW */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="std-feature-card"
-          >
-            <div className="ec-grid-4" style={{ textAlign: 'left' }}>
-              <motion.div variants={fadeInUp} className="ec-glass-card">
-                <div className="ec-ambient-border-glow"></div>
-                  <div className="ec-card-title">Disconnected Operations</div>
-                <div className="ec-card-desc">Different teams working across different systems.</div>
-                  <div className="ec-card-glow"></div>
-              </motion.div>
-              <motion.div variants={fadeInUp} className="ec-glass-card">
-                <div className="ec-ambient-border-glow"></div>
-                  <div className="ec-card-title">Inventory Complexity</div>
-                <div className="ec-card-desc">Maintaining accurate product and stock information across channels.</div>
-                  <div className="ec-card-glow"></div>
-              </motion.div>
-              <motion.div variants={fadeInUp} className="ec-glass-card">
-                <div className="ec-ambient-border-glow"></div>
-                  <div className="ec-card-title">Order Visibility</div>
-                <div className="ec-card-desc">Customers and teams need clear visibility into order status.</div>
-                  <div className="ec-card-glow"></div>
-              </motion.div>
-              <motion.div variants={fadeInUp} className="ec-glass-card">
-                <div className="ec-ambient-border-glow"></div>
-                  <div className="ec-card-title">Manual Management</div>
-                <div className="ec-card-desc">Repetitive operational tasks consume valuable time.</div>
-                  <div className="ec-card-glow"></div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* 4. OXAVYN E-COMMERCE ECOSYSTEM */}
-      <section className="ec-section">
-        <div className="ec-container std-layout-section">
-          
-          <div className="std-layout-split">
-            {/* TEXT SIDE */}
-            <div className="std-text-side">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={staggerContainer}
-                className="std-heading"
-              >
-                <motion.h2 variants={fadeInUp} className="ec-heading-secondary" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>One Connected System for Your E-Commerce Operation.</motion.h2>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-                className="std-paragraph"
-              >
-                <motion.p variants={fadeInUp} className="ec-paragraph" style={{ textAlign: 'left', marginBottom: '2rem' }}>
-                  Oxavyn can bring customer management, order management, inventory, business operations, tracking, analytics, and automation into a connected digital environment. Each capability should work as part of the larger ecosystem instead of functioning as an isolated application.
-                </motion.p>
-              </motion.div>
-            </div>
-
-            {/* MEDIA SIDE (DIAGRAM) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="std-media-side"
-            >
-              <div className="ec-diagram-container" style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0 }}>
-                 {/* Simplified 2D Diagram using CSS for desktop */}
-                 <div className="ec-diagram-center">OXAVYN E-COMMERCE PLATFORM</div>
-                 <div className="ec-diagram-node" style={{ top: '10%', left: '20%' }}>CRM</div>
-                 <div className="ec-diagram-node" style={{ top: '10%', right: '20%' }}>ERP</div>
-                 <div className="ec-diagram-node" style={{ top: '30%', left: '10%' }}>Orders</div>
-                 <div className="ec-diagram-node" style={{ top: '30%', right: '10%' }}>Inventory</div>
-                 <div className="ec-diagram-node" style={{ bottom: '30%', left: '10%' }}>Tracking</div>
-                 <div className="ec-diagram-node" style={{ bottom: '30%', right: '10%' }}>Customers</div>
-                 <div className="ec-diagram-node" style={{ bottom: '10%', left: '20%' }}>Management</div>
-                 <div className="ec-diagram-node" style={{ bottom: '10%', right: '20%' }}>Analytics</div>
-                 <div className="ec-diagram-node" style={{ top: '-5%', left: '50%', transform: 'translateX(-50%)' }}>Automation</div>
-              </div>
-            </motion.div>
-          </div>
-
-        </div>
-      </section>
 
       {/* 5. E-COMMERCE CRM */}
       <section className="ec-section ec-section-alt">

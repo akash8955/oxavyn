@@ -57,20 +57,15 @@ export const mediaStructure = [
       {
         title: 'Healthcare',
         slots: [
-          { title: 'Transform Healthcare', type: 'image' },
-          { title: 'Healthcare Is Complex', type: 'video' },
-          { title: 'Healthcare Speaks Connected', type: 'video' },
+          { title: 'Transform Healthcare', type: 'video' },
           { title: 'Run Healthcare Operations', type: 'image' },
-          { title: 'Turn Healthcare Data', type: 'image' },
-          { title: 'Everything Connected', type: 'video' },
-          { title: 'Implementation Approach', type: 'video' }
+          { title: 'Turn Healthcare Data', type: 'image' }
         ]
       },
       {
         title: 'E-Commerce',
         slots: [
           { title: 'Built Smarter', type: 'video' },
-          { title: 'E-Commerce Moves Fast', type: 'video' },
           { title: 'Turn Every Customer', type: 'image' },
           { title: 'Manage Business', type: 'image' }
         ]
@@ -80,8 +75,7 @@ export const mediaStructure = [
         slots: [
           { title: 'Built Smarter', type: 'video' },
           { title: 'Education Is an Ecosystem', type: 'video' },
-          ...Array.from({length: 5}, (_, i) => ({title: `Card Video ${i+1}`, type: 'video'})),
-          { title: 'Turn Education Data', type: 'video' }
+          { title: 'Turn Education Data', type: 'image' }
         ]
       },
       {
@@ -89,10 +83,9 @@ export const mediaStructure = [
         slots: [
           { title: 'Built Smarter', type: 'video' },
           { title: 'Retail Is More Than', type: 'image' },
-          ...Array.from({length: 5}, (_, i) => ({title: `Card Video ${i+1}`, type: 'video'})),
-          { title: 'Turn Every Customer Interaction', type: 'video' },
+          { title: 'Turn Every Customer Interaction', type: 'image' },
           { title: 'Connect Business Better Every Sale', type: 'image' },
-          { title: 'Turn Retail Data', type: 'video' }
+          { title: 'Turn Retail Data', type: 'image' }
         ]
       },
       {
@@ -100,10 +93,9 @@ export const mediaStructure = [
         slots: [
           { title: 'Run Your Agency', type: 'video' },
           { title: 'Your Client, Projects', type: 'image' },
-          { title: 'Turn Every Client', type: 'video' },
+          { title: 'Turn Every Client', type: 'image' },
           { title: 'Turn Project and Quotations', type: 'image' },
-          { title: 'Turn Agency Data', type: 'image' },
-          { title: 'Turn Fast Client Conversion', type: 'video' }
+          { title: 'Turn Agency Data', type: 'image' }
         ]
       }
     ]

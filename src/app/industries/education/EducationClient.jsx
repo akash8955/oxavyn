@@ -116,7 +116,9 @@ export default function EducationClient() {
               transition={{ duration: 1, delay: 0.2 }}
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
-              <ResponsiveVideo page="INDUSTRIES" section="Education" title="Education Connects" src="/images/career-vid.mp4" />
+              <div className="career-video-container">
+                <ResponsiveVideo page="INDUSTRIES" section="Education" title="Education Connects" src="/images/career-vid.mp4" />
+              </div>
             </motion.div>
 
             {/* SUBHEADING / PARAGRAPH THIRD */}
@@ -216,87 +218,7 @@ export default function EducationClient() {
         </div>
       </section>
 
-      {/* 03 — EDUCATION SEGMENTS */}
-      <section className="edu-section">
-        <div className="edu-container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '4rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="edu-heading-secondary">Technology Designed for Every Education Environment.</motion.h2>
-            <motion.p variants={fadeInUp} className="edu-paragraph" style={{ margin: '0 auto' }}>
-              Every education organization has different workflows and priorities. Oxavyn can provide flexible technology solutions designed around the requirements of schools, higher education institutions, coaching organizations, training institutes, and online learning businesses.
-            </motion.p>
-          </motion.div>
 
-          <div className="edu-grid-2">
-            {[
-              {
-                title: "Schools",
-                mediaText: "SCHOOL TECHNOLOGY",
-                desc: "Create a connected digital environment for students, teachers, parents, and school administration with tools for student management, attendance, fees, examinations, communication, academic records, and institutional reporting.",
-                tags: ["STUDENT MGMT", "ATTENDANCE", "PARENTS", "FEES", "EXAM", "ADMIN"]
-              },
-              {
-                title: "Colleges & Universities",
-                mediaText: "COLLEGE & UNIVERSITY",
-                desc: "Connect students, departments, faculty, admissions, examinations, placements, finance, and administration through a centralized technology ecosystem.",
-                tags: ["ADMISSIONS", "DEPARTMENTS", "FACULTY", "EXAMS", "PLACEMENTS"]
-              },
-              {
-                title: "Coaching Centers",
-                mediaText: "COACHING CENTER",
-                desc: "Simplify the management of batches, students, faculty, fees, enquiries, schedules, communication, and student performance.",
-                tags: ["BATCHES", "PERFORMANCE", "FACULTY", "ENQUIRIES", "FEES"]
-              },
-              {
-                title: "Training Institutes",
-                mediaText: "TRAINING INSTITUTE",
-                desc: "Manage learners, courses, trainers, schedules, assessments, certificates, admissions, and operational workflows through a connected platform.",
-                tags: ["COURSES", "LEARNERS", "TRAINERS", "ASSESSMENTS", "CERTIFICATES"]
-              },
-              {
-                title: "Online Education Platforms",
-                mediaText: "ONLINE EDUCATION PLATFORM",
-                desc: "Build a complete digital learning experience covering courses, video content, assessments, student accounts, progress tracking, instructor management, communication, and analytics.",
-                tags: ["LMS", "COURSES", "VIDEO", "ASSESSMENTS", "TRACKING"]
-              }
-            ].map((segment, idx) => (
-              <motion.div 
-                key={idx}
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} 
-                className="edu-glass-card"
-                style={{ height: '100%' }}
-              >
-                <div className="edu-ambient-border-glow"></div>
-                <h3 className="edu-heading-tertiary" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>{segment.title}</h3>
-                
-                <div className="edu-course-media">
-                  <div style={{ height: '200px' }}>
-                    <ResponsiveVideo page="INDUSTRIES" section="Education" title="The Classroom" src="/images/career-vid.mp4" />
-                  </div>
-                </div>
-
-                <div className="edu-course-tags" style={{ justifyContent: 'center' }}>
-                  {segment.tags.map(tag => (
-                    <span key={tag} className="edu-tag">{tag}</span>
-                  ))}
-                </div>
-                
-                <p className="edu-course-desc" style={{ textAlign: 'center' }}>{segment.desc}</p>
-                
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
-                  <button className="edu-btn-outline" onClick={scrollToEnquiry}>Know More &rarr;</button>
-                </div>
-                <div className="edu-card-glow"></div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 04 — DATA / ANALYTICS */}
       <section className="edu-section edu-section-alt">
@@ -318,7 +240,9 @@ export default function EducationClient() {
 
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo page="INDUSTRIES" section="Education" title="Connected Experience" src="/images/career-vid.mp4" />
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <DynamicMedia page="INDUSTRIES" section="Education" title="Turn Education Data" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              </div>
             </motion.div>
           </div>
 

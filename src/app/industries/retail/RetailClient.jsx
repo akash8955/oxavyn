@@ -115,7 +115,9 @@ export default function RetailClient() {
               transition={{ duration: 1, delay: 0.2 }}
               style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 3rem' }}
             >
-              <ResponsiveVideo page="INDUSTRIES" section="Retail" title="The Modern Retail" src="/images/career-vid.mp4" />
+              <div className="career-video-container">
+                <ResponsiveVideo page="INDUSTRIES" section="Retail" title="The Modern Retail" src="/images/career-vid.mp4" />
+              </div>
             </motion.div>
 
             {/* SUBHEADING / PARAGRAPH THIRD */}
@@ -212,87 +214,7 @@ export default function RetailClient() {
         </div>
       </section>
 
-      {/* 03 — RETAIL & CONSUMER SOLUTIONS */}
-      <section className="ret-section">
-        <div className="ret-container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            style={{ textAlign: 'center', marginBottom: '4rem' }}
-          >
-            <motion.h2 variants={fadeInUp} className="ret-heading-secondary">Technology for Every Stage of the Retail Business.</motion.h2>
-            <motion.p variants={fadeInUp} className="ret-paragraph" style={{ margin: '0 auto' }}>
-              Retail businesses have different operating models, from single-location stores to multi-store brands, consumer businesses, D2C companies, wholesalers, and omnichannel organizations. Oxavyn can create technology solutions around the specific operational model and requirements of each business.
-            </motion.p>
-          </motion.div>
 
-          <div className="ret-grid-2">
-            {[
-              {
-                title: "Stores & Physical Retail",
-                mediaText: "PHYSICAL RETAIL STORE",
-                desc: "Connect store operations, customers, products, employees, inventory, sales, and management into a more organized digital environment.",
-                tags: ["STORE MGMT", "SALES", "INVENTORY", "CUSTOMERS", "STAFF", "REPORTING"]
-              },
-              {
-                title: "D2C & E-Commerce",
-                mediaText: "D2C & E-COMMERCE",
-                desc: "Build connected digital commerce operations covering customers, orders, products, inventory, fulfillment, communication, and analytics.",
-                tags: ["CUSTOMERS", "ORDERS", "PRODUCTS", "INVENTORY", "FULFILLMENT"]
-              },
-              {
-                title: "Consumer Brands",
-                mediaText: "CONSUMER BRAND",
-                desc: "Connect product operations, customers, sales channels, distributors, inventory, marketing, and business performance.",
-                tags: ["BRAND MGMT", "CRM", "SALES", "INVENTORY", "DISTRIBUTION"]
-              },
-              {
-                title: "Multi-Store Retail",
-                mediaText: "MULTI-STORE RETAIL",
-                desc: "Create centralized visibility across multiple stores, locations, inventory points, employees, customers, and operational activities.",
-                tags: ["MULTI-STORE", "INVENTORY", "STAFF", "PERFORMANCE", "DASHBOARD"]
-              },
-              {
-                title: "Wholesale & Distribution",
-                mediaText: "WHOLESALE & DISTRIBUTION",
-                desc: "Manage products, customers, distributors, suppliers, orders, inventory, logistics, and business operations through connected systems.",
-                tags: ["DISTRIBUTORS", "ORDERS", "PROCUREMENT", "LOGISTICS", "ANALYTICS"]
-              }
-            ].map((segment, idx) => (
-              <motion.div 
-                key={idx}
-                initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} 
-                className="ret-glass-card"
-                style={{ height: '100%' }}
-              >
-                <div className="ret-ambient-border-glow"></div>
-                <h3 className="ret-heading-tertiary" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>{segment.title}</h3>
-                
-                <div className="ret-course-media">
-                  <div style={{ height: '200px' }}>
-                    <ResponsiveVideo page="INDUSTRIES" section="Retail" title="Retail In Motion" src="/images/career-vid.mp4" />
-                  </div>
-                </div>
-
-                <div className="ret-course-tags" style={{ justifyContent: 'center' }}>
-                  {segment.tags.map(tag => (
-                    <span key={tag} className="ret-tag">{tag}</span>
-                  ))}
-                </div>
-                
-                <p className="ret-course-desc" style={{ textAlign: 'center' }}>{segment.desc}</p>
-                
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
-                  <button className="ret-btn-outline" onClick={scrollToEnquiry}>Know More &rarr;</button>
-                </div>
-                <div className="ret-card-glow"></div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 04 — CRM + CUSTOMER EXPERIENCE */}
       <section className="ret-section ret-section-alt">
@@ -316,7 +238,7 @@ export default function RetailClient() {
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
               <div style={{ minHeight: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <ResponsiveVideo page="INDUSTRIES" section="Retail" title="Customers Across Channels" src="/images/career-vid.mp4" />
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Turn Every Customer Interaction" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
               </div>
             </motion.div>
           </div>
@@ -479,7 +401,9 @@ export default function RetailClient() {
 
             {/* MEDIA SIDE */}
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="std-media-side">
-              <ResponsiveVideo page="INDUSTRIES" section="Retail" title="Data That Drives" src="/images/career-vid.mp4" />
+              <div style={{ minHeight: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <DynamicMedia page="INDUSTRIES" section="Retail" title="Turn Retail Data" fallbackSrc="/images/Banner_2.png" alt="Media" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
+              </div>
             </motion.div>
           </div>
 
