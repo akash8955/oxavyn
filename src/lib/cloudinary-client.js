@@ -9,9 +9,9 @@ export const getCloudinaryPublicId = (urlOrPublicId) => {
   try {
     // Extract publicId from Cloudinary URL
     // e.g., https://res.cloudinary.com/demo/image/upload/v1234567890/folder/image.jpg -> folder/image
-    const matches = urlOrPublicId.match(/\/upload\/(?:v\d+\/)?([^\.]+)/);
+    const matches = urlOrPublicId.match(/\/upload\/(?:v\d+\/)?(.+)/);
     if (matches && matches[1]) {
-      // Return the extracted public ID without the extension
+      // Return the extracted public ID WITH the extension so it doesn't 404
       return matches[1];
     }
     return urlOrPublicId; // fallback to returning the original string if it's not a standard upload URL
@@ -30,7 +30,7 @@ export const getOptimizedVideoUrl = (publicIdOrUrl) => {
       return publicIdOrUrl; 
   }
 
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'rqnd9sxe';
   
   // Use q_auto, f_auto for optimized video delivery
   return `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto/${publicId}`;
@@ -45,7 +45,7 @@ export const getOptimizedImageUrl = (publicIdOrUrl, width) => {
     return publicIdOrUrl; 
   }
 
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'rqnd9sxe';
   
   let transformations = 'q_auto,f_auto';
   if (width) {
