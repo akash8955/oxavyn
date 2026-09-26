@@ -106,7 +106,7 @@ const DynamicMedia = React.forwardRef(({
       autoPlay={type === 'video'}
       muted={type === 'video'}
       loop={type === 'video'}
-      controls={type === 'video'}
+      controls={false}
       {...props}
     />
   );

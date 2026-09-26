@@ -164,7 +164,6 @@ export default function ResponsiveVideo({ page, section, title, src: fallbackSrc
         src={getOptimizedVideoUrl(dynamicSrc) || dynamicSrc}
         poster={getOptimizedPosterUrl(dynamicSrc) || undefined}
         className="responsive-video"
-        controls
         loop
         muted
         playsInline

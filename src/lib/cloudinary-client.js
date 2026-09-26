@@ -32,8 +32,8 @@ export const getOptimizedVideoUrl = (publicIdOrUrl) => {
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'rqnd9sxe';
   
-  // Use q_auto, f_auto for optimized video delivery
-  return `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto/${publicId}`;
+  // Use q_auto, f_auto, w_1280 for highly optimized fast video delivery
+  return `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto,w_1280/${publicId}`;
 };
 
 export const getOptimizedPosterUrl = (publicIdOrUrl) => {
