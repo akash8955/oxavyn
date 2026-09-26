@@ -609,3 +609,19 @@
     font-size: 2.5rem !important;
   }
 }
+
+
+.hc-hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .hc-hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+

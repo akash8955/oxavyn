@@ -139,7 +139,7 @@ export default function HealthcareClient() {
                 Healthcare organizations manage thousands of interactions every day — from patient enquiries and appointments to clinical operations, billing, inventory, staff coordination, reporting, and follow-ups. Oxavyn helps connect these processes through integrated healthcare technology, CRM, ERP, analytics, and automation, creating a more organized and efficient digital environment.
               </motion.p>
               
-              <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <motion.div variants={fadeInUp} className="hc-hero-buttons">
                 <button className="hc-btn-primary" onClick={scrollToEnquiry}>Explore Healthcare Solutions</button>
                 <button className="hc-btn-secondary" onClick={scrollToEnquiry}>Talk to Oxavyn</button>
               </motion.div>
