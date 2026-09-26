@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { mediaStructure } from '../app/admin/media/mediaStructure';
-import { getOptimizedVideoUrl } from '../lib/cloudinary-client';
+import { getOptimizedVideoUrl, getOptimizedPosterUrl } from '../lib/cloudinary-client';
 import './ResponsiveVideo.css';
 
 // Global cache to prevent duplicate API calls, with TTL
@@ -162,11 +162,13 @@ export default function ResponsiveVideo({ page, section, title, src: fallbackSrc
       <video
         ref={videoRef}
         src={getOptimizedVideoUrl(dynamicSrc) || dynamicSrc}
+        poster={getOptimizedPosterUrl(dynamicSrc) || undefined}
         className="responsive-video"
         controls
         loop
         muted
         playsInline
+        preload="auto"
       >
         Your browser does not support the video tag.
       </video>

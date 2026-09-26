@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { getCloudinaryPublicId, getOptimizedVideoUrl, getOptimizedImageUrl } from '../../lib/cloudinary-client';
+import { getCloudinaryPublicId, getOptimizedVideoUrl, getOptimizedImageUrl, getOptimizedPosterUrl } from '../../lib/cloudinary-client';
 
 const ResponsiveMedia = React.forwardRef(({
   src,
@@ -29,9 +29,11 @@ const ResponsiveMedia = React.forwardRef(({
   if (type === 'video') {
     if (isCloudinaryId && publicId) {
       const optimizedSrc = getOptimizedVideoUrl(publicId);
+      const posterUrl = getOptimizedPosterUrl(publicId);
       return (
         <video
           src={optimizedSrc}
+          poster={posterUrl}
           className={className}
           style={style}
           autoPlay={autoPlay}
@@ -39,7 +41,7 @@ const ResponsiveMedia = React.forwardRef(({
           loop={loop}
           playsInline
           controls={controls}
-          preload={autoPlay ? "metadata" : "none"}
+          preload={autoPlay ? "auto" : "none"}
           ref={ref}
           {...props}
         />
@@ -55,7 +57,7 @@ const ResponsiveMedia = React.forwardRef(({
           loop={loop}
           playsInline
           controls={controls}
-          preload={autoPlay ? "metadata" : "none"}
+          preload={autoPlay ? "auto" : "none"}
           ref={ref}
           {...props}
         />

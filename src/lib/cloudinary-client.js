@@ -36,6 +36,22 @@ export const getOptimizedVideoUrl = (publicIdOrUrl) => {
   return `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto/${publicId}`;
 };
 
+export const getOptimizedPosterUrl = (publicIdOrUrl) => {
+  if (!publicIdOrUrl) return null;
+  const publicId = getCloudinaryPublicId(publicIdOrUrl);
+  
+  if (publicIdOrUrl.includes('http') && publicId === publicIdOrUrl) {
+    return null; 
+  }
+
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'rqnd9sxe';
+  
+  // Replace any existing video extension with .jpg to generate a thumbnail poster
+  const posterId = publicId.replace(/\.[^/.]+$/, "") + ".jpg";
+  
+  return `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto,w_1200/${posterId}`;
+};
+
 export const getOptimizedImageUrl = (publicIdOrUrl, width) => {
   if (!publicIdOrUrl) return null;
   const publicId = getCloudinaryPublicId(publicIdOrUrl);
