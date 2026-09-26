@@ -8,8 +8,6 @@ const mediaCache = {};
 const CACHE_TTL = 5000; // 5 seconds
 
 export default function ResponsiveVideo({ page, section, title, src: fallbackSrc, className = "" }) {
-  const videoRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
   // Check if this component is managed by the admin panel
   const isManagedByAdmin = () => {
     if (!page || !section || !title) return false;
