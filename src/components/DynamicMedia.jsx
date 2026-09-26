@@ -29,8 +29,8 @@ const DynamicMedia = React.forwardRef(({
   
   const isManaged = isManagedByAdmin();
 
-  const [src, setSrc] = useState(isManaged ? null : fallbackSrc);
-  const [type, setType] = useState(isManaged ? 'image' : (fallbackSrc?.match(/\.(mp4|webm|mov)$/i) ? 'video' : 'image'));
+  const [src, setSrc] = useState(fallbackSrc || null);
+  const [type, setType] = useState(fallbackSrc?.match(/\.(mp4|webm|mov)$/i) ? 'video' : 'image');
   const [altText, setAltText] = useState(alt || title);
 
   useEffect(() => {

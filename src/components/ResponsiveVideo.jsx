@@ -20,7 +20,7 @@ export default function ResponsiveVideo({ page, section, title, src: fallbackSrc
   
   const isManaged = isManagedByAdmin();
 
-  const [dynamicSrc, setDynamicSrc] = useState(isManaged ? null : fallbackSrc);
+  const [dynamicSrc, setDynamicSrc] = useState(fallbackSrc || null);
 
   useEffect(() => {
     if (!page || !section || !title) return;
