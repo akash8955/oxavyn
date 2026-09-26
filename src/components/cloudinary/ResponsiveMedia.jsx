@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { getCloudinaryPublicId, getOptimizedVideoUrl, getOptimizedImageUrl, getOptimizedPosterUrl } from '../../lib/cloudinary-client';
 
@@ -25,6 +25,65 @@ const ResponsiveMedia = React.forwardRef(({
   const isExternalOrRelativeUrl = (str) => str.startsWith('http') && !str.includes('cloudinary.com') || str.startsWith('/');
   const isCloudinaryId = src && !isExternalOrRelativeUrl(src) || src.includes('res.cloudinary.com');
 
+  // SMART VIDEO SOUND LOGIC
+  const internalVideoRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const setRefs = (element) => {
+    internalVideoRef.current = element;
+    if (typeof ref === 'function') ref(element);
+    else if (ref) ref.current = element;
+  };
+
+  useEffect(() => {
+    if (type !== 'video') return;
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [type]);
+
+  useEffect(() => {
+    if (type !== 'video' || !isMobile) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && internalVideoRef.current) {
+          internalVideoRef.current.muted = false;
+          window.dispatchEvent(new CustomEvent('video-unmute', { detail: { element: internalVideoRef.current } }));
+        } else if (internalVideoRef.current) {
+          internalVideoRef.current.muted = true;
+        }
+      });
+    }, { threshold: 0.5 });
+
+    if (internalVideoRef.current) observer.observe(internalVideoRef.current);
+    return () => {
+      if (internalVideoRef.current) observer.unobserve(internalVideoRef.current);
+    };
+  }, [type, isMobile]);
+
+  useEffect(() => {
+    if (type !== 'video') return;
+    const handleGlobalUnmute = (e) => {
+      if (e.detail.element !== internalVideoRef.current && internalVideoRef.current) {
+        internalVideoRef.current.muted = true;
+      }
+    };
+    window.addEventListener('video-unmute', handleGlobalUnmute);
+    return () => window.removeEventListener('video-unmute', handleGlobalUnmute);
+  }, [type]);
+
+  const handleMouseEnter = () => {
+    if (type !== 'video' || isMobile || !internalVideoRef.current) return;
+    internalVideoRef.current.muted = false;
+    window.dispatchEvent(new CustomEvent('video-unmute', { detail: { element: internalVideoRef.current } }));
+  };
+
+  const handleMouseLeave = () => {
+    if (type !== 'video' || isMobile || !internalVideoRef.current) return;
+    internalVideoRef.current.muted = true;
+  };
+
   // Video logic
   if (type === 'video') {
     if (isCloudinaryId && publicId) {
@@ -42,7 +101,9 @@ const ResponsiveMedia = React.forwardRef(({
           playsInline
           controls={controls}
           preload={autoPlay ? "auto" : "none"}
-          ref={ref}
+          ref={setRefs}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           {...props}
         />
       );
@@ -58,7 +119,9 @@ const ResponsiveMedia = React.forwardRef(({
           playsInline
           controls={controls}
           preload={autoPlay ? "auto" : "none"}
-          ref={ref}
+          ref={setRefs}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           {...props}
         />
       );
