@@ -18,7 +18,7 @@ export const generateSlug = (title) => {
 };
 
 const rawNavLinks = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "/home" },
   { name: "About", href: "/about" },
   { 
     name: "Services", 

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -31,6 +31,13 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
     setMobileSubDropdown(null);
+  }, [pathname]);
+
+  // Instantly scroll to top before the browser paints the new route 
+  // to prevent a flash of the footer when navigating from a scrolled position
+  const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+  useIsomorphicLayoutEffect(() => {
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   const [showStudentSections, setShowStudentSections] = useState(true);
@@ -78,7 +85,7 @@ export default function Navbar() {
         <div className="nav-container">
           {/* Logo */}
           <div className="nav-logo">
-            <Link href="/" className="nav-logo-link">
+            <Link href="/home" className="nav-logo-link">
               <Image src="/images/logo.png" alt="Oxavyn Logo" width={40} height={40} className="nav-logo-img desktop-logo" />
               <span className="logo-text">Oxavyn</span>
             </Link>
