@@ -31,7 +31,7 @@ const DynamicMedia = React.forwardRef(({
 
   const [src, setSrc] = useState(fallbackSrc || null);
   const [type, setType] = useState(fallbackSrc?.match(/\.(mp4|webm|mov)$/i) ? 'video' : 'image');
-  const [altText, setAltText] = useState(alt || title);
+  const [altText, setAltText] = useState(alt !== undefined ? alt : title);
 
   useEffect(() => {
     let isMounted = true;
@@ -89,7 +89,8 @@ const DynamicMedia = React.forwardRef(({
   // Determine variant based on title/section context (basic heuristics)
   let variant = 'content';
   const titleLower = title.toLowerCase();
-  if (titleLower.includes('hero') || section.toLowerCase().includes('hero')) variant = 'hero';
+  const sectionLower = section.toLowerCase();
+  if (titleLower.includes('hero') || sectionLower.includes('hero') || titleLower.includes('banner') || sectionLower.includes('banner')) variant = 'hero';
   else if (titleLower.includes('card') || titleLower.includes('thumbnail')) variant = 'card';
   else if (titleLower.includes('logo')) variant = 'logo';
   else if (titleLower.includes('background')) variant = 'background';

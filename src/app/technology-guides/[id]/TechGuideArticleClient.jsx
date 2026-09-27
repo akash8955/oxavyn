@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { getOptimizedImageUrl } from '@/lib/cloudinary-client';
 import '../../blog/[id]/BlogArticle.css'; // Reusing Blog Article CSS for layout consistency
 
 export default function TechGuideArticleClient({ guide }) {
@@ -11,7 +12,7 @@ export default function TechGuideArticleClient({ guide }) {
       {/* Dynamic Banner using the guide image */}
       <section 
         className="blog-article-banner" 
-        style={{ backgroundImage: `url(${guide.image})` }}
+        style={{ backgroundImage: `url(${guide.image?.includes('cloudinary.com') ? getOptimizedImageUrl(guide.image, 1920) : guide.image})` }}
       >
         <div className="blog-article-banner-content animate-fade-in">
           <div className="blog-article-meta">

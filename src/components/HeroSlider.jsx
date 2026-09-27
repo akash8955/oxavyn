@@ -98,7 +98,7 @@ export default function HeroSlider() {
             
             <div className="slide-visual">
               {slide.image.startsWith('/') ? (
-                <DynamicMedia page="HOME" section="Banner" title={`Banner ${slide.id}`} fallbackSrc={slide.image} alt={slide.title} className="hero-graphic" />
+                <DynamicMedia page="HOME" section="Banner" title={`Banner ${slide.id}`} fallbackSrc="" alt="" className="hero-graphic" priority={index === 0} />
               ) : (
                 <div className="glass-panel visual-card">
                   <span className="visual-icon">{slide.image}</span>

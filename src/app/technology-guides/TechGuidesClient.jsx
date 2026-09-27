@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import DynamicBackground from '@/components/DynamicBackground';
+import ResponsiveMedia from '@/components/cloudinary/ResponsiveMedia';
 import './TechGuides.css';
 
 import Link from 'next/link';
@@ -25,7 +26,7 @@ export default function TechGuidesClient({ techGuides = [] }) {
           {techGuides.map(guide => (
             <div key={guide.id} className="guide-card glass-panel">
               <div className="guide-image-wrapper">
-                <img src={guide.image} alt={guide.title} className="guide-cover-image" />
+                <ResponsiveMedia src={guide.image} alt={guide.title} className="guide-cover-image" variant="card" />
                 <span className="guide-category-badge">{guide.category}</span>
               </div>
               

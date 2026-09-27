@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { getOptimizedImageUrl } from '@/lib/cloudinary-client';
 import './CaseStudy.css';
 
 export default function CaseStudyClient({ study }) {
@@ -11,7 +12,7 @@ export default function CaseStudyClient({ study }) {
       {/* Dynamic Banner using the case study image */}
       <section 
         className="cs-article-banner" 
-        style={{ backgroundImage: `url(${study.image})` }}
+        style={{ backgroundImage: `url(${study.image?.includes('cloudinary.com') ? getOptimizedImageUrl(study.image, 1920) : study.image})` }}
       >
         <div className="cs-article-banner-content animate-fade-in">
           <div className="cs-article-meta">
