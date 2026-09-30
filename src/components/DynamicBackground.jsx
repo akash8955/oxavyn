@@ -26,7 +26,7 @@ export default function DynamicBackground({
   // This forces the browser to download the background image instantly
   // rather than waiting for CSS parsing and rendering
   if (optimizedSrc) {
-    preload(optimizedSrc, { as: 'image' });
+    preload(optimizedSrc, { as: 'image', fetchPriority: 'high' });
   }
 
   return (

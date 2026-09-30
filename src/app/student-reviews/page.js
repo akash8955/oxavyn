@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Student Reviews | Oxavyn',
   description: 'Hear from our alumni. Discover how our internships and skill enhancement programs have transformed careers.',
 };
-export const revalidate = 60;
+export const revalidate = 600;
 
 async function getReviews() {
   if (mongoose.connection.readyState !== 1) {

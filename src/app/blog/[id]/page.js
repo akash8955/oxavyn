@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import Blog from '../../../models/Blog';
 import BlogArticleClient from './BlogArticleClient';
 
-export const revalidate = 60;
+export const revalidate = 600;
 
 async function getBlog(id) {
   if (mongoose.connection.readyState !== 1) {

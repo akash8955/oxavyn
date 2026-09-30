@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import TechGuide from '../../../models/TechGuide';
 import TechGuideArticleClient from './TechGuideArticleClient';
 
-export const revalidate = 60;
+export const revalidate = 600;
 
 async function getGuide(id) {
   if (mongoose.connection.readyState !== 1) {
