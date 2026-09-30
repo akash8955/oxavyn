@@ -17,23 +17,14 @@ const ResponsiveMedia = React.forwardRef(({
   priority = false,
   ...props
 }, ref) => {
-  if (!src) return null;
-
-  const publicId = getCloudinaryPublicId(src);
-
-  // Check if it's an external url (not cloudinary) or a relative url
-  const isExternalOrRelativeUrl = (str) => str.startsWith('http') && !str.includes('cloudinary.com') || str.startsWith('/');
-  const isCloudinaryId = src && !isExternalOrRelativeUrl(src) || src.includes('res.cloudinary.com');
-
-  // SMART VIDEO SOUND LOGIC
+  // ALL HOOKS MUST BE AT THE TOP LEVEL BEFORE ANY EARLY RETURNS
   const internalVideoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const setRefs = (element) => {
-    internalVideoRef.current = element;
-    if (typeof ref === 'function') ref(element);
-    else if (ref) ref.current = element;
-  };
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [src]);
 
   useEffect(() => {
     if (type !== 'video') return;
@@ -72,6 +63,20 @@ const ResponsiveMedia = React.forwardRef(({
     window.addEventListener('video-unmute', handleGlobalUnmute);
     return () => window.removeEventListener('video-unmute', handleGlobalUnmute);
   }, [type]);
+
+  if (!src) return null;
+
+  const publicId = getCloudinaryPublicId(src);
+
+  // Check if it's an external url (not cloudinary) or a relative url
+  const isExternalOrRelativeUrl = (str) => str.startsWith('http') && !str.includes('cloudinary.com') || str.startsWith('/');
+  const isCloudinaryId = src && !isExternalOrRelativeUrl(src) || src.includes('res.cloudinary.com');
+
+  const setRefs = (element) => {
+    internalVideoRef.current = element;
+    if (typeof ref === 'function') ref(element);
+    else if (ref) ref.current = element;
+  };
 
   const handleMouseEnter = () => {
     if (type !== 'video' || isMobile || !internalVideoRef.current) return;
@@ -182,10 +187,11 @@ const ResponsiveMedia = React.forwardRef(({
         src={optimizedSrc}
         alt={alt}
         className={className}
-        style={style}
+        style={{ ...style, opacity: isLoaded ? 1 : 0, transition: 'opacity 0.2s ease-in-out' }}
         width={finalWidth}
         height={finalHeight}
         loading={priority || variant === 'hero' ? 'eager' : 'lazy'}
+        onLoad={() => setIsLoaded(true)}
         {...restProps}
       />
     );
@@ -200,10 +206,12 @@ const ResponsiveMedia = React.forwardRef(({
         src={src}
         alt={alt}
         className={className}
-        style={style}
+        style={{ ...style, opacity: isLoaded ? 1 : 0, transition: 'opacity 0.2s ease-in-out' }}
         width={props.width || 800}
         height={props.height || 600}
         priority={priority}
+        unoptimized={true}
+        onLoad={() => setIsLoaded(true)}
         {...props}
       />
     );
@@ -214,8 +222,9 @@ const ResponsiveMedia = React.forwardRef(({
       src={src}
       alt={alt}
       className={className}
-      style={style}
+      style={{ ...style, opacity: isLoaded ? 1 : 0, transition: 'opacity 0.2s ease-in-out' }}
       loading={priority ? "eager" : "lazy"}
+      onLoad={() => setIsLoaded(true)}
       ref={ref}
       {...props}
     />

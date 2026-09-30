@@ -36,6 +36,12 @@ const DynamicMedia = React.forwardRef(({
   useEffect(() => {
     let isMounted = true;
     
+    // Optimization: If the component is not managed by admin, 
+    // do not waste network requests fetching from the API.
+    if (!isManaged) {
+      return () => { isMounted = false; };
+    }
+    
     const fetchMedia = async () => {
       // Normalize cache key
       const cacheKey = `${page}-${section}`.toLowerCase();
@@ -53,7 +59,8 @@ const DynamicMedia = React.forwardRef(({
           }
         } else {
           // Create promise and store in cache for concurrent requests
-          const fetchPromise = fetch(`/api/media/${encodeURIComponent(page)}/${encodeURIComponent(section)}`, { cache: 'no-store' })
+          // Allowed browser caching to speed up transitions
+          const fetchPromise = fetch(`/api/media/${encodeURIComponent(page)}/${encodeURIComponent(section)}`)
             .then(res => res.ok ? res.json() : { media: [] });
           
           mediaCache[cacheKey] = { promise: fetchPromise, timestamp: now };
@@ -82,7 +89,7 @@ const DynamicMedia = React.forwardRef(({
     fetchMedia();
     
     return () => { isMounted = false; };
-  }, [page, section, title]);
+  }, [page, section, title, isManaged, fallbackSrc]);
 
   if (!src) return null;
 

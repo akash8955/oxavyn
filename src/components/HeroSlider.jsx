@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import DynamicMedia from "./DynamicMedia";
+import ResponsiveMedia from "./cloudinary/ResponsiveMedia";
 import "./HeroSlider.css";
 
 const slides = [
@@ -12,7 +13,7 @@ const slides = [
     description: "Harness the power of Artificial Intelligence and Machine Learning to automate processes, uncover insights, and create smarter digital experiences.",
     cta: "Explore AI Solutions",
     link: "/services/ai-development",
-    image: "/images/Banner_1.png"
+    image: "/images/homebanner_1.png"
   },
   {
     id: 2,
@@ -21,7 +22,7 @@ const slides = [
     description: "Build, migrate, and manage secure cloud environments designed for performance, flexibility, and long-term business growth.",
     cta: "Explore Cloud Solutions",
     link: "/services/saas-development",
-    image: "/images/Banner_2.png"
+    image: "/images/homebanner_2.png"
   },
   {
     id: 3,
@@ -30,7 +31,7 @@ const slides = [
     description: "From intuitive UI/UX to powerful web and mobile applications, we turn ideas into seamless digital experiences your customers love.",
     cta: "Build Your Digital Product",
     link: "/services/custom-software",
-    image: "/images/Banner_3.png"
+    image: "/images/homebanner_1.png"
   },
   {
     id: 4,
@@ -39,7 +40,7 @@ const slides = [
     description: "Unlock the power of your data with advanced analytics, actionable insights, and intelligent solutions that help your business move forward.",
     cta: "Discover Data Solutions",
     link: "/services/data-analytics",
-    image: "/images/Banner_4.png"
+    image: "/images/homebanner_2.png"
   },
   {
     id: 5,
@@ -48,7 +49,7 @@ const slides = [
     description: "From customized applications and Salesforce solutions to digital marketing and enterprise technology, we build solutions that solve real business challenges.",
     cta: "Let's Build Together",
     link: "/services/business-process-automation",
-    image: "/images/Banner_5.png"
+    image: "/images/homebanner_1.png"
   }
 ];
 
@@ -98,7 +99,11 @@ export default function HeroSlider() {
             
             <div className="slide-visual">
               {slide.image.startsWith('/') ? (
-                <DynamicMedia page="HOME" section="Banner" title={`Banner ${slide.id}`} fallbackSrc="" alt="" className="hero-graphic" priority={index === 0} />
+                slide.id <= 2 ? (
+                  <ResponsiveMedia src={slide.image} alt="" className="hero-graphic" priority={index === 0} />
+                ) : (
+                  <DynamicMedia page="HOME" section="Banner" title={`Banner ${slide.id}`} fallbackSrc={slide.image} alt="" className="hero-graphic" priority={index === 0} />
+                )
               ) : (
                 <div className="glass-panel visual-card">
                   <span className="visual-icon">{slide.image}</span>

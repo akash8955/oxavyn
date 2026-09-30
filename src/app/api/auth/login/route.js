@@ -22,7 +22,14 @@ export async function POST(req) {
       return NextResponse.json({ message: 'Invalid credentials.' }, { status: 401 });
     }
 
-    return NextResponse.json({ message: 'Login successful.', userId: user._id }, { status: 200 });
+    const response = NextResponse.json({ message: 'Login successful.', userId: user._id }, { status: 200 });
+    response.cookies.set('auth_token', user._id.toString(), {
+      path: '/',
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 60 * 60 * 24 * 7 // 1 week
+    });
+    return response;
   } catch (error) {
     return NextResponse.json({ message: 'Internal Server Error', error: error.message }, { status: 500 });
   }

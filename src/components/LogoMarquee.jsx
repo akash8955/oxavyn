@@ -19,7 +19,7 @@ export default function LogoMarquee() {
                 alt={logo} 
                 width={120} 
                 height={60} 
-                style={{ objectFit: 'contain', width: 'auto', height: '100%' }}
+                unoptimized={true}
               />
             </div>
           ))}
