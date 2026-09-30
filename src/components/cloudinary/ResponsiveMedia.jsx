@@ -205,7 +205,6 @@ const ResponsiveMedia = React.forwardRef(({
         width={props.width || 800}
         height={props.height || 600}
         priority={priority}
-        unoptimized={true}
         {...props}
       />
     );
