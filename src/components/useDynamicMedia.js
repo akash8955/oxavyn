@@ -40,7 +40,7 @@ export function useDynamicMedia(page, section, title, fallbackSrc) {
             data = mediaCache[cacheKey].data;
           }
         } else {
-          const fetchPromise = fetch(`/api/media/${encodeURIComponent(page)}/${encodeURIComponent(section)}`, { cache: 'no-store' })
+          const fetchPromise = fetch(`/api/media/${encodeURIComponent(page)}/${encodeURIComponent(section)}`)
             .then(res => res.ok ? res.json() : { media: [] });
           
           mediaCache[cacheKey] = { promise: fetchPromise, timestamp: now };

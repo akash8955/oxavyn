@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import connectToDatabase from '../../../../../lib/db';
 import Media from '../../../../../models/Media';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export async function GET(req, { params }) {
   try {

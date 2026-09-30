@@ -2,7 +2,7 @@ export const mediaStructure = [
   {
     title: 'HOME',
     children: [
-      { title: 'Banner', slots: Array.from({ length: 3 }, (_, i) => ({ title: `Banner ${i + 3}`, type: 'image' })) },
+      { title: 'Banner', slots: Array.from({ length: 5 }, (_, i) => ({ title: `Banner ${i + 1}`, type: 'image' })) },
       { title: 'Why Oxavyn', slots: Array.from({ length: 16 }, (_, i) => ({ title: `Image ${i + 1}`, type: 'image' })) },
       { title: 'AI Powered Innovation', slots: [{ title: 'Image 1', type: 'image' }, { title: 'Image 2', type: 'image' }] },
       { title: 'Our Core Strength', slots: Array.from({ length: 6 }, (_, i) => ({ title: `Image ${i + 1}`, type: 'image' })) },
