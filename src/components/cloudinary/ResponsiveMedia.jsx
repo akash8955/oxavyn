@@ -20,11 +20,7 @@ const ResponsiveMedia = React.forwardRef(({
   // ALL HOOKS MUST BE AT THE TOP LEVEL BEFORE ANY EARLY RETURNS
   const internalVideoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(false);
-  }, [src]);
+  // Removed buggy isLoaded state
 
   useEffect(() => {
     if (type !== 'video') return;
@@ -187,11 +183,10 @@ const ResponsiveMedia = React.forwardRef(({
         src={optimizedSrc}
         alt={alt}
         className={className}
-        style={{ ...style, opacity: isLoaded ? 1 : 0, transition: 'opacity 0.2s ease-in-out' }}
+        style={style}
         width={finalWidth}
         height={finalHeight}
         loading={priority || variant === 'hero' ? 'eager' : 'lazy'}
-        onLoad={() => setIsLoaded(true)}
         {...restProps}
       />
     );
@@ -206,12 +201,11 @@ const ResponsiveMedia = React.forwardRef(({
         src={src}
         alt={alt}
         className={className}
-        style={{ ...style, opacity: isLoaded ? 1 : 0, transition: 'opacity 0.2s ease-in-out' }}
+        style={style}
         width={props.width || 800}
         height={props.height || 600}
         priority={priority}
         unoptimized={true}
-        onLoad={() => setIsLoaded(true)}
         {...props}
       />
     );
@@ -222,9 +216,8 @@ const ResponsiveMedia = React.forwardRef(({
       src={src}
       alt={alt}
       className={className}
-      style={{ ...style, opacity: isLoaded ? 1 : 0, transition: 'opacity 0.2s ease-in-out' }}
+      style={style}
       loading={priority ? "eager" : "lazy"}
-      onLoad={() => setIsLoaded(true)}
       ref={ref}
       {...props}
     />
