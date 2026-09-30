@@ -56,6 +56,11 @@ const slides = [
 export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Force scroll to top when page loads
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   // Auto-advance slides
   useEffect(() => {
     const timer = setInterval(() => {
