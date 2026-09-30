@@ -170,7 +170,7 @@ const ResponsiveMedia = React.forwardRef(({
     // Use user-provided width/height if available
     const finalWidth = props.width || width;
     const finalHeight = props.height || height;
-    
+
     // Remove width and height from props to avoid passing them to CldImage twice
     const { width: _w, height: _h, ...restProps } = props;
 
@@ -205,6 +205,7 @@ const ResponsiveMedia = React.forwardRef(({
         width={props.width || 800}
         height={props.height || 600}
         priority={priority}
+        unoptimized={true}
         {...props}
       />
     );
