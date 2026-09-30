@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Client Success Stories | Oxavyn',
   description: 'Explore how Oxavyn empowers global enterprises through cutting-edge technology and ultra-luxury design.',
 };
-export const revalidate = 0;
+export const revalidate = 60;
 
 async function getStories() {
   if (mongoose.connection.readyState !== 1) {

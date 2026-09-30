@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import './TpiDev.css';
@@ -336,8 +337,8 @@ export default function ThirdPartyIntegrations() {
               Oxavyn engineers secure integrations, APIs, webhooks, and automated data flows that allow your applications and business systems to communicate reliably and intelligently.
             </p>
             <div className="tpi-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="tpi-btn tpi-btn-primary">Start an Integration &rarr;</a>
-              <a href="/contact" className="tpi-btn tpi-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="tpi-btn tpi-btn-primary">Start an Integration &rarr;</Link>
+              <Link href="/contact" className="tpi-btn tpi-btn-secondary">Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(255,127,80,0.3), transparent)', margin: '2rem 0 3rem'}}></div>

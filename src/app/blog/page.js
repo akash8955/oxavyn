@@ -7,7 +7,7 @@ export const metadata = {
   title: 'Blog & Insights | Oxavyn',
   description: 'Discover the latest trends in technology, luxury design, and enterprise solutions from Oxavyn.',
 };
-export const revalidate = 0;
+export const revalidate = 60;
 
 async function getBlogs() {
   if (mongoose.connection.readyState !== 1) {

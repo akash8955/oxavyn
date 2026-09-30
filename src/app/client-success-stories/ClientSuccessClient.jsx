@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useState } from 'react';
 import DynamicBackground from '@/components/DynamicBackground';
 import './ClientSuccess.css';
@@ -116,8 +117,8 @@ export default function ClientSuccessClient({ stories = [] }) {
             <h2>Ready to Write Your Success Story?</h2>
             <p>Partner with Oxavyn and elevate your enterprise to new heights. Our elite advisors are ready to architect your next digital transformation.</p>
             <div className="cta-buttons">
-              <a href="/contact" className="btn-primary">Schedule a Consultation</a>
-              <a href="/services" className="btn-secondary">Explore Our Services</a>
+              <Link href="/contact" className="btn-primary">Schedule a Consultation</Link>
+              <Link href="/services" className="btn-secondary">Explore Our Services</Link>
             </div>
           </div>
         </section>

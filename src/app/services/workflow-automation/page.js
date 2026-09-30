@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import './WaDev.css';
@@ -462,8 +463,8 @@ export default function WorkflowAutomation() {
               Oxavyn combines workflow automation, APIs, AI, business logic, and modern engineering to create connected systems that work continuously in the background while your team focuses on what matters.
             </p>
             <div className="wa-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="wa-btn wa-btn-primary">Automate Your Business &rarr;</a>
-              <a href="/contact" className="wa-btn wa-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="wa-btn wa-btn-primary">Automate Your Business &rarr;</Link>
+              <Link href="/contact" className="wa-btn wa-btn-secondary">Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(0,229,255,0.3), transparent)', margin: '2rem 0 3rem'}}></div>

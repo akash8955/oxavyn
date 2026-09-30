@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import CaseStudy from '../../../models/CaseStudy';
 import CaseStudyClient from './CaseStudyClient';
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 async function getCaseStudy(id) {
   if (mongoose.connection.readyState !== 1) {

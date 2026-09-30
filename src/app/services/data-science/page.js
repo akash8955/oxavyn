@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import './DsDev.css';
@@ -534,8 +535,8 @@ export default function DataScienceDevelopment() {
               From exploratory analysis and predictive modeling to advanced visualization and intelligent decision systems, Oxavyn combines data science with modern engineering to turn complex information into practical business intelligence.
             </p>
             <div className="ds-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="ds-btn ds-btn-primary">Start Your Data Science Project &rarr;</a>
-              <a href="/contact" className="ds-btn ds-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="ds-btn ds-btn-primary">Start Your Data Science Project &rarr;</Link>
+              <Link href="/contact" className="ds-btn ds-btn-secondary">Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent)', margin: '2rem 0 3rem'}}></div>

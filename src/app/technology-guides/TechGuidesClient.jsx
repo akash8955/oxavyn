@@ -57,8 +57,8 @@ export default function TechGuidesClient({ techGuides = [] }) {
             <h2>Need a Custom Technical Solution?</h2>
             <p>Our engineers are ready to architect the impossible. Let's discuss your next enterprise deployment.</p>
             <div className="tech-cta-buttons">
-              <a href="/contact" className="btn-primary">Talk to an Expert</a>
-              <a href="/services" className="btn-secondary">Explore Services</a>
+              <Link href="/contact" className="btn-primary">Talk to an Expert</Link>
+              <Link href="/services" className="btn-secondary">Explore Services</Link>
             </div>
           </div>
         </section>

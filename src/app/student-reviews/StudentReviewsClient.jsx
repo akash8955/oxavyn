@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import DynamicBackground from '@/components/DynamicBackground';
 import './StudentReviews.css';
@@ -157,8 +158,8 @@ const ReviewSlider = ({ title, reviews }) => {
             <h2>Ready to Elevate Your Career?</h2>
             <p>Join our prestigious programs and become the next success story. Apply today and unlock your true potential with Oxavyn.</p>
             <div className="cta-buttons">
-              <a href="/students/internships" className="btn-primary">Explore Internships</a>
-              <a href="/students/skill-enhancement" className="btn-secondary">View Skill Programs</a>
+              <Link href="/students/internships" className="btn-primary">Explore Internships</Link>
+              <Link href="/students/skill-enhancement" className="btn-secondary">View Skill Programs</Link>
             </div>
           </div>
         </section>

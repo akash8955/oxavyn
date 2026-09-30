@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import './CrmDev.css';
@@ -353,8 +354,8 @@ export default function CrmAutomation() {
               Oxavyn combines CRM engineering, AI, workflow automation, analytics, and customer intelligence to create systems that reduce manual work and help your team focus on relationships, opportunities, and growth.
             </p>
             <div className="crm-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="crm-btn crm-btn-primary">Build Your CRM &rarr;</a>
-              <a href="/contact" className="crm-btn crm-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="crm-btn crm-btn-primary">Build Your CRM &rarr;</Link>
+              <Link href="/contact" className="crm-btn crm-btn-secondary">Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(255,0,127,0.3), transparent)', margin: '2rem 0 3rem'}}></div>

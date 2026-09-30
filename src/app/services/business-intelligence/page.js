@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import './BiDev.css';
@@ -524,8 +525,8 @@ export default function BusinessIntelligence() {
               Oxavyn brings together Business Intelligence, Power BI, Tableau, data engineering, visualization, AI, and automation to create analytics experiences that help your teams understand faster and act with confidence.
             </p>
             <div className="bi-btn-group" style={{justifyContent: 'center', marginBottom: '3rem'}}>
-              <a href="/contact" className="bi-btn bi-btn-primary">Build Your BI Solution &rarr;</a>
-              <a href="/contact" className="bi-btn bi-btn-secondary">Talk to Oxavyn</a>
+              <Link href="/contact" className="bi-btn bi-btn-primary">Build Your BI Solution &rarr;</Link>
+              <Link href="/contact" className="bi-btn bi-btn-secondary">Talk to Oxavyn</Link>
             </div>
             
             <div style={{height: '1px', width: '100%', background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.2), transparent)', margin: '2rem 0 3rem'}}></div>

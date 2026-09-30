@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Technology Guides | Oxavyn',
   description: 'In-depth resources and guides on the latest enterprise technologies, authored by Oxavyn experts.',
 };
-export const revalidate = 0;
+export const revalidate = 60;
 
 async function getTechGuides() {
   if (mongoose.connection.readyState !== 1) {
