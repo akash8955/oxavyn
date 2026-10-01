@@ -11,6 +11,8 @@ export default function BlogClient({ blogs = [] }) {
   const [activeFilter, setActiveFilter] = useState('All');
   
   const filteredBlogs = activeFilter === 'All' ? blogs : blogs.filter(b => b.category === activeFilter);
+  // Exclude the featured blog (first item) from the grid only if we are showing the 'All' filter
+  const gridBlogs = activeFilter === 'All' ? filteredBlogs.slice(1) : filteredBlogs;
 
   return (
     <div className="blog-page">
@@ -62,7 +64,7 @@ export default function BlogClient({ blogs = [] }) {
 
         {/* Blog Grid */}
         <section className="blog-grid animate-fade-in delay-2">
-          {filteredBlogs.map(blog => (
+          {gridBlogs.map(blog => (
             <article key={blog.id} className="blog-card glass-panel">
               <div className="blog-card-image-wrapper">
                 <Image 
@@ -87,7 +89,7 @@ export default function BlogClient({ blogs = [] }) {
               </div>
             </article>
           ))}
-          {filteredBlogs.length === 0 && (
+          {gridBlogs.length === 0 && (
             <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6b7280', padding: '2rem' }}>
               No articles found in this category.
             </p>
