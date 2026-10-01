@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import mongoose from 'mongoose';
 import Blog from '../../../../models/Blog';
 
@@ -24,6 +25,8 @@ export async function POST(req) {
     await connectToDatabase();
     const body = await req.json();
     const newData = await Blog.create(body);
+    revalidatePath('/blog');
+    revalidatePath('/blog/[id]', 'page');
     return NextResponse.json({ success: true, data: newData });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
