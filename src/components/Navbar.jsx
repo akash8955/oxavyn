@@ -86,7 +86,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="nav-logo">
             <Link href="/home" className="nav-logo-link">
-              <Image src="/images/logo.png" alt="Oxavyn Logo" width={40} height={40} unoptimized={true} className="nav-logo-img desktop-logo" />
+              <Image src="/images/logo.png" alt="Oxavyn Logo" width={120} height={40} priority={true} style={{ objectFit: 'contain' }} unoptimized={true} className="nav-logo-img desktop-logo" />
               <span className="logo-text">Oxavyn</span>
             </Link>
           </div>
@@ -190,7 +190,7 @@ export default function Navbar() {
       <div className={`mobile-drawer ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="drawer-header">
           <div className="nav-logo-link">
-            <Image src="/images/logo.png" alt="Oxavyn Logo" width={32} height={32} unoptimized={true} className="nav-logo-img mobile-logo" />
+            <Image src="/images/logo.png" alt="Oxavyn Logo" width={96} height={32} priority={true} style={{ objectFit: 'contain' }} unoptimized={true} className="nav-logo-img mobile-logo" />
             <span className="logo-text">Oxavyn</span>
           </div>
           <button className="close-btn" onClick={() => setIsMobileMenuOpen(false)}>

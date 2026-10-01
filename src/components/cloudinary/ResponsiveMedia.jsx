@@ -40,6 +40,13 @@ const ResponsiveMedia = React.forwardRef(({
       entries.forEach((entry) => {
         if (entry.isIntersecting && internalVideoRef.current) {
           internalVideoRef.current.muted = false;
+          const playPromise = internalVideoRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              internalVideoRef.current.muted = true;
+              internalVideoRef.current.play().catch(() => {});
+            });
+          }
           window.dispatchEvent(new CustomEvent('video-unmute', { detail: { element: internalVideoRef.current } }));
         } else if (internalVideoRef.current) {
           internalVideoRef.current.muted = true;

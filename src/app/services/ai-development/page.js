@@ -25,38 +25,6 @@ export default function AiDevelopmentPage() {
     return () => observer.disconnect();
   }, []);
 
-  // Video interaction logic identical to CareerHero
-  useEffect(() => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (window.innerWidth <= 768) {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            video.muted = false;
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                video.muted = true;
-                video.play();
-              });
-            }
-          } else {
-            video.muted = true;
-          }
-        }
-      });
-    };
-
-    const videoObserver = new IntersectionObserver(observerCallback, observerOptions);
-    if (vid1Ref.current) videoObserver.observe(vid1Ref.current);
-    if (vid2Ref.current) videoObserver.observe(vid2Ref.current);
-
-    return () => {
-      if (vid1Ref.current) videoObserver.unobserve(vid1Ref.current);
-      if (vid2Ref.current) videoObserver.unobserve(vid2Ref.current);
-    };
-  }, []);
 
   const handleVideoEnter = (videoRef) => {
     if (window.innerWidth > 768 && videoRef.current) {
@@ -121,6 +89,7 @@ export default function AiDevelopmentPage() {
                 title="Build With Intelligence"
                 ref={vid1Ref}
                 playsInline
+                preload="auto"
                 poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><rect width='100%' height='100%' fill='%23e0e7ff'/><text x='50%' y='50%' font-family='sans-serif' font-size='20' font-weight='bold' fill='%236366f1' text-anchor='middle' dominant-baseline='middle'>[AI VIDEO 01]</text></svg>"
               />
             </div>
@@ -332,6 +301,7 @@ export default function AiDevelopmentPage() {
               title="See Intelligence in Motion"
               ref={vid2Ref}
               playsInline
+              preload="auto"
               poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><rect width='100%' height='100%' fill='%23fdf2f8'/><text x='50%' y='50%' font-family='sans-serif' font-size='24' font-weight='bold' fill='%23f472b6' text-anchor='middle' dominant-baseline='middle'>[AI VIDEO 02]</text></svg>"
             />
           </div>

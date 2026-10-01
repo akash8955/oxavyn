@@ -48,7 +48,7 @@ export default function SignupPage() {
       <div className="auth-container">
         <div className="auth-panel animate-fade-in">
           <div className="auth-header">
-            <Image src="/images/logo.png" alt="Oxavyn Logo" width={120} height={40} style={{ objectFit: 'contain', margin: '0 auto 1.5rem auto', display: 'block' }} />
+            <Image src="/images/logo.png" alt="Oxavyn Logo" width={120} height={40} style={{ width: 'auto', height: 'auto', objectFit: 'contain', margin: '0 auto 1.5rem auto', display: 'block' }} />
             <h1>Create Account</h1>
             <p>Join Oxavyn to access premium features</p>
           </div>

@@ -182,7 +182,7 @@
 }
 
 .contact-form-wrapper {
-  background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/images/contact_query.png');
+  background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/images/contact_query.jpg');
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(12px);

@@ -12,7 +12,8 @@ export async function GET(req, { params }) {
     const page = resolvedParams?.page ? decodeURIComponent(resolvedParams.page) : null;
     const section = resolvedParams?.section ? decodeURIComponent(resolvedParams.section) : null;
     
-    console.log("Fetching media for:", { page, section });
+    console.log("Fetching media for:", { page, section }); // Trigger hot-reload
+
 
     if (!page || !section) {
       return NextResponse.json({ message: 'Page and section parameters are required' }, { status: 400 });

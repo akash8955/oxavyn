@@ -321,14 +321,10 @@
 }
 
 .nav-logo-img.desktop-logo {
-  height: 40px;
-  width: auto;
   border-radius: 8px;
 }
 
 .nav-logo-img.mobile-logo {
-  height: 32px;
-  width: auto;
   border-radius: 6px;
 }
 

@@ -8,47 +8,7 @@ import './CareerHero.css';
 const CareerHero = () => {
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5, // 50% visibility required to trigger
-    };
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        // Apply scroll-based unmuting only on mobile view
-        if (window.innerWidth <= 768 && videoRef.current) {
-          if (entry.isIntersecting) {
-            videoRef.current.muted = false;
-            const playPromise = videoRef.current.play();
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                // If autoplay policy blocks unmuting, fallback to muted playback
-                videoRef.current.muted = true;
-                videoRef.current.play();
-              });
-            }
-          } else {
-            videoRef.current.muted = true;
-          }
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const currentVideo = videoRef.current;
-    
-    if (currentVideo) {
-      observer.observe(currentVideo);
-    }
-
-    return () => {
-      if (currentVideo) {
-        observer.unobserve(currentVideo);
-      }
-    };
-  }, []);
 
   const handleMouseEnter = () => {
     // Only apply hover effect on desktop
