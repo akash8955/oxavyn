@@ -11,9 +11,10 @@ export default function TermsAndConditions() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
       <DynamicBackground page="LEGAL" section="Terms & Conditions" title="Banner Image" className="parallax-banner vh-80">
-        <div className="banner-content animate-fade-in">
-          <h1>Terms & Conditions</h1>
-          <p>Please read these terms and conditions carefully before using our service.</p>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8))', zIndex: 1 }}></div>
+        <div className="banner-content animate-fade-in" style={{ position: 'relative', zIndex: 2 }}>
+          <h1 style={{ color: 'white', WebkitTextFillColor: 'white', textShadow: '0 4px 12px rgba(0,0,0,0.6)' }}>Terms & Conditions</h1>
+          <p style={{ color: 'white', textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>Please read these terms and conditions carefully before using our service.</p>
         </div>
       </DynamicBackground>
 

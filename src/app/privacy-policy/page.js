@@ -11,9 +11,10 @@ export default function PrivacyPolicy() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--background)' }}>
       <DynamicBackground page="LEGAL" section="Privacy Policy" title="Banner Image" className="parallax-banner vh-80">
-        <div className="banner-content animate-fade-in">
-          <h1>Privacy Policy</h1>
-          <p>Your privacy is important to us. Discover how we handle your data securely.</p>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8))', zIndex: 1 }}></div>
+        <div className="banner-content animate-fade-in" style={{ position: 'relative', zIndex: 2 }}>
+          <h1 style={{ color: 'white', WebkitTextFillColor: 'white', textShadow: '0 4px 12px rgba(0,0,0,0.6)' }}>Privacy Policy</h1>
+          <p style={{ color: 'white', textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>Your privacy is important to us. Discover how we handle your data securely.</p>
         </div>
       </DynamicBackground>
 
