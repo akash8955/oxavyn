@@ -1,5 +1,5 @@
 .tech-marquee-section {
-  background-color: #c9f321; /* Matches the lime green highlight in the UI */
+  background-color: var(--accent-primary); /* Strong ambient background */
   padding: 40px 0;
   overflow: hidden;
   font-family: var(--font-inter), sans-serif;
@@ -30,8 +30,8 @@
   gap: 8px;
   padding: 10px 24px;
   border-radius: 30px;
-  border: 1px solid #111; /* Thin black outline */
-  color: #111;
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Light outline for dark background */
+  color: white;
   font-size: 16px;
   font-weight: 500;
   white-space: nowrap;
@@ -39,8 +39,8 @@
 }
 
 .tech-pill:hover {
-  background-color: #111;
-  color: #c9f321;
+  background-color: white;
+  color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
