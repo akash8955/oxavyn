@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Compliance | Oxavyn',
   description: 'Compliance policies and standards for Oxavyn.',
 };
+export const revalidate = 600;
 
 export default function Compliance() {
   return (

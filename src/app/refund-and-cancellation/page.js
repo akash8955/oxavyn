@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Refund & Cancellation Policy | Oxavyn',
   description: 'Refund and cancellation policy for Oxavyn services.',
 };
+export const revalidate = 600;
 
 export default function RefundAndCancellation() {
   return (

@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Terms & Conditions | Oxavyn',
   description: 'Terms and Conditions for Oxavyn.',
 };
+export const revalidate = 600;
 
 export default function TermsAndConditions() {
   return (

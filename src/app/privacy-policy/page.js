@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Privacy Policy | Oxavyn',
   description: 'Privacy Policy for Oxavyn.',
 };
+export const revalidate = 600;
 
 export default function PrivacyPolicy() {
   return (
