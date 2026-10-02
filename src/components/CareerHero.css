@@ -84,7 +84,8 @@
 
 @media (max-width: 768px) {
   .career-hero {
-    padding: 100px 20px 80px;
+    padding: 40px 20px 40px;
+    min-height: auto;
   }
 
   .career-hero::before {
