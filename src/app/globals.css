@@ -268,7 +268,7 @@ a {
 
 @media (max-width: 768px) {
   .parallax-banner {
-    background-attachment: scroll; /* iOS Safari struggles with fixed backgrounds */
+    /* Kept parallax (fixed) on mobile per request */
   }
   .vh-80, .vh-90, .vh-110 {
     height: 70vh;
@@ -319,6 +319,6 @@ a {
   .global-dynamic-banner {
     height: 70vh !important;
     min-height: 70vh !important;
-    background-attachment: scroll !important; /* Mobile browsers often have issues with fixed background */
+    /* Kept parallax (fixed) on mobile per request */
   }
 }
