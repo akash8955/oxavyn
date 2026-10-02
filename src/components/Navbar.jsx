@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import "./Navbar.css";
 import { navLinks } from "./navData";
 
-export default function Navbar() {
+export default function Navbar({ initialShowStudentSections = true }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -40,7 +40,7 @@ export default function Navbar() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const [showStudentSections, setShowStudentSections] = useState(true);
+  const [showStudentSections, setShowStudentSections] = useState(initialShowStudentSections);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
