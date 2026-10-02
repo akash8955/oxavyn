@@ -31,7 +31,7 @@
 }
 
 .ai-highlight {
-  color: #c9f321; /* lime/yellow green to match screenshot */
+  color: var(--accent-secondary); /* lime/yellow green to match screenshot */
 }
 
 .ai-cards-grid {
