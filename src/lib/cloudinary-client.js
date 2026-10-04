@@ -8,8 +8,8 @@ export const getCloudinaryPublicId = (urlOrPublicId) => {
   
   try {
     // Extract publicId from Cloudinary URL
-    // e.g., https://res.cloudinary.com/demo/image/upload/v1234567890/folder/image.jpg -> folder/image
-    const matches = urlOrPublicId.match(/\/upload\/(?:v\d+\/)?(.+)/);
+    // e.g., https://res.cloudinary.com/demo/image/upload/v1234567890/folder/image.jpg -> v1234567890/folder/image.jpg
+    const matches = urlOrPublicId.match(/\/[uU]pload\/(.+)/);
     if (matches && matches[1]) {
       // Return the extracted public ID WITH the extension so it doesn't 404
       return matches[1];
