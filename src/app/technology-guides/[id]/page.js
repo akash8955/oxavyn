@@ -1,14 +1,14 @@
 import { notFound } from 'next/navigation';
 import mongoose from 'mongoose';
+
+import connectToDatabase from '@/lib/db';
 import TechGuide from '../../../models/TechGuide';
 import TechGuideArticleClient from './TechGuideArticleClient';
 
 export const revalidate = 600;
 
 async function getGuide(id) {
-  if (mongoose.connection.readyState !== 1) {
-    await mongoose.connect(process.env.MONGODB_URI);
-  }
+  await connectToDatabase();
   let guide = null;
   if (mongoose.Types.ObjectId.isValid(id)) {
     guide = await TechGuide.findById(id).lean();

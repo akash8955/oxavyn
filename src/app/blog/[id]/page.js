@@ -1,14 +1,14 @@
 import { notFound } from 'next/navigation';
 import mongoose from 'mongoose';
+
+import connectToDatabase from '@/lib/db';
 import Blog from '../../../models/Blog';
 import BlogArticleClient from './BlogArticleClient';
 
 export const revalidate = 600;
 
 async function getBlog(id) {
-  if (mongoose.connection.readyState !== 1) {
-    await mongoose.connect(process.env.MONGODB_URI);
-  }
+  await connectToDatabase();
   let blog = null;
   if (mongoose.Types.ObjectId.isValid(id)) {
     blog = await Blog.findById(id).lean();

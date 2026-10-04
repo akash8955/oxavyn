@@ -2,17 +2,18 @@ import React from 'react';
 import Link from 'next/link';
 
 export async function generateMetadata({ params }) {
-  const city = params.city.charAt(0).toUpperCase() + params.city.slice(1);
+  const resolvedParams = await params;
+  const city = resolvedParams.city.charAt(0).toUpperCase() + resolvedParams.city.slice(1);
   return {
-    title: \`Web, App & AI Development Company in \${city} | OXAVYN\`,
-    description: \`OXAVYN provides web development, mobile app development, AI, custom software and digital solutions for businesses in \${city}.\`,
+    title: `Web, App & AI Development Company in ${city} | OXAVYN`,
+    description: `OXAVYN provides web development, mobile app development, AI, custom software and digital solutions for businesses in ${city}.`,
     alternates: {
-      canonical: \`https://oxavyn.com/locations/\${params.city.toLowerCase()}\`
+      canonical: `https://oxavyn.com/locations/${resolvedParams.city.toLowerCase()}`
     },
     openGraph: {
-      title: \`Web, App & AI Development Company in \${city} | OXAVYN\`,
-      description: \`OXAVYN provides web development, mobile app development, AI, custom software and digital solutions for businesses in \${city}.\`,
-      url: \`https://oxavyn.com/locations/\${params.city.toLowerCase()}\`,
+      title: `Web, App & AI Development Company in ${city} | OXAVYN`,
+      description: `OXAVYN provides web development, mobile app development, AI, custom software and digital solutions for businesses in ${city}.`,
+      url: `https://oxavyn.com/locations/${resolvedParams.city.toLowerCase()}`,
       siteName: "Oxavyn",
       images: [
         {
@@ -26,8 +27,8 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title: \`Web, App & AI Development Company in \${city} | OXAVYN\`,
-      description: \`OXAVYN provides web development, mobile app development, AI, custom software and digital solutions for businesses in \${city}.\`,
+      title: `Web, App & AI Development Company in ${city} | OXAVYN`,
+      description: `OXAVYN provides web development, mobile app development, AI, custom software and digital solutions for businesses in ${city}.`,
       images: ["/images/oxavyn-digital-transformation.jpg"],
     },
   };
@@ -43,8 +44,9 @@ export function generateStaticParams() {
   ];
 }
 
-export default function LocationPage({ params }) {
-  const city = params.city.charAt(0).toUpperCase() + params.city.slice(1);
+export default async function LocationPage({ params }) {
+  const resolvedParams = await params;
+  const city = resolvedParams.city.charAt(0).toUpperCase() + resolvedParams.city.slice(1);
 
   return (
     <main className="location-page" style={{ paddingTop: '100px', minHeight: '80vh', background: '#f8fafc' }}>

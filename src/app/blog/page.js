@@ -30,6 +30,8 @@ export const metadata = {
 
 import React from 'react';
 import mongoose from 'mongoose';
+
+import connectToDatabase from '@/lib/db';
 import Blog from '../../models/Blog';
 import BlogClient from './BlogClient';
 
@@ -37,9 +39,7 @@ import BlogClient from './BlogClient';
 export const revalidate = 600;
 
 async function getBlogs() {
-  if (mongoose.connection.readyState !== 1) {
-    await mongoose.connect(process.env.MONGODB_URI);
-  }
+  await connectToDatabase();
   const blogs = await Blog.find().sort({ createdAt: -1 }).lean();
   return blogs.map(b => ({
     ...b,

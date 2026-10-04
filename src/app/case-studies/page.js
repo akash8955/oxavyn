@@ -32,15 +32,15 @@ import React from 'react';
 import CaseStudiesClient from './CaseStudiesClient';
 
 import mongoose from 'mongoose';
+
+import connectToDatabase from '@/lib/db';
 import CaseStudy from '../../models/CaseStudy';
 
 
 export const revalidate = 600;
 
 async function getCaseStudies() {
-  if (mongoose.connection.readyState !== 1) {
-    await mongoose.connect(process.env.MONGODB_URI);
-  }
+  await connectToDatabase();
   const studies = await CaseStudy.find().sort({ createdAt: -1 }).lean();
   // Stringify the IDs
   return studies.map(s => ({

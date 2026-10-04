@@ -29,6 +29,8 @@ export const metadata = {
 };
 
 import mongoose from 'mongoose';
+
+import connectToDatabase from '@/lib/db';
 import ClientStory from '../../models/ClientStory';
 import ClientSuccessClient from './ClientSuccessClient';
 
@@ -36,9 +38,7 @@ import ClientSuccessClient from './ClientSuccessClient';
 export const revalidate = 600;
 
 async function getStories() {
-  if (mongoose.connection.readyState !== 1) {
-    await mongoose.connect(process.env.MONGODB_URI);
-  }
+  await connectToDatabase();
   const stories = await ClientStory.find({ isApproved: true }).sort({ createdAt: -1 }).lean();
   return stories.map(s => ({ ...s, _id: s._id.toString(), id: s._id.toString() }));
 }

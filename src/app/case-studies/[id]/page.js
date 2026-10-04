@@ -1,14 +1,14 @@
 import { notFound } from 'next/navigation';
 import mongoose from 'mongoose';
+
+import connectToDatabase from '@/lib/db';
 import CaseStudy from '../../../models/CaseStudy';
 import CaseStudyClient from './CaseStudyClient';
 
 export const revalidate = 600;
 
 async function getCaseStudy(id) {
-  if (mongoose.connection.readyState !== 1) {
-    await mongoose.connect(process.env.MONGODB_URI);
-  }
+  await connectToDatabase();
   let study = null;
   // Handle both ObjectId and custom numeric IDs (from static data)
   if (mongoose.Types.ObjectId.isValid(id)) {

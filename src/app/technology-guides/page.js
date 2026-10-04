@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+
+import connectToDatabase from '@/lib/db';
 import TechGuide from '../../models/TechGuide';
 import TechGuidesClient from './TechGuidesClient';
 
@@ -9,9 +11,7 @@ export const metadata = {
 export const revalidate = 600;
 
 async function getTechGuides() {
-  if (mongoose.connection.readyState !== 1) {
-    await mongoose.connect(process.env.MONGODB_URI);
-  }
+  await connectToDatabase();
   const guides = await TechGuide.find().sort({ createdAt: -1 }).lean();
   return guides.map(g => ({
     ...g,
