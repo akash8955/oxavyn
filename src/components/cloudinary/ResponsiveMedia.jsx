@@ -50,6 +50,7 @@ const ResponsiveMedia = React.forwardRef(({
           window.dispatchEvent(new CustomEvent('video-unmute', { detail: { element: internalVideoRef.current } }));
         } else if (internalVideoRef.current) {
           internalVideoRef.current.muted = true;
+          internalVideoRef.current.pause();
         }
       });
     }, { threshold: 0.5 });
@@ -88,6 +89,14 @@ const ResponsiveMedia = React.forwardRef(({
   const handleMouseEnter = () => {
     if (type !== 'video' || isMobile || !internalVideoRef.current) return;
     internalVideoRef.current.muted = false;
+    const playPromise = internalVideoRef.current.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // If unmuting is blocked by browser, revert to muted and play again
+        internalVideoRef.current.muted = true;
+        internalVideoRef.current.play().catch(() => {});
+      });
+    }
     window.dispatchEvent(new CustomEvent('video-unmute', { detail: { element: internalVideoRef.current } }));
   };
 

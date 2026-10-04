@@ -34,13 +34,6 @@ export default function FoundationalCareerClient() {
     let fieldToHighlight = null;
 
     switch (stageTitle) {
-      case "First Year":
-      case "Second Year":
-      case "Third Year":
-      case "Fourth Year":
-        newYear = stageTitle;
-        fieldToHighlight = 'year';
-        break;
       case "Placement Ready":
         newInterest = "Placement Preparation";
         fieldToHighlight = 'interest';
@@ -69,36 +62,12 @@ export default function FoundationalCareerClient() {
   const cards = [
     {
       number: "CARD 01",
-      title: "First Year",
-      desc: "Build the right foundation from the beginning. Understand programming fundamentals, computer science basics, problem-solving, communication, and the habits that support long-term technical growth.",
-      tags: ["FOUNDATION", "PROGRAMMING", "FUNDAMENTALS"]
-    },
-    {
-      number: "CARD 02",
-      title: "Second Year",
-      desc: "Move from basic concepts toward stronger technical understanding. Develop data structures knowledge, core computer science skills, practical coding ability, and begin working on meaningful academic and personal projects.",
-      tags: ["DSA", "CORE CS", "PROJECTS"]
-    },
-    {
-      number: "CARD 03",
-      title: "Third Year",
-      desc: "Start connecting your technical skills with real-world opportunities. Focus on advanced development, projects, internships, problem-solving, professional profiles, and the skills companies expect from students approaching graduation.",
-      tags: ["INTERNSHIP", "PROJECTS", "SKILL DEVELOPMENT"]
-    },
-    {
-      number: "CARD 04",
-      title: "Fourth Year",
-      desc: "Turn your accumulated knowledge into career opportunities. Strengthen interview preparation, resume presentation, technical communication, aptitude, coding, and placement-focused skills.",
-      tags: ["PLACEMENTS", "INTERVIEWS", "CAREER"]
-    },
-    {
-      number: "CARD 05",
       title: "Placement Ready",
       desc: "Prepare for the recruitment process with a focused approach to technical interviews, coding assessments, aptitude, communication, resume building, mock interviews, and professional confidence.",
       tags: ["INTERVIEW", "APTITUDE", "PLACEMENT"]
     },
     {
-      number: "CARD 06",
+      number: "CARD 02",
       title: "Internship Ready",
       desc: "Develop the skills and professional preparation required to approach internship opportunities with greater confidence. Build projects, improve your profile, understand interview expectations, and prepare for real-world work environments.",
       tags: ["INTERNSHIP", "PROJECTS", "CAREER READY"]
@@ -205,7 +174,7 @@ export default function FoundationalCareerClient() {
                   <h3 className="fc-course-title">{card.title}</h3>
                   
                   <div className="fc-course-media" style={{ height: '200px' }}>
-                    <DynamicMedia page="STUDENT" section="FOUNDATION" title={`Choose Your Story ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                    <DynamicMedia page="STUDENT" section="FOUNDATION" title={`Choose Your Story ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} controls={true} />
                   </div>
 
                   <div className="fc-course-tags">
@@ -215,9 +184,6 @@ export default function FoundationalCareerClient() {
                   <p className="fc-course-desc">{card.desc}</p>
                   
                   <div style={{ display: 'flex', gap: '1rem' }}>
-                    <button className="fc-btn-outline" onClick={(e) => handleKnowMore(e, card.title)}>
-                      Know More
-                    </button>
                     <button className="fc-btn-primary" style={{ padding: '1rem 1.5rem' }} onClick={(e) => handleKnowMore(e, card.title)}>
                       Enquire Now
                     </button>
@@ -249,55 +215,10 @@ export default function FoundationalCareerClient() {
             ))}
           </div>
 
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ minHeight: '400px', height: '100%' }}>
-            <DynamicMedia page="STUDENT" section="FOUNDATION" title="From Foundation to Opportunity" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
-          </motion.div>
         </div>
       </section>
 
-      {/* 5. FOUNDATION + CAREER CONTENT SECTION */}
-      <section className="fc-section">
-        <div className="fc-container">
-          <motion.div className="fc-center-text" style={{ maxWidth: '800px' }} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-            <motion.h2 className="fc-heading-secondary" variants={fadeInUp}>Build Skills Before You Need Them.</motion.h2>
-            <motion.p className="fc-paragraph" variants={fadeInUp}>
-              Career preparation becomes easier when it starts early. Students who gradually develop programming fundamentals, technical concepts, projects, communication skills, professional profiles, and problem-solving abilities are better positioned to take advantage of opportunities when they appear. Oxavyn's structured approach helps students build these capabilities progressively throughout their academic journey.
-            </motion.p>
-          </motion.div>
 
-          <div className="fc-editorial-grid">
-            <motion.div className="fc-glass-card" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="fc-ambient-border-glow"></div>
-              <h3 className="fc-course-title">Academic Foundation</h3>
-              <ul style={{ marginBottom: '2rem', paddingLeft: '1.2rem', color: '#555', lineHeight: '1.8' }}>
-                <li>Programming fundamentals</li>
-                <li>Core computer science</li>
-                <li>Logical thinking</li>
-                <li>Problem-solving</li>
-                <li>Technical concepts</li>
-              </ul>
-              <div style={{ minHeight: '200px', height: '100%' }}>
-                <DynamicMedia page="STUDENT" section="FOUNDATION" title="Build Skill Before 1" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
-              </div>
-            </motion.div>
-
-            <motion.div className="fc-glass-card" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="fc-ambient-border-glow"></div>
-              <h3 className="fc-course-title">Career Preparation</h3>
-              <ul style={{ marginBottom: '2rem', paddingLeft: '1.2rem', color: '#555', lineHeight: '1.8' }}>
-                <li>Resume</li>
-                <li>Projects</li>
-                <li>Internships</li>
-                <li>Interviews</li>
-                <li>Placement preparation</li>
-              </ul>
-              <div style={{ minHeight: '200px', height: '100%' }}>
-                <DynamicMedia page="STUDENT" section="FOUNDATION" title="Build Skill Before 2" style={{ width: '100%', height: '100%', minHeight: '350px', objectFit: 'cover', borderRadius: '12px' }} />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* 6. ENQUIRY FORM */}
       <section className="fc-section" id="foundational-career-enquiry">
@@ -402,43 +323,7 @@ export default function FoundationalCareerClient() {
         </div>
       </section>
 
-      {/* 8. CAREER READINESS MEDIA SECTION */}
-      <section className="fc-section" style={{ background: 'rgba(139, 92, 246, 0.02)' }}>
-        <div className="fc-container">
-          <motion.div className="fc-center-text" style={{ maxWidth: '800px', marginBottom: '4rem' }} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="fc-heading-secondary">Preparation Creates Confidence.</h2>
-            <p className="fc-paragraph">
-              Academic knowledge is only one part of career preparation. Students also need practical experience, communication, problem-solving ability, professional presentation, and the confidence to demonstrate what they know. The right preparation helps turn these individual skills into a stronger overall profile.
-            </p>
-          </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ position: 'relative', minHeight: '500px', height: '100%' }}>
-            <DynamicMedia page="STUDENT" section="FOUNDATION" title="Professional Career Confidence" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              style={{
-                position: 'absolute',
-                bottom: '-20px',
-                right: '10%',
-                background: '#fff',
-                padding: '1rem 2rem',
-                borderRadius: '50px',
-                boxShadow: '0 20px 40px rgba(139, 92, 246, 0.15)',
-                color: '#6d28d9',
-                fontWeight: '700',
-                fontSize: '0.9rem',
-                letterSpacing: '0.05em'
-              }}
-            >
-              Learn &rarr; Practice &rarr; Build &rarr; Prepare &rarr; Grow
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* 9. FINAL CTA */}
       <section className="fc-section" style={{ borderTop: '1px solid rgba(139, 92, 246, 0.1)' }}>

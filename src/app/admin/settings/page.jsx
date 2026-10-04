@@ -192,7 +192,7 @@ export default function SettingsDashboard() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Student & Review Pages</h3>
-                    <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Toggle the visibility of Student Internships, Skill Enhancement, Foundation, and Student Reviews in the navigation menu and routes.</p>
+                    <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Toggle the visibility of Student Internships, Foundation, and Student Reviews in the navigation menu and routes.</p>
                   </div>
                   <label style={{ position: 'relative', display: 'inline-block', width: '60px', height: '34px', flexShrink: 0 }}>
                     <input type="checkbox" checked={showStudentSections} onChange={(e) => setShowStudentSections(e.target.checked)} style={{ opacity: 0, width: 0, height: 0 }} />

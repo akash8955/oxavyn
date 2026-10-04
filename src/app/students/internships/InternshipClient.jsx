@@ -53,57 +53,22 @@ export default function InternshipClient() {
   const programs = [
     {
       id: "1",
-      title: "Project-Based Internship",
-      desc: "Learn by building. Work through structured projects that help you understand how ideas move from planning and design to development, testing, and delivery. This experience focuses on applying technical knowledge to practical project work while developing problem-solving and portfolio-building skills.",
-      tags: ["PROJECTS", "PRACTICAL", "PORTFOLIO"],
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-      )
-    },
-    {
-      id: "2",
-      title: "Learning-Based Internship",
-      desc: "Designed for students who want a more structured learning experience. Learn concepts through guided sessions, practical exercises, assignments, and continuous feedback while gradually building confidence with the technologies and skills relevant to your chosen path.",
-      tags: ["LEARNING", "GUIDANCE", "SKILLS"],
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-      )
-    },
-    {
-      id: "3",
       title: "Live Project Internship",
       desc: "Experience how professional technology projects are planned, developed, reviewed, tested, and delivered. Depending on the opportunity, students can gain exposure to team collaboration, development workflows, project tools, technical discussions, and real-world problem solving.",
       tags: ["LIVE PROJECT", "TEAMWORK", "WORKFLOW"],
+      disclaimer: "*This internship require small charge based on 1, 3, 6 month and only for 1st, 2nd and 3rd year student",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
       )
     },
     {
-      id: "4",
-      title: "Interview-Based Internship",
-      desc: "Experience a structured internship selection process that gives students an opportunity to demonstrate their technical knowledge, problem-solving ability, communication skills, and interest in the selected field.",
-      tags: ["ASSESSMENT", "INTERVIEW", "SELECTION"],
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-      )
-    },
-    {
-      id: "5",
+      id: "2",
       title: "Stipend-Based Internship",
       desc: "Explore internship opportunities where a stipend may be provided depending on the specific role, program, eligibility requirements, responsibilities, and applicable terms. These opportunities combine practical exposure with professional contribution.",
       tags: ["OPPORTUNITY", "EXPERIENCE", "STIPEND*"],
-      disclaimer: "*Stipend availability, eligibility, amount, and terms may vary by internship opportunity.",
+      disclaimer: "*Stipend availability, eligibility, amount, and terms may vary by internship opportunity, only for 3rd and 4th year student",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-      )
-    },
-    {
-      id: "6",
-      title: "Mentorship-Based Internship",
-      desc: "Learn with structured guidance from experienced professionals. Get support with technical concepts, project work, problem solving, feedback, and career-related decisions while developing a clearer understanding of your strengths and areas for improvement.",
-      tags: ["MENTORSHIP", "FEEDBACK", "GROWTH"],
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="11" cy="7" r="4"></circle><polyline points="22 12 18 16 14 12"></polyline></svg>
       )
     }
   ];
@@ -288,7 +253,7 @@ export default function InternshipClient() {
                   <h3 className="card-title">{prog.title}</h3>
                   
                   <div className="card-media" style={{ height: '200px' }}>
-                    <DynamicMedia page="STUDENT" section="INTERNSHIP" title={"Card Video " + (index + 1)} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} />
+                    <DynamicMedia page="STUDENT" section="INTERNSHIP" title={"Card Video " + (index + 1)} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} controls={true} />
                   </div>
 
                   <div className="card-tags">
@@ -488,12 +453,8 @@ export default function InternshipClient() {
                 <div className="form-group select-group">
                   <select id="prog" defaultValue="" required>
                     <option value="" disabled hidden></option>
-                    <option value="Project">Project-Based Internship</option>
-                    <option value="Learning">Learning-Based Internship</option>
                     <option value="Live">Live Project Internship</option>
-                    <option value="Interview">Interview-Based Internship</option>
                     <option value="Stipend">Stipend-Based Internship</option>
-                    <option value="Mentorship">Mentorship-Based Internship</option>
                   </select>
                   <label htmlFor="prog">Select Internship</label>
                   <div className="input-line"></div>
@@ -529,7 +490,6 @@ export default function InternshipClient() {
             </p>
             <div className="hero-actions center-actions">
               <a href="#application" className="btn-primary final-btn-primary">Apply Now &rarr;</a>
-              <Link href="/students/skill-enhancement" className="btn-secondary final-btn-secondary">Explore Skill Enhancement &rarr;</Link>
             </div>
           </motion.div>
         </div>

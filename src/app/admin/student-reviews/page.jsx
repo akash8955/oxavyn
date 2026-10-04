@@ -168,7 +168,6 @@ export default function StudentReviewsAdmin() {
                 <label>Program</label>
                 <select value={formData.program} onChange={e => setFormData({...formData, program: e.target.value})}>
                   <option value="Internship Program">Internship Program</option>
-                  <option value="Skill Enhancement">Skill Enhancement</option>
                   <option value="Foundational & Career">Foundational & Career</option>
                 </select>
               </div>

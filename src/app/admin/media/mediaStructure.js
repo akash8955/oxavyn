@@ -106,29 +106,15 @@ export const mediaStructure = [
     children: [
       {
         title: 'INTERNSHIP',
-        slots: Array.from({ length: 6 }, (_, i) => ({ title: `Card Video ${i + 1}`, type: 'video' }))
+        slots: Array.from({ length: 2 }, (_, i) => ({ title: `Card Video ${i + 1}`, type: 'video' }))
       },
-      {
-        title: 'SKILL ENHANCEMENT',
-        slots: [
-          ...Array.from({ length: 6 }, (_, i) => ({ title: `Card Video ${i + 1}`, type: 'video' })),
-          { title: 'Build Skills', type: 'image' },
-          { title: 'Learn From Experts', type: 'image' },
-          { title: 'Design Around Your Growth 1', type: 'image' },
-          { title: 'Design Around Your Growth 2', type: 'image' },
-          { title: 'Skills Today', type: 'image' }
-        ]
-      },
+
       {
         title: 'FOUNDATION',
         slots: [
           { title: 'Build Your Foundation', type: 'image' },
           { title: 'Your Career Is a Journey', type: 'image' },
-          ...Array.from({ length: 6 }, (_, i) => ({ title: `Choose Your Story ${i + 1}`, type: 'video' })),
-          { title: 'From Foundation to Opportunity', type: 'video' },
-          { title: 'Build Skill Before 1', type: 'image' },
-          { title: 'Build Skill Before 2', type: 'image' },
-          { title: 'Professional Career Confidence', type: 'video' }
+          ...Array.from({ length: 2 }, (_, i) => ({ title: `Choose Your Story ${i + 1}`, type: 'video' }))
         ]
       }
     ]

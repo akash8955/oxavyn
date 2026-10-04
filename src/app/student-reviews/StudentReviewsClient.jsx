@@ -6,7 +6,6 @@ import './StudentReviews.css';
 
 export default function StudentReviewsClient({ reviews = [] }) {
   const internshipReviews = reviews.filter(r => r.program === 'Internship Program' || r.program === 'Internship');
-  const skillEnhancementReviews = reviews.filter(r => r.program === 'Skill Enhancement');
   const foundationalReviews = reviews.filter(r => r.program === 'Foundational & Career' || r.program === 'Foundational');
 
 const ReviewSlider = ({ title, reviews }) => {
@@ -107,7 +106,6 @@ const ReviewSlider = ({ title, reviews }) => {
         {/* Sliders */}
         <div className="all-sliders animate-fade-in delay-1">
           <ReviewSlider title="Internship Program Reviews" reviews={internshipReviews} />
-          <ReviewSlider title="Skill Enhancement Reviews" reviews={skillEnhancementReviews} />
           <ReviewSlider title="Foundational & Career Reviews" reviews={foundationalReviews} />
         </div>
 
@@ -129,7 +127,6 @@ const ReviewSlider = ({ title, reviews }) => {
                 <div className="form-group half">
                   <select name="program" value={formData.program} onChange={handleChange} required>
                     <option value="Internship">Internship Program</option>
-                    <option value="Skill Enhancement">Skill Enhancement</option>
                     <option value="Foundational">Foundational & Career</option>
                   </select>
                 </div>
@@ -159,7 +156,6 @@ const ReviewSlider = ({ title, reviews }) => {
             <p>Join our prestigious programs and become the next success story. Apply today and unlock your true potential with Oxavyn.</p>
             <div className="cta-buttons">
               <Link href="/students/internships" className="btn-primary">Explore Internships</Link>
-              <Link href="/students/skill-enhancement" className="btn-secondary">View Skill Programs</Link>
             </div>
           </div>
         </section>

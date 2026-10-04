@@ -25,7 +25,6 @@ export default function sitemap() {
     '/services/third-party-integrations',
     '/students',
     '/students/internships',
-    '/students/skill-enhancement',
     '/students/foundational-career',
     '/industries',
     '/industries/healthcare',
