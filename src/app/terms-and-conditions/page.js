@@ -1,10 +1,37 @@
+export const metadata = {
+  title: "Terms & Conditions | OXAVYN",
+  description: "Read the OXAVYN Terms & Conditions governing website use, services, projects, payments, intellectual property and related responsibilities.",
+  
+  alternates: {
+    canonical: "https://oxavyn.com/terms-and-conditions"
+  },
+  openGraph: {
+    title: "Terms & Conditions | OXAVYN",
+    description: "Read the OXAVYN Terms & Conditions governing website use, services, projects, payments, intellectual property and related responsibilities.",
+    url: "https://oxavyn.com/terms-and-conditions",
+    siteName: "Oxavyn",
+    images: [
+      {
+        url: "/images/oxavyn-digital-transformation.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms & Conditions | OXAVYN",
+    description: "Read the OXAVYN Terms & Conditions governing website use, services, projects, payments, intellectual property and related responsibilities.",
+    images: ["/images/oxavyn-digital-transformation.jpg"],
+  },
+};
+
 import React from 'react';
 import DynamicBackground from '@/components/DynamicBackground';
 
-export const metadata = {
-  title: 'Terms & Conditions | Oxavyn',
-  description: 'Terms and Conditions for Oxavyn.',
-};
+
 export const revalidate = 600;
 
 export default function TermsAndConditions() {

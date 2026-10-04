@@ -1,11 +1,38 @@
+export const metadata = {
+  title: "OXAVYN FAQ | Web, App, AI & Software Development",
+  description: "Find answers to common questions about OXAVYN web development, mobile apps, AI solutions, custom software, automation, projects and student programs.",
+  
+  alternates: {
+    canonical: "https://oxavyn.com/faq"
+  },
+  openGraph: {
+    title: "OXAVYN FAQ | Web, App, AI & Software Development",
+    description: "Find answers to common questions about OXAVYN web development, mobile apps, AI solutions, custom software, automation, projects and student programs.",
+    url: "https://oxavyn.com/faq",
+    siteName: "Oxavyn",
+    images: [
+      {
+        url: "/images/oxavyn-digital-transformation.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OXAVYN FAQ | Web, App, AI & Software Development",
+    description: "Find answers to common questions about OXAVYN web development, mobile apps, AI solutions, custom software, automation, projects and student programs.",
+    images: ["/images/oxavyn-digital-transformation.jpg"],
+  },
+};
+
 import React from 'react';
 import FaqAccordion from '@/components/FaqAccordion';
 import DynamicBackground from '@/components/DynamicBackground';
 
-export const metadata = {
-  title: 'FAQ | Oxavyn',
-  description: 'Explore our most common questions about our services, technology, development process, AI solutions, automation, pricing, and ongoing support.',
-};
+
 
 export default function FaqPage() {
   return (

@@ -18,8 +18,34 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Oxavyn",
-  description: "A premium modern web application",
+  metadataBase: new URL('https://oxavyn.com'),
+  title: {
+    default: "Oxavyn | Web, App & AI Solutions Company",
+    template: "%s | OXAVYN"
+  },
+  description: "Oxavyn builds modern websites, mobile applications, AI solutions and custom software that help businesses grow, automate operations and create better digital experiences.",
+  keywords: ["web app and AI solutions company", "web development company", "app development company", "AI solutions company", "software development company", "digital solutions company"],
+  openGraph: {
+    title: "Oxavyn | Web, App & AI Solutions Company",
+    description: "Oxavyn builds modern websites, mobile applications, AI solutions and custom software that help businesses grow, automate operations and create better digital experiences.",
+    url: "https://oxavyn.com",
+    siteName: "Oxavyn",
+    images: [
+      {
+        url: "/images/oxavyn-digital-transformation.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oxavyn | Web, App & AI Solutions Company",
+    description: "Oxavyn builds modern websites, mobile applications, AI solutions and custom software that help businesses grow, automate operations and create better digital experiences.",
+    images: ["/images/oxavyn-digital-transformation.jpg"],
+  },
 };
 
 export default async function RootLayout({ children }) {

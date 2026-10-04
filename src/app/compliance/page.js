@@ -1,10 +1,37 @@
+export const metadata = {
+  title: "Compliance & Data Protection | OXAVYN",
+  description: "Learn about OXAVYN's approach to privacy, data protection, security, responsible AI, transparency and customer data handling.",
+  
+  alternates: {
+    canonical: "https://oxavyn.com/compliance"
+  },
+  openGraph: {
+    title: "Compliance & Data Protection | OXAVYN",
+    description: "Learn about OXAVYN's approach to privacy, data protection, security, responsible AI, transparency and customer data handling.",
+    url: "https://oxavyn.com/compliance",
+    siteName: "Oxavyn",
+    images: [
+      {
+        url: "/images/oxavyn-digital-transformation.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Compliance & Data Protection | OXAVYN",
+    description: "Learn about OXAVYN's approach to privacy, data protection, security, responsible AI, transparency and customer data handling.",
+    images: ["/images/oxavyn-digital-transformation.jpg"],
+  },
+};
+
 import React from 'react';
 import DynamicBackground from '@/components/DynamicBackground';
 
-export const metadata = {
-  title: 'Compliance | Oxavyn',
-  description: 'Compliance at Oxavyn.',
-};
+
 export const revalidate = 600;
 
 export default function Compliance() {

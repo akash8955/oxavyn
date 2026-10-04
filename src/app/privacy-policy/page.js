@@ -1,10 +1,37 @@
+export const metadata = {
+  title: "Privacy Policy | OXAVYN",
+  description: "Read the OXAVYN Privacy Policy to understand how information is collected, used, protected and managed across our website and services.",
+  
+  alternates: {
+    canonical: "https://oxavyn.com/privacy-policy"
+  },
+  openGraph: {
+    title: "Privacy Policy | OXAVYN",
+    description: "Read the OXAVYN Privacy Policy to understand how information is collected, used, protected and managed across our website and services.",
+    url: "https://oxavyn.com/privacy-policy",
+    siteName: "Oxavyn",
+    images: [
+      {
+        url: "/images/oxavyn-digital-transformation.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | OXAVYN",
+    description: "Read the OXAVYN Privacy Policy to understand how information is collected, used, protected and managed across our website and services.",
+    images: ["/images/oxavyn-digital-transformation.jpg"],
+  },
+};
+
 import React from 'react';
 import DynamicBackground from '@/components/DynamicBackground';
 
-export const metadata = {
-  title: 'Privacy Policy | Oxavyn',
-  description: 'Privacy Policy for Oxavyn.',
-};
+
 export const revalidate = 600;
 
 export default function PrivacyPolicy() {

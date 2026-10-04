@@ -1,3 +1,33 @@
+export const metadata = {
+  title: "Mobile App Development Company in Jaipur | OXAVYN",
+  description: "Build scalable and user-focused mobile applications with OXAVYN, from product design and development to integrations and deployment.",
+  keywords: ["mobile app development company in Jaipur"],
+  alternates: {
+    canonical: "https://oxavyn.com/services/mobile-app-development"
+  },
+  openGraph: {
+    title: "Mobile App Development Company in Jaipur | OXAVYN",
+    description: "Build scalable and user-focused mobile applications with OXAVYN, from product design and development to integrations and deployment.",
+    url: "https://oxavyn.com/services/mobile-app-development",
+    siteName: "Oxavyn",
+    images: [
+      {
+        url: "/images/oxavyn-digital-transformation.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mobile App Development Company in Jaipur | OXAVYN",
+    description: "Build scalable and user-focused mobile applications with OXAVYN, from product design and development to integrations and deployment.",
+    images: ["/images/oxavyn-digital-transformation.jpg"],
+  },
+};
+
 import React from "react";
 import Link from "next/link";
 import DynamicMedia from "../../../components/DynamicMedia";
@@ -7,10 +37,7 @@ import "./MobileDev.css";
 
 import TechConstellationClient from "./TechConstellationClient";
 
-export const metadata = {
-  title: "Mobile App Development | Oxavyn",
-  description: "From ambitious ideas to intelligent digital products, Oxavyn designs and develops high-performance mobile experiences built for scale.",
-};
+
 
 export default function MobileAppDevelopmentPage() {
   return (
