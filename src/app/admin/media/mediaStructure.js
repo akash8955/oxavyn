@@ -116,6 +116,12 @@ export const mediaStructure = [
           { title: 'Your Career Is a Journey', type: 'image' },
           ...Array.from({ length: 2 }, (_, i) => ({ title: `Choose Your Story ${i + 1}`, type: 'video' }))
         ]
+      },
+      {
+        title: 'SKILLS',
+        slots: [
+          { title: 'Build Skills', type: 'image' }
+        ]
       }
     ]
   },

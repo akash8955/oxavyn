@@ -62,6 +62,22 @@ export default function AdminDashboardHome() {
             <MessageSquare size={20} />
             <span>Client Stories</span>
           </Link>
+
+          <div style={{ padding: '1rem 1rem 0.5rem', fontSize: '0.75rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Student Programs</div>
+          <Link href="/admin/internship-manage" className="nav-item">
+            <Users size={20} />
+            <span>Internship Manage</span>
+          </Link>
+          <Link href="/admin/skill-enhancement-manage" className="nav-item">
+            <Users size={20} />
+            <span>Skill Enhancement</span>
+          </Link>
+          <Link href="/admin/foundation-manage" className="nav-item">
+            <Users size={20} />
+            <span>Foundation Manage</span>
+          </Link>
+          <div style={{ padding: '1rem 1rem 0.5rem', fontSize: '0.75rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>General</div>
+
           <Link href="/admin/contact-queries" className="nav-item">
             <Users size={20} />
             <span>Contact Queries</span>

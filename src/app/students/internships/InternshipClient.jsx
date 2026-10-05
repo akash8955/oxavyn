@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import DynamicMedia from '@/components/DynamicMedia';
@@ -10,6 +10,109 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default function InternshipClient() {
   const containerRef = useRef(null);
   const flowRef = useRef(null);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    university: "",
+    graduationYear: "",
+    currentSemester: "",
+    internshipType: "",
+    domain: "",
+    duration: "",
+    utrNumber: "",
+    resumeUrl: ""
+  });
+  const [resumeFile, setResumeFile] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ show: false, success: false, message: "" });
+  
+  // Dynamic Payment Settings
+  const [paymentSettings, setPaymentSettings] = useState({
+    qrCodeUrl: '',
+    upiId: 'oxavyn@upi',
+    price1Month: '₹1000',
+    price3Month: '₹2500',
+    price6Month: '₹4500'
+  });
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await fetch('/api/settings?key=internship_payment_settings');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.setting && data.setting.value) {
+            setPaymentSettings(data.setting.value);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch payment settings", err);
+      }
+    };
+    fetchSettings();
+  }, []);
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setResumeFile(e.target.files[0]);
+    }
+  };
+
+  const calculatePrice = (duration) => {
+    switch (duration) {
+      case "1 month": return paymentSettings.price1Month;
+      case "3 month": return paymentSettings.price3Month;
+      case "6 month": return paymentSettings.price6Month;
+      default: return "";
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ show: false, success: false, message: "" });
+    try {
+      let uploadedResumeUrl = "";
+      
+      if (formData.internshipType === "Stipend-Based Internship" && resumeFile) {
+        const formDataUpload = new FormData();
+        formDataUpload.append("file", resumeFile);
+        formDataUpload.append("folder", "oxavyn/resumes");
+        
+        const uploadRes = await fetch('/api/admin/upload-cloudinary', {
+          method: 'POST',
+          body: formDataUpload
+        });
+        
+        if (uploadRes.ok) {
+          const uploadData = await uploadRes.json();
+          uploadedResumeUrl = uploadData.secure_url;
+        } else {
+          setSubmitStatus({ show: true, success: false, message: "Resume upload failed. Please try again." });
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
+      const res = await fetch('/api/internships', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, resumeUrl: uploadedResumeUrl })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitStatus({ show: true, success: true, message: "Application is submitted successfully our HR team contact you soon within 48 hours." });
+        setFormData({ fullName: "", email: "", university: "", graduationYear: "", currentSemester: "", internshipType: "", domain: "", duration: "", utrNumber: "", resumeUrl: "" });
+        setResumeFile(null);
+      } else {
+        setSubmitStatus({ show: true, success: false, message: data.message || "Submission failed" });
+      }
+    } catch (err) {
+      setSubmitStatus({ show: true, success: false, message: "An error occurred. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -400,28 +503,28 @@ export default function InternshipClient() {
               <h2 className="center-text">Start Your Internship Journey</h2>
               <p className="form-desc center-text">Tell us a little about yourself and choose the internship experience you would like to explore. Your information will help us understand your academic background and the type of opportunity you are interested in.</p>
               
-              <form className="student-form ultra-modern" onSubmit={(e) => e.preventDefault()}>
+              <form className="student-form ultra-modern" onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <input type="text" id="fname" placeholder=" " required />
+                  <input type="text" id="fname" placeholder=" " required value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
                   <label htmlFor="fname">Full Name</label>
                   <div className="input-line"></div>
                 </div>
                 
                 <div className="form-group">
-                  <input type="email" id="email" placeholder=" " required />
+                  <input type="email" id="email" placeholder=" " required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
                   <label htmlFor="email">Email Address</label>
                   <div className="input-line"></div>
                 </div>
 
                 <div className="form-group">
-                  <input type="text" id="uni" placeholder=" " required />
+                  <input type="text" id="uni" placeholder=" " required value={formData.university} onChange={e => setFormData({...formData, university: e.target.value})} />
                   <label htmlFor="uni">University / College Name</label>
                   <div className="input-line"></div>
                 </div>
 
                 <div className="form-row">
                   <div className="form-group select-group">
-                    <select id="grad" defaultValue="" required>
+                    <select id="grad" required value={formData.graduationYear} onChange={e => setFormData({...formData, graduationYear: e.target.value})}>
                       <option value="" disabled hidden></option>
                       <option value="2026">2026</option>
                       <option value="2027">2027</option>
@@ -434,7 +537,7 @@ export default function InternshipClient() {
                   </div>
 
                   <div className="form-group select-group">
-                    <select id="sem" defaultValue="" required>
+                    <select id="sem" required value={formData.currentSemester} onChange={e => setFormData({...formData, currentSemester: e.target.value})}>
                       <option value="" disabled hidden></option>
                       <option value="1">1st Semester — 1st Year</option>
                       <option value="2">2nd Semester — 1st Year</option>
@@ -451,17 +554,96 @@ export default function InternshipClient() {
                 </div>
 
                 <div className="form-group select-group">
-                  <select id="prog" defaultValue="" required>
+                  <select id="prog" required value={formData.internshipType} onChange={e => {
+                      setFormData({...formData, internshipType: e.target.value, domain: "", duration: "", utrNumber: ""});
+                      setResumeFile(null);
+                  }}>
                     <option value="" disabled hidden></option>
-                    <option value="Live">Live Project Internship</option>
-                    <option value="Stipend">Stipend-Based Internship</option>
+                    <option value="Live Project Internship">Live Project Internship</option>
+                    <option value="Stipend-Based Internship">Stipend-Based Internship</option>
                   </select>
                   <label htmlFor="prog">Select Internship</label>
                   <div className="input-line"></div>
                 </div>
 
-                <button type="button" className="btn-submit luxury-btn">
-                  <span>Submit Application &rarr;</span>
+                {formData.internshipType && (
+                  <div className="form-group select-group">
+                    <select id="domain" required value={formData.domain} onChange={e => setFormData({...formData, domain: e.target.value})}>
+                      <option value="" disabled hidden></option>
+                      <option value="Web development">Web development</option>
+                      <option value="App development">App development</option>
+                      <option value="Software development">Software development</option>
+                      <option value="UI/UX designer">UI/UX designer</option>
+                      <option value="Full stack development">Full stack development</option>
+                      <option value="AI-ML and data analytics">AI-ML and data analytics</option>
+                    </select>
+                    <label htmlFor="domain">Select Domain</label>
+                    <div className="input-line"></div>
+                  </div>
+                )}
+
+                {formData.internshipType === "Live Project Internship" && (
+                  <>
+                    <div className="form-group select-group">
+                      <select id="duration" required value={formData.duration} onChange={e => setFormData({...formData, duration: e.target.value})}>
+                        <option value="" disabled hidden></option>
+                        <option value="1 month">1 month</option>
+                        <option value="3 month">3 month</option>
+                        <option value="6 month">6 month</option>
+                      </select>
+                      <label htmlFor="duration">Internship Duration</label>
+                      <div className="input-line"></div>
+                    </div>
+
+                    {formData.duration && (
+                      <div style={{ margin: '1rem 0', padding: '1.5rem', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                          <div>
+                            <span style={{ fontSize: '0.9rem', color: '#64748b', display: 'block' }}>Fee Amount</span>
+                            <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#0f172a' }}>{calculatePrice(formData.duration)}</span>
+                          </div>
+                          <div style={{ textAlign: 'right' }}>
+                            <span style={{ fontSize: '0.9rem', color: '#64748b', display: 'block' }}>UPI ID</span>
+                            <span style={{ fontWeight: '600', color: '#0f172a' }}>{paymentSettings.upiId}</span>
+                          </div>
+                        </div>
+                        <div style={{ textAlign: 'center', padding: '1rem', background: '#fff', borderRadius: '8px', marginBottom: '1rem', border: '1px dashed #cbd5e1' }}>
+                          {paymentSettings.qrCodeUrl ? (
+                            <img src={paymentSettings.qrCodeUrl} alt="QR Code" style={{ width: '150px', height: '150px', margin: '0 auto', objectFit: 'contain', display: 'block' }} />
+                          ) : (
+                            <div style={{ width: '150px', height: '150px', margin: '0 auto', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
+                              <span style={{ color: '#64748b', fontSize: '0.9rem' }}>No QR uploaded</span>
+                            </div>
+                          )}
+                          <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.85rem', color: '#64748b' }}>Scan to pay {calculatePrice(formData.duration)}</p>
+                        </div>
+                        
+                        <div className="form-group" style={{ marginBottom: 0 }}>
+                          <input type="text" id="utr" placeholder=" " required value={formData.utrNumber} onChange={e => setFormData({...formData, utrNumber: e.target.value})} style={{ backgroundColor: '#fff' }} />
+                          <label htmlFor="utr">Enter UTR Number (Mandatory)</label>
+                          <div className="input-line"></div>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {formData.internshipType === "Stipend-Based Internship" && (
+                  <div className="form-group">
+                    <input type="file" id="resume" accept=".pdf,.doc,.docx" required onChange={handleFileChange} style={{ padding: '1rem 0 0.5rem 0', color: '#0f172a' }} />
+                    <label htmlFor="resume" style={{ transform: 'translateY(-20px)', fontSize: '0.85rem', color: '#6366f1' }}>Upload Resume (PDF/DOC)</label>
+                    <div className="input-line"></div>
+                  </div>
+                )}
+
+                {submitStatus.show && (
+                  <div style={{ padding: '1rem', marginBottom: '1rem', borderRadius: '4px', textAlign: 'center', backgroundColor: submitStatus.success ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)', color: submitStatus.success ? '#22c55e' : '#ef4444', border: `1px solid ${submitStatus.success ? '#22c55e' : '#ef4444'}` }}>
+                    {submitStatus.message}
+                  </div>
+                )}
+
+                <button type="submit" className="btn-submit luxury-btn" disabled={isSubmitting}>
+                  <span>{isSubmitting ? 'Submitting...' : 'Submit Application \u2192'}</span>
                   <div className="btn-glow"></div>
                 </button>
               </form>

@@ -82,7 +82,8 @@ const rawNavLinks = [
     isDropdown: true,
     items: [
       { title: "Internships", desc: "Build real-world experience", href: "/students/internships", icon: <svg {...iconProps}><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg> },
-      { title: "Foundational & Career", desc: "Prepare for your career path", href: "/students/foundational-career", icon: <svg {...iconProps}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> }
+      { title: "Foundational & Career", desc: "Prepare for your career path", href: "/students/foundational-career", icon: <svg {...iconProps}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> },
+      { title: "Skill Enhancement", desc: "Build modern tech skills", href: "/students/skill-enhancement", icon: <svg {...iconProps}><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> }
     ]
   },
   { name: "Careers", href: "/careers" },

@@ -27,9 +27,27 @@ export default function SettingsDashboard() {
       corporateOffice: 'Oxavyn HQ, Tower B, Level 15, Cyber City, Gurugram, Haryana 122002'
     }
   });
+  const [internshipPaymentSettings, setInternshipPaymentSettings] = useState({
+    qrCodeUrl: '',
+    upiId: 'oxavyn@upi',
+    price1Month: '₹1000',
+    price3Month: '₹2500',
+    price6Month: '₹4500'
+  });
+  const [coursePaymentSettings, setCoursePaymentSettings] = useState({
+    qrCodeUrl: '',
+    upiId: 'oxavyn@upi',
+    priceWebDev: '₹5000',
+    priceAppDev: '₹5000',
+    priceAi: '₹6000',
+    priceDataAnalytics: '₹4500',
+    priceDsa: '₹4000',
+    priceDataScience: '₹6500'
+  });
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [isUploadingQr, setIsUploadingQr] = useState(false);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -43,6 +61,8 @@ export default function SettingsDashboard() {
               if (setting.key === 'showStudentSections') setShowStudentSections(setting.value);
               if (setting.key === 'contact_map_location') setMapSettings(setting.value);
               if (setting.key === 'footer_data') setFooterData(setting.value);
+              if (setting.key === 'internship_payment_settings') setInternshipPaymentSettings(setting.value);
+              if (setting.key === 'course_payment_settings') setCoursePaymentSettings(setting.value);
             });
           }
         }
@@ -62,7 +82,9 @@ export default function SettingsDashboard() {
       const payload = [
         { key: 'showStudentSections', value: showStudentSections },
         { key: 'contact_map_location', value: mapSettings },
-        { key: 'footer_data', value: footerData }
+        { key: 'footer_data', value: footerData },
+        { key: 'internship_payment_settings', value: internshipPaymentSettings },
+        { key: 'course_payment_settings', value: coursePaymentSettings }
       ];
 
       const res = await fetch('/api/settings', {
@@ -100,6 +122,90 @@ export default function SettingsDashboard() {
       ...footerData,
       reachUs: { ...footerData.reachUs, [e.target.name]: e.target.value }
     });
+  };
+
+  const handlePaymentSettingsChange = (e) => {
+    setInternshipPaymentSettings({
+      ...internshipPaymentSettings,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleCoursePaymentSettingsChange = (e) => {
+    setCoursePaymentSettings({
+      ...coursePaymentSettings,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleQrUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploadingQr(true);
+    setMessage('');
+    
+    try {
+      const formDataUpload = new FormData();
+      formDataUpload.append("file", file);
+      formDataUpload.append("folder", "oxavyn/settings");
+      
+      const uploadRes = await fetch('/api/admin/upload-cloudinary', {
+        method: 'POST',
+        body: formDataUpload
+      });
+      
+      if (uploadRes.ok) {
+        const uploadData = await uploadRes.json();
+        setInternshipPaymentSettings({
+          ...internshipPaymentSettings,
+          qrCodeUrl: uploadData.secure_url
+        });
+        setMessage('QR Code uploaded successfully! Please save settings.');
+      } else {
+        setMessage('Failed to upload QR code.');
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage('An error occurred during upload.');
+    } finally {
+      setIsUploadingQr(false);
+    }
+  };
+
+  const handleCourseQrUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploadingQr(true);
+    setMessage('');
+    
+    try {
+      const formDataUpload = new FormData();
+      formDataUpload.append("file", file);
+      formDataUpload.append("folder", "oxavyn/settings");
+      
+      const uploadRes = await fetch('/api/admin/upload-cloudinary', {
+        method: 'POST',
+        body: formDataUpload
+      });
+      
+      if (uploadRes.ok) {
+        const uploadData = await uploadRes.json();
+        setCoursePaymentSettings({
+          ...coursePaymentSettings,
+          qrCodeUrl: uploadData.secure_url
+        });
+        setMessage('Course QR Code uploaded successfully! Please save settings.');
+      } else {
+        setMessage('Failed to upload QR code.');
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage('An error occurred during upload.');
+    } finally {
+      setIsUploadingQr(false);
+    }
   };
 
   return (
@@ -270,6 +376,100 @@ export default function SettingsDashboard() {
                   <div>
                     <label style={{ display: 'block', fontSize: '0.85rem', color: '#64748b', marginBottom: '0.25rem' }}>Corporate Office Address</label>
                     <textarea name="corporateOffice" value={footerData.reachUs.corporateOffice} onChange={handleFooterReachChange} rows={2} style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #e2e8f0', resize: 'vertical' }} />
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 4: Internship Payment Settings */}
+              <div style={{ background: '#fff', borderRadius: '12px', padding: '2rem', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FileText size={20} /> Internship Payment Settings</h3>
+                
+                <div style={{ display: 'grid', gap: '1rem' }}>
+                  <div style={{ padding: '1rem', border: '1px dashed #cbd5e1', borderRadius: '8px', background: '#f8fafc' }}>
+                    <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem', fontWeight: 'bold' }}>QR Code Image</label>
+                    {internshipPaymentSettings.qrCodeUrl && (
+                      <div style={{ marginBottom: '1rem' }}>
+                        <img src={internshipPaymentSettings.qrCodeUrl} alt="QR Code" style={{ width: '120px', height: '120px', objectFit: 'contain', border: '1px solid #e2e8f0', borderRadius: '4px', background: 'white' }} />
+                      </div>
+                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <input type="file" accept="image/*" onChange={handleQrUpload} disabled={isUploadingQr} style={{ fontSize: '0.9rem' }} />
+                      {isUploadingQr && <span style={{ fontSize: '0.85rem', color: '#6366f1' }}>Uploading...</span>}
+                    </div>
+                    <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>Upload a direct image. It will be hosted securely and displayed to students.</p>
+                  </div>
+                  
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>UPI ID</label>
+                    <input type="text" name="upiId" value={internshipPaymentSettings.upiId} onChange={handlePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                  </div>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (1 month)</label>
+                      <input type="text" name="price1Month" value={internshipPaymentSettings.price1Month} onChange={handlePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (3 months)</label>
+                      <input type="text" name="price3Month" value={internshipPaymentSettings.price3Month} onChange={handlePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (6 months)</label>
+                      <input type="text" name="price6Month" value={internshipPaymentSettings.price6Month} onChange={handlePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 5: Skill Enhancement Course Payment Settings */}
+              <div style={{ background: '#fff', borderRadius: '12px', padding: '2rem', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FileText size={20} /> Course Payment Settings</h3>
+                
+                <div style={{ display: 'grid', gap: '1rem' }}>
+                  <div style={{ padding: '1rem', border: '1px dashed #cbd5e1', borderRadius: '8px', background: '#f8fafc' }}>
+                    <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem', fontWeight: 'bold' }}>QR Code Image</label>
+                    {coursePaymentSettings.qrCodeUrl && (
+                      <div style={{ marginBottom: '1rem' }}>
+                        <img src={coursePaymentSettings.qrCodeUrl} alt="QR Code" style={{ width: '120px', height: '120px', objectFit: 'contain', border: '1px solid #e2e8f0', borderRadius: '4px', background: 'white' }} />
+                      </div>
+                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <input type="file" accept="image/*" onChange={handleCourseQrUpload} disabled={isUploadingQr} style={{ fontSize: '0.9rem' }} />
+                      {isUploadingQr && <span style={{ fontSize: '0.85rem', color: '#6366f1' }}>Uploading...</span>}
+                    </div>
+                    <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>Upload a direct image. It will be hosted securely and displayed to students.</p>
+                  </div>
+                  
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>UPI ID</label>
+                    <input type="text" name="upiId" value={coursePaymentSettings.upiId} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                  </div>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (Web Development)</label>
+                      <input type="text" name="priceWebDev" value={coursePaymentSettings.priceWebDev} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (App Development)</label>
+                      <input type="text" name="priceAppDev" value={coursePaymentSettings.priceAppDev} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (AI & Machine Learning)</label>
+                      <input type="text" name="priceAi" value={coursePaymentSettings.priceAi} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (Data Analytics)</label>
+                      <input type="text" name="priceDataAnalytics" value={coursePaymentSettings.priceDataAnalytics} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (DSA & System Design)</label>
+                      <input type="text" name="priceDsa" value={coursePaymentSettings.priceDsa} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (Data Science)</label>
+                      <input type="text" name="priceDataScience" value={coursePaymentSettings.priceDataScience} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
                   </div>
                 </div>
               </div>

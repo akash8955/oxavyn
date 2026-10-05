@@ -6,11 +6,50 @@ import DynamicMedia from '@/components/DynamicMedia';
 
 export default function FoundationalCareerClient() {
   const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    university: "",
     year: "",
-    interest: ""
+    interest: "",
+    message: ""
   });
   const [enquiryContext, setEnquiryContext] = useState("");
   const [highlightedField, setHighlightedField] = useState(null); // 'year' or 'interest'
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ show: false, success: false, message: "" });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ show: false, success: false, message: "" });
+    try {
+      const res = await fetch('/api/foundations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          university: formData.university,
+          currentYear: formData.year,
+          areaOfInterest: formData.interest,
+          message: formData.message
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitStatus({ show: true, success: true, message: "Application is submitted successfully our HR team contact you soon within 48 hours." });
+        setFormData({ fullName: "", email: "", phone: "", university: "", year: "", interest: "", message: "" });
+      } else {
+        setSubmitStatus({ show: true, success: false, message: data.message || "Submission failed" });
+      }
+    } catch (err) {
+      setSubmitStatus({ show: true, success: false, message: "An error occurred. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Animation variants
   const fadeInUp = {
@@ -251,26 +290,26 @@ export default function FoundationalCareerClient() {
                   </motion.div>
                 )}
 
-                {/* TODO: Connect this form to Oxavyn enquiry/student management system backend */}
-                <form className="fc-form" onSubmit={(e) => e.preventDefault()}>
+                {/* Form connected to API */}
+                <form className="fc-form" onSubmit={handleSubmit}>
                   <div className="fc-input-group">
                     <label className="fc-label-input">Full Name</label>
-                    <input type="text" className="fc-input" placeholder="Enter your full name" />
+                    <input type="text" className="fc-input" required placeholder="Enter your full name" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
                   </div>
                   
                   <div className="fc-input-group">
                     <label className="fc-label-input">Email Address</label>
-                    <input type="email" className="fc-input" placeholder="Enter your email address" />
+                    <input type="email" className="fc-input" required placeholder="Enter your email address" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
                   </div>
 
                   <div className="fc-input-group">
                     <label className="fc-label-input">Phone Number</label>
-                    <input type="tel" className="fc-input" placeholder="Enter your phone number" />
+                    <input type="tel" className="fc-input" required placeholder="Enter your phone number" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
                   </div>
 
                   <div className="fc-input-group">
                     <label className="fc-label-input">University / College Name</label>
-                    <input type="text" className="fc-input" placeholder="Enter your university or college" />
+                    <input type="text" className="fc-input" required placeholder="Enter your university or college" value={formData.university} onChange={e => setFormData({...formData, university: e.target.value})} />
                   </div>
 
                   <div className="fc-input-group">
@@ -278,6 +317,7 @@ export default function FoundationalCareerClient() {
                     <select 
                       className={`fc-input fc-select ${highlightedField === 'year' ? 'fc-input-highlight' : ''}`}
                       value={formData.year}
+                      required
                       onChange={(e) => setFormData({...formData, year: e.target.value})}
                     >
                       <option value="" disabled>Select Year</option>
@@ -295,26 +335,28 @@ export default function FoundationalCareerClient() {
                     <select 
                       className={`fc-input fc-select ${highlightedField === 'interest' ? 'fc-input-highlight' : ''}`}
                       value={formData.interest}
+                      required
                       onChange={(e) => setFormData({...formData, interest: e.target.value})}
                     >
                       <option value="" disabled>Select Interest</option>
-                      <option value="Foundation & Programming">Foundation & Programming</option>
-                      <option value="DSA">DSA</option>
-                      <option value="Core Computer Science">Core Computer Science</option>
-                      <option value="Projects">Projects</option>
-                      <option value="Internship Preparation">Internship Preparation</option>
-                      <option value="Placement Preparation">Placement Preparation</option>
-                      <option value="Career Guidance">Career Guidance</option>
+                      <option value="Internship Preparation">Internship Ready</option>
+                      <option value="Placement Preparation">Placement Ready</option>
                     </select>
                   </div>
 
                   <div className="fc-input-group">
                     <label className="fc-label-input">Message</label>
-                    <textarea className="fc-input" style={{ minHeight: '120px', resize: 'vertical' }} placeholder="Tell us what you would like help with..."></textarea>
+                    <textarea className="fc-input" style={{ minHeight: '120px', resize: 'vertical' }} placeholder="Tell us what you would like help with..." value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})}></textarea>
                   </div>
 
-                  <button type="submit" className="fc-btn-primary" style={{ marginTop: '1rem' }}>
-                    Send Enquiry
+                  {submitStatus.show && (
+                    <div style={{ padding: '1rem', marginTop: '1rem', borderRadius: '4px', textAlign: 'center', backgroundColor: submitStatus.success ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)', color: submitStatus.success ? '#22c55e' : '#ef4444', border: `1px solid ${submitStatus.success ? '#22c55e' : '#ef4444'}` }}>
+                      {submitStatus.message}
+                    </div>
+                  )}
+
+                  <button type="submit" className="fc-btn-primary" style={{ marginTop: '1rem' }} disabled={isSubmitting}>
+                    {isSubmitting ? 'Sending...' : 'Send Enquiry'}
                   </button>
                 </form>
               </div>
