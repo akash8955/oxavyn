@@ -1,7 +1,12 @@
 import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-  text: { type: String, required: true },
+  text: { type: String, default: '' },
+  authorName: { type: String, default: 'Admin' },
+  authorRole: { type: String, default: 'Admin' },
+  imageUrl: { type: String, default: '' },
+  imageName: { type: String, default: '' },
+  fileSize: { type: String, default: '' },
   timestamp: { type: Date, default: Date.now }
 });
 
@@ -20,4 +25,8 @@ const schema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.models.IndustryQuery || mongoose.model('IndustryQuery', schema);
+if (mongoose.models.IndustryQuery) {
+  delete mongoose.models.IndustryQuery;
+}
+
+export default mongoose.model('IndustryQuery', schema);

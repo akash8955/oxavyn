@@ -476,3 +476,259 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* PAYMENT SECTION IN FOUNDATIONAL CAREER FORM */
+.fc-payment-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
+  box-sizing: border-box;
+}
+
+.fc-payment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.fc-payment-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.fc-payment-col-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.fc-payment-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.fc-payment-value {
+  display: block;
+}
+
+.fc-payment-fee {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.fc-payment-upi {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.fc-payment-upi:hover {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+}
+
+.fc-upi-text {
+  line-height: 1;
+}
+
+.fc-copy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: #7c3aed;
+  background: #f5f3ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.fc-copy-badge.copied {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+.fc-qr-container {
+  text-align: center;
+  padding: 1.25rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+  margin-bottom: 1.25rem;
+}
+
+.fc-qr-img {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+}
+
+.fc-qr-placeholder {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.fc-qr-caption {
+  margin: 0.6rem 0 0 0;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.fc-utr-group {
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+.fc-utr-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.fc-utr-sublabel {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.fc-utr-input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.92rem;
+  color: #0f172a;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.fc-utr-input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.fc-utr-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+/* Mobile clean compact styling for payment section */
+@media (max-width: 480px) {
+  .fc-payment-box {
+    padding: 0.85rem 0.75rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+  }
+
+  .fc-payment-info {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .fc-payment-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+  }
+
+  .fc-payment-fee {
+    font-size: 1.02rem;
+  }
+
+  .fc-payment-upi {
+    font-size: 0.72rem;
+    padding: 2px 6px;
+    gap: 4px;
+    border-radius: 5px;
+  }
+
+  .fc-upi-text {
+    font-size: 0.7rem;
+  }
+
+  .fc-copy-badge {
+    font-size: 0.6rem;
+    padding: 1px 4px;
+  }
+
+  .fc-qr-container {
+    padding: 0.75rem 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .fc-qr-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .fc-qr-placeholder {
+    width: 100px;
+    height: 100px;
+    font-size: 0.68rem;
+  }
+
+  .fc-qr-caption {
+    font-size: 0.7rem;
+    margin-top: 0.35rem;
+  }
+
+  .fc-utr-label {
+    font-size: 0.72rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .fc-utr-sublabel {
+    font-size: 0.66rem;
+  }
+
+  .fc-utr-input {
+    font-size: 0.78rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: 6px;
+  }
+
+  .fc-utr-input::placeholder {
+    font-size: 0.72rem;
+  }
+}
+

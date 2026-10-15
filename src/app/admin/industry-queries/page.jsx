@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, MessageCircle, Trash2 } from 'lucide-react';
+import AdminCommentModal from '@/components/admin/AdminCommentModal';
 
 export default function IndustryQueriesAdmin() {
   const [queries, setQueries] = useState([]);
@@ -15,10 +16,6 @@ export default function IndustryQueriesAdmin() {
   // Tabs State
   const [activeTab, setActiveTab] = useState('All');
   const tabs = ['All', 'Healthcare', 'E-Commerce', 'Education', 'Retail', 'Agency & Consultancy'];
-
-  useEffect(() => {
-    fetchQueries();
-  }, []);
 
   const fetchQueries = async () => {
     try {
@@ -36,6 +33,10 @@ export default function IndustryQueriesAdmin() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchQueries();
+  }, []);
 
   const handleStatusChange = async (id, newStatus) => {
     try {
@@ -237,43 +238,23 @@ export default function IndustryQueriesAdmin() {
         </div>
       )}
 
-      {isModalOpen && activeQuery && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div style={{ backgroundColor: '#fff', borderRadius: '8px', padding: '2rem', width: '90%', maxWidth: '500px', maxHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-              <h2 style={{ margin: 0, fontSize: '1.2rem' }}>Comments for {activeQuery.fullName}</h2>
-              <button onClick={() => setIsModalOpen(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#64748b' }}>&times;</button>
-            </div>
-            
-            <div style={{ flex: 1, overflowY: 'auto', marginBottom: '1rem', padding: '1rem', backgroundColor: '#f8fafc', borderRadius: '4px' }}>
-              {activeQuery.comments && activeQuery.comments.length > 0 ? (
-                activeQuery.comments.map((c, i) => (
-                  <div key={i} style={{ marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e2e8f0' }}>
-                    <p style={{ margin: '0 0 0.25rem 0', fontSize: '0.9rem', color: '#334155' }}>{c.text}</p>
-                    <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>{new Date(c.timestamp).toLocaleString()}</span>
-                  </div>
-                ))
-              ) : (
-                <p style={{ color: '#64748b', textAlign: 'center', margin: 0 }}>No comments yet.</p>
-              )}
-            </div>
-
-            <form onSubmit={handleAddComment} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <textarea 
-                rows="3"
-                placeholder="Add a new comment/note..." 
-                value={newComment} 
-                onChange={e => setNewComment(e.target.value)}
-                style={{ padding: '0.75rem', borderRadius: '4px', border: '1px solid #cbd5e1', resize: 'vertical' }}
-                required
-              />
-              <button type="submit" style={{ padding: '0.75rem', backgroundColor: '#6366f1', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 600 }}>
-                Add Comment
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+      {/* 80vw x 70vh Admin Comment Modal */}
+      <AdminCommentModal 
+        isOpen={isModalOpen}
+        onClose={() => { setIsModalOpen(false); setActiveQuery(null); }}
+        item={activeQuery}
+        type="industry"
+        onCommentAdded={(updatedItem) => {
+          fetchQueries();
+          if (updatedItem) setActiveQuery(updatedItem);
+        }}
+        onStatusChange={(newStatus) => {
+          if (activeQuery) {
+            handleStatusChange(activeQuery._id, newStatus);
+            setActiveQuery(prev => ({ ...prev, status: newStatus }));
+          }
+        }}
+      />
     </div>
   );
 }

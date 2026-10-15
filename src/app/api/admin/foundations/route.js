@@ -12,12 +12,12 @@ export async function GET(req) {
     const type = url.searchParams.get('type');
     
     let query = {};
-    if (type) {
+    if (type && type !== 'All') {
       query.areaOfInterest = type;
     }
 
     const applications = await FoundationApplication.find(query).sort({ createdAt: -1 });
-    return NextResponse.json({ success: true, data: applications });
+    return NextResponse.json({ success: true, data: applications, items: applications });
   } catch (error) {
     console.error('Error in GET /api/admin/foundations:', error);
     return NextResponse.json({ success: false, message: 'Internal Server Error' }, { status: 500 });

@@ -1,7 +1,12 @@
 import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-  text: { type: String, required: true },
+  text: { type: String, default: '' },
+  authorName: { type: String, default: 'Admin' },
+  authorRole: { type: String, default: 'Admin' },
+  imageUrl: { type: String, default: '' },
+  imageName: { type: String, default: '' },
+  fileSize: { type: String, default: '' },
   timestamp: { type: Date, default: Date.now }
 });
 
@@ -17,4 +22,8 @@ const SkillEnhancementSchema = new mongoose.Schema({
   comments: [commentSchema]
 }, { timestamps: true });
 
-export default mongoose.models.SkillEnhancementApplication || mongoose.model('SkillEnhancementApplication', SkillEnhancementSchema);
+if (mongoose.models.SkillEnhancementApplication) {
+  delete mongoose.models.SkillEnhancementApplication;
+}
+
+export default mongoose.model('SkillEnhancementApplication', SkillEnhancementSchema);

@@ -1,7 +1,12 @@
 import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-  text: String,
+  text: { type: String, default: '' },
+  authorName: { type: String, default: 'Admin' },
+  authorRole: { type: String, default: 'Admin' },
+  imageUrl: { type: String, default: '' },
+  imageName: { type: String, default: '' },
+  fileSize: { type: String, default: '' },
   timestamp: { type: Date, default: Date.now }
 });
 
@@ -20,4 +25,8 @@ const internshipApplicationSchema = new mongoose.Schema({
   comments: [commentSchema]
 }, { timestamps: true });
 
-export default mongoose.models.InternshipApplication || mongoose.model('InternshipApplication', internshipApplicationSchema);
+if (mongoose.models.InternshipApplication) {
+  delete mongoose.models.InternshipApplication;
+}
+
+export default mongoose.model('InternshipApplication', internshipApplicationSchema);

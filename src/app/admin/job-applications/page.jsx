@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MessageCircle, Trash2, FileText } from 'lucide-react';
+import AdminCommentModal from '@/components/admin/AdminCommentModal';
 
 export default function JobApplicationsAdmin() {
   const [applications, setApplications] = useState([]);
@@ -12,10 +13,6 @@ export default function JobApplicationsAdmin() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeApp, setActiveApp] = useState(null);
   const [newComment, setNewComment] = useState('');
-
-  useEffect(() => {
-    fetchApplications();
-  }, []);
 
   const fetchApplications = async () => {
     try {
@@ -30,6 +27,10 @@ export default function JobApplicationsAdmin() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchApplications();
+  }, []);
 
   const handleStatusChange = async (id, newStatus) => {
     try {
@@ -210,51 +211,26 @@ export default function JobApplicationsAdmin() {
         </div>
       )}
 
-      {/* Comment Modal */}
-      {isModalOpen && activeApp && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 50 }}>
-          <div style={{ backgroundColor: '#fff', padding: '2rem', borderRadius: '12px', width: '90%', maxWidth: '600px', maxHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <h2 style={{ margin: 0 }}>Comments for {activeApp.fullName}</h2>
-              <button onClick={() => setIsModalOpen(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#64748b' }}>&times;</button>
-            </div>
-            
-            <div style={{ flex: 1, overflowY: 'auto', marginBottom: '1.5rem', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '1rem', backgroundColor: '#f8fafc' }}>
-              {activeApp.comments && activeApp.comments.length > 0 ? (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  {activeApp.comments.map((comment, index) => (
-                    <div key={index} style={{ backgroundColor: '#fff', padding: '1rem', borderRadius: '6px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-                      <p style={{ margin: '0 0 0.5rem 0', color: '#334155' }}>{comment.text}</p>
-                      <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
-                        {new Date(comment.timestamp).toLocaleString()}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p style={{ textAlign: 'center', color: '#94a3b8', margin: '2rem 0' }}>No comments yet.</p>
-              )}
-            </div>
-
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <input 
-                type="text" 
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Add a new comment..."
-                style={{ flex: 1, padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1', outline: 'none' }}
-                onKeyPress={(e) => e.key === 'Enter' && handleAddComment()}
-              />
-              <button 
-                onClick={handleAddComment}
-                style={{ padding: '0.75rem 1.5rem', backgroundColor: '#6366f1', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 500 }}
-              >
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* 80vw x 70vh Admin Comment Modal */}
+      <AdminCommentModal 
+        isOpen={isModalOpen}
+        onClose={() => { setIsModalOpen(false); setActiveApp(null); }}
+        item={activeApp}
+        type="job"
+        onCommentAdded={(updatedItem) => {
+          fetchApplications();
+          if (updatedItem) {
+            setActiveApp(updatedItem);
+            setApplications(apps => apps.map(app => app._id === updatedItem._id ? updatedItem : app));
+          }
+        }}
+        onStatusChange={(newStatus) => {
+          if (activeApp) {
+            handleStatusChange(activeApp._id, newStatus);
+            setActiveApp(prev => ({ ...prev, status: newStatus }));
+          }
+        }}
+      />
     </div>
   );
 }

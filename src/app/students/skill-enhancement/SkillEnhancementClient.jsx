@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Smartphone, BrainCircuit, BarChart, Layers, Database } from 'lucide-react';
+import { ArrowRight, Code, Smartphone, BrainCircuit, BarChart, Layers, Database, Copy, Check } from 'lucide-react';
 import DynamicMedia from '@/components/DynamicMedia';
 import './SkillEnhancement.css';
 
@@ -23,6 +23,7 @@ export default function SkillEnhancementClient() {
   const [submitStatus, setSubmitStatus] = useState({ show: false, success: false, message: "" });
   const [highlightedField, setHighlightedField] = useState(false);
   const [activeTechId, setActiveTechId] = useState(null);
+  const [copiedUpi, setCopiedUpi] = useState(false);
   
   const [paymentSettings, setPaymentSettings] = useState({
     qrCodeUrl: '',
@@ -301,7 +302,7 @@ export default function SkillEnhancementClient() {
             viewport={{ once: true }}
             style={{ position: 'relative' }}
           >
-            <div className="glass-form-card luxury-card" style={{ background: '#ffffff', borderRadius: '24px', padding: '3rem', boxShadow: '0 20px 40px rgba(0, 0, 0, 0.04)', border: '1px solid rgba(226, 232, 240, 0.8)', maxWidth: '800px', margin: '0 auto' }}>
+            <div className="glass-form-card luxury-card">
             <form className="student-form ultra-modern" onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
               <div className="form-group">
                 <input type="text" id="fname" className="se-floating-input" placeholder=" " required value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} />
@@ -371,41 +372,61 @@ export default function SkillEnhancementClient() {
 
               {formData.program && (
                 <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ overflow: 'hidden' }}>
-                  <div style={{ margin: '1rem 0', padding: '1.5rem', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                      <div>
-                        <span style={{ fontSize: '0.9rem', color: '#64748b', display: 'block' }}>Fee Amount</span>
-                        <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#0f172a' }}>{getPrice(formData.program)}</span>
+                  <div className="se-payment-box">
+                    <div className="se-payment-info">
+                      <div className="se-payment-col">
+                        <span className="se-payment-label">Fee Amount</span>
+                        <span className="se-payment-value se-payment-fee">{getPrice(formData.program)}</span>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <span style={{ fontSize: '0.9rem', color: '#64748b', display: 'block' }}>UPI ID</span>
-                        <span style={{ fontWeight: '600', color: '#0f172a' }}>{paymentSettings.upiId}</span>
+                      <div className="se-payment-col se-payment-col-right">
+                        <span className="se-payment-label">UPI ID</span>
+                        <div 
+                          className="se-payment-value se-payment-upi"
+                          onClick={() => {
+                            if (paymentSettings.upiId) {
+                              navigator.clipboard.writeText(paymentSettings.upiId);
+                              setCopiedUpi(true);
+                              setTimeout(() => setCopiedUpi(false), 2000);
+                            }
+                          }}
+                          title="Click to copy UPI ID"
+                          role="button"
+                          tabIndex={0}
+                        >
+                          <span className="se-upi-text">{paymentSettings.upiId}</span>
+                          {copiedUpi ? (
+                            <span className="se-copy-badge copied"><Check size={12} /> Copied</span>
+                          ) : (
+                            <span className="se-copy-badge"><Copy size={12} /> Copy</span>
+                          )}
+                        </div>
                       </div>
                     </div>
                     
-                    <div style={{ textAlign: 'center', padding: '1rem', background: '#fff', borderRadius: '8px', marginBottom: '1rem', border: '1px dashed #cbd5e1' }}>
+                    <div className="se-qr-container">
                       {paymentSettings.qrCodeUrl ? (
-                        <img src={paymentSettings.qrCodeUrl} alt="QR Code" style={{ width: '150px', height: '150px', margin: '0 auto', objectFit: 'contain', display: 'block' }} />
+                        <img src={paymentSettings.qrCodeUrl} alt="Payment QR Code" className="se-qr-img" />
                       ) : (
-                        <div style={{ width: '150px', height: '150px', margin: '0 auto', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
-                          <span style={{ color: '#64748b', fontSize: '0.9rem' }}>No QR uploaded</span>
+                        <div className="se-qr-placeholder">
+                          <span>No QR uploaded</span>
                         </div>
                       )}
-                      <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.85rem', color: '#64748b' }}>Scan to pay {getPrice(formData.program)}</p>
+                      <p className="se-qr-caption">Scan to pay {getPrice(formData.program)}</p>
                     </div>
                     
-                    <div className="form-group" style={{ marginBottom: 0 }}>
+                    <div className="se-utr-group">
+                      <label htmlFor="utr" className="se-utr-label">
+                        Enter UTR / Transaction ID <span className="se-utr-sublabel">(Mandatory)</span>
+                      </label>
                       <input 
                         type="text" 
-                        id="utr"
+                        id="utr" 
+                        className="se-utr-input"
                         required 
-                        placeholder=" " 
+                        placeholder="e.g. 423589104820" 
                         value={formData.utrNumber} 
                         onChange={e => setFormData({...formData, utrNumber: e.target.value})} 
-                        style={{ backgroundColor: '#fff' }}
                       />
-                      <label htmlFor="utr">Enter UTR Number (Mandatory)</label>
-                      <div className="input-line"></div>
                     </div>
                   </div>
                 </motion.div>

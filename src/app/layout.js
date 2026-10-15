@@ -46,6 +46,14 @@ export const metadata = {
     description: "Oxavyn builds modern websites, mobile applications, AI solutions and custom software that help businesses grow, automate operations and create better digital experiences.",
     images: ["/images/oxavyn-digital-transformation.jpg"],
   },
+  icons: {
+    icon: [
+      { url: '/images/favicon.png?v=2', type: 'image/png' },
+      { url: '/favicon.ico?v=2', sizes: 'any' }
+    ],
+    shortcut: '/images/favicon.png?v=2',
+    apple: '/images/favicon.png?v=2',
+  },
 };
 
 export default async function RootLayout({ children }) {
@@ -67,6 +75,12 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=2" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=2" />
+        <link rel="apple-touch-icon" href="/images/favicon.png?v=2" />
+        <link rel="shortcut icon" href="/images/favicon.png?v=2" />
+      </head>
       <body>
         <MediaProvider initialMedia={allMedia}>
           <Navbar initialShowStudentSections={showStudentSections} />

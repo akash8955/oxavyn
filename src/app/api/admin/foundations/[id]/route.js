@@ -5,17 +5,28 @@ import FoundationApplication from '@/models/FoundationApplication';
 export async function PUT(req, { params }) {
   try {
     await connectMongo();
+    const resolvedParams = await params;
+    const id = resolvedParams?.id;
     const body = await req.json();
-    const { id } = params;
 
-    const updateData = {};
-    if (body.status) updateData.status = body.status;
+    const updateOperation = {};
+    if (body.status) {
+      updateOperation.$set = { status: body.status };
+    }
     
     // Using $push to add a comment if provided
-    let updateOperation = { $set: updateData };
-    if (body.newComment) {
+    if (body.newComment || body.comment) {
+      const c = typeof body.newComment === 'object' ? body.newComment : (typeof body.comment === 'object' ? body.comment : { text: body.newComment || body.comment });
       updateOperation.$push = {
-        comments: { text: body.newComment, timestamp: new Date() }
+        comments: {
+          text: c.text || '',
+          authorName: c.authorName || 'Admin',
+          authorRole: c.authorRole || 'Admin',
+          imageUrl: c.imageUrl || '',
+          imageName: c.imageName || '',
+          fileSize: c.fileSize || '',
+          timestamp: new Date()
+        }
       };
     }
 
@@ -35,7 +46,8 @@ export async function PUT(req, { params }) {
 export async function DELETE(req, { params }) {
   try {
     await connectMongo();
-    const { id } = params;
+    const resolvedParams = await params;
+    const id = resolvedParams?.id;
 
     const deleted = await FoundationApplication.findByIdAndDelete(id);
     if (!deleted) {

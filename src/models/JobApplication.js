@@ -55,9 +55,18 @@ const JobApplicationSchema = new mongoose.Schema({
     default: 'Pending' 
   },
   comments: [{
-    text: String,
+    text: { type: String, default: '' },
+    authorName: { type: String, default: 'Admin' },
+    authorRole: { type: String, default: 'Admin' },
+    imageUrl: { type: String, default: '' },
+    imageName: { type: String, default: '' },
+    fileSize: { type: String, default: '' },
     timestamp: { type: Date, default: Date.now }
   }]
 }, { timestamps: true });
 
-export default mongoose.models.JobApplication || mongoose.model('JobApplication', JobApplicationSchema);
+if (mongoose.models.JobApplication) {
+  delete mongoose.models.JobApplication;
+}
+
+export default mongoose.model('JobApplication', JobApplicationSchema);

@@ -44,6 +44,12 @@ export default function SettingsDashboard() {
     priceDsa: '₹4000',
     priceDataScience: '₹6500'
   });
+  const [foundationPaymentSettings, setFoundationPaymentSettings] = useState({
+    qrCodeUrl: '',
+    upiId: 'oxavyn@upi',
+    priceInternshipPrep: '₹3500',
+    pricePlacementPrep: '₹5000'
+  });
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -63,6 +69,7 @@ export default function SettingsDashboard() {
               if (setting.key === 'footer_data') setFooterData(setting.value);
               if (setting.key === 'internship_payment_settings') setInternshipPaymentSettings(setting.value);
               if (setting.key === 'course_payment_settings') setCoursePaymentSettings(setting.value);
+              if (setting.key === 'foundation_payment_settings') setFoundationPaymentSettings(setting.value);
             });
           }
         }
@@ -84,7 +91,8 @@ export default function SettingsDashboard() {
         { key: 'contact_map_location', value: mapSettings },
         { key: 'footer_data', value: footerData },
         { key: 'internship_payment_settings', value: internshipPaymentSettings },
-        { key: 'course_payment_settings', value: coursePaymentSettings }
+        { key: 'course_payment_settings', value: coursePaymentSettings },
+        { key: 'foundation_payment_settings', value: foundationPaymentSettings }
       ];
 
       const res = await fetch('/api/settings', {
@@ -197,6 +205,48 @@ export default function SettingsDashboard() {
           qrCodeUrl: uploadData.secure_url
         });
         setMessage('Course QR Code uploaded successfully! Please save settings.');
+      } else {
+        setMessage('Failed to upload QR code.');
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage('An error occurred during upload.');
+    } finally {
+      setIsUploadingQr(false);
+    }
+  };
+
+  const handleFoundationPaymentSettingsChange = (e) => {
+    setFoundationPaymentSettings({
+      ...foundationPaymentSettings,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleFoundationQrUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploadingQr(true);
+    setMessage('');
+    
+    try {
+      const formDataUpload = new FormData();
+      formDataUpload.append("file", file);
+      formDataUpload.append("folder", "oxavyn/settings");
+      
+      const uploadRes = await fetch('/api/admin/upload-cloudinary', {
+        method: 'POST',
+        body: formDataUpload
+      });
+      
+      if (uploadRes.ok) {
+        const uploadData = await uploadRes.json();
+        setFoundationPaymentSettings(prev => ({
+          ...prev,
+          qrCodeUrl: uploadData.secure_url
+        }));
+        setMessage('Foundation QR Code uploaded successfully! Please save settings.');
       } else {
         setMessage('Failed to upload QR code.');
       }
@@ -469,6 +519,45 @@ export default function SettingsDashboard() {
                     <div>
                       <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Price (Data Science)</label>
                       <input type="text" name="priceDataScience" value={coursePaymentSettings.priceDataScience} onChange={handleCoursePaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 6: Foundational & Career Payment Settings */}
+              <div style={{ background: '#fff', borderRadius: '12px', padding: '2rem', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <FileText size={20} /> Foundational & Career Payment Settings
+                </h3>
+                
+                <div style={{ display: 'grid', gap: '1rem' }}>
+                  <div style={{ padding: '1rem', border: '1px dashed #cbd5e1', borderRadius: '8px', background: '#f8fafc' }}>
+                    <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem', fontWeight: 'bold' }}>QR Code Image</label>
+                    {foundationPaymentSettings.qrCodeUrl && (
+                      <div style={{ marginBottom: '1rem' }}>
+                        <img src={foundationPaymentSettings.qrCodeUrl} alt="Foundation QR Code" style={{ width: '120px', height: '120px', objectFit: 'contain', border: '1px solid #e2e8f0', borderRadius: '4px', background: 'white' }} />
+                      </div>
+                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <input type="file" accept="image/*" onChange={handleFoundationQrUpload} disabled={isUploadingQr} style={{ fontSize: '0.9rem' }} />
+                      {isUploadingQr && <span style={{ fontSize: '0.85rem', color: '#6366f1' }}>Uploading...</span>}
+                    </div>
+                    <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.8rem', color: '#94a3b8' }}>Upload a direct image. It will be hosted securely and displayed to students.</p>
+                  </div>
+                  
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>UPI ID</label>
+                    <input type="text" name="upiId" value={foundationPaymentSettings.upiId} onChange={handleFoundationPaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                  </div>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Course Fee (Internship Preparation / Internship Ready)</label>
+                      <input type="text" name="priceInternshipPrep" value={foundationPaymentSettings.priceInternshipPrep} onChange={handleFoundationPaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.9rem', color: '#475569', marginBottom: '0.5rem' }}>Course Fee (Placement Preparation / Placement Ready)</label>
+                      <input type="text" name="pricePlacementPrep" value={foundationPaymentSettings.pricePlacementPrep} onChange={handleFoundationPaymentSettingsChange} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid #cbd5e1' }} />
                     </div>
                   </div>
                 </div>

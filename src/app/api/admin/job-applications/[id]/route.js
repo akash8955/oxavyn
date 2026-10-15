@@ -1,18 +1,14 @@
 import { NextResponse } from 'next/server';
-import mongoose from 'mongoose';
-import JobApplication from '../../../../../models/JobApplication';
+import connectMongo from '@/lib/db';
+import JobApplication from '@/models/JobApplication';
 
 export const dynamic = 'force-dynamic';
 
-async function connectToDatabase() {
-  if (mongoose.connection.readyState === 1) return;
-  await mongoose.connect(process.env.MONGODB_URI);
-}
-
 export async function PATCH(req, { params }) {
   try {
-    await connectToDatabase();
-    const { id } = params;
+    await connectMongo();
+    const resolvedParams = await params;
+    const id = resolvedParams?.id;
     const updates = await req.json();
 
     let application = await JobApplication.findById(id);
@@ -24,8 +20,17 @@ export async function PATCH(req, { params }) {
       application.status = updates.status;
     }
 
-    if (updates.comment) {
-      application.comments.push({ text: updates.comment });
+    if (updates.comment || updates.newComment) {
+      const c = typeof updates.comment === 'object' ? updates.comment : (typeof updates.newComment === 'object' ? updates.newComment : { text: updates.comment || updates.newComment });
+      application.comments.push({
+        text: c.text || '',
+        authorName: c.authorName || 'Admin',
+        authorRole: c.authorRole || 'Admin',
+        imageUrl: c.imageUrl || '',
+        imageName: c.imageName || '',
+        fileSize: c.fileSize || '',
+        timestamp: new Date()
+      });
     }
 
     await application.save();
@@ -38,13 +43,19 @@ export async function PATCH(req, { params }) {
 
 export async function DELETE(req, { params }) {
   try {
-    await connectToDatabase();
-    const { id } = params;
+    await connectMongo();
+    const resolvedParams = await params;
+    const id = resolvedParams?.id;
     
-    await JobApplication.findByIdAndDelete(id);
+    const deleted = await JobApplication.findByIdAndDelete(id);
+    if (!deleted) {
+      return NextResponse.json({ success: false, message: 'Application not found' }, { status: 404 });
+    }
 
     return NextResponse.json({ success: true, message: 'Application deleted successfully' });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
   }
 }
+
+export const PUT = PATCH;

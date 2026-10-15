@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Copy, Check } from 'lucide-react';
 import DynamicMedia from '@/components/DynamicMedia';
 
 export default function FoundationalCareerClient() {
@@ -12,12 +13,48 @@ export default function FoundationalCareerClient() {
     university: "",
     year: "",
     interest: "",
-    message: ""
+    message: "",
+    utrNumber: ""
   });
   const [enquiryContext, setEnquiryContext] = useState("");
   const [highlightedField, setHighlightedField] = useState(null); // 'year' or 'interest'
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ show: false, success: false, message: "" });
+  const [copiedUpi, setCopiedUpi] = useState(false);
+  
+  const [paymentSettings, setPaymentSettings] = useState({
+    qrCodeUrl: '',
+    upiId: 'oxavyn@upi',
+    priceInternshipPrep: '₹3500',
+    pricePlacementPrep: '₹5000'
+  });
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await fetch('/api/settings?key=foundation_payment_settings');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.setting && data.setting.value) {
+            setPaymentSettings(data.setting.value);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch foundation payment settings", err);
+      }
+    };
+    fetchSettings();
+  }, []);
+
+  const getFee = (interest) => {
+    if (interest === "Internship Preparation") {
+      return paymentSettings.priceInternshipPrep || '₹3500';
+    }
+    if (interest === "Placement Preparation") {
+      return paymentSettings.pricePlacementPrep || '₹5000';
+    }
+    return '';
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,13 +71,15 @@ export default function FoundationalCareerClient() {
           university: formData.university,
           currentYear: formData.year,
           areaOfInterest: formData.interest,
-          message: formData.message
+          message: formData.message,
+          utrNumber: formData.utrNumber,
+          feeAmount: getFee(formData.interest)
         })
       });
       const data = await res.json();
       if (data.success) {
         setSubmitStatus({ show: true, success: true, message: "Application is submitted successfully our HR team contact you soon within 48 hours." });
-        setFormData({ fullName: "", email: "", phone: "", university: "", year: "", interest: "", message: "" });
+        setFormData({ fullName: "", email: "", phone: "", university: "", year: "", interest: "", message: "", utrNumber: "" });
       } else {
         setSubmitStatus({ show: true, success: false, message: data.message || "Submission failed" });
       }
@@ -344,6 +383,68 @@ export default function FoundationalCareerClient() {
                     </select>
                   </div>
 
+                  {formData.interest && (
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ overflow: 'hidden' }}>
+                      <div className="fc-payment-box">
+                        <div className="fc-payment-info">
+                          <div className="fc-payment-col">
+                            <span className="fc-payment-label">Program Fee</span>
+                            <span className="fc-payment-value fc-payment-fee">{getFee(formData.interest)}</span>
+                          </div>
+                          <div className="fc-payment-col fc-payment-col-right">
+                            <span className="fc-payment-label">UPI ID</span>
+                            <div 
+                              className="fc-payment-value fc-payment-upi"
+                              onClick={() => {
+                                if (paymentSettings.upiId) {
+                                  navigator.clipboard.writeText(paymentSettings.upiId);
+                                  setCopiedUpi(true);
+                                  setTimeout(() => setCopiedUpi(false), 2000);
+                                }
+                              }}
+                              title="Click to copy UPI ID"
+                              role="button"
+                              tabIndex={0}
+                            >
+                              <span className="fc-upi-text">{paymentSettings.upiId}</span>
+                              {copiedUpi ? (
+                                <span className="fc-copy-badge copied"><Check size={12} /> Copied</span>
+                              ) : (
+                                <span className="fc-copy-badge"><Copy size={12} /> Copy</span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="fc-qr-container">
+                          {paymentSettings.qrCodeUrl ? (
+                            <img src={paymentSettings.qrCodeUrl} alt="Payment QR Code" className="fc-qr-img" />
+                          ) : (
+                            <div className="fc-qr-placeholder">
+                              <span>No QR uploaded</span>
+                            </div>
+                          )}
+                          <p className="fc-qr-caption">Scan with any UPI app to pay {getFee(formData.interest)}</p>
+                        </div>
+                        
+                        <div className="fc-utr-group">
+                          <label htmlFor="fc-utr" className="fc-utr-label">
+                            Enter UTR / Transaction ID <span className="fc-utr-sublabel">(Mandatory)</span>
+                          </label>
+                          <input 
+                            type="text" 
+                            id="fc-utr" 
+                            className="fc-utr-input"
+                            required 
+                            placeholder="e.g. 423589104820" 
+                            value={formData.utrNumber} 
+                            onChange={e => setFormData({...formData, utrNumber: e.target.value})} 
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
                   <div className="fc-input-group">
                     <label className="fc-label-input">Message</label>
                     <textarea className="fc-input" style={{ minHeight: '120px', resize: 'vertical' }} placeholder="Tell us what you would like help with..." value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})}></textarea>
@@ -355,7 +456,12 @@ export default function FoundationalCareerClient() {
                     </div>
                   )}
 
-                  <button type="submit" className="fc-btn-primary" style={{ marginTop: '1rem' }} disabled={isSubmitting}>
+                  <button 
+                    type="submit" 
+                    className="fc-btn-primary" 
+                    style={{ marginTop: '1rem', width: '100%' }} 
+                    disabled={isSubmitting || (formData.interest && !formData.utrNumber?.trim())}
+                  >
                     {isSubmitting ? 'Sending...' : 'Send Enquiry'}
                   </button>
                 </form>

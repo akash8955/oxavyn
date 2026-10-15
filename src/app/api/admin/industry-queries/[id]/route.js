@@ -19,10 +19,19 @@ export async function PUT(req, { params }) {
     const resolvedParams = await params;
     const body = await req.json();
     
-    if (body.newComment) {
+    if (body.newComment || body.comment) {
+      const c = typeof body.newComment === 'object' ? body.newComment : (typeof body.comment === 'object' ? body.comment : { text: body.newComment || body.comment });
       const updatedData = await IndustryQuery.findByIdAndUpdate(
         resolvedParams.id, 
-        { $push: { comments: { text: body.newComment } } }, 
+        { $push: { comments: {
+          text: c.text || '',
+          authorName: c.authorName || 'Admin',
+          authorRole: c.authorRole || 'Admin',
+          imageUrl: c.imageUrl || '',
+          imageName: c.imageName || '',
+          fileSize: c.fileSize || '',
+          timestamp: new Date()
+        } } }, 
         { new: true }
       );
       return NextResponse.json({ success: true, data: updatedData });

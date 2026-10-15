@@ -86,8 +86,16 @@ export default function Navbar({ initialShowStudentSections = true }) {
           {/* Logo */}
           <div className="nav-logo">
             <Link href="/home" className="nav-logo-link">
-              <Image src="/images/logo.png" alt="Oxavyn Logo" width={120} height={40} priority={true} style={{ objectFit: 'contain' }} unoptimized={true} className="nav-logo-img desktop-logo" />
-              <span className="logo-text">Oxavyn</span>
+              <Image 
+                src="/images/logo1.png" 
+                alt="Oxavyn Logo" 
+                width={135} 
+                height={45} 
+                priority={true} 
+                style={{ objectFit: 'contain' }} 
+                unoptimized={true} 
+                className="nav-logo-img desktop-logo" 
+              />
             </Link>
           </div>
 
@@ -189,10 +197,18 @@ export default function Navbar({ initialShowStudentSections = true }) {
       {/* Mobile Drawer (Slide from Left) */}
       <div className={`mobile-drawer ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="drawer-header">
-          <div className="nav-logo-link">
-            <Image src="/images/logo.png" alt="Oxavyn Logo" width={96} height={32} priority={true} style={{ objectFit: 'contain' }} unoptimized={true} className="nav-logo-img mobile-logo" />
-            <span className="logo-text">Oxavyn</span>
-          </div>
+          <Link href="/home" className="nav-logo-link" onClick={() => setIsMobileMenuOpen(false)}>
+            <Image 
+              src="/images/logo1.png" 
+              alt="Oxavyn Logo" 
+              width={105} 
+              height={35} 
+              priority={true} 
+              style={{ objectFit: 'contain' }} 
+              unoptimized={true} 
+              className="nav-logo-img mobile-logo" 
+            />
+          </Link>
           <button className="close-btn" onClick={() => setIsMobileMenuOpen(false)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>

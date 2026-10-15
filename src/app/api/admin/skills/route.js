@@ -30,8 +30,17 @@ export async function PUT(req) {
       application.status = status;
     }
 
-    if (comment && comment.trim() !== '') {
-      application.comments.push({ text: comment, timestamp: new Date() });
+    if (comment) {
+      const c = typeof comment === 'object' ? comment : { text: comment };
+      application.comments.push({
+        text: c.text || '',
+        authorName: c.authorName || 'Admin',
+        authorRole: c.authorRole || 'Admin',
+        imageUrl: c.imageUrl || '',
+        imageName: c.imageName || '',
+        fileSize: c.fileSize || '',
+        timestamp: new Date()
+      });
     }
 
     await application.save();
