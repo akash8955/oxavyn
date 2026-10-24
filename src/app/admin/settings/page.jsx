@@ -114,6 +114,23 @@ export default function SettingsDashboard() {
     }
   };
 
+  const handleToggleStudentSections = async (checked) => {
+    setShowStudentSections(checked);
+    try {
+      const res = await fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: 'showStudentSections', value: checked }),
+      });
+      if (res.ok) {
+        setMessage(checked ? 'Student & Review features enabled (banner hidden)!' : 'Student & Review features disabled (banner page activated)!');
+        setTimeout(() => setMessage(''), 3500);
+      }
+    } catch (err) {
+      console.error('Failed to save student toggle', err);
+    }
+  };
+
   const handleMapChange = (e) => {
     setMapSettings({...mapSettings, [e.target.name]: e.target.value});
   };
@@ -351,12 +368,17 @@ export default function SettingsDashboard() {
                     <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Toggle the visibility of Student Internships, Foundation, and Student Reviews in the navigation menu and routes.</p>
                   </div>
                   <label style={{ position: 'relative', display: 'inline-block', width: '60px', height: '34px', flexShrink: 0 }}>
-                    <input type="checkbox" checked={showStudentSections} onChange={(e) => setShowStudentSections(e.target.checked)} style={{ opacity: 0, width: 0, height: 0 }} />
+                    <input type="checkbox" checked={showStudentSections} onChange={(e) => handleToggleStudentSections(e.target.checked)} style={{ opacity: 0, width: 0, height: 0 }} />
                     <span style={{ position: 'absolute', cursor: 'pointer', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: showStudentSections ? '#10b981' : '#cbd5e1', transition: '.4s', borderRadius: '34px' }}>
                       <span style={{ position: 'absolute', content: '""', height: '26px', width: '26px', left: showStudentSections ? '30px' : '4px', bottom: '4px', backgroundColor: 'white', transition: '.4s', borderRadius: '50%' }} />
                     </span>
                   </label>
                 </div>
+                {message && (
+                  <div style={{ marginTop: '0.75rem', fontSize: '0.875rem', color: message.includes('fail') || message.includes('Error') ? '#ef4444' : '#10b981', fontWeight: '500' }}>
+                    {message}
+                  </div>
+                )}
               </div>
 
               {/* SECTION 2: Contact Page Map */}

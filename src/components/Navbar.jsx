@@ -42,6 +42,10 @@ export default function Navbar({ initialShowStudentSections = true }) {
 
   const [showStudentSections, setShowStudentSections] = useState(initialShowStudentSections);
 
+  useEffect(() => {
+    setShowStudentSections(initialShowStudentSections);
+  }, [initialShowStudentSections]);
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -53,7 +57,7 @@ export default function Navbar({ initialShowStudentSections = true }) {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  // Fetch settings to conditionally hide student sections
+  // Fetch settings to conditionally toggle student dropdown vs simple banner page link
   useEffect(() => {
     const fetchSettings = async () => {
       try {
@@ -69,14 +73,20 @@ export default function Navbar({ initialShowStudentSections = true }) {
       }
     };
     fetchSettings();
-  }, []);
+  }, [pathname]);
 
-  // Filter links dynamically
-  const filteredNavLinks = navLinks.filter(link => {
-    if (link.name === "Students" && !showStudentSections) {
-      return false;
+  // Transform links: When student sections are disabled, make "Students" a simple page link
+  const processedNavLinks = navLinks.map(link => {
+    if (link.name === "Students") {
+      if (!showStudentSections) {
+        return {
+          name: "Students",
+          href: "/students",
+          isDropdown: false
+        };
+      }
     }
-    return true;
+    return link;
   });
 
   return (
@@ -101,7 +111,7 @@ export default function Navbar({ initialShowStudentSections = true }) {
 
           {/* Desktop Nav */}
           <div className="nav-links desktop-only">
-            {filteredNavLinks.map((link, idx) => (
+            {processedNavLinks.map((link, idx) => (
               <div 
                 key={idx} 
                 className={`nav-item ${link.megaMenuType === 'full' ? 'mega-full-parent' : ''}`}
@@ -218,7 +228,7 @@ export default function Navbar({ initialShowStudentSections = true }) {
         </div>
         
         <div className="drawer-content">
-          {filteredNavLinks.map((link, idx) => (
+          {processedNavLinks.map((link, idx) => (
             <div key={idx} className="drawer-item">
               {link.isDropdown ? (
                 <>
@@ -251,7 +261,7 @@ export default function Navbar({ initialShowStudentSections = true }) {
                               <div className={`drawer-dropdown ${mobileSubDropdown === col.title ? 'open' : ''}`}>
                                 <div className="drawer-dropdown-inner">
                                   {col.items.map((item, i) => (
-                                    <Link href={item.href || "/services"} key={i} className="drawer-dropdown-item">
+                                    <Link href={item.href || "/services"} key={i} className="drawer-dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
                                       {item.title}
                                     </Link>
                                   ))}
@@ -263,7 +273,7 @@ export default function Navbar({ initialShowStudentSections = true }) {
                       </div>
                     ) : (
                       link.items.map((item, i) => (
-                        <Link href={item.href || "/services"} key={i} className="drawer-dropdown-item">
+                        <Link href={item.href || "/services"} key={i} className="drawer-dropdown-item" onClick={() => setIsMobileMenuOpen(false)}>
                           {item.title}
                         </Link>
                       ))
@@ -272,7 +282,7 @@ export default function Navbar({ initialShowStudentSections = true }) {
                   </div>
                 </>
               ) : (
-                <Link href={link.href} className="drawer-link">
+                <Link href={link.href} className="drawer-link" onClick={() => setIsMobileMenuOpen(false)}>
                   {link.name}
                 </Link>
               )}

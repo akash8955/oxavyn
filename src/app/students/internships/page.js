@@ -28,14 +28,23 @@ export const metadata = {
   },
 };
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+export const dynamic = 'force-dynamic';
+
+import { redirect } from "next/navigation";
+import connectToDatabase from "@/lib/db";
+import Settings from "@/models/Settings";
 import InternshipClient from "./InternshipClient";
 import "./Internship.css";
 
+export default async function InternshipsPage() {
+  await connectToDatabase();
+  const settingsDoc = await Settings.findOne({ key: 'showStudentSections' }).lean();
+  const showStudentSections = settingsDoc ? settingsDoc.value !== false : true;
 
+  if (!showStudentSections) {
+    redirect('/students');
+  }
 
-export default function InternshipsPage() {
   return (
     <div className="internship-page-wrapper">
       <main className="cinematic-main">
