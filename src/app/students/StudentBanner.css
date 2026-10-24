@@ -51,18 +51,18 @@
   border: 0;
 }
 
-/* Mobile View: 90vh height & centered */
+/* Mobile View: 80vh height & 100% background width centered */
 @media (max-width: 768px) {
   .student-banner-page {
-    min-height: 90vh;
-    height: 90vh;
+    min-height: 80vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .student-banner-bg {
-    background-size: contain;
+    background-size: 100% auto;
     background-position: center center;
     background-repeat: no-repeat;
     width: 100%;
