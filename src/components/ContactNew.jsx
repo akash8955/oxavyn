@@ -150,9 +150,9 @@ export default function ContactNew() {
         <div className="support-banner-container">
           <div className="support-banner-content">
             <div className="support-image-container">
-              <DynamicMedia page="CONTACT" section="Support Banner" title="Image" alt="Customer Care" fallbackSrc="/contact/woman_on_phone.jpg" />
+              <DynamicMedia page="CONTACT" section="Support Banner" title="Image" alt="Customer Care" fallbackSrc="/contact/woman_on_phone.png" />
               <div className="floating-avatar">
-                <DynamicMedia page="CONTACT" section="Support Banner" title="Agent Image" alt="Agent" fallbackSrc="/contact/woman_on_phone.jpg" />
+                <DynamicMedia page="CONTACT" section="Support Banner" title="Agent Image" alt="Agent" fallbackSrc="/contact/woman_on_phone.png" />
               </div>
             </div>
             <div className="support-text-container">
