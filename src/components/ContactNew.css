@@ -775,6 +775,13 @@
   margin: 4rem auto;
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-layout-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
 }
 
 .map-layout-overlay {
@@ -784,9 +791,9 @@
   transform: translateY(-50%);
   background: transparent;
   pointer-events: none;
-  z-index: 10;
+  z-index: 25;
   color: #1e293b;
-  max-width: 400px;
+  max-width: 420px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
@@ -804,6 +811,31 @@
   font-family: var(--font-outfit, sans-serif);
   line-height: 1.1;
   color: #0f172a;
+  margin-bottom: 0.75rem;
+}
+
+.map-open-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+  pointer-events: auto;
+}
+
+.map-layout-section:hover .map-open-pill {
+  background: #6366f1;
+  transform: translateX(4px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
 }
 
 .map-iframe-container {
@@ -812,6 +844,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
 }
 
 .map-iframe-container iframe {
@@ -819,20 +852,31 @@
   height: 100%;
   border: none;
   filter: grayscale(1) opacity(0.9);
+  pointer-events: none;
 }
 
 .map-click-layer {
+  display: block;
   position: absolute;
   inset: 0;
-  z-index: 5;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
   cursor: pointer;
+  background: transparent;
 }
 
 @media (max-width: 768px) {
+  .map-layout-section {
+    width: calc(100% - 2rem);
+    margin: 2.5rem auto;
+    min-height: 380px;
+    height: 50vh;
+  }
   .map-layout-overlay {
     top: 10%;
     transform: none;
-    left: 5%;
+    left: 6%;
     text-shadow: 0 0 15px rgba(255,255,255,0.9);
   }
   .map-layout-overlay h3 {

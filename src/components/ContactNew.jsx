@@ -56,6 +56,13 @@ export default function ContactNew() {
     }
   };
 
+  const handleMapClick = (e) => {
+    const link = mapSettings.mapLink || 'https://www.google.com/maps?q=416+Phase+III+Udyog+Vihar+Sector+20+Gurugram+Haryana+122008';
+    if (link) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <div className="contact-new-wrapper">
 
@@ -71,13 +78,26 @@ export default function ContactNew() {
         </div>
       </section>
 
-
-
       {/* Embedded Map Section */}
-      <section className="map-layout-section">
+      <section 
+        className="map-layout-section"
+        onClick={handleMapClick}
+        role="link"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleMapClick(e); }}
+        aria-label="Open location in Google Maps"
+      >
         <div className="map-layout-overlay">
           <h2>{mapSettings.title}</h2>
           <h3>{mapSettings.subtitle}</h3>
+          <span className="map-open-pill">
+            <span>View on Google Maps</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </span>
         </div>
         <div className="map-iframe-container">
           <iframe
@@ -87,7 +107,14 @@ export default function ContactNew() {
             title="Google Maps Location"
           ></iframe>
         </div>
-        <a href={mapSettings.mapLink} target="_blank" rel="noopener noreferrer" className="map-click-layer" aria-label="Open location in Google Maps"></a>
+        <a 
+          href={mapSettings.mapLink || 'https://www.google.com/maps?q=416+Phase+III+Udyog+Vihar+Sector+20+Gurugram+Haryana+122008'} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="map-click-layer" 
+          aria-label="Open location in Google Maps"
+          onClick={(e) => e.stopPropagation()}
+        ></a>
       </section>
 
       {/* Ambient Luxury Query Form Section */}
