@@ -51,21 +51,25 @@
   border: 0;
 }
 
-/* Mobile View: 80vh height & 100vw width full background (centering removed) */
+/* Mobile View: 80vh height & 100vw width, original aspect ratio (no stretch or compression) */
 @media (max-width: 768px) {
   .student-banner-page {
     width: 100vw;
     max-width: 100vw;
     min-height: 80vh;
     height: 80vh;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #030303;
   }
 
   .student-banner-bg {
     width: 100vw;
     height: 80vh;
-    background-size: 100% 100%;
-    background-position: top left;
+    background-size: 100% auto;
+    background-position: center center;
     background-repeat: no-repeat;
   }
 }
